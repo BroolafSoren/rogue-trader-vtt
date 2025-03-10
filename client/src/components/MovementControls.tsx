@@ -1,18 +1,15 @@
 import { useTokenStore } from '../stores/useTokenStore';
 import { useEffect, useState, useRef } from 'react';
 import { Animation } from 'konva/lib/Animation';
+import { connection } from '../services/connectionService';
 
-interface MovementControlsProps {
-  socket: any;
-}
-
-export default function MovementControls({ socket }: MovementControlsProps) {
+export default function MovementControls() {
   const { 
     selectedToken, 
     tokens, 
     removeWaypoints, 
     setLocalTokenPos,
-    updateTokenPosition // Add this function to update the token's position in the state
+    updateTokenPosition
   } = useTokenStore();
   const [isAnimating, setIsAnimating] = useState(false);
   const animationRef = useRef<Animation | null>(null);
@@ -78,10 +75,12 @@ export default function MovementControls({ socket }: MovementControlsProps) {
       animateToNextWaypoint();
     };
 
-    socket.on('token-moved', handleTokenMoved);
+    // Use SignalR's on method
+    connection.on('token-moved', handleTokenMoved);
 
     return () => {
-      socket.off('token-moved', handleTokenMoved);
+      // Use SignalR's off method
+      connection.off('token-moved', handleTokenMoved);
       animationRef.current?.stop();
     };
   }, [tokens]);
@@ -93,11 +92,8 @@ export default function MovementControls({ socket }: MovementControlsProps) {
     if (!token?.waypoints?.length) return;
 
     const finalPosition = token.waypoints[token.waypoints.length - 1];
-    socket.emit('confirm-movement', {
-      tokenId: selectedToken,
-      newX: finalPosition.x,
-      newY: finalPosition.y
-    });
+    // Use SignalR's invoke method
+    connection.invoke('ConfirmMovement', selectedToken, finalPosition.x, finalPosition.y);
   };
 
   return (

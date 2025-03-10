@@ -1,66 +1,73 @@
 import sys
 import os
+import json
 
-import fitz
+import fitz  # PyMuPDF
 import PyPDF2
 import easyocr
 
 
-def extract_text_from_pdf(pdf_path: str) -> str:
+def extract_text_as_json(pdf_path: str) -> dict:
     """
-    Tries to extract text from the PDF as-is (for text-based PDFs).
-    If that fails or doesn't return anything, falls back to scanning each page with EasyOCR.
-    Returns the combined text of all pages.
+    Reads the PDF page-by-page. For each page:
+      1) Attempt to extract text with PyPDF2 (for digital text).
+      2) If minimal text is found, use EasyOCR to perform OCR on that page.
+    Returns a dict with structure:
+      {
+        "filename": <PDF filename>,
+        "pages": [
+          {"pageIndex": 0, "text": <extracted text>},
+          {"pageIndex": 1, "text": <extracted text>},
+          ...
+        ]
+      }
     """
-    text_content = ""
-
-    # 1. Attempt to extract text (handles simple PDF text).
-    with open(pdf_path, 'rb') as file:
-        pdf_reader = PyPDF2.PdfReader(file)
-        for page in pdf_reader.pages:
-            page_text = page.extract_text()
-            if page_text:
-                text_content += page_text + "\n"
-
-    # 2. If little or no text was extracted, try OCR each page (for scanned pages).
-    if len(text_content.strip()) < 20:
-        ocr_text = perform_ocr_on_pdf(pdf_path)
-        if ocr_text:
-            text_content += ocr_text
-
-    return text_content
-
-
-def perform_ocr_on_pdf(pdf_path: str) -> str:
-    """
-    Converts each page of the PDF to an image, then uses EasyOCR to scan it.
-    Returns the combined recognized text.
-    """
-    reader = easyocr.Reader(['en'])  # Add languages as needed
+    # Initialize PDF reading
+    pdf_file = open(pdf_path, 'rb')
+    pdf_reader = PyPDF2.PdfReader(pdf_file)
     doc = fitz.open(pdf_path)
-    all_text = ""
+    reader = easyocr.Reader(['en'])  # Adjust languages as needed
 
-    for page_index in range(len(doc)):
-        page = doc[page_index]
-        pix = page.get_pixmap()
-        # Convert the page to an image (PNG).
-        img_bytearray = pix.tobytes("png")
-        # Perform OCR on the image data.
-        ocr_result = reader.readtext(img_bytearray, detail=0)
-        # Join recognized text lines with newlines.
-        all_text += "\n".join(ocr_result) + "\n"
+    # Prepare the output data structure
+    extracted_data = {
+        "filename": os.path.basename(pdf_path),
+        "pages": []
+    }
 
-    return all_text
+    num_pages = len(pdf_reader.pages)
+    for page_index in range(num_pages):
+        # Attempt direct text extraction
+        page_text = pdf_reader.pages[page_index].extract_text() or ""
+        page_text = page_text.strip()
+
+        # If little or no text, do OCR on this page
+        if len(page_text) < 20:
+            # Convert page to an image
+            pix = doc[page_index].get_pixmap()
+            img_bytearray = pix.tobytes("png")
+            # Perform OCR
+            ocr_result = reader.readtext(img_bytearray, detail=0)
+            page_text = "\n".join(ocr_result).strip()
+
+        extracted_data["pages"].append({
+            "pageIndex": page_index,
+            "text": page_text
+        })
+
+    pdf_file.close()
+    doc.close()
+
+    return extracted_data
 
 
-def write_text_to_file(output_path: str, text: str):
-    """Writes the given text to a .txt file."""
+def write_json_to_file(output_path: str, data: dict):
+    """Writes the given dictionary to a JSON file."""
     with open(output_path, 'w', encoding='utf-8') as out_file:
-        out_file.write(text)
+        json.dump(data, out_file, indent=2, ensure_ascii=False)
 
 
 def main():
-    # Directories to scan for input PDFs and place output text files
+    # Directories to scan for input PDFs and place output JSON files
     in_dir = os.path.join(os.getcwd(), '.in')
     out_dir = os.path.join(os.getcwd(), '.out')
 
@@ -78,17 +85,14 @@ def main():
         sys.exit(0)
 
     for pdf_file in pdf_files:
-        # Construct full paths
         input_path = os.path.join(in_dir, pdf_file)
-        # Replace ".pdf" with ".txt" for the output filename
-        output_file = os.path.splitext(pdf_file)[0] + ".txt"
+        # Replace ".pdf" with ".json" for the output filename
+        output_file = os.path.splitext(pdf_file)[0] + ".json"
         output_path = os.path.join(out_dir, output_file)
 
-        # Extract text and write to file
         print(f"Processing: {pdf_file}")
-        extracted_text = extract_text_from_pdf(input_path)
-        write_text_to_file(output_path, extracted_text)
-
+        extracted_data = extract_text_as_json(input_path)
+        write_json_to_file(output_path, extracted_data)
         print(f"Finished. Output written to '{output_path}'.")
 
 

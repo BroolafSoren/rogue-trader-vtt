@@ -1,10 +1,8 @@
 import MapCanvas from '../components/MapCanvas';
 import MovementControls from '../components/MovementControls';
 import { useTokenStore } from '../stores/useTokenStore';
-import { v4 as uuidv4 } from 'uuid'; 
-import { io } from 'socket.io-client';
-
-const socket = io('http://localhost:3000');
+import { v4 as uuidv4 } from 'uuid';
+import { connection } from '../services/connectionService';
 
 export default function MapPage() {
     const { tokens, addToken } = useTokenStore();
@@ -19,13 +17,13 @@ export default function MapPage() {
         };
 
         addToken(newToken);
-        socket.emit('create-token', newToken);
+        connection.invoke('CreateToken', newToken);
     };
   return (
     <div>
       <h2>Map View</h2>
         <button onClick={handleCreateToken}>Create Token</button>
-        <MovementControls socket={socket} />
+        <MovementControls />
         <MapCanvas />
         <div>Tokens: {tokens.length}</div>
     </div>

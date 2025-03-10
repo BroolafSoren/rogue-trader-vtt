@@ -135,3 +135,36 @@ dist
 # local paths for pdf_importer
 .in
 .out
+
+# .NET Core
+bin/
+obj/
+*.user
+.vs/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.docstates
+[Dd]ebug/
+[Rr]elease/
+
+# .NET Core runtime config and build results
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.dll
+*.exe
+
+# Visual Studio cache/options
+*.VisualState.xml
+TestResults/
+[Bb]uild[Ll]og.*
+
+# .NET Core appsettings
+appsettings.Development.json
+appsettings.local.json
+appsettings.*.json
+
+# User secrets
+*.usersecrets.json

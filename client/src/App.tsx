@@ -1,22 +1,24 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { startConnection } from './services/connectionService';
 
 import Navbar from './components/Navbar';
 import MapPage from './pages/MapPage';
 import EncyclopediaPage from './pages/EncyclopediaPage';
 
 function App() {
+  // Start connection when app loads
+  useEffect(() => {
+    startConnection();
+  }, []);
+
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
-        {/* If you open "/", you'll see the map */}
         <Route path="/" element={<MapPage />} />
-
-        {/* If you open "/encyclopedia", you'll see the encyclopedia */}
         <Route path="/encyclopedia" element={<EncyclopediaPage />} />
-
-        {/* Add more <Route> elements here for additional pages */}
       </Routes>
     </BrowserRouter>
   );

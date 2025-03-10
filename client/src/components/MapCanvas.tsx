@@ -1,24 +1,23 @@
 import { Stage, Layer, Circle, Rect, Line } from 'react-konva';
 import { useTokenStore } from '../stores/useTokenStore';
 import { useEffect } from 'react';
-import { io } from 'socket.io-client';
+import { connection } from '../services/connectionService';
 
 const CELL_SIZE = 50;
 const GRID_SIZE = 20;
-
-const socket = io('http://localhost:3000');
 
 export default function MapCanvas() {
   const { tokens, selectedToken, setTokens, addWaypoint, localTokenPos } = useTokenStore();
 
   // Sync tokens with server
   useEffect(() => {
-    socket.on('tokens-update', (serverTokens) => {
+    connection.on('tokens-update', (serverTokens) => {
       setTokens(serverTokens);
     });
   }, []);
+  
   useEffect(() => {
-    socket.on('token-created', (newToken) => {
+    connection.on('token-created', (newToken) => {
       useTokenStore.getState().addToken(newToken);
     });
   }, []);
@@ -45,7 +44,8 @@ export default function MapCanvas() {
     const updatedToken = updatedTokens.find(t => t.id === selectedToken);
 
     if (updatedToken) {
-        socket.emit('move-token', updatedToken);
+        // Use SignalR's invoke method
+        connection.invoke('MoveToken', updatedToken);
     }
   };
 
