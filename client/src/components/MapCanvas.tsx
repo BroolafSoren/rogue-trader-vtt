@@ -9,7 +9,7 @@ const GRID_SIZE = 20;
 const socket = io('http://localhost:3000');
 
 export default function MapCanvas() {
-  const { tokens, selectedToken, setTokens, addWaypoint } = useTokenStore();
+  const { tokens, selectedToken, setTokens, addWaypoint, localTokenPos } = useTokenStore();
 
   // Sync tokens with server
   useEffect(() => {
@@ -21,6 +21,12 @@ export default function MapCanvas() {
     socket.on('token-created', (newToken) => {
       useTokenStore.getState().addToken(newToken);
     });
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      useTokenStore.getState().setLocalTokenPos(null);
+    };
   }, []);
 
   // Handle right-click for waypoints
@@ -68,8 +74,8 @@ export default function MapCanvas() {
         {tokens.map((token) => (
           <Circle
             key={token.id}
-            x={token.x}
-            y={token.y}
+            x={localTokenPos?.id === token.id ? localTokenPos.x : token.x}
+            y={localTokenPos?.id === token.id ? localTokenPos.y : token.y}
             radius={20}
             fill={token.color}
             onClick={() => useTokenStore.getState().selectToken(token.id)}

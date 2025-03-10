@@ -1,0 +1,32 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #222;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navbar-brand {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap on narrow screens */
+  gap: 1.5rem;
+}
+
+.navbar-links li {
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.navbar-links li:hover {
+  color: #ddd;
+}

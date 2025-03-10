@@ -1,33 +1,24 @@
 import './App.css';
-import MapCanvas from './components/MapCanvas';
-import { useTokenStore } from './stores/useTokenStore';
-import { v4 as uuidv4 } from 'uuid'; 
-import { io } from 'socket.io-client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-const socket = io('http://localhost:3000');
+import Navbar from './components/Navbar';
+import MapPage from './pages/MapPage';
+import EncyclopediaPage from './pages/EncyclopediaPage';
 
 function App() {
-  const { tokens, addToken } = useTokenStore();
-
-  const handleCreateToken = () => {
-    const newToken = {
-      id: uuidv4(),
-      x: (50 * 20) / 2,
-      y: (50 * 20) / 2,
-      color: `#${Math.floor(Math.random()*16777215).toString(16)}`, // Random color
-      waypoints: [],
-    };
-    addToken(newToken);
-    socket.emit('create-token', newToken);
-  };
-
   return (
-    <div className="App">
-      <h1>Rogue Trader VTT</h1>
-      <button onClick={handleCreateToken}>Create Token</button>
-      <MapCanvas />
-      <div>Tokens: {tokens.length}</div>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        {/* If you open "/", you'll see the map */}
+        <Route path="/" element={<MapPage />} />
+
+        {/* If you open "/encyclopedia", you'll see the encyclopedia */}
+        <Route path="/encyclopedia" element={<EncyclopediaPage />} />
+
+        {/* Add more <Route> elements here for additional pages */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
