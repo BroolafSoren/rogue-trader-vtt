@@ -12,12 +12,13 @@ function App() {
   const handleCreateToken = () => {
     const newToken = {
       id: uuidv4(),
-      x: 250, // Center of a 500x500 grid (CELL_SIZE * GRID_SIZE)
-      y: 250,
+      x: (50 * 20) / 2,
+      y: (50 * 20) / 2,
       color: `#${Math.floor(Math.random()*16777215).toString(16)}`, // Random color
+      waypoints: [],
     };
     addToken(newToken);
-    socket.emit('create-token', newToken); // Add this line
+    socket.emit('create-token', newToken);
   };
 
   return (

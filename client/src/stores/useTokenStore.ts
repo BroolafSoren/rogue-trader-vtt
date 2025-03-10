@@ -5,7 +5,7 @@ interface Token {
   x: number;
   y: number;
   color: string;
-  waypoints?: { x: number; y: number }[];
+  waypoints: { x: number; y: number }[];
 }
 
 interface TokenStore {

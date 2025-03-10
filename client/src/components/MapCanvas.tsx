@@ -29,12 +29,18 @@ export default function MapCanvas() {
     if (!selectedToken) return;
 
     const pos = {
-      x: Math.floor(e.evt.layerX / CELL_SIZE) * CELL_SIZE,
-      y: Math.floor(e.evt.layerY / CELL_SIZE) * CELL_SIZE,
+      x: Math.floor(e.evt.layerX / CELL_SIZE) * CELL_SIZE + CELL_SIZE / 2,
+      y: Math.floor(e.evt.layerY / CELL_SIZE) * CELL_SIZE + CELL_SIZE / 2,
     };
 
     addWaypoint(selectedToken, pos);
-    socket.emit('move-token', tokens.find(t => t.id === selectedToken));
+
+    const updatedTokens = useTokenStore.getState().tokens;
+    const updatedToken = updatedTokens.find(t => t.id === selectedToken);
+
+    if (updatedToken) {
+        socket.emit('move-token', updatedToken);
+    }
   };
 
   return (
@@ -71,20 +77,26 @@ export default function MapCanvas() {
         ))}
 
         {/* Waypoints */}
-        {tokens.map((token) => (
-          token.waypoints?.map((waypoint, i) => (
-            <Line
-              key={`${token.id}-${i}`}
-              points={[
-                token.x + (i === 0 ? 0 : token.waypoints![i-1].x),
-                token.y + (i === 0 ? 0 : token.waypoints![i-1].y),
-                waypoint.x,
-                waypoint.y
-              ]}
-              stroke="yellow"
-            />
-          ))
-        ))}
+        {tokens.map((token) =>
+          token.waypoints?.map((waypoint, index) => {
+            const startPoint = index === 0 
+              ? { x: token.x, y: token.y } 
+              : token.waypoints[index - 1];
+            return (
+              <Line
+                key={`${token.id}-${index}`}
+                points={[
+                  startPoint.x,
+                  startPoint.y,
+                  waypoint.x,
+                  waypoint.y
+                ]}
+                stroke="yellow"
+                dash={[10, 5]}
+              />
+            );
+          })
+        )}
       </Layer>
     </Stage>
   );
