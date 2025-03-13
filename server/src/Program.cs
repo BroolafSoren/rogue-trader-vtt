@@ -3,23 +3,24 @@ using RogueTraderVTT.Hubs;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers(); // This is crucial!
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add SignalR
-builder.Services.AddSignalR();
+// Keep your existing SignalR setup
+builder.Services.AddSignalR(); // Keep this!
 
-// Add CORS
+// For development, enable CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("ClientPermission", policy =>
-    {
-        policy.WithOrigins("http://localhost:5173")
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials();
-    });
+    options.AddDefaultPolicy(
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:5173") // Your React app's development URL
+                   .AllowAnyMethod()
+                   .AllowAnyHeader()
+                   .AllowCredentials(); // Important for SignalR
+        });
 });
 
 var app = builder.Build();
@@ -31,16 +32,18 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
+
 app.UseHttpsRedirection();
 app.UseAuthorization();
 
-// Use CORS
-app.UseCors("ClientPermission");
-
-// Map controllers
+// Map controllers BEFORE the fallback to SPA
 app.MapControllers();
 
-// Map SignalR hub
-app.MapHub<GameHub>("/gameHub");
+// Keep your existing SignalR hub mappings
+app.MapHub<GameHub>("/gameHub"); // Keep this!
+
+// If you have SPA fallback middleware, it should come AFTER MapControllers
+// app.UseSpa(...);
 
 app.Run();

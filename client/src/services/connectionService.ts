@@ -1,4 +1,5 @@
 import * as signalR from '@microsoft/signalr';
+import { HubConnectionState } from '@microsoft/signalr';
 
 // Create and export the SignalR connection
 export const connection = new signalR.HubConnectionBuilder()
@@ -10,6 +11,10 @@ export const connection = new signalR.HubConnectionBuilder()
 // Start the connection
 export const startConnection = async () => {
   try {
+    if (connection.state !== HubConnectionState.Disconnected) {
+        console.log(`Hub connection is already in ${connection.state} state, not starting again`);
+        return;
+      }
     await connection.start();
     console.log('Connected to SignalR hub');
   } catch (err) {
