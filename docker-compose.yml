@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+  # Frontend React application
+  rogue-trader-client:
+    container_name: rogue-trader-client  # Explicitly name container
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=http://localhost:5000/api
+    ports:
+      - "3000:80"  # Expose nginx on port 3000
+    environment:
+      - REACT_APP_API_URL=http://server/api
+      - REACT_APP_DEV_API_URL=http://localhost:5000/api
+    depends_on:
+      rogue-trader-server:
+        condition: service_started
+    networks:
+      - rogue-trader-network
+    restart: always
+
+  # Backend ASP.NET Core application
+  rogue-trader-server:
+    container_name: rogue-trader-server  # Explicitly name container
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"  # Expose server directly for testing
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80  # Add setting to bind to all interfaces
+      - ConnectionStrings__MongoDB=mongodb://mongodb:27017/roguetrader
+      - CORS__Origins__0=http://localhost:3000
+      - CORS__Origins__1=http://client
+      - CORS__Origins__2=http://client:80
+    depends_on:
+      - mongodb
+    networks:
+      - rogue-trader-network
+    restart: always
+
+  # MongoDB database
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+      - ./database/init-scripts:/docker-entrypoint-initdb.d
+    environment:
+      - MONGO_INITDB_DATABASE=roguetrader
+    networks:
+      - rogue-trader-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+    restart: always
+
+  # MongoDB management UI
+  mongo-express:
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_MONGODB_URL=mongodb://mongodb:27017/
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=password
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - rogue-trader-network
+    restart: on-failure
+
+networks:
+  rogue-trader-network:
+    driver: bridge
+
+volumes:
+  mongo-data:

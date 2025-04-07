@@ -1,0 +1,11 @@
+.map-page {
+  display: flex;
+  height: calc(100vh - 56px); /* Adjust for navbar height */
+  overflow: hidden;
+}
+
+.map-content {
+  flex: 1;
+  padding: 20px;
+  overflow: auto;
+}

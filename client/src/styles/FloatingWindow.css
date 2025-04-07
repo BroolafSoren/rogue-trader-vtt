@@ -1,0 +1,135 @@
+.window-container {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.window-header {
+  background: #2d2d2d;
+  color: white;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+  user-select: none;
+}
+
+.window-title {
+  font-weight: bold;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.window-header-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.window-close-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  padding: 0;
+}
+
+.window-close-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.window-content {
+  flex: 1;
+  overflow: auto;
+  background: white;
+}
+
+/* Resize handles */
+.resize-handle {
+  position: absolute;
+}
+
+.resize-n {
+  top: -4px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  cursor: n-resize;
+}
+
+.resize-e {
+  top: 0;
+  right: -4px;
+  bottom: 0;
+  width: 8px;
+  cursor: e-resize;
+}
+
+.resize-s {
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  cursor: s-resize;
+}
+
+.resize-w {
+  top: 0;
+  left: -4px;
+  bottom: 0;
+  width: 8px;
+  cursor: w-resize;
+}
+
+.resize-ne {
+  top: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
+  cursor: ne-resize;
+}
+
+.resize-se {
+  bottom: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
+  cursor: se-resize;
+}
+
+.resize-sw {
+  bottom: -4px;
+  left: -4px;
+  width: 12px;
+  height: 12px;
+  cursor: sw-resize;
+}
+
+.resize-nw {
+  top: -4px;
+  left: -4px;
+  width: 12px;
+  height: 12px;
+  cursor: nw-resize;
+}
+
+.dragging {
+  opacity: 0.8;
+}
+
+.resizing {
+  pointer-events: none;
+}

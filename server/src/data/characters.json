@@ -1,0 +1,272 @@
+[
+  {
+    "Id": "61cf8f6e-0922-4c23-9e74-a7fdacbf47b9",
+    "Name": "Cornelius Blackthorn",
+    "Career": "Rogue Trader",
+    "Rank": "Master and Commander",
+    "HomeWorld": "Noble Born",
+    "Characteristics": {
+      "WS": {
+        "value": 35,
+        "advances": 1,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      },
+      "BS": {
+        "value": 40,
+        "advances": 2,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      },
+      "S": {
+        "value": 35,
+        "advances": 0,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      },
+      "T": {
+        "value": 40,
+        "advances": 0,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      },
+      "Ag": {
+        "value": 45,
+        "advances": 2,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      },
+      "Int": {
+        "value": 45,
+        "advances": 1,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      },
+      "Per": {
+        "value": 35,
+        "advances": 0,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      },
+      "WP": {
+        "value": 40,
+        "advances": 0,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      },
+      "Fel": {
+        "value": 50,
+        "advances": 3,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      }
+    },
+    "Skills": {
+      "Awareness": {
+        "Trained": true,
+        "Advances": 1,
+        "Characteristic": "per",
+        "Specializations": []
+      },
+      "Command": {
+        "Trained": true,
+        "Advances": 2,
+        "Characteristic": "fel",
+        "Specializations": []
+      },
+      "Commerce": {
+        "Trained": true,
+        "Advances": 2,
+        "Characteristic": "fel",
+        "Specializations": []
+      },
+      "Common Lore (Imperium)": {
+        "Trained": true,
+        "Advances": 1,
+        "Characteristic": "int",
+        "Specializations": []
+      },
+      "Deceive": {
+        "Trained": true,
+        "Advances": 1,
+        "Characteristic": "fel",
+        "Specializations": []
+      },
+      "Dodge": {
+        "Trained": true,
+        "Advances": 1,
+        "Characteristic": "ag",
+        "Specializations": []
+      }
+    },
+    "Talents": [
+      {
+        "Id": "airOfAuthority",
+        "Name": "Air of Authority",
+        "Description": "The character may make a Challenging (\u002B0) Command Test to ignore a Fear Rating of 1."
+      },
+      {
+        "Id": "peerImperium",
+        "Name": "Peer (Imperium)",
+        "Description": "The character gains a \u002B10 bonus to all Fellowship Tests made to interact with members of the Imperium."
+      },
+      {
+        "Id": "rapidReload",
+        "Name": "Rapid Reload",
+        "Description": "All reload times are reduced by one step (Full to Half, Half to Free)."
+      }
+    ],
+    "Wounds": {
+      "Total": 14,
+      "Current": 14
+    },
+    "ExperiencePoints": {
+      "Total": 5000,
+      "Spent": 3750
+    }
+  },
+  {
+    "Id": "b441b418-518c-4ed3-9f0b-a9c4bd2c582f",
+    "Name": "Magos Drakus",
+    "Career": "Explorator",
+    "Rank": "Lexmechanic",
+    "HomeWorld": "Forge World",
+    "Characteristics": {
+      "WS": {
+        "value": 30,
+        "advances": 0,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      },
+      "BS": {
+        "value": 40,
+        "advances": 1,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      },
+      "S": {
+        "value": 35,
+        "advances": 0,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      },
+      "T": {
+        "value": 45,
+        "advances": 2,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      },
+      "Ag": {
+        "value": 35,
+        "advances": 0,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      },
+      "Int": {
+        "value": 60,
+        "advances": 3,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      },
+      "Per": {
+        "value": 40,
+        "advances": 1,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      },
+      "WP": {
+        "value": 45,
+        "advances": 2,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      },
+      "Fel": {
+        "value": 25,
+        "advances": 0,
+        "simpleAdvanceCost": 250,
+        "intermediateAdvanceCost": 500,
+        "trainedAdvanceCost": 750
+      }
+    },
+    "Skills": {
+      "Tech-Use": {
+        "Trained": true,
+        "Advances": 3,
+        "Characteristic": "int",
+        "Specializations": []
+      },
+      "Logic": {
+        "Trained": true,
+        "Advances": 2,
+        "Characteristic": "int",
+        "Specializations": []
+      },
+      "Literacy": {
+        "Trained": true,
+        "Advances": 1,
+        "Characteristic": "int",
+        "Specializations": []
+      },
+      "Common Lore (Tech)": {
+        "Trained": true,
+        "Advances": 2,
+        "Characteristic": "int",
+        "Specializations": []
+      },
+      "Common Lore (Machine Cult)": {
+        "Trained": true,
+        "Advances": 2,
+        "Characteristic": "int",
+        "Specializations": []
+      },
+      "Security": {
+        "Trained": true,
+        "Advances": 1,
+        "Characteristic": "ag",
+        "Specializations": []
+      }
+    },
+    "Talents": [
+      {
+        "Id": "binaryChatter",
+        "Name": "Binary Chatter",
+        "Description": "The character may communicate with other Tech-Priests via binary code at a distance of up to 20 meters."
+      },
+      {
+        "Id": "logisPredictor",
+        "Name": "Logis Predictor",
+        "Description": "The character may re-roll a single failed Intelligence Test per game session."
+      },
+      {
+        "Id": "mechanicalProbingMechadendrite",
+        "Name": "Mechadendrite Use (Utility)",
+        "Description": "The character has a mechanical arm that can be used for Tech-Use Tests and similar actions."
+      }
+    ],
+    "Wounds": {
+      "Total": 12,
+      "Current": 10
+    },
+    "ExperiencePoints": {
+      "Total": 4500,
+      "Spent": 3000
+    }
+  }
+]
