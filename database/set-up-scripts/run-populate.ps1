@@ -2,5 +2,5 @@
 
 Write-Host "Populating MongoDB with initial character data..."
 $scriptPath = $PSScriptRoot + "\populate-characters.js"
-Get-Content $scriptPath | docker exec -i rogue-trader-vtt-mongodb-1 mongosh
+Get-Content $scriptPath | docker exec -i mongodb mongosh
 Write-Host "Done!"
