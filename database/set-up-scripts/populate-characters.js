@@ -24,14 +24,14 @@ const characters = [
       fel: { value: 50, advances: 2 }
     },
     skills: {
-      "Awareness": { characteristic: "per", advances: 1 },
-      "Command": { characteristic: "fel", advances: 2 },
-      "Commerce": { characteristic: "fel", advances: 1 },
-      "Deceive": { characteristic: "fel", advances: 1 },
-      "Dodge": { characteristic: "ag", advances: 1 },
-      "Evaluate": { characteristic: "int", advances: 1 },
-      "Inquiry": { characteristic: "fel", advances: 1 },
-      "Scrutiny": { characteristic: "per", advances: 1 }
+      "Awareness": { advances: 1, trained: true },
+      "Command": { advances: 2, trained: true },
+      "Commerce": { advances: 1, trained: true },
+      "Deceive": { advances: 1, trained: true },
+      "Dodge": { advances: 1, trained: true },
+      "Evaluate": { advances: 1, trained: true },
+      "Inquiry": { advances: 1, trained: true },
+      "Scrutiny": { advances: 1, trained: true }
     },
     talents: [
       {
@@ -86,13 +86,13 @@ const characters = [
       fel: { value: 25, advances: 0 }
     },
     skills: {
-      "Tech-Use": { characteristic: "int", advances: 3 },
-      "Awareness": { characteristic: "per", advances: 2 },
-      "Logic": { characteristic: "int", advances: 2 },
-      "Medicae": { characteristic: "int", advances: 1 },
-      "Common Lore (Tech)": { characteristic: "int", advances: 2 },
-      "Forbidden Lore (Archeotech)": { characteristic: "int", advances: 2 },
-      "Evaluate": { characteristic: "int", advances: 1 }
+      "Tech-Use": { advances: 3, trained: true },
+      "Awareness": { advances: 2, trained: true },
+      "Logic": { advances: 2, trained: true },
+      "Medicae": { advances: 1, trained: true },
+      "Common Lore (Tech)": { advances: 2, trained: true },
+      "Forbidden Lore (Archeotech)": { advances: 2, trained: true },
+      "Evaluate": { advances: 1, trained: true }
     },
     talents: [
       {
@@ -147,12 +147,12 @@ const characters = [
       fel: { value: 45, advances: 1 }
     },
     skills: {
-      "Charm": { characteristic: "fel", advances: 2 },
-      "Command": { characteristic: "fel", advances: 1 },
-      "Common Lore (Imperial Creed)": { characteristic: "int", advances: 2 },
-      "Medicae": { characteristic: "int", advances: 1 },
-      "Scrutiny": { characteristic: "per", advances: 2 },
-      "Inquiry": { characteristic: "fel", advances: 1 }
+      "Charm": { advances: 2, trained: true },
+      "Command": { advances: 1, trained: true },
+      "Common Lore (Imperial Creed)": { advances: 2, trained: true },
+      "Medicae": { advances: 1, trained: true },
+      "Scrutiny": { advances: 2, trained: true },
+      "Inquiry": { advances: 1, trained: true }
     },
     talents: [
       {

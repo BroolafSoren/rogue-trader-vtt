@@ -1,0 +1,350 @@
+{
+    "Starting": {
+        "Skills": [
+            "Command", 
+            "Commerce", 
+            "Charm", 
+            "Common Lore (Imperium)", 
+            "Evaluate", 
+            "Literacy", 
+            "Scholastic Lore (Astromancy)", 
+            "Speak Language (High Gothic)", 
+            "Speak Language (Low Gothic)"
+        ],
+        "Talents" : [
+            "Air of Authority",
+            "Pistol Weapon Training (Universal)",
+            "Melee Weapon Training (Universal)"
+        ],
+        "Gear": [
+            {
+                "Choice 1": [
+                    {
+                        "Name": "Laspistol",
+                        "Craftsmanship": "Best"
+                    },
+                    {
+                        "Name": "Hand Cannon",
+                        "Craftsmanship": "Good"
+                    },
+                    {
+                        "Name": "Plasma Pistol",
+                        "Craftsmanship": "Common"
+                    }
+                ],
+                "Choice 2": [
+                    {
+                        "Name": "Mono-sword",
+                        "Craftsmanship": "Best"
+                    },
+                    {
+                        "Name": "Power Sword",
+                        "Craftsmanship": "Common"
+                    }
+                ],
+                "Choice 3": [
+                    {
+                        "Name": "Enforcer Light Carapace",
+                        "Craftsmanship": "Best"
+                    },
+                    {
+                        "Name": "Storm Trooper Carapace",
+                        "Craftsmanship": "Common"
+                    }
+                ]
+            },
+            "Micro-Bead",
+            "Void Suit",
+            "Set of Fine CLothing",
+            "Xeno-Pelt Cloak"
+        ]
+    },
+    "Characteristic Advances": {
+        "Weapon Skill": [
+            100, 250, 500, 750
+        ],
+        "Ballistic Skill": [
+            250, 500, 750, 1000
+        ],
+        "Strength": [
+            500, 750, 1000, 2500
+        ],
+        "Toughness": [
+            500, 750, 1000, 2500
+        ],
+        "Agility": [
+            250, 500, 750, 1000
+        ],
+        "Intelligence": [
+            100, 250, 500, 750
+        ],
+        "Perception": [
+            250, 500, 750, 1000
+        ],
+        "Willpower": [
+            250, 500, 750, 1000
+        ],
+        "Fellowship": [
+            100, 250, 500, 750
+        ]
+    },
+    "Rank Advances": [
+        {
+            "Rank": 1,
+            "Skill Cost": 100,
+            "Skills": [
+                "Awareness",
+                "Command",
+                "Commerce",
+                "Charm",
+                "Ciphers (Rogue Trader)",
+                "Common Lore (Imperium)",
+                "Common Lore (Rogue Traders)",
+                "Dodge",
+                "Evaluate",
+                "Literacy",
+                "Pilot (Space Craft)",
+                "Scholastic Lore (Astromancy)",
+                "Secret Tongue (Rogue Trader)",
+                "Speak Language (Trader's Cant)"
+            ],
+            "Talents": [
+                {
+                    "Name": "Air of Authority",
+                    "Cost": 100
+                },
+                {
+                    "Name": "Ambiextrous",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Melee Weapon Training (Primitive)",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Renowned Warrant",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Pistol Weapon Training (Universal)",
+                    "Cost": 500
+                },
+                {
+                    "Name": "Melee Weapon Training (Universal)",
+                    "Cost": 500
+                }
+            ]
+        },
+        {
+            "Rank": 2,
+            "Skill Cost": 200,
+            "Skills": [
+                "Barter",
+                "Blather",
+                "Charm +10",
+                "Command +10",
+                "Common Lore (Koronus Expanse)",
+                "Deceive",
+                "Forbidden Lore (Xenos)",
+                "Gamble",
+                "Intimidate",
+                "Performaer (Any)",
+                "Pilot (Flyers)",
+                "Scholastic Lore (Imperial Warrants)"
+            ],
+            "Talents": [
+                {
+                    "Name": "Iron Discipline",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Jaded",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Leap up",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Quick Draw",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Sound Constitution (x2)",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Two Weapon Wielder (Melee)",
+                    "Cost": 300
+                },
+                {
+                    "Name": "Exotic Weapon Training (Any)",
+                    "Cost": 500
+                },
+                {
+                    "Name": "Two Weapon Wielder (Ballistic)",
+                    "Cost": 500
+                }
+            ]
+        },
+        {
+            "Rank": 3,
+            "Skill Cost": 200,
+            "Skills": [
+                "Acrobatics",
+                "Charm +20",
+                "Command +20",
+                "Common Lore (Imperial Navy)",
+                "Dodge +10",
+                "Drive (Ground Vehicle)",
+                "Scholastic Lore (Heraldry)",
+                "Scholastic Lore (Legend)",
+                "Scrutiny",
+                "Search",
+                "Secret Tongue (Underdeck)",
+                "Security",
+                "Sleight of Hand"
+            ],
+            "Talents": [
+                {
+                    "Name": "Dark Soul",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Decadence",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Foresight",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Resistance (Fear)",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Sound Constitution",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Exotic Weapon Training (Any)",
+                    "Cost": 500
+                },
+                {
+                    "Name": "Gunslinger",
+                    "Cost": 500
+                }
+            ]
+        },
+        {
+            "Rank": 4,
+            "Skill Cost": 200,
+            "Skills": [
+                "Awareness +10",
+                "Climb",
+                "Commerce +10",
+                "Common Lore (Imperium) +10",
+                "Common Lore (Rogue Traders) +10",
+                "Dodge +20",
+                "Drive (Skimmer/Hover)",
+                "Speak Language (Eldar)",
+                "Tech-Use",
+                "Trade (Voidfarer)"
+            ],
+            "Talents": [
+                {
+                    "Name": "Catfall",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Double Team",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Rapid Reaction",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Sound Constitution (x2)",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Basic Weapon Training (Universal)",
+                    "Cost": 500
+                },
+                {
+                    "Name": "Counter Attack",
+                    "Cost": 500
+                },
+                {
+                    "Name": "Crushing Blow",
+                    "Cost": 500
+                },
+                {
+                    "Name": "Into the Jaws of Hell",
+                    "Cost": 500
+                },
+                {
+                    "Name": "Sprint",
+                    "Cost": 500
+                },
+                {
+                    "Name": "Swift Attack",
+                    "Cost": 500
+                }
+            ]
+        },
+        {
+            "Rank": 5,
+            "Skill Cost": 200,
+            "Skills": [
+                "Awareness +20",
+                "Barter +10",
+                "Blather +10",
+                "Carouse +10",
+                "Ciphers (Underworld)",
+                "Commerce +20",
+                "Common Lore (Imperium) +20",
+                "Common Lore (Koronus Expanse) +10",
+                "Common Lore (Rogue Traders) +20",
+                "Deceive +10",
+                "Evaluate +10",
+                "Navigation (Stellar)"
+            ],
+            "Talents": [
+                {
+                    "Name": "Disarm",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Light Sleeper",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Sound Constitution",
+                    "Cost": 200
+                },
+                {
+                    "Name": "Blademaster",
+                    "Cost": 500
+                },
+                {
+                    "Name": "Conbat Master",
+                    "Cost": 500
+                },
+                {
+                    "Name": "Lightning Attack",
+                    "Cost": 500
+                },
+                {
+                    "Name": "Master & Commander",
+                    "Cost": 500
+                },
+                {
+                    "Name": "Sure Strike",
+                    "Cost": 500
+                }
+            ]
+        }
+    ]
+}

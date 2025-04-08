@@ -1,6 +1,6 @@
 import * as signalR from '@microsoft/signalr';
 
-const HUB_URL = 'http://localhost:3000/gameHub';
+const HUB_URL = 'http://localhost:5000/gameHub';
 
 console.log('Connecting to SignalR hub at:', HUB_URL);
 

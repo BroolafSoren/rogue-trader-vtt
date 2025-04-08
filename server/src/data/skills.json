@@ -1,0 +1,446 @@
+[
+    {
+        "Name": "Awareness",
+        "Attributes": "Perception",
+        "Type": "Basic",
+        "Description": "Awareness encompasses the Explorer’s subconscious ability to react to things his conscious mind may not perceive. He can use this Skill to notice threats, such as ambushes, traps, or cleverly hidden objects—or slight changes in the environment, such as a faint vibration in the deck plating or the smell of the air recyclers. When using Awareness against an opponent, the test is always Opposed. This use includes noticing ambushes, spotting traps, and other things involving another’s actions.",
+        "Skill Use": "Free Action made in reaction to something.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Exploration"
+    },
+    {
+        "Name": "Barter",
+        "Attributes": "Fellowship",
+        "Type": "Basic",
+        "Description": "The Barter skill allows the Explorer to negotiate better prices or exchange for goods and services. This can modify the Acquisition Modifier for items where the price is not set, but rather the result of negotiation. All Barter Tests are Opposed, as they involve interaction by their very nature. Barter may sometimes be used to assist with Acquisition Tests.",
+        "Skill Use": "A typical Barter Test takes about five minutes, but delicate dealings and intricate negotiations may involve Extended Tests.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Interaction"
+    },
+    {
+        "Name": "Carouse",
+        "Attributes": "Toughness",
+        "Type": "Basic",
+        "Description": "The Carouse Skill is used to resist the effects of alcohol and narcotics. The Explorer makes a Skill Test whenever he suffers the effects of alcohol or similar intoxicants. Each time he would otherwise suffer from the effects of an intoxicant, make a Carouse Test. Failure indicates he has gained a level of Fatigue or suffers the side effects of the substance. Should he lose conscious, the Explorer will remain passed out for a number of hours equal to 1d10 minus his Toughness Bonus (minimum 1 hour).",
+        "Skill Use": "Free Action taken whenever the Explorer imbibes.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Exploration"
+    },
+    {
+        "Name": "Charm",
+        "Attributes": "Fellowship",
+        "Type": "Basic",
+        "Description": "The Explorer can use the Charm Skill to improve the disposition of others towards him, making a Charm Test whenever he wishes to change the minds of an individual or small group. He need not make a Charm Test each time he speaks with others in a pleasant manner, but only when he wishes to change their opinion, disposition, or convince them to do something. All Charm Tests are Opposed by Willpower and can affect a number of targets equal to the Explorer’s Fellowship Bonus. His targets must be able to see and hear clearly, and share a common language.",
+        "Skill Use": "1 minute.",
+        "Special Use": {
+            "Name": "Inspire",
+            "Usage": "Those in positions of authority can use Charm to inspire a group. Success provides a +10 bonus to the next Skill Test of the motivated group."
+        },
+        "Category": "Interaction"
+    },
+    {
+        "Name": "Climb",
+        "Attributes": "Strength",
+        "Type": "Basic",
+        "Description": "With the Climb skill the Explorer can ascend or descend ropes, pipes, and both natural and man-made walls. The condition of the surface or item and the environmental conditions can impose additional bonuses or penalties. A successful Test allows the character to ascend or descend at one-half his half move rate.",
+        "Skill Use": "Half Action.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Movement"
+    },
+    {
+        "Name": "Command",
+        "Attributes": "Fellowship",
+        "Type": "Basic",
+        "Description": "The Explorer utilizes the Command skill to both direct those under his authority and establish actions for groups to execute on command. This skill is only effective upon those under the Explorer’s authority. A successful Command Test indicates that those whom he directs follow his instructions in a timely manner. Failure on the Skill Test when used on an individual, means that he ignores the orders. Additional Degrees of Failure indicate that the individual reject or intentionally contradicts the given commands. For directing groups, Degrees of Success or Failure will increase or decrease the time necessary to execute the orders, with 3 or more Degrees of Failure subjecting them to confused inaction. A Command Test can affect a number of targets equal to the Explorer’s Fellowship Bonus. They must be able to see and hear him, though this could be done remotely, and use speak a common language.",
+        "Skill Use": "Half Action for simple commands, Full Action for more involved direction.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Interaction"
+    },
+    {
+        "Name": "Concealment",
+        "Attributes": "Agility",
+        "Type": "Basic",
+        "Description": "The Concealment Skill is used to hide things, from small objects to vehicles to starships, or objects on the character’s person. Use of the Skill requires an appropriate environment to mask the item in question: buildings and trees for a small shuttle or an asteroid field and space anomaly for a starship. Concealment is always an Opposed Test, pitting the Explorer’s Concealment against his opponent’s Awareness or Scrutiny. If the character or the object being hidden remains perfectly still, he gains a +10 bonus to the Skill Test.",
+        "Skill Use": "Half Action.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Exploration"
+    },
+    {
+        "Name": "Contortionist",
+        "Attributes": "Agility",
+        "Type": "Basic",
+        "Description": "Explorers with Contortionist Skill can use their innate flexibility to allow them to escape bonds, escape grapples, or squeeze through tight spaces. Escape Bonds: The Explorer can Test to slip free of bonds. This is an Opposed Test, against his opponent’s Intelligence Characteristic. The quality of the bonds and time to employ them will affect the difficulty of the Test. Escape Grapple: The Explorer may escape a grapple by making an Opposed Test against the grappler’s Strength Characteristic. Success frees the Explorer. Failure means he remains grappled. Squeeze Through: The Explorer can Test to squeeze through a tight space or to cram himself into a space too small to fit a human body. 4 or more Degrees of Failure mean he has become stuck until he succeeds in another Contortionist Test or someone else pulls him free.",
+        "Skill Use": "Full Action unless otherwise noted.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Movement"
+    },
+    {
+        "Name": "Deceive",
+        "Attributes": "Fellowship",
+        "Type": "Basic",
+        "Description": "The Deceive skill enables the Explorer to mislead others as to his true intent. Any time he tells a lie, reveal only part of the truth or spin information to his advantage with the intent to mislead someone, the character must make a Deceive Test. He need not make a Deceive Test for every lie, but only when that deception would change someone’s mind, opinion, or actions. Deceive is always an Opposed Test, using your Deceive Skill against the opponent’s Scrutiny. A Deceive Test affects a number of targets equal to the Explorer’s Fellowship Bonus. They must also speak a common language.",
+        "Skill Use": "1 minute, or more for complex deceptions.",
+        "Special Use": {
+            "Name": "Con",
+            "Usage": "The ship’s master or officers can use deception to temporarily increase the crew’s morale during combat."
+        },
+        "Category": "Interaction"
+    },
+    {
+        "Name": "Disguise",
+        "Attributes": "Fellowship",
+        "Type": "Basic",
+        "Description": "The Disguise skill allows the Explorer to mask his features and even assume another’s appearance. The difficulty of the test depends upon the materials available, the differences between the character and the desired appearance, and any other elements that would affect the deception. Disguise is an Opposed Skill Test against a foe’s Scrutiny. The application of the most elementary of disguises takes one minute. The more elaborate the deception, the more time required, up to weeks or months in the case of impersonations involving prosthetics, surgery, or xeno mannerisms.",
+        "Skill Use": "1 minute or more depending on complexity.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Interaction"
+    },
+    {
+        "Name": "Dodge",
+        "Attributes": "Agility",
+        "Type": "Basic",
+        "Description": "Use the Dodge skill as a Reaction to nullify a successful hand-to-hand or ranged attack. After a character is hit, but before Damage is rolled, the character can make a Dodge Test. A character must be aware of the attack in order to make the test. If successful, the character dodges at the last moment and the attack is considered to have missed (No Damage). If he fails, the attack connects and deals Damage normally. Dodge can be used to avoid both melee and ranged attacks. When Dodging an area effect weapon (such as flamers), a successful Dodge moves the character to the edge of the area of effect, as long as it is no further away than the character’s Agility Bonus in metres. If the character would need to move further than this to avoid the attack then the Dodge Test automatically fails. When Dodging Fully-Auto or Semi-Auto Bursts, each degree of success on the Dodge Test negates one additional hit.",
+        "Skill Use": "Reaction.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Combat"
+    },
+    {
+        "Name": "Evaluate",
+        "Attributes": "Intelligence",
+        "Type": "Basic",
+        "Description": "The Explorer can use Evaluate to determine the approximate value of an object or group of items. Success reveals the item’s Availability Modifier. Additional Degrees of Success will give additional information about the objects. A failure results in the miscalculation of an item’s true value, with the degree of error increasing with each Degree of Failure. The difficulty of the Test should be adjusted for the Explorer’s access to the item and the time allowed by the seller. Using Evaluate on large cargoes requires an Extended Test, though the Explorer can appraise single items in about a minute. Also, Evaluate can be used at the GM’s discretion to assist with determining the requirements for Endeavours.",
+        "Skill Use": "1 minute or more.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Investigation"
+    },
+    {
+        "Name": "Gamble",
+        "Attributes": "Intelligence",
+        "Type": "Basic",
+        "Description": "The Explorer uses Gamble when participating in games of chance. Each participant wagers an amount, though these are typically the same, and makes an Opposed Test with the Gamble Skill. The player with the most Degrees of Success or fewest Degrees of Failure wins the pot. The Explorer may choose to lose against any player with a worse result as part of a Deceive attempt. Those with both Skills may use Sleight of Hand instead of Gamble to hide cards or alter dice rolls. Success gives the character a +20 bonus to his tests, but four or more Degrees of Failure indicates he has been caught in the act.",
+        "Skill Use": "Full Action for an entire day of gaming.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Interaction"
+    },
+    {
+        "Name": "Inquiry",
+        "Attributes": "Fellowship",
+        "Type": "Basic",
+        "Description": "The Explorer can use Inquiry to gain information by asking questions, through conversation or simple eavesdropping. Inquiry allows him to pick up general information about an area: its news, recent events, and more. Additional Degrees of Success reveal more detailed or more secretive tidings. Inquiry can also be used as an Investigation Skill, allowing the Explorer to hunt after a particular item of information from either individuals or resources, such as the ship’s librarium. This use is virtually always an Extended Test, with Difficulty and Duration set by the GM.",
+        "Skill Use": "1 hour or more.",
+        "Special Use": {
+            "Name": "Hunt for Sedition",
+            "Usage": "A character may use his skills of inquiry among members of the crew to plumb for malcontents, malingerers and mutineers."
+        },
+        "Category": "Interaction"
+    },
+    {
+        "Name": "Intimidate",
+        "Attributes": ["Fellowship", "Strength", "Intelligence"],
+        "Type": "Basic",
+        "Description": "The Explorer uses Intimidate to pressure an individual to give in to his demands. The character does not make an Intimidate Test every time he makes a threat, but only when it involves coercion. Though Intimidate lists Strength as its associated characteristic, the Explorer may substitute either Intelligence or Fellowship if the threat involves more subtle methods than brute force, such as blackmail or humiliation. An Intimidate Test affects a number of targets equal to the Explorer’s Strength, Intelligence, or Fellowship Bonus, depending on the characteristic used for the test. His targets must be able to see and hear him clearly, either in person or via pict- or vox-caster, and speak a common language.",
+        "Skill Use": "Full Action.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Interaction"
+    },
+    {
+        "Name": "Logic",
+        "Attributes": "Intelligence",
+        "Type": "Basic",
+        "Description": "The Explorer uses Logic to solve problems, decipher puzzles, and deal with other situations involving demonstration and inference. A Logic Test might infer the missing symbol in a series or to solve a particularly troublesome mathematical equation. He can also use the Skill to prepare a reasoned argument for debate or philosophical exchange. The preparations of complex reasoning or complicated problems are Extended Tests.",
+        "Skill Use": "1 minute, or longer for particularly complex problems.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Investigation"
+    },
+    {
+        "Name": "Scrutiny",
+        "Attributes": "Fellowship",
+        "Type": "Basic",
+        "Description": "The Scrutiny Skill helps assess the people or objects the Explorer encounters. The character uses it to determine an individual’s truthfulness, his motives and generally appraise his personality and temperament. It can also be used to examine an object in detail, noticing small details and characteristics that might pass unseen in a casual inspection. For starship auspex returns, it allows determination of a vessel’s mass, velocity, and more. Scrutiny is an Opposed Test against the target’s Deceive Skill when trying to perceive falsehoods or deceptions. However, Scrutiny does not reveal hidden secrets or a target’s carefully concealed intent, and should never replace good roleplaying in an interactive situation. This Skill counters the Opposed Tests of many manipulative Interaction skills, such as Charm, Deceive, and Intimidate.",
+        "Skill Use": "Full Action, though special uses may require more time.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Investigation"
+    },
+    {
+        "Name": "Search",
+        "Attributes": "Perception",
+        "Type": "Basic",
+        "Description": "The Explorer uses the Search Skill to discover things that are physically hidden, from a hidden holdout pistol to a shuttle code. Search involves active investigation, whereas Awareness deals with passive or subconscious detection. Each Search Test covers a small room or area. When an object or individual has been deliberately hidden, the Search Test is an Opposed Test against the target’s Concealment.",
+        "Skill Use": "1 minute.",
+        "Special Use": {
+            "Name": "Inspection",
+            "Usage": "The Search skill can also be used to find hidden stores, contraband, stowaways, and even evidence of sabotage on vehicles and starships."
+        },
+        "Category": "Exploration"
+    },
+    {
+        "Name": "Silent Move",
+        "Attributes": "Agility",
+        "Type": "Basic",
+        "Description": "Use the Silent Move Skill anytime silence and secrecy is essential in the Explorer’s activities. The GM sets the Difficulty of the Test depending on the environment, where the echoing steel halls of a cargo bay yields a greater Difficulty than the wood-panelled, carpeted environs of the officers’ quarters. Silent Move Tests are always Opposed Tests against the opponent’s Awareness or Scrutiny Skill.",
+        "Skill Use": "Free Action as part of Movement.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Movement"
+    },
+    {
+        "Name": "Swim",
+        "Attributes": "Strength",
+        "Type": "Basic",
+        "Description": "Swim allows the Explorer to swim through various liquid mediums. Under normal conditions swimming does not require a Test. More difficult waters, unusual circumstances, or long distances call for a Skill Test.",
+        "Skill Use": "Full Action.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Movement"
+    },
+    {
+        "Name": "Acrobatics",
+        "Attributes": "Agility",
+        "Type": "Advanced",
+        "Description": "Acrobatics training supplements the Explorer’s natural agility to perform feats the less athletic would not even consider.",
+        "Skill Use": "Full Action unless otherwise noted.",
+        "Special Use": {
+            "Name": "Disengage",
+            "Usage": "When taking the Disengage Action in combat, the Explorer may make an Acrobatics Test to reduce it to a Half Action."
+        },
+        "Category": "Movement"
+    },
+    {
+        "Name": "Blather",
+        "Attributes": "Fellowship",
+        "Type": "Advanced",
+        "Description": "Blather allows the Explorer to stall for time with a confusing or distracting stream of conversation. Blather Tests are always Opposed by the target’s Willpower, or Scrutiny if the target actively suspects the tactic. Winning the Opposed Test results in the opponent’s bemused inaction for his entire round. For every degree of success, the Explorer has dumbfounded the target for an additional round. Loosing the Opposed Test means that everyone involved may act normally. Some Talents allow the Explorer to use Blather against many opponents. However, even without these Talents, he can affect a number of targets equal to his Fellowship Bonus if he is able to win the Opposed Test.",
+        "Skill Use": "Full Action.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Interaction"
+    },
+    {
+        "Name": "Chem-Use",
+        "Attributes": "Intelligence",
+        "Type": "Advanced",
+        "Description": "The Chem-Use skill allows the Explorer to safely identify, handle and prepare a variety of chemicals, toxins, poisons, and drugs. Success in a Chem-Use Test indicates it has been applied correctly for the desired results. Failure indicates the dose was wasted without effect. When using a medicae injector the Skill Test to administer a drug or antidote is reduced to a Half Action. Employing Chem-Use to apply particularly complex combinations of substances or toxins uses an Extended Test.",
+        "Skill Use": "Full Action.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Crafting"
+    },
+    {
+        "Name": "Commerce",
+        "Attributes": "Fellowship",
+        "Type": "Advanced",
+        "Description": "An Explorer may use the Commerce Skill to improve his Profit Factor prior to making an Acquisition Test. This is a contest of the Explorer’s Commerce Skill versus the Commerce Skill or Scrutiny Skill of the person or organization he is trading with. For each degree the Explorer beats his opponent, he may increase his Profit Factor by 2 points. For each degree his opponent beats him, however, he must decrease his Profit Factor by 2. Both increases and decreases to Profit Factor only apply to a single Acquisition Test made immediately with that trader. This use of Skills works both ways, and when the Explorers deal with canny merchants, the GM may force them to make a contest of Commerce Skills even if they don’t want to.",
+        "Skill Use": "Variable.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Interaction"
+    },
+    {
+        "Name": "Demolition",
+        "Attributes": "Intelligence",
+        "Type": "Advanced",
+        "Description": "The Explorer can use the Demolition Skill for several effects: Manufacture Explosives: The Demolition Skill allows the Explorer to make explosive materials from basic components. Place Explosives: Success indicates the Explorer has successfully planted the explosive charge. Failure indicates that the explosives will fail to go off when triggered, though the character will not know this till the time of activation. Defuse Explosives: Make an Opposed Test against the Demolition Skill Test of the individual who set the explosives. Winning the Test indicates that the bomb has been defused. Simple failure means that the charge has not been disarmed.",
+        "Skill Use": "Full Action unless otherwise noted.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Crafting"
+    },
+    {
+        "Name": "Interrogation",
+        "Attributes": "Willpower",
+        "Type": "Advanced",
+        "Description": "Interrogation allows the Explorer to extract information from an unwilling subject. Make an Opposed Test, pitting the Explorer’s Interrogation Skill against an opponent’s Willpower. If he wins, the Explorer gets one answer, plus one answer for each Degree of Success. If the opponent wins, the Explorer gets nothing of worth. Two or more Degrees of Failure inflict 1d10 plus the character’s Willpower Bonus in Damage to the target, and prevents any further interrogation for 1d5 days. If the Explorer suffers four or more Degrees of Failure, he deals 1d10 Damage and his subject gains a +30 bonus to Willpower Tests made to resist Interrogation at the hands of the Explorer or his allies. Each Interrogation Test inflicts one level of Fatigue on the target.",
+        "Skill Use": "1d5 hours.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Investigation"
+    },
+    {
+        "Name": "Invocation",
+        "Attributes": "Willpower",
+        "Type": "Advanced",
+        "Description": "For the duration of the round, the Explorer clears his mind of external influence and focuses his will more intently. A successful test indicates that his mind is ready to channel the warp more intensely. On the next round, the Explorer adds +1 to the final Psy Rating of any Fettered Power Test. Failure indicates that the Explorer’s attempts to focus have backfired, and he suffers a –1 penalty to the final Psy Rating of a Fettered Power Test. If this reduces the Psy Rating to zero, the power fails to activate.",
+        "Skill Use": "Full Action.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Combat"
+    },
+    {
+        "Name": "Literacy",
+        "Attributes": "Intelligence",
+        "Type": "Advanced",
+        "Description": "Literacy allows the Explorer to read and write any language he speaks. Everyday activities do not require Literacy Tests, but situations involving regional variations, damaged manuscripts, archaic usage, or colloquial phrases necessitate a Test.",
+        "Skill Use": "1 minute for 1 page of text, roughly 750 words.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Investigation"
+    },
+    {
+        "Name": "Medicae",
+        "Attributes": "Intelligence",
+        "Type": "Advanced",
+        "Description": "The Medicae Skill helps diagnose and treat injuries by suturing wounds, applying counterseptic, and use of medical devices such as the Narthecium. On individual patients Medicae provides First Aid and Extended Care for short or long term treatment.",
+        "Skill Use": "",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Crafting"
+    },
+    {
+        "Name": "Psyniscience",
+        "Attributes": "Perception",
+        "Type": "Advanced",
+        "Description": "The Explorer can use the Skill to detect the presence or absence of daemons and the use of psychic powers. The Skill also allows detection of psychic phenomena, disturbances, voids or other areas where the flow of the immaterium has been unsettled or disrupted. Success: Awareness of immaterium disruption or number of entities present. 1 DoS: Approximate direction of the phenomena or creatures. 2 DoS: Rough location of the warp creatures or beings affecting the immaterium. 3+ DoS: Exact position of the creatures or psykers present.",
+        "Skill Use": "Full Action.",
+        "Special Use": {
+            "Name": "Astropathic Interference",
+            "Usage": "Astropaths can also use the Psyniscience skill to block the communications of other Astropaths."
+        },
+        "Category": "Investigation"
+    },
+    {
+        "Name": "Security",
+        "Attributes": "Agility",
+        "Type": "Advanced",
+        "Description": "Security is used to bypass mechanical locks and other physical security systems. This differs from many systems that employ codes or cogitators that are more suited to the Tech-Use Skill. Using this Skill without proper tools or equipment is extremely challenging, and any attempt to bypass a lock or other security system without using a multikey or other set of appropriate tools suffers from a –20 penalty.",
+        "Skill Use": "1 minute, reduced by 10 seconds for each Degree of Success.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Exploration"
+    },
+    {
+        "Name": "Shadowing",
+        "Attributes": "Agility",
+        "Type": "Advanced",
+        "Description": "Shadowing allows the Explorer to follow others on foot or using vehicles or starships. It contrasts with Concealment because it involves movement and blending into one’s surroundings. Shadowing Tests are always Opposed Tests against the opponent’s Awareness or Scrutiny Skill. A single Shadowing Test is sufficient to follow an opponent unseen for a minute.",
+        "Skill Use": "1 minute.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Exploration"
+    },
+    {
+        "Name": "Sleight of Hand",
+        "Attributes": "Agility",
+        "Type": "Advanced",
+        "Description": "Explorers use Sleight of Hand for any task requiring a combination of deception and dexterity. Examples include: palming small objects, picking pockets, or performing tricks. The GM sets the Difficulty for the Test according to the size of the object and the intensity of observation. Sleight of Hand is always an Opposed Test against the opponent’s Awareness or Scrutiny. The Explorer can use Sleight of Hand instead of Gamble to employ deception and alter the odds in games of chance.",
+        "Skill Use": "Half Action.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Interaction"
+    },
+    {
+        "Name": "Survival",
+        "Attributes": "Intelligence",
+        "Type": "Advanced",
+        "Description": "Survival allows the Explorer to endure for prolonged periods in unusual or alien environments. The Difficulty of these Tests depends on the location: barren deserts provide much greater challenge than verdant tropical forests. This Skill can also apply to man-made environments, such as artificial worlds, the depths of the Underhive, or the belly of massive starships.",
+        "Skill Use": "Full Action.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Exploration"
+    },
+    {
+        "Name": "Tech-Use",
+        "Attributes": "Intelligence",
+        "Type": "Advanced",
+        "Description": "Tech-Use allows the Explorer to use or repair complex mechanical items or fathom the workings of unknown technical artefacts. The Explorer can also use Tech-Use to repair damaged or defective items, using an Extended Test. Tech-Use can be used to direct the actions of Servitors.",
+        "Skill Use": "1 minute, or more for more complex systems.",
+        "Special Use": {
+            "Name": "Security Systems",
+            "Usage": "Security covers mechanical security systems, but many systems may have both physical and electronic components."
+        },
+        "Category": "Exploration"
+    },
+    {
+        "Name": "Tracking",
+        "Attributes": "Intelligence",
+        "Type": "Advanced",
+        "Description": "The Explorer can follow the signs left by his quarry. The Difficulty depends on the condition of the traces and the tracker’s surroundings. When following any tracks where the Difficulty of the Test is more than Challenging (+0) the tracker’s Movement rate drops to half. In the case where an opponent has attempted to Conceal or erase their tracks, make an Opposed Test made against the prey’s Concealment. The Explorer can use this Skill with the Investigation and Exploration rules to determine information about the quarry, including time since they passed, numbers and their race.",
+        "Skill Use": "Free Action made as part of Movement.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Exploration"
+    },
+    {
+        "Name": "Wrangling",
+        "Attributes": "Intelligence",
+        "Type": "Advanced",
+        "Description": "The Explorer can tame, train, and potentially ride animals encountered in his travels, from spine-hounds to the noble warhorse breeds. Both taming and training beasts are Extended Tests, the Duration of which is determined by the nature and temper of the creature involved. Once an animal has been broken to its master’s will or at least formed a partnership for particularly strong-willed beasts—directing it or issuing commands is a Half Action. Wild animals, or those trained for hostility and aggression, can have their Disposition changed by one level for every 2 Degrees of Success, up to a maximum of three levels by a Full Action use of this Skill. Wrangling is of no use against cyber-animals, psy-bonded animals, or against any creature with true sentience.",
+        "Skill Use": "Variable depending on task and complexity.",
+        "Special Use": {
+            "Name": "",
+            "Usage": ""
+        },
+        "Category": "Exploration"
+    }
+]

@@ -1,66 +1,101 @@
 import { create } from 'zustand';
-import { Character, characterService } from '../services/characterService';
+import axios from 'axios';
+import { connection } from '../services/connectionService';
 
-interface CharacterState {
-  characters: Character[];
-  selectedCharacterId: string | null;
-  isLoading: boolean;
-  error: string | null;
-  loadCharacters: () => Promise<void>;
-  selectCharacter: (characterId: string | null) => void;
-  updateCharacter: (character: Character) => Promise<Character>;
+interface Skill {
+  Trained: boolean;
+  Advances: number;
+  Characteristic: string;
+  Specializations: string[];
 }
 
-// Add debugging to identify issues
+interface Character {
+  id: string;
+  name: string;
+  career: string;
+  rank: string;
+  characteristics: Record<string, { value: number }>;
+  skills: Record<string, Skill>;
+  talents: Array<{ id: string; name: string; description: string }>;
+  wounds: { current: number; total: number };
+  experiencePoints: { total: number; spent: number };
+  background?: {
+    homeworld: string;
+    birthright: string;
+    lureOfVoid: string;
+    trialsAndTravails: string;
+    motivation: string;
+    lineage: string;
+    description: string;
+    notes: string;
+  };
+}
 
-export const useCharacterStore = create<CharacterState>((set, get) => ({
+interface CharacterStore {
+  characters: Character[];
+  loading: boolean;
+  error: string | null;
+  fetchCharacters: () => Promise<void>;
+  loadCharacters: () => Promise<void>; // Add this alias for consistency
+  getCharacter: (id: string) => Promise<Character | undefined>;
+  updateCharacter: (character: Character) => Promise<void>;
+}
+
+export const useCharacterStore = create<CharacterStore>((set, get) => ({
   characters: [],
-  selectedCharacterId: null,
-  isLoading: false,
+  loading: false,
   error: null,
-  
-  loadCharacters: async () => {
-    set({ isLoading: true, error: null });
+
+  fetchCharacters: async () => {
+    set({ loading: true, error: null });
     try {
-      console.log("Fetching characters from API...");
-      const characters = await characterService.getCharacters();
-      console.log("Characters loaded successfully:", characters);
-      set({ characters, isLoading: false });
+      const response = await axios.get<Character[]>('/api/characters');
+      set({ characters: response.data, loading: false });
+      console.log('Characters loaded successfully:', response.data);
     } catch (error) {
-      console.error("Error loading characters:", error);
-      set({ 
-        error: error instanceof Error ? error.message : 'Failed to load characters', 
-        isLoading: false,
-        characters: [] // Set empty array as fallback
-      });
+      console.error('Error fetching characters:', error);
+      set({ loading: false, error: 'Failed to load characters' });
     }
   },
-  
-  selectCharacter: (characterId) => {
-    set({ selectedCharacterId: characterId });
+
+  // Add alias method for fetchCharacters to maintain API compatibility
+  loadCharacters: async () => {
+    return get().fetchCharacters();
+  },
+
+  getCharacter: async (id: string) => {
+    const { characters, fetchCharacters } = get();
+    let character = characters.find(c => c.id === id);
+    
+    if (!character) {
+      await fetchCharacters();
+      character = get().characters.find(c => c.id === id);
+    }
+    
+    return character;
   },
   
-  updateCharacter: async (updatedCharacter) => {
-    set({ isLoading: true, error: null });
+  updateCharacter: async (character: Character) => {
+    set({ loading: true, error: null });
     try {
-      console.log("Updating character:", updatedCharacter);
-      const result = await characterService.updateCharacter(updatedCharacter);
-      console.log("Server response:", result);
+      console.log('Updating character:', character);
+      const response = await axios.put(`/api/characters/${character.id}`, character);
       
-      // Update the character in the local state
-      const characters = get().characters.map(character => 
-        character.id === updatedCharacter.id ? result : character
-      );
+      set(state => ({
+        characters: state.characters.map(c => 
+          c.id === character.id ? response.data : c
+        ),
+        loading: false
+      }));
       
-      set({ characters, isLoading: false });
-      return result;
+      if (connection.state === 'Connected') {
+        await connection.invoke('CharacterUpdated', character.id);
+      }
+      
+      console.log('Character updated successfully');
     } catch (error) {
-      console.error("Error updating character:", error);
-      set({ 
-        error: error instanceof Error ? error.message : 'Failed to update character', 
-        isLoading: false 
-      });
-      throw error;
+      console.error('Error updating character:', error);
+      set({ loading: false, error: 'Failed to update character' });
     }
   }
 }));

@@ -1,0 +1,253 @@
+[
+  {
+    "Name": "Common Lore",
+    "Attribute": "Intelligence",
+    "Description": "The Common Lore Skill allows the Explorer to recall general information, procedures, divisions, traditions, famed individuals, and superstitions of a particular world, group, organisation, or race. This Skill differs from Scholastic Lore, which represents scholarly learning, and Forbidden Lore, which involves hidden or proscribed knowledge, in that it deals with basic information learned from prolonged exposure to a culture or area. The GM will determine what extra information to provide for additional Degrees of Success.",
+    "Skills": [
+      { "Name": "Adeptus Arbites" },
+      { "Name": "Adeptus Astra Telepathica" },
+      { "Name": "Adeptus Mechanicus" },
+      { "Name": "Administratum" },
+      { "Name": "Ecclesiarchy" },
+      { "Name": "Imperial Creed" },
+      { "Name": "Imperial Guard" },
+      { "Name": "Imperial Navy" },
+      { "Name": "Imperium" },
+      { "Name": "Koronous Expanse" },
+      { "Name": "Navis Nobilite" },
+      { "Name": "Rogue Traders" },
+      { "Name": "Tech" },
+      { "Name": "War" }
+    ],
+    "Skill Use": "Free Action",
+    "Category": ["Investigation"]
+  },
+  {
+    "Name": "Speak Language",
+    "Attribute": "Intelligence",
+    "Description": "Speak Language is used to communicate with others using the same language. However, communication with those using obscure dialects or cryptic, complex concepts will require a Test at an appropriate Difficulty.",
+    "Skills": [
+      { "Name": "Eldar" },
+      { "Name": "Explorator Binary" },
+      { "Name": "High Gothic" },
+      { "Name": "Low Gothic" },
+      { "Name": "Ork" },
+      { "Name": "Techna-Lingua" },
+      { "Name": "Trader’s Cant" }
+    ],
+    "Skill Use": "Free Action",
+    "Category": ["Interaction"]
+  },
+  {
+    "Name": "Scholastic Lore",
+    "Attribute": "Intelligence",
+    "Description": "Scholastic Lore grants the Explorer knowledge of particularly complex or esoteric subject. A successful Skill Test allows him to recall necessary information or research a particular subject should appropriate reference material be readily available. Scholastic Lore grants a depth of knowledge far beyond that of Common Lore, requiring both experience and study to obtain.",
+    "Skills": [
+      { "Name": "Archaic" },
+      { "Name": "Astromancy" },
+      { "Name": "Beasts" },
+      { "Name": "Bureaucracy" },
+      { "Name": "Chymistry" },
+      { "Name": "Cryptology" },
+      { "Name": "Heraldry" },
+      { "Name": "Imperial Warrants" },
+      { "Name": "Imperial Creed" },
+      { "Name": "Judgement" },
+      { "Name": "Legend" },
+      { "Name": "Navis Nobilite" },
+      { "Name": "Numerology" },
+      { "Name": "Occult" },
+      { "Name": "Philosophy" },
+      { "Name": "Tactica Imperialis" }
+    ],
+    "Skill Use": "Free Action",
+    "Category": ["Investigation"]
+  },
+  {
+    "Name": "Forbidden Lore",
+    "Attribute": "Intelligence",
+    "Description": "Forbidden Lore represents knowledge usually hidden, veiled, or proscribed by an organisation or society. Mere possession of this knowledge may cause difficulties for those not associated with the group in question. A successful Forbidden Lore Test indicates the Explorer can recall basic information about the subject. The GM will reveal additional information as appropriate to the Degree of Success on the roll.",
+    "Skills": [
+      { "Name": "Adeptus Mechanicus" },
+      { "Name": "Archeotech" },
+      { "Name": "Daemonology" },
+      { "Name": "Heresy" },
+      { "Name": "The Inquisition" },
+      { "Name": "Mutants" },
+      { "Name": "Navigators" },
+      { "Name": "Pirates" },
+      { "Name": "Psykers" },
+      { "Name": "The Warp" },
+      { "Name": "Xenos" }
+    ],
+    "Skill Use": "Free Action",
+    "Category": ["Investigation"]
+  },
+  {
+    "Name": "Navigation",
+    "Attribute": "Intelligence",
+    "Description": "The Explorer uses the Navigation Skill to plot a course between two points. A successful Test also provides an estimated travel time based on geography, cosmography, prevailing conditions, weather, warp tides and the like.",
+    "Skills": [
+      {
+        "Name": "Surface",
+        "Description": "Used to navigate across a planet’s surface, using logi-compasses, map readouts, and geographical knowledge."
+      },
+      {
+        "Name": "Stellar",
+        "Description": "Used to navigate in space between planets, using star-charts, and carto-mantic rituals."
+      },
+      {
+        "Name": "Warp",
+        "Description": "Reflects the Navigator’s ability to steer a starship through the tides of the empyrean, using the beacon of the Astronomicon as a reference."
+      }
+    ],
+    "Skill Use": "1 minute for simple location; 1d5 hours for plotting courses or routes.",
+    "Category": ["Exploration"]
+  },
+  {
+    "Name": "Pilot",
+    "Attribute": "Agility",
+    "Description": "Explorers use the Pilot Skill to fly anything from personal jump packs to small atmospheric craft—such as landers or gun-cutters—to void-faring fighter, bombers, and capital vessels. Under normal conditions, piloting does not require a Test, but unusual or difficult conditions such as storms, obstacles, or dangerous manoeuvres do require a Skill Test.",
+    "Skills": [
+      { "Name": "Personal" },
+      { "Name": "Flyers" },
+      { "Name": "Space Craft" }
+    ],
+    "Skill Use": "Half Action",
+    "Category": ["Operator"]
+  },
+  {
+    "Name": "Drive",
+    "Attribute": "Agility",
+    "Description": "The Drive Skill allows the Explorer to control land-based vehicles. Normal driving does not require a Skill Test, but one is required for hazardous conditions, excessive speed, or dangerous manoeuvres.",
+    "Skills": [
+      { "Name": "Ground Vehicle" },
+      { "Name": "Skimmer/Hover" },
+      { "Name": "Walker" }
+    ],
+    "Skill Use": "Half Action",
+    "Category": ["Operator"]
+  },
+  {
+    "Name": "Performer",
+    "Attribute": "Fellowship",
+    "Description": "The Explorer uses the Performer Skill to entertain and enthrall groups of spectators. Performer Tests take an amount of time dependent on the art form involved.",
+    "Skills": [
+      { "Name": "Dancer" },
+      { "Name": "Musician" },
+      { "Name": "Singer" },
+      { "Name": "Storyteller" }
+    ],
+    "Skill Use": "Variable",
+    "Category": "Interaction",
+    "Special Use": [
+      {
+        "Name": "Charming Performance",
+        "Description": "The Explorer may make a Difficult (–10) Performer (Storyteller) or (Singer) Test instead of Charm, to win round the audience, causing their disposition to improve by one level, or to temporarily improve the Morale of the crew. When used to improve Morale, a successful Test adds +5 to the ship’s Morale, with an additional +10 for every two Degrees of Success."
+      },
+      {
+        "Name": "Enthralling Performance",
+        "Description": "The Explorer may make a Difficult (–10) Performer (Musician) or (Singer) Test instead of a Blather Test, utterly enthralling and distracting the audience for a moment. When used in place of Blather, it is subject to the same rules and conditions."
+      }
+]
+  },
+  {
+    "Name": "Trade",
+    "Attribute": "Varies",
+    "Description": "Trade Skills allow the Explorer to create things, from contracts to starships. At the GM’s discretion, Explorers with this Skill can earn additional Profit Factor plying a trade. They can identify the work of particularly famous or infamous craftsmen, or recall information concerning items of their trade. Trade Tests can represent the work of hours, weeks, or months depending on the complexity of the task at hand. However, Tests that involve the examination of an item to recall information require a Full Action.",
+    "Skills": [
+      {
+        "Name": "Archaeologist",
+        "Attributes": ["Intelligence"]
+      },
+      {
+        "Name": "Armourer",
+        "Attributes": ["Agility"]
+      },
+      {
+        "Name": "Astrographer",
+        "Attributes": ["Agility"]
+      },
+      {
+        "Name": "Chymist",
+        "Attributes": ["Intelligence"]
+      },
+      {
+        "Name": "Cryptographer",
+        "Attributes": ["Intelligence"]
+      },
+      {
+        "Name": "Explorator",
+        "Attributes": ["Intelligence"]
+      },
+      {
+        "Name": "Linguist",
+        "Attributes": ["Intelligence"]
+      },
+      {
+        "Name": "Remembrancer",
+        "Attributes": ["Agility", "Intelligence"]
+      },
+      {
+        "Name": "Shipwright",
+        "Attributes": ["Intelligence"]
+      },
+      {
+        "Name": "Soothsayer",
+        "Attributes": ["Fellowship"]
+      },
+      {
+        "Name": "Technomat",
+        "Attributes": ["Intelligence"]
+      },
+      {
+        "Name": "Trader",
+        "Attributes": ["Fellowship"]
+      },
+      {
+        "Name": "Voidfarer",
+        "Attributes": ["Agility"]
+      }
+    ],
+    "Skill Use": "Variable depending on task and complexity.",
+    "Category": ["Crafting", "Exploration"]
+  },
+  {
+    "Name": "Secret Tongue",
+    "Attribute": "Intelligence",
+    "Description": "Secret Tongue represents comprehension of a particularly obscure and arcane language known to only those of a specific class or organisation. Skill Tests are unnecessary so long as all speakers know the secret language. Situations involving adverse conditions, such as speaking over a poor vox link or communicating complex concepts, require a Skill Test.",
+    "Skills": [
+      { "Name": "Administratum" },
+      { "Name": "Ecclesiarchy" },
+      { "Name": "Military" },
+      { "Name": "Navigator" },
+      { "Name": "Rogue Trader" },
+      { "Name": "Tech" },
+      { "Name": "Underdeck" }
+    ],
+    "Skill Use": "Free Action",
+    "Category": ["Interaction"]
+  },
+  {
+    "Name": "Ciphers",
+    "Attribute": "Intelligence",
+    "Description": "Many groups and organizations employ ciphers as a secret, shorthand code to communicate basic ideas, warnings, or information rapidly. The Explorer can use and understand the hand signals, physical markings, or other subtle signs employed to express these concepts. Skill Tests are not required to either leave or read basic messages but are necessary to communicate or decipher complicated meanings or signs obscured by the passage of time.",
+    "Skills": [
+      { "Name": "Rogue Trader" },
+      { "Name": "Mercenary Cant" },
+      { "Name": "Nobilite Family" },
+      { "Name": "Astropath Sign" },
+      { "Name": "Underworld" }
+    ],
+    "Skill Use": "Full Action",
+    "Category": ["Exploration", "Investigation"]
+  },
+  {
+    "Name": "Custom Skills",
+    "Attribute": "Varies",
+    "Description": "You can add here Custom Skills not present in the Rules. Remember to select the appropriate Characteristic to be used for these Skills.",
+    "Skills": [],
+    "Skill Use": "Variable",
+    "Category": ["Custom"]
+  }
+]

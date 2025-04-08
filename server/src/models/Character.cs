@@ -15,18 +15,6 @@ namespace src.models
         [BsonElement("advances")]
         [JsonPropertyName("advances")]
         public int Advances { get; set; }
-        
-        [BsonElement("simpleAdvanceCost")]
-        [JsonPropertyName("simpleAdvanceCost")]
-        public int SimpleAdvanceCost { get; set; } = 250;
-        
-        [BsonElement("intermediateAdvanceCost")]
-        [JsonPropertyName("intermediateAdvanceCost")]
-        public int IntermediateAdvanceCost { get; set; } = 500;
-        
-        [BsonElement("trainedAdvanceCost")]
-        [JsonPropertyName("trainedAdvanceCost")]
-        public int TrainedAdvanceCost { get; set; } = 750;
     }
 
     public class Skill
@@ -38,14 +26,6 @@ namespace src.models
         [BsonElement("advances")]
         [JsonPropertyName("advances")]
         public int Advances { get; set; }
-        
-        [BsonElement("characteristic")]
-        [JsonPropertyName("characteristic")]
-        public string Characteristic { get; set; }
-        
-        [BsonElement("specializations")]
-        [JsonPropertyName("specializations")]
-        public List<string> Specializations { get; set; } = new List<string>();
     }
 
     public class Talent
