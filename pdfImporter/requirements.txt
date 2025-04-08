@@ -1,4 +1,7 @@
-easyocr
-PyPDF2
+easyocr>=1.6.0
+PyPDF2>=3.0.0
 pdf2image
-pymupdf
+PyMuPDF>=1.19.0
+numpy>=1.22.0
+opencv-python>=4.5.5
+Pillow>=9.0.0
