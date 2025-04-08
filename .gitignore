@@ -135,6 +135,7 @@ dist
 # local paths for pdf_importer
 .in
 .out
+.processed
 
 # .NET Core
 bin/
