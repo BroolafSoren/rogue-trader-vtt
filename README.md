@@ -84,8 +84,6 @@ rogue-trader-vtt/
 2. Upload maps and place tokens to represent characters and NPCs
 3. Use the encyclopedia to quickly reference rules during play
 4. Track character stats and roll dice directly in the application
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgements
 - Fantasy Flight Games for creating the Rogue Trader RPG
