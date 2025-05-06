@@ -1,0 +1,310 @@
+{
+    "Special-Abilities": {
+        "Type": "solo",
+        "Abilities": [
+          {
+            "Name": "Pure Faith",
+            "Description": "The Missionary begins play with the Pure Faith Talent. See page 104 for more details."
+          }
+        ]
+      },
+    "Starting": {
+        "Skills": [
+            "Common Lore (Imperial Creed, Imperium)",
+            "Forbidden Lore (Heresy)",
+            "Medicae",
+            "Scholastic Lore (Imperial Creed)",
+            "Speak Language (High Gothic, Low Gothic)"
+        ],
+        "Talents": [
+            "Basic Weapon Training (Universal)",
+            "Melee Weapon Training (Universal)",
+            "Pure Faith",
+            "Unshakeable Faith"
+        ],
+        "Gear": {
+            "Choices": [
+                [
+                    {
+                        "Name": "Chainsword",
+                        "Craftsmanship": "Good"
+                    },
+                    {
+                        "Name": "Staff",
+                        "Craftsmanship": "Best"
+                    }
+                ],
+                [
+                    {
+                        "Name": "Flamer",
+                        "Craftsmanship": "Good"
+                    },
+                    {
+                        "Name": "Lasgun",
+                        "Craftsmanship": "Best"
+                    }
+                ]
+            ],
+            "Fixed": [
+                "Guard flak armour",
+                "Ecclesiarchal robes",
+                "Aquila pendant",
+                "Sepulchre",
+                "Censer and incense",
+                "Micro-bead"
+            ]
+        }
+    },
+    "Characteristic Advances": {
+        "Weapon Skill": [
+            100, 250, 500, 750
+        ],
+        "Ballistic Skill": [
+            500, 750, 1000, 2500
+        ],
+        "Strength": [
+            250, 500, 750, 1000
+        ],
+        "Toughness": [
+            250, 500, 750, 1000
+        ],
+        "Agility": [
+            250, 500, 750, 1000
+        ],
+        "Intelligence": [
+            500, 750, 1000, 2500
+        ],
+        "Perception": [
+            250, 500, 750, 1000
+        ],
+        "Willpower": [
+            100, 250, 500, 750
+        ],
+        "Fellowship": [
+            100, 250, 500, 750
+        ]
+    },
+    "Rank Advances": [
+        {
+            "Rank": 1,
+            "Skill Cost": 100,
+            "Skills": [
+                "Awareness",
+                "Charm",
+                "Common Lore (Ecclesiarchy)",
+                "Common Lore (Imperial Creed)",
+                "Common Lore (Imperium)",
+                "Dodge",
+                "Forbidden Lore (Heresy)",
+                "Literacy",
+                "Medicae",
+                "Performer (Any)",
+                "Scholastic Lore (Imperial Creed)",
+                "Secret Tongue (Ecclesiarchy)",
+                "Secret Tongue (Rogue Trader)"
+            ],
+            "Talents": [
+                { "Name": "Melee Weapon Training (Primitive)", "Cost": 100 },
+                { "Name": "Sound Constitution (x1)", "Cost": 200 },
+                { "Name": "Unshakeable Faith", "Cost": 200 },
+                { "Name": "Basic Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Flame Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Melee Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Pure Faith", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 2,
+            "Skill Cost": 200,
+            "Skills": [
+                "Awareness +10",
+                "Blather",
+                "Charm +10",
+                "Common Lore (Imperial Creed) +10",
+                "Common Lore (Imperium) +10",
+                "Deceive",
+                "Dodge +10",
+                "Forbidden Lore (Heresy) +10",
+                "Medicae +10",
+                "Scholastic Lore (Imperial Creed) +10"
+            ],
+            "Talents": [
+                { "Name": "Armour of Contempt", "Cost": 200 },
+                { "Name": "Frenzy", "Cost": 200 },
+                { "Name": "Hatred (Pirates)", "Cost": 200 },
+                { "Name": "Orthoproxy", "Cost": 200 },
+                { "Name": "Resistance (Psychic Techniques)", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Talented (Any)", "Cost": 200 },
+                { "Name": "Cleanse and Purify", "Cost": 500 },
+                { "Name": "Crushing Blow", "Cost": 500 },
+                { "Name": "Divine Ministration", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 3,
+            "Skill Cost": 200,
+            "Skills": [
+                "Awareness +20",
+                "Blather +10",
+                "Charm +20",
+                "Climb",
+                "Common Lore (Imperial Creed) +20",
+                "Common Lore (Imperium) +20",
+                "Deceive +10",
+                "Forbidden Lore (The Inquisition)",
+                "Forbidden Lore (Heresy) +20",
+                "Intimidate",
+                "Medicae +20"
+            ],
+            "Talents": [
+                { "Name": "Battle Rage", "Cost": 200 },
+                { "Name": "Hatred (Xenos Race - Any)", "Cost": 200 },
+                { "Name": "Inspire Wrath", "Cost": 200 },
+                { "Name": "Peer (Workers)", "Cost": 200 },
+                { "Name": "Resistance (Fear)", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Unarmed Warrior", "Cost": 200 },
+                { "Name": "Pistol Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Purge the Unclean", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 4,
+            "Skill Cost": 200,
+            "Skills": [
+                "Blather +20",
+                "Climb +10",
+                "Contortionist",
+                "Deceive +20",
+                "Dodge +20",
+                "Forbidden Lore (The Inquisition) +10",
+                "Forbidden Lore (Mutants)",
+                "Inquiry",
+                "Intimidate +10",
+                "Scholastic Lore (Imperial Creed) +20"
+            ],
+            "Talents": [
+                { "Name": "Furious Assault", "Cost": 200 },
+                { "Name": "Hatred (Psykers)", "Cost": 200 },
+                { "Name": "Leap Up", "Cost": 200 },
+                { "Name": "Litany of Hate", "Cost": 200 },
+                { "Name": "Sound Constitution (x1)", "Cost": 200 },
+                { "Name": "Takedown", "Cost": 200 },
+                { "Name": "Talented (Any)", "Cost": 200 },
+                { "Name": "True Grit", "Cost": 200 },
+                { "Name": "The Emperor Protects", "Cost": 500 },
+                { "Name": "Thrown Weapon Training (Universal)", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 5,
+            "Skill Cost": 200,
+            "Skills": [
+                "Chem-Use",
+                "Climb +20",
+                "Common Lore (Ecclesiarchy) +10",
+                "Contortionist +10",
+                "Forbidden Lore (Daemonology)",
+                "Forbidden Lore (The Inquisition) +20",
+                "Forbidden Lore (Mutants) +10",
+                "Inquiry +10",
+                "Intimidate +20",
+                "Secret Tongue (Underdecks)",
+                "Scholastic Lore (Philosophy)",
+                "Scrutiny"
+            ],
+            "Talents": [
+                { "Name": "Die Hard", "Cost": 200 },
+                { "Name": "Hardy", "Cost": 200 },
+                { "Name": "Hatred (Mutants)", "Cost": 200 },
+                { "Name": "Blademaster", "Cost": 500 },
+                { "Name": "Strong Minded", "Cost": 500 },
+                { "Name": "Last Man Standing", "Cost": 500 },
+                { "Name": "Master Orator", "Cost": 500 },
+                { "Name": "Wrath of the Righteous", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 6,
+            "Skill Cost": 200,
+            "Skills": [
+                "Chem-Use +10",
+                "Command",
+                "Common Lore (Ecclesiarchy) +20",
+                "Forbidden Lore (Mutants) +20",
+                "Scholastic Lore (Philosophy) +10",
+                "Scrutiny +10",
+                "Search",
+                "Swim"
+            ],
+            "Talents": [
+                { "Name": "Berserk Charge", "Cost": 200 },
+                { "Name": "Counter Attack", "Cost": 200 },
+                { "Name": "Double Team", "Cost": 200 },
+                { "Name": "Quick Draw", "Cost": 200 },
+                { "Name": "Hatred (Criminals)", "Cost": 200 },
+                { "Name": "Peer (Ecclesiarchy)", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Blessed Radiance", "Cost": 500 },
+                { "Name": "Fearless", "Cost": 500 },
+                { "Name": "Master Chirurgeon", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 7,
+            "Skill Cost": 200,
+            "Skills": [
+                "Chem-Use +20",
+                "Command +10",
+                "Contortionist +20",
+                "Drive (Ground Vehicle)",
+                "Inquiry +20",
+                "Pilot (Flyers)",
+                "Scholastic Lore (Philosophy) +20",
+                "Scrutiny +20",
+                "Search +10",
+                "Swim +10",
+                "Wrangling"
+            ],
+            "Talents": [
+                { "Name": "Air of Authority", "Cost": 200 },
+                { "Name": "Ambidextrous", "Cost": 200 },
+                { "Name": "Bulging Biceps", "Cost": 200 },
+                { "Name": "Good Reputation (Ecclesiarchy)", "Cost": 200 },
+                { "Name": "Iron Discipline", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Exotic Weapon Training (Any)", "Cost": 500 },
+                { "Name": "Iron Jaw", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 8,
+            "Skill Cost": 200,
+            "Skills": [
+                "Command +20",
+                "Drive (Ground Vehicle) +10",
+                "Pilot (Flyers) +10",
+                "Search +20",
+                "Swim +20",
+                "Wrangling +10"
+            ],
+            "Talents": [
+                { "Name": "Good Reputation (Workers)", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Talented (Any)", "Cost": 200 },
+                { "Name": "Combat Master", "Cost": 500 },
+                { "Name": "Crippling Strike", "Cost": 500 },
+                { "Name": "Heavy Weapon Training (Any)", "Cost": 500 },
+                { "Name": "Into the Jaws of Hell", "Cost": 500 },
+                { "Name": "Lightning Attack", "Cost": 500 },
+                { "Name": "Precise Blow", "Cost": 500 },
+                { "Name": "Sprint", "Cost": 500 },
+                { "Name": "Step Aside", "Cost": 500 },
+                { "Name": "Sure Strike", "Cost": 500 },
+                { "Name": "Two-Weapon Wielder (Melee)", "Cost": 500 },
+                { "Name": "Unarmed Master", "Cost": 500 }
+            ]
+        }
+    ]
+}

@@ -1,4 +1,12 @@
 {
+    "Special-Abilities": {
+        "Type": "Solo",
+        "Abilities":[
+        {
+            "Name": "Weapon Master",
+            "Description": "Choose one (and only one!) class of weapon. The Arch-Militant gains a +10 bonus to hit , +2 to damage, and +2 initiative when using a weapon of his chosen class in combat."
+        }
+    ]},
     "Starting": {
         "Skills": [
             "Common Lore (War)",

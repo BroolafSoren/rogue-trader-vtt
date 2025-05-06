@@ -1,4 +1,21 @@
 {
+    "Special-Abilities": {
+        "Type": "list",
+        "Abilities": [
+          {
+            "Name": "Soul-Bound to the Emperor",
+            "Description": "An Astropath Transcendent is soul-bound to the Emperor during a complex ritual on Terra. An Astropath Transcendent gains +20 to his Willpower when resisting Possession, in any opposed Willpower Test against a daemon, or whenever making a Willpower Test to resist any Talent, Psychic Power, special ability, or other effect originating from a daemon. An Astropath Transcendent rolls an additional d10 when rolling on the Perils of the Warp table and may discard any one d10 for a more favourable result."
+          },
+          {
+            "Name": "Psychic Powers",
+            "Description": "An Astropath Transcendent begins play with access to techniques from the Telepathic Discipline. Astropath Transcendent characters also begin play with the technique Astral Telepathy (see page 162) and may select two additional techniques from the Telepathic Discipline. Astropaths Transcendent begin with a Psy Rating of 2."
+          },
+          {
+            "Name": "See Without Eyes",
+            "Description": "An Astropath Transcendent is blind yet at the same time has a strange ability to perceive without using his physical senses. An Astropath Transcendent is functionally treated as if he can see normally (including seeing colours and being limited by walls, etc.). However, Astropaths Transcendent are not affected by effects that target their vision, such as blind grenades and cameleoline. They are, however, completely incapable of seeing Untouchables (see page 156)."
+          }
+        ]
+      },
     "Starting": {
         "Skills": [
             "Awareness",

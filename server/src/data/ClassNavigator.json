@@ -1,0 +1,312 @@
+{
+    "Special-Abilities": {
+        "Type": "list",
+        "Abilities": [
+          {
+            "Name": "Warp Eye",
+            "Description": "All Navigators begin with the Lidless Stare Navigator power as detailed in Chapter VII: Navigator Powers and may either select one additional power or improve an existing power. As the Navigator develops, he may select more powers or improve existing powers by selecting the Navigator Power Advance."
+          },
+          {
+            "Name": "The Boons of Lineage",
+            "Description": "A Navigator hails from a lineage of a particular type that grants him a number of advantages and quirks. The Lineages which a Navigator may hail from are Nomadic Houses, Magisterial Houses, Shrouded Houses, or Renegade Houses. The details and effects of each of these lineages may be found on pages 176 to 178 in Chapter VII: Navigator Powers."
+          },
+          {
+            "Name": "Navigator Mutations",
+            "Description": "The Navigator begins play with a number of Navigator Mutations determined by the nature of his Lineage."
+          }
+        ]
+      },
+    "Starting": {
+        "Skills": [
+            "Common Lore (Navis Nobilite)",
+            "Forbidden Lore (Navigators, Warp)",
+            "Literacy",
+            "Navigation (Stellar, Warp)",
+            "Psyniscience",
+            "Scholastic Lore (Astromancy)",
+            "Speak Language (High Gothic, Low Gothic)"
+        ],
+        "Talents": [
+            "Navigator",
+            "Pistol Weapon Training (Universal)"
+        ],
+        "Gear": {
+            "Choices": [
+                [
+                    {
+                        "Name": "Hellpistol",
+                        "Craftsmanship": "Best"
+                    },
+                    {
+                        "Name": "Hand Cannon",
+                        "Craftsmanship": "Good"
+                    }
+                ]
+            ],
+            "Fixed": [
+                "Best Chraftsmanship Metal Staff",
+                "Best Craftsmanship Xeno-mesh Armour",
+                "Emperor's Tarot Deck",
+                "Silk Headscarf",
+                "Nobilite Robes",
+                "Charm",
+                "Micro-bead"
+            ]
+        }
+    },
+    "Characteristic Advances": {
+        "Weapon Skill": [
+            500, 750, 1000, 2500
+        ],
+        "Ballistic Skill": [
+            250, 500, 750, 1000
+        ],
+        "Strength": [
+            250, 500, 750, 1000
+        ],
+        "Toughness": [
+            250, 500, 750, 1000
+        ],
+        "Agility": [
+            500, 750, 1000, 2500
+        ],
+        "Intelligence": [
+            100, 250, 500, 750
+        ],
+        "Perception": [
+            100, 250, 500, 750
+        ],
+        "Willpower": [
+            100, 250, 500, 750
+        ],
+        "Fellowship": [
+            500, 750, 1000, 2500
+        ]
+    },
+    "Rank Advances": [
+        {
+            "Rank": 1,
+            "Skill Cost": 100,
+            "Skills": [
+                "Awareness",
+                "Ciphers (Nobilite Family)",
+                "Common Lore (Navis Nobilite)",
+                "Common Lore (Imperial Navy)",
+                "Forbidden Lore (Navigators)",
+                "Forbidden Lore (Warp)",
+                "Intimidate",
+                "Literacy",
+                "Navigation (Stellar)",
+                "Navigation (Warp)",
+                "Psyniscience",
+                "Scholastic Lore (Astromancy)",
+                "Secret Tongue (Rogue Trader)",
+                "Secret Tongue (Navigator)",
+                "Trade (Astrographer)"
+            ],
+            "Talents": [
+                { "Name": "Melee Weapon Training (Primitive)", "Cost": 100 },
+                { "Name": "Resistance (Fear)", "Cost": 200 },
+                { "Name": "Sound Constitution (x1)", "Cost": 200 },
+                { "Name": "Navigator", "Cost": 500 },
+                { "Name": "Pistol Weapon Training (Universal)", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 2,
+            "Skill Cost": 200,
+            "Skills": [
+                "Awareness +10",
+                "Common Lore (Navis Nobilite) +10",
+                "Common Lore (Imperial Navy) +10",
+                "Contortionist",
+                "Deceive",
+                "Dodge",
+                "Forbidden Lore (Navigators) +10",
+                "Forbidden Lore (Warp) +10",
+                "Intimidate +10",
+                "Navigation (Stellar) +10",
+                "Navigation (Warp) +10",
+                "Psyniscience +10",
+                "Trade (Scrimshawer)"
+            ],
+            "Talents": [
+                { "Name": "Disturbing Voice", "Cost": 200 },
+                { "Name": "Jaded", "Cost": 200 },
+                { "Name": "Meditation", "Cost": 200 },
+                { "Name": "Navigator Power", "Cost": 200 },
+                { "Name": "Resistance (Psychic Techniques)", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Warp Sense", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 3,
+            "Skill Cost": 200,
+            "Skills": [
+                "Awareness +20",
+                "Common Lore (Navis Nobilite) +20",
+                "Common Lore (Imperial Navy) +20",
+                "Forbidden Lore (Mutants)",
+                "Forbidden Lore (Navigators) +20",
+                "Forbidden Lore (Warp) +20",
+                "Intimidate +20",
+                "Psyniscience +20",
+                "Scholastic Lore (Astromancy) +10",
+                "Secret Tongue (Underdeck)",
+                "Trade (Astrographer) +10"
+            ],
+            "Talents": [
+                { "Name": "Dark Soul", "Cost": 200 },
+                { "Name": "Decadence", "Cost": 200 },
+                { "Name": "Foresight", "Cost": 200 },
+                { "Name": "Hardy", "Cost": 200 },
+                { "Name": "Hatred (Daemons)", "Cost": 200 },
+                { "Name": "Navigator Power", "Cost": 200 },
+                { "Name": "Paranoia", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Melee Weapon Training (Universal)", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 4,
+            "Skill Cost": 200,
+            "Skills": [
+                "Command",
+                "Contortionist +10",
+                "Deceive +10",
+                "Dodge +10",
+                "Evaluate",
+                "Forbidden Lore (Mutants) +10",
+                "Forbidden Lore (Pirates)",
+                "Interrogation",
+                "Navigation (Surface)",
+                "Scholastic Lore (Astromancy) +20",
+                "Trade (Astrographer) +20",
+                "Trade (Scrimshawer)"
+            ],
+            "Talents": [
+                { "Name": "Light Sleeper", "Cost": 200 },
+                { "Name": "Navigator Power", "Cost": 200 },
+                { "Name": "Peer (Nobility)", "Cost": 200 },
+                { "Name": "Resistance (Cold)", "Cost": 200 },
+                { "Name": "Sound Constitution (x1)", "Cost": 200 },
+                { "Name": "Talented (Psyniscience)", "Cost": 200 },
+                { "Name": "Exotic Weapon Training (Any)", "Cost": 500 },
+                { "Name": "Improved Warp Sense", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 5,
+            "Skill Cost": 200,
+            "Skills": [
+                "Command +10",
+                "Common Lore (Koronus Expanse)",
+                "Common Lore (Rogue Traders)",
+                "Contortionist +20",
+                "Deceive +20",
+                "Dodge +20",
+                "Evaluate +10",
+                "Forbidden Lore (Mutants) +20",
+                "Forbidden Lore (Pirates) +10",
+                "Forbidden Lore (Xenos)",
+                "Interrogation +10",
+                "Scholastic Lore (Legend)"
+            ],
+            "Talents": [
+                { "Name": "Air of Authority", "Cost": 200 },
+                { "Name": "Armour of Contempt", "Cost": 200 },
+                { "Name": "Navigator Power", "Cost": 200 },
+                { "Name": "Resistance (Heat)", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Talented (Navigation (Warp))", "Cost": 200 },
+                { "Name": "Basic Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Strong Minded", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 6,
+            "Skill Cost": 200,
+            "Skills": [
+                "Command +20",
+                "Common Lore (Imperium)",
+                "Common Lore (Koronus Expanse) +10",
+                "Common Lore (Rogue Traders) +10",
+                "Evaluate +20",
+                "Forbidden Lore (Pirates) +20",
+                "Forbidden Lore (Xenos) +10",
+                "Interrogation +20",
+                "Pilot (Space Craft)",
+                "Scholastic Lore (Legend) +10",
+                "Scholastic Lore (Occult)",
+                "Scrutiny",
+                "Sleight of Hand",
+                "Swim"
+            ],
+            "Talents": [
+                { "Name": "Die Hard", "Cost": 200 },
+                { "Name": "Navigator Power", "Cost": 200 },
+                { "Name": "Nerves of Steel", "Cost": 200 },
+                { "Name": "Peer (Imperial Navy)", "Cost": 200 },
+                { "Name": "Talented (Intimidate)", "Cost": 200 },
+                { "Name": "Combat Sense", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 7,
+            "Skill Cost": 200,
+            "Skills": [
+                "Common Lore (Imperium) +10",
+                "Common Lore (Koronus Expanse) +20",
+                "Common Lore (Rogue Traders) +20",
+                "Forbidden Lore (Xenos) +20",
+                "Pilot (Space Craft) +10",
+                "Scholastic Lore (Legend) +20",
+                "Scholastic Lore (Occult) +10",
+                "Scrutiny +10",
+                "Sleight of Hand +10",
+                "Survival",
+                "Swim +10"
+            ],
+            "Talents": [
+                { "Name": "Blind Fighting", "Cost": 200 },
+                { "Name": "Double Team", "Cost": 200 },
+                { "Name": "Iron Discipline", "Cost": 200 },
+                { "Name": "Navigator Power", "Cost": 200 },
+                { "Name": "Resistance (Poisons)", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Crushing Blow", "Cost": 500 },
+                { "Name": "Fearless", "Cost": 500 },
+                { "Name": "Iron Jaw", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 8,
+            "Skill Cost": 200,
+            "Skills": [
+                "Common Lore (Imperium) +20",
+                "Pilot (Space Craft) +20",
+                "Scholastic Lore (Occult) +20",
+                "Scrutiny +20",
+                "Sleight of Hand +20",
+                "Survival +10",
+                "Swim +20"
+            ],
+            "Talents": [
+                { "Name": "Navigator Power", "Cost": 200 },
+                { "Name": "Heightened Senses (Sight)", "Cost": 200 },
+                { "Name": "Marksman", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Blademaster", "Cost": 500 },
+                { "Name": "Crack Shot", "Cost": 500 },
+                { "Name": "Deadeye Shot", "Cost": 500 },
+                { "Name": "Good Reputation (Nobility)", "Cost": 500 },
+                { "Name": "Hip Shooting", "Cost": 500 },
+                { "Name": "Into the Jaws of Hell", "Cost": 500 },
+                { "Name": "Polyglot", "Cost": 500 },
+                { "Name": "Swift Attack", "Cost": 500 },
+                { "Name": "Thrown Weapon Training (Universal)", "Cost": 500 }
+            ]
+        }
+    ]
+}

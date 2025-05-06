@@ -1,4 +1,8 @@
 {
+    "Special-Abilities": [{
+        "Name": "Exceptional Leader",
+        "Description": "As a free action once per round, the rogue trader may grant an ally that he can see and who can hear him +10 on any one test."
+    }],
     "Starting": {
         "Skills": [
             "Command",

@@ -1,0 +1,324 @@
+{
+    "Special-Abilities": {
+        "Type": "solo",
+        "Abilities": [
+          {
+            "Name": "Explorator Implants",
+            "Description": "The Explorator begins play with the Mechanicus Implants Trait (see page 366) and may select up to two additional common-Craftsmanship bionic implants (see page 147). He may spend 200 xp to increase the Craftsmanship of one of his bionic implants by one level (i.e., increasing from common to good costs 200 xp). The Explorator may increase the Craftsmanship up to twice (i.e., taking a common-Craftsmanship to good, then good to best) in this manner, and may only do so at character creation."
+          }
+        ]
+      },
+    "Starting": {
+        "Skills": [
+            "Common Lore (Machine Cult, Tech)",
+            "Forbidden Lore (Archeotech, Adeptus Mechanicus)",
+            "Literacy",
+            "Logic",
+            "Speak Language (Explorator Binary, Low Gothic, Techna-lingua)",
+            "Tech-Use",
+            "Trade (Technomat)"
+        ],
+        "Talents": [
+            "Basic Weapon Training (Universal)",
+            "Melee Weapon Training (Universal)",
+            "Logis Implant"
+        ],
+        "Traits": [
+            "Mechanicus Implants"
+        ],
+        "Gear": {
+            "Choices": [
+                [
+                    {
+                        "Name": "Boltgun",
+                        "Craftsmanship": "Common"
+                    },
+                    {
+                        "Name": "Lasgun",
+                        "Craftsmanship": "Best"
+                    },
+                    {
+                        "Name": "Hellgun",
+                        "Craftsmanship": "Good"
+                    }
+                ],
+                [
+                    {
+                        "Name": "Shock Staff",
+                        "Craftsmanship": "Best"
+                    },
+                    {
+                        "Name": "Power Axe",
+                        "Craftsmanship": "Good"
+                    }
+                ]
+            ],
+            "Fixed": [
+                "Enforcer light carapace",
+                "Multikey",
+                "Void suit",
+                "Injector",
+                "Sacred unguents",
+                "Micro-bead",
+                "Combi-tool",
+                "Dataslate",
+                "servo-skull familiar"
+            ]
+        }
+    },
+    "Characteristic Advances": {
+        "Weapon Skill": [
+            250, 500, 750, 1000
+        ],
+        "Ballistic Skill": [
+            250, 500, 750, 1000
+        ],
+        "Strength": [
+            100, 250, 500, 750
+        ],
+        "Toughness": [
+            100, 250, 500, 750
+        ],
+        "Agility": [
+            500, 750, 1000, 2500
+        ],
+        "Intelligence": [
+            100, 250, 500, 750
+        ],
+        "Perception": [
+            500, 750, 1000, 2500
+        ],
+        "Willpower": [
+            250, 500, 750, 1000
+        ],
+        "Fellowship": [
+            500, 750, 1000, 2500
+        ]
+    },
+    "Rank Advances": [
+        {
+            "Rank": 1,
+            "Skill Cost": 100,
+            "Skills": [
+                "Awareness",
+                "Common Lore (Machine Cult)",
+                "Common Lore (Tech)",
+                "Drive (Ground Vehicle)",
+                "Forbidden Lore (Archeotech)",
+                "Forbidden Lore (Adeptus Mechanicus)",
+                "Literacy",
+                "Logic",
+                "Scholastic Lore (Astromancy)",
+                "Secret Tongue (Rogue Trader)",
+                "Secret Tongue (Tech)",
+                "Tech-Use",
+                "Trade (Armourer)",
+                "Trade (Technomat)"
+            ],
+            "Talents": [
+                { "Name": "Autosanguine", "Cost": 200 },
+                { "Name": "Logis Implant", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Mechadendrite Use (Utility)", "Cost": 500 },
+                { "Name": "Basic Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Melee Weapon Training (Universal)", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 2,
+            "Skill Cost": 200,
+            "Skills": [
+                "Awareness +10",
+                "Common Lore (Machine Cult) +10",
+                "Common Lore (Tech) +10",
+                "Forbidden Lore (Archeotech) +10",
+                "Forbidden Lore (Adeptus Mechanicus) +10",
+                "Dodge",
+                "Logic +10",
+                "Medicae",
+                "Scholastic Lore (Astromancy) +10",
+                "Tech-Use +10"
+            ],
+            "Talents": [
+                { "Name": "Binary Chatter", "Cost": 200 },
+                { "Name": "Electro Graft Use", "Cost": 200 },
+                { "Name": "Ferric Lure", "Cost": 200 },
+                { "Name": "Luminen Charge", "Cost": 200 },
+                { "Name": "Prosanguine", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Technical Knock", "Cost": 200 },
+                { "Name": "Total Recall", "Cost": 200 },
+                { "Name": "Maglev Grace", "Cost": 500 },
+                { "Name": "Pistol Weapon Training (Universal)", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 3,
+            "Skill Cost": 200,
+            "Skills": [
+                "Chem-Use",
+                "Common Lore (Koronus Expanse)",
+                "Common Lore (Machine Cult) +20",
+                "Common Lore (Tech) +20",
+                "Common Lore (War)",
+                "Dodge +10",
+                "Forbidden Lore (Adeptus Mechanicus) +20",
+                "Forbidden Lore (Archeotech) +20",
+                "Medicae +10",
+                "Navigation (Surface)",
+                "Tech-Use +20",
+                "Trade (Explorator)"
+            ],
+            "Talents": [
+                { "Name": "Feedback Screech", "Cost": 200 },
+                { "Name": "Luminen Shock", "Cost": 200 },
+                { "Name": "Nerves of Steel", "Cost": 200 },
+                { "Name": "Peer (Adeptus Mechanicus)", "Cost": 200 },
+                { "Name": "Sound Constitution (x1)", "Cost": 200 },
+                { "Name": "Gun Blessing", "Cost": 500 },
+                { "Name": "The Flesh is Weak 1", "Cost": 500 },
+                { "Name": "Maglev Transcendence", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 4,
+            "Skill Cost": 200,
+            "Skills": [
+                "Chem-Use +10",
+                "Common Lore (Imperial Guard)",
+                "Common Lore (Koronus Expanse) +10",
+                "Common Lore (War) +10",
+                "Drive (Ground Vehicle) +10",
+                "Drive (Skimmer/Hover)",
+                "Medicae +20",
+                "Scholastic Lore (Astromancy) +10",
+                "Scholastic Lore (Chymistry)",
+                "Trade (Voidfarer)"
+            ],
+            "Talents": [
+                { "Name": "Concealed Cavity", "Cost": 200 },
+                { "Name": "Luminen Blast", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Talented (Tech-Use)", "Cost": 200 },
+                { "Name": "Exotic Weapon Training (Any)", "Cost": 500 },
+                { "Name": "Ferric Summons", "Cost": 500 },
+                { "Name": "The Flesh is Weak 2", "Cost": 500 },
+                { "Name": "Machinator Array", "Cost": 500 },
+                { "Name": "Mechadendrite Use (Weapon)", "Cost": 500 },
+                { "Name": "Rite of Awe", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 5,
+            "Skill Cost": 200,
+            "Skills": [
+                "Chem-Use +20",
+                "Common Lore (Imperial Guard) +10",
+                "Common Lore (Imperial Navy)",
+                "Navigation (Surface) +10",
+                "Pilot (Flyers)",
+                "Scholastic Lore (Astromancy) +20",
+                "Scholastic Lore (Chymistry) +10",
+                "Scholastic Lore (Tactica Imperialis)",
+                "Trade (Archaeologist)",
+                "Trade (Explorator) +10",
+                "Trade (Voidfarer) +10"
+            ],
+            "Talents": [
+                { "Name": "Electrical Succour", "Cost": 200 },
+                { "Name": "Rapid Reload", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "The Flesh is Weak 3", "Cost": 500 },
+                { "Name": "Heavy Weapon Training (Any)", "Cost": 500 },
+                { "Name": "Infused Knowledge", "Cost": 500 },
+                { "Name": "Master Enginseer", "Cost": 500 },
+                { "Name": "Mimic", "Cost": 500 },
+                { "Name": "Rite of Fear", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 6,
+            "Skill Cost": 200,
+            "Skills": [
+                "Common Lore (Imperial Guard) +20",
+                "Common Lore (Imperial Navy) +10",
+                "Navigation (Surface) +20",
+                "Pilot (Flyers) +10",
+                "Pilot (Space Craft)",
+                "Scholastic Lore (Chymistry) +20",
+                "Scholastic Lore (Tactica Imperialis) +10",
+                "Trade (Archaeologist) +10",
+                "Trade (Explorator) +20",
+                "Trade (Shipwright)",
+                "Trade (Voidfarer) +20"
+            ],
+            "Talents": [
+                { "Name": "Counter Attack", "Cost": 200 },
+                { "Name": "Iron Jaw", "Cost": 200 },
+                { "Name": "Sound Constitution (x1)", "Cost": 200 },
+                { "Name": "Blademaster", "Cost": 500 },
+                { "Name": "Deadeye Shot", "Cost": 500 },
+                { "Name": "Energy Cache", "Cost": 500 },
+                { "Name": "Furious Assault", "Cost": 500 },
+                { "Name": "The Flesh is Weak 4", "Cost": 500 },
+                { "Name": "Rite of Pure Thought", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 7,
+            "Skill Cost": 200,
+            "Skills": [
+                "Awareness +20",
+                "Command",
+                "Common Lore (Rogue Traders)",
+                "Dodge +20",
+                "Drive (Walker)",
+                "Evaluate",
+                "Intimidate",
+                "Navigation (Stellar)",
+                "Scholastic Lore (Numerology)"
+            ],
+            "Talents": [
+                { "Name": "Ambidextrous", "Cost": 200 },
+                { "Name": "Crushing Blow", "Cost": 200 },
+                { "Name": "Good Reputation (Adeptus Mechanicus)", "Cost": 200 },
+                { "Name": "Heightened Senses (Any)", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Flame Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Heavy Weapon Training (Any)", "Cost": 500 },
+                { "Name": "Master Chirurgeon", "Cost": 500 },
+                { "Name": "Mighty Shot", "Cost": 500 },
+                { "Name": "Swift Attack", "Cost": 500 },
+                { "Name": "Wall of Steel", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 8,
+            "Skill Cost": 200,
+            "Skills": [
+                "Command +10",
+                "Common Lore (Rogue Traders) +10",
+                "Drive (Walker) +10",
+                "Evaluate +10",
+                "Intimidate +10",
+                "Navigation (Stellar) +10",
+                "Scholastic Lore (Numerology) +10"
+            ],
+            "Talents": [
+                { "Name": "Heightened Senses (Any)", "Cost": 200 },
+                { "Name": "Iron Discipline", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Enhanced Bionic Frame", "Cost": 500 },
+                { "Name": "Exotic Weapon Training (Any)", "Cost": 500 },
+                { "Name": "Hip Shooting", "Cost": 500 },
+                { "Name": "Independent Targeting", "Cost": 500 },
+                { "Name": "Lightning Attack", "Cost": 500 },
+                { "Name": "Marksman", "Cost": 500 },
+                { "Name": "Step Aside", "Cost": 500 },
+                { "Name": "Thrown Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Two-Weapon Wielder (Ballistic)", "Cost": 500 },
+                { "Name": "Void Tactician", "Cost": 500 }
+            ]
+        }
+    ]
+}

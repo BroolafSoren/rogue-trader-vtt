@@ -1,0 +1,318 @@
+{
+    "Special-Abilities": {
+        "Type": "solo",
+        "Abilities": [
+          {
+            "Name": "Seeker of Lore",
+            "Description": "The Seneschal may spend a Fate Point to automatically succeed at any Ciphers, Lore, or Logic Test. Doing so means that the Test is resolved in the minimum time required. In addition, the Seneschal adds one bonus Degree of Success to any successful Commerce, Inquiry, or Evaluate Test."
+          }
+        ]
+      },
+    "Starting": {
+        "Skills": [
+            "Barter",
+            "Commerce",
+            "Common Lore (Underworld)",
+            "Deceive",
+            "Evaluate",
+            "Forbidden Lore (Archeotech)",
+            "Inquiry",
+            "Literacy",
+            "Speak Language (Low Gothic, Trader's Cant)"
+        ],
+        "Talents": [
+            "Basic Weapon Training (Universal)",
+            "Pistol Weapon Training (Universal)"
+        ],
+        "Gear": {
+            "Choices": [
+                [
+                    {
+                        "Name": "Hellpistol",
+                        "Craftsmanship": "Best"
+                    },
+                    {
+                        "Name": "Inferno Pistol",
+                        "Craftsmanship": "Common"
+                    }
+                ],
+                [
+                    {
+                        "Name": "Hellgun",
+                        "Craftsmanship": "Best"
+                    },
+                    {
+                        "Name": "Boltgun",
+                        "Craftsmanship": "Common"
+                    }
+                ]
+            ],
+            "Fixed": [
+                "Xeno-mesh Armour",
+                "Autoquill",
+                "Dataslate",
+                "Micro-bead",
+                "Multikey",
+                "Two sets of robes",
+                "Synskin",
+                "Chrono",
+                "Cameleoline cloak"
+            ]
+        }
+    },
+    "Characteristic Advances": {
+        "Weapon Skill": [
+            250, 500, 750, 1000
+        ],
+        "Ballistic Skill": [
+            250, 500, 750, 1000
+        ],
+        "Strength": [
+            500, 750, 1000, 2500
+        ],
+        "Toughness": [
+            250, 500, 750, 1000
+        ],
+        "Agility": [
+            250, 500, 750, 1000
+        ],
+        "Intelligence": [
+            100, 250, 500, 750
+        ],
+        "Perception": [
+            100, 250, 500, 750
+        ],
+        "Willpower": [
+            500, 750, 1000, 2500
+        ],
+        "Fellowship": [
+            100, 250, 500, 750
+        ]
+    },
+    "Rank Advances": [
+        {
+            "Rank": 1,
+            "Skill Cost": 100,
+            "Skills": [
+                "Awareness",
+                "Barter",
+                "Commerce",
+                "Common Lore (Underworld)",
+                "Charm",
+                "Climb",
+                "Deceive",
+                "Disguise",
+                "Dodge",
+                "Evaluate",
+                "Forbidden Lore (Archeotech)",
+                "Inquiry",
+                "Literacy",
+                "Performer (Any)",
+                "Secret Tongue (Rogue Traders)",
+                "Security",
+                "Silent Move"
+            ],
+            "Talents": [
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Unremarkable", "Cost": 200 },
+                { "Name": "Basic Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Pistol Weapon Training (Universal)", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 2,
+            "Skill Cost": 200,
+            "Skills": [
+                "Acrobatics",
+                "Barter +10",
+                "Commerce +10",
+                "Common Lore (Administratum)",
+                "Common Lore (Koronus Expanse)",
+                "Concealment",
+                "Forbidden Lore (Xenos)",
+                "Gamble",
+                "Scholastic Lore (Archaic)",
+                "Scholastic Lore (Bureaucracy)",
+                "Scholastic Lore (Legend)",
+                "Scrutiny",
+                "Secret Tongue (Administratum)",
+                "Shadowing",
+                "Sleight of Hand",
+                "Speak Language (High Gothic)",
+                "Tech-Use",
+                "Trade (Archaeologist)"
+            ],
+            "Talents": [
+                { "Name": "Melee Weapon Training (Primitive)", "Cost": 100 }
+            ]
+        },
+        {
+            "Rank": 3,
+            "Skill Cost": 200,
+            "Skills": [
+                "Awareness +10",
+                "Barter +20",
+                "Blather",
+                "Carouse",
+                "Commerce +20",
+                "Common Lore (Adeptus Mechanicus)",
+                "Common Lore (Imperium)",
+                "Contortionist",
+                "Forbidden Lore (Pirates)",
+                "Interrogation",
+                "Scholastic Lore (Astromancy)",
+                "Scholastic Lore (Heraldry)",
+                "Search",
+                "Secret Tongue (Underdeck)",
+                "Speak Language (Eldar)",
+                "Tracking",
+                "Trade (Astrographer)"
+            ],
+            "Talents": [
+                { "Name": "Quick Draw", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Exotic Weapon Training (Any)", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 4,
+            "Skill Cost": 200,
+            "Skills": [
+                "Charm +10",
+                "Chem-Use",
+                "Ciphers (Rogue Trader)",
+                "Ciphers (Underworld)",
+                "Common Lore (Underworld) +10",
+                "Common Lore (War)",
+                "Deceive +10",
+                "Disguise +10",
+                "Dodge +10",
+                "Forbidden Lore (Heresy)",
+                "Drive (Ground Vehicles)",
+                "Logic",
+                "Scholastic Lore (Chymistry)",
+                "Trade (Linguist)"
+            ],
+            "Talents": [
+                { "Name": "Decadence", "Cost": 200 },
+                { "Name": "Talented (Commerce)", "Cost": 200 },
+                { "Name": "Marksman", "Cost": 200 },
+                { "Name": "Takedown", "Cost": 200 },
+                { "Name": "Infused Knowledge", "Cost": 500 },
+                { "Name": "Melee Weapon Training (Universal)", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 5,
+            "Skill Cost": 200,
+            "Skills": [
+                "Ciphers (Mercenary Cant)",
+                "Common Lore (Administratum) +10",
+                "Command",
+                "Concealment +10",
+                "Drive (Skimmer/Hover)",
+                "Evaluate +10",
+                "Forbidden Lore (The Inquisition)",
+                "Scholastic Lore (Beasts)",
+                "Scholastic Lore (Occult)",
+                "Secret Tongue (Military)",
+                "Security +10",
+                "Silent Move +10",
+                "Trade (Rememberancer)"
+            ],
+            "Talents": [
+                { "Name": "Rapid Reaction", "Cost": 200 },
+                { "Name": "Rapid Reload", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Talented (Barter)", "Cost": 200 },
+                { "Name": "Total Recall", "Cost": 200 },
+                { "Name": "Deadeye Shot", "Cost": 500 },
+                { "Name": "Hard Bargain", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 6,
+            "Skill Cost": 200,
+            "Skills": [
+                "Common Lore (Adeptus Arbites)",
+                "Concealment +20",
+                "Deceive +20",
+                "Demolition",
+                "Forbidden Lore (Daemonology)",
+                "Pilot (Flyers)",
+                "Scholastic Lore (Judgement)",
+                "Security +20"
+            ],
+            "Talents": [
+                { "Name": "Leap Up", "Cost": 200 },
+                { "Name": "Light Sleeper", "Cost": 200 },
+                { "Name": "Jaded", "Cost": 200 },
+                { "Name": "Mimic", "Cost": 200 },
+                { "Name": "Ambidextrous", "Cost": 200 },
+                { "Name": "Assassin Strike", "Cost": 200 },
+                { "Name": "Nerves of Steel", "Cost": 200 },
+                { "Name": "Talented (Any)", "Cost": 200 },
+                { "Name": "Logis Implant", "Cost": 500 },
+                { "Name": "Polyglot", "Cost": 500 },
+                { "Name": "Sharpshooter", "Cost": 500 },
+                { "Name": "Step Aside", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 7,
+            "Skill Cost": 200,
+            "Skills": [
+                "Acrobatics +10",
+                "Blather +10",
+                "Common Lore (Koronus Expanse) +10",
+                "Forbidden Lore (Archeotech) +10",
+                "Forbidden Lore (Xenos) +10",
+                "Inquiry +10",
+                "Logic +10",
+                "Scrutiny +10",
+                "Search +10",
+                "Shadowing +10",
+                "Silent Move +20",
+                "Sleight of Hand +10",
+                "Wrangling"
+            ],
+            "Talents": [
+                { "Name": "Double Team", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Peer (Any)", "Cost": 200 },
+                { "Name": "Talented (Any)", "Cost": 200 },
+                { "Name": "Mighty Shot", "Cost": 500 },
+                { "Name": "Two-Weapon Wielder (Ballistic)", "Cost": 500 },
+                { "Name": "Whispers", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 8,
+            "Skill Cost": 200,
+            "Skills": [
+                "Acrobatics +20",
+                "Awareness +20",
+                "Blather +20",
+                "Common Lore (Koronus Expanse) +20",
+                "Disguise +20",
+                "Evaluate +20",
+                "Forbidden Lore (Archeotech) +20",
+                "Forbidden Lore (Xenos) +20",
+                "Inquiry +20",
+                "Logic +20",
+                "Scholastic Lore (Legend) +10",
+                "Scrutiny +20",
+                "Search +20",
+                "Shadowing +20"
+            ],
+            "Talents": [
+                { "Name": "Talented (Any)", "Cost": 200 },
+                { "Name": "Dual Shot", "Cost": 500 },
+                { "Name": "Flame Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Gunslinger", "Cost": 500 },
+                { "Name": "Hip Shooting", "Cost": 500 },
+                { "Name": "Hotshot Pilot", "Cost": 500 }
+            ]
+        }
+    ]
+}

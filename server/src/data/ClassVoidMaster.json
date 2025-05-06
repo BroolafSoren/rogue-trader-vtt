@@ -1,0 +1,334 @@
+{
+    "Special-Abilities": {
+        "Type": "choice",
+        "Abilities": [
+          {
+            "Name": "Mastery of Space",
+            "Description": "The Void-master can re-roll all failed Tests with Manoeuvre Actions (see page 212) aboard a space ship."
+          },
+          {
+            "Name": "Mastery of Gunnery",
+            "Description": "The Void-master can re-roll all failed Tests with Shooting Actions (see page 215) aboard a starship."
+          },
+          {
+            "Name": "Mastery of Augurs",
+            "Description": "The Void-master can re-roll all failed Tests involving Detection aboard a starship."
+          },
+          {
+            "Name": "Mastery of Small Craft",
+            "Description": "The Void-master can re-roll all failed Pilot Tests with small craft (shuttles, heavy lifters, guncutters, starfighters, bombers, and so forth)."
+          }
+        ]
+      },
+    "Starting": {
+        "Skills": [
+            "Common Lore (Imperial Navy, War)",
+            "Forbidden Lore (Xenos)",
+            "Navigation (Stellar)",
+            "Pilot (Space Craft, Flyers)",
+            "Scholastic Lore (Astromancy)",
+            "Speak Language (Low Gothic)"
+        ],
+        "Talents": [
+            "Pistol Weapon Training (Universal)",
+            "Melee Weapon Training (Universal)",
+            "Nerves of Steel"
+        ],
+        "Gear": {
+            "Choices": [
+                [
+                    {
+                        "Name": "Mono-sword",
+                        "Craftsmanship": "Best"
+                    },
+                    {
+                        "Name": "Power Sword",
+                        "Craftsmanship": "Common"
+                    }
+                ],
+                [
+                    {
+                        "Name": "Bolt Pistol",
+                        "Craftsmanship": "Common"
+                    },
+                    {
+                        "Name": "Hand Cannon",
+                        "Craftsmanship": "Best"
+                    }
+                ]
+            ],
+            "Fixed": [
+                "Guard flak armour",
+                "Micro-bead",
+                "Void suit",
+                "Blessed ship token",
+                "Re-breather",
+                "Imperial Navy uniform or beggar's cloak",
+                "bottle of amasec (x2)",
+                "Pict-recorder",
+                "Vox-caster"
+            ]
+        }
+    },
+    "Characteristic Advances": {
+        "Weapon Skill": [
+            250, 500, 750, 1000
+        ],
+        "Ballistic Skill": [
+            100, 250, 500, 750
+        ],
+        "Strength": [
+            250, 500, 750, 1000
+        ],
+        "Toughness": [
+            250, 500, 750, 1000
+        ],
+        "Agility": [
+            100, 250, 500, 750
+        ],
+        "Intelligence": [
+            500, 750, 1000, 2500
+        ],
+        "Perception": [
+            250, 500, 750, 1000
+        ],
+        "Willpower": [
+            100, 250, 500, 750
+        ],
+        "Fellowship": [
+            500, 750, 1000, 2500
+        ]
+    },
+    "Rank Advances": [
+        {
+            "Rank": 1,
+            "Skill Cost": 100,
+            "Skills": [
+                "Awareness",
+                "Common Lore (Imperial Navy)",
+                "Common Lore (War)",
+                "Dodge",
+                "Drive (Ground Vehicle)",
+                "Forbidden Lore (Xenos)",
+                "Gamble",
+                "Literacy",
+                "Navigation (Stellar)",
+                "Pilot (Flyers)",
+                "Pilot (Space Craft)",
+                "Scholastic Lore (Astromancy)",
+                "Scrutiny",
+                "Secret Tongue (Rogue Trader)",
+                "Trade (Voidfarer)"
+            ],
+            "Talents": [
+                { "Name": "Melee Weapon Training (Primitive)", "Cost": 100 },
+                { "Name": "Nerves of Steel", "Cost": 100 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Pistol Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Melee Weapon Training (Universal)", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 2,
+            "Skill Cost": 200,
+            "Skills": [
+                "Command",
+                "Common Lore (Koronus Expanse)",
+                "Common Lore (Tech)",
+                "Dodge +10",
+                "Drive (Skimmer/Hover)",
+                "Forbidden Lore (Pirates)",
+                "Intimidate",
+                "Pilot (Flyers) +10",
+                "Pilot (Space Craft) +10",
+                "Scrutiny +10",
+                "Secret Tongue (Military)",
+                "Secret Tongue (Underdeck)",
+                "Tech-Use"
+            ],
+            "Exceptions": {
+                "Skill Cost": 100,
+                "Skills": [
+                    "Drive (Skimmer/Hover)",
+                    "Intimidate"
+                ]
+            },
+            "Talents": [
+                { "Name": "Die Hard", "Cost": 200 },
+                { "Name": "Hatred (Pirates)", "Cost": 200 },
+                { "Name": "Paranoia", "Cost": 200 },
+                { "Name": "Quick Draw", "Cost": 200 },
+                { "Name": "Sound Constitution (x1)", "Cost": 200 },
+                { "Name": "Takedown", "Cost": 200 },
+                { "Name": "True Grit", "Cost": 200 }
+            ]
+        },
+        {
+            "Rank": 3,
+            "Skill Cost": 200,
+            "Skills": [
+                "Awareness +10",
+                "Charm",
+                "Ciphers (Mercenary Cant)",
+                "Command +10",
+                "Common Lore (Adeptus Arbites)",
+                "Common Lore (Imperial Guard)",
+                "Deceive",
+                "Navigation (Stellar) +10",
+                "Pilot (Flyers) +20",
+                "Pilot (Personal)",
+                "Pilot (Space Craft) +20",
+                "Speak Language (High Gothic)",
+                "Survival"
+            ],
+            "Talents": [
+                { "Name": "Air of Authority", "Cost": 200 },
+                { "Name": "Bulging Biceps", "Cost": 200 },
+                { "Name": "Double Team", "Cost": 200 },
+                { "Name": "Hardy", "Cost": 200 },
+                { "Name": "Rapid Reload", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Basic Weapon Training (Universal)", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 4,
+            "Skill Cost": 200,
+            "Skills": [
+                "Climb",
+                "Command +20",
+                "Common Lore (Imperium)",
+                "Dodge +20",
+                "Pilot (Personal) +10",
+                "Scholastic Lore (Judgement)",
+                "Trade (Armourer)",
+                "Trade (Shipwright)"
+            ],
+            "Talents": [
+                { "Name": "Iron Discipline", "Cost": 200 },
+                { "Name": "Jaded", "Cost": 200 },
+                { "Name": "Peer (Imperial Navy)", "Cost": 200 },
+                { "Name": "Resistance (Fear)", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Talented (Any)", "Cost": 200 },
+                { "Name": "Unarmed Warrior", "Cost": 200 },
+                { "Name": "Hotshot Pilot", "Cost": 500 },
+                { "Name": "Heavy Weapon Training (Any)", "Cost": 500 },
+                { "Name": "Hip Shooting", "Cost": 500 },
+                { "Name": "Iron Jaw", "Cost": 500 },
+                { "Name": "Thrown Weapon Training (Universal)", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 5,
+            "Skill Cost": 200,
+            "Skills": [
+                "Awareness +20",
+                "Common Lore (Imperial Navy) +10",
+                "Common Lore (War) +10",
+                "Demolition",
+                "Drive (Ground Vehicle) +10",
+                "Drive (Skimmer/Hover) +10",
+                "Gamble +10",
+                "Scholastic Lore (Astromancy) +10",
+                "Scholastic Lore (Tactica Imperialis)",
+                "Security"
+            ],
+            "Talents": [
+                { "Name": "Blind Fighting", "Cost": 200 },
+                { "Name": "Heightened Senses (Smell)", "Cost": 200 },
+                { "Name": "Marksman", "Cost": 200 },
+                { "Name": "Orthoproxy", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "True Grit", "Cost": 200 },
+                { "Name": "Combat Master", "Cost": 500 },
+                { "Name": "Crushing Blow", "Cost": 500 },
+                { "Name": "Exotic Weapon Training (Any)", "Cost": 500 },
+                { "Name": "Furious Assault", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 6,
+            "Skill Cost": 200,
+            "Skills": [
+                "Common Lore (Imperial Navy) +20",
+                "Common Lore (Koronus Expanse) +10",
+                "Common Lore (War) +20",
+                "Drive (Ground Vehicle) +20",
+                "Drive (Skimmer/Hover) +20",
+                "Forbidden Lore (Pirates) +10",
+                "Gamble +20",
+                "Intimidate +10",
+                "Scrutiny +20",
+                "Speak Language (Eldar)",
+                "Trade (Voidfarer) +10",
+                "Wrangling"
+            ],
+            "Talents": [
+                { "Name": "Paranoia", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Counter Attack", "Cost": 500 },
+                { "Name": "Crack Shot", "Cost": 500 },
+                { "Name": "Good Reputation (Imperial Navy)", "Cost": 500 },
+                { "Name": "Into the Jaws of Hell", "Cost": 500 },
+                { "Name": "Flame Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Void Tactician", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 7,
+            "Skill Cost": 200,
+            "Skills": [
+                "Charm +10",
+                "Common Lore (Adeptus Arbites) +10",
+                "Common Lore (Imperium) +10",
+                "Common Lore (Imperial Guard) +10",
+                "Deceive +10",
+                "Forbidden Lore (Pirates) +20",
+                "Intimidate +20",
+                "Navigation (Stellar) +20",
+                "Navigation (Surface)",
+                "Pilot (Personal) +20",
+                "Scholastic Lore (Astromancy) +20",
+                "Scholastic Lore (Tactica Imperialis) +10",
+                "Trade (Shipwright) +10",
+                "Trade (Voidfarer) +20"
+            ],
+            "Talents": [
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Berserk Charge", "Cost": 500 },
+                { "Name": "Fearless", "Cost": 500 },
+                { "Name": "Last Man Standing", "Cost": 500 },
+                { "Name": "Swift Attack", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 8,
+            "Skill Cost": 200,
+            "Skills": [
+                "Charm +20",
+                "Common Lore (Adeptus Arbites) +20",
+                "Common Lore (Imperium) +20",
+                "Common Lore (Imperial Guard) +20",
+                "Common Lore (Tech) +10",
+                "Deceive +20",
+                "Forbidden Lore (Xenos) +10",
+                "Scholastic Lore (Judgement) +10",
+                "Scholastic Lore (Tactica Imperialis) +20",
+                "Survival +10",
+                "Tech-Use +10",
+                "Trade (Shipwright) +20",
+                "Wrangling +10"
+            ],
+            "Talents": [
+                { "Name": "Sound Constitution (x1)", "Cost": 200 },
+                { "Name": "Battle Rage", "Cost": 500 },
+                { "Name": "Blademaster", "Cost": 500 },
+                { "Name": "Independent Targeting", "Cost": 500 },
+                { "Name": "Lightning Attack", "Cost": 500 },
+                { "Name": "Mighty Shot", "Cost": 500 },
+                { "Name": "Unarmed Master", "Cost": 500 }
+            ]
+        }
+    ]
+}
