@@ -16,138 +16,140 @@ namespace VTT.Server.Services
         private readonly ILogger<FileSystemRulebookService> _logger;
         private readonly string _assetsFolder;
         private readonly ConcurrentDictionary<string, string> _aliasToFilepathMap = new();
-        private readonly ConcurrentDictionary<string, RulebookFileDto> _loadedRulebooksCache = new(); // Cache loaded data
+        private readonly ConcurrentDictionary<string, RulebookFileDto> _loadedRulebooksCache = new();
         private bool _isInitialized = false;
         private readonly object _initLock = new object();
-
-        // Regular expression for safe alias generation
         private static readonly Regex _aliasRegex = new Regex(@"[^a-z0-9]+", RegexOptions.Compiled);
 
         public FileSystemRulebookService(ILogger<FileSystemRulebookService> logger)
         {
             _logger = logger;
+            string foundPath = "";
 
-            // Robust path finding (similar to original controller)
-            string currentDir = Directory.GetCurrentDirectory();
-            string[] potentialPaths = {
-                Path.Combine(currentDir, "assets"),          // Common case when running from server dir
-                Path.Combine(currentDir, "server", "assets"),// Common case when running from project root
-                Path.Combine(currentDir, "Assets"),          // Case variations
-                Path.Combine(currentDir, "server", "Assets"),
-                Path.Combine(currentDir, "..", "assets"),     // If running from bin/Debug etc.
-                Path.Combine(currentDir, "..", "Assets")
-            };
-
-            _assetsFolder = potentialPaths.FirstOrDefault(Directory.Exists)
-                            ?? Path.Combine(currentDir, "assets"); // Default fallback
-
-            _logger.LogInformation("FileSystemRulebookService using assets folder: {AssetsFolder}", _assetsFolder);
-            if (!Directory.Exists(_assetsFolder))
+            try
             {
-                _logger.LogWarning("Assets folder does not exist at determined path: {AssetsFolder}", _assetsFolder);
-            }
+                string currentDir = Directory.GetCurrentDirectory();
+                _logger.LogInformation("Attempting to find assets folder. Current Directory: {CurrentDir}", currentDir);
 
-            // Note: Initialization (scanning files) is deferred until the first request
+                string[] relativePathsToCheck = {
+                    "assets", "Assets", "server/assets", "server/Assets",
+                    Path.Combine("..", "..", "..", "server", "assets"),
+                    Path.Combine("..", "..", "..", "server", "Assets")
+                 };
+
+                foreach (var relativePath in relativePathsToCheck)
+                {
+                    var potentialPath = Path.GetFullPath(Path.Combine(currentDir, relativePath));
+                    _logger.LogDebug("Checking potential assets path: {PotentialPath}", potentialPath);
+                    if (Directory.Exists(potentialPath))
+                    {
+                        foundPath = potentialPath;
+                        _logger.LogInformation("Assets folder found at: {FoundPath}", foundPath);
+                        break;
+                    }
+                     else {
+                         _logger.LogDebug("Path does not exist: {PotentialPath}", potentialPath);
+                     }
+                }
+
+                if (string.IsNullOrEmpty(foundPath))
+                {
+                    _assetsFolder = Path.Combine(currentDir, "assets");
+                    _logger.LogWarning("Could not find assets folder after checking multiple locations. Defaulting to: {DefaultPath}. Ensure the folder exists and the Dockerfile copies it correctly.", _assetsFolder);
+                }
+                else
+                {
+                    _assetsFolder = foundPath;
+                }
+            }
+            catch(Exception ex)
+            {
+                 _logger.LogError(ex, "Exception during assets folder path resolution.");
+                 _assetsFolder = Path.Combine(Directory.GetCurrentDirectory(), "assets");
+                 _logger.LogWarning("Falling back to default assets path due to exception: {DefaultPath}", _assetsFolder);
+            }
         }
 
-        // Deferred initialization method
         private void EnsureInitialized()
         {
-            // Double-check locking for thread safety during initialization
             if (_isInitialized) return;
-
             lock (_initLock)
             {
-                if (_isInitialized) return; // Check again inside lock
-
+                if (_isInitialized) return;
                 _logger.LogInformation("Initializing Rulebook Service - Scanning assets folder: {AssetsFolder}", _assetsFolder);
-                _aliasToFilepathMap.Clear(); // Clear previous state if re-initializing
+                _aliasToFilepathMap.Clear();
 
                 if (!Directory.Exists(_assetsFolder))
                 {
                     _logger.LogError("Assets folder not found during initialization: {AssetsFolder}", _assetsFolder);
-                    _isInitialized = true; // Mark as initialized even if failed
+                    _isInitialized = true;
                     return;
                 }
-
                 try
                 {
                     var jsonFiles = Directory.GetFiles(_assetsFolder, "*.json");
                     _logger.LogInformation("Found {Count} JSON files in assets folder.", jsonFiles.Length);
-
                     foreach (var filePath in jsonFiles)
                     {
                         var filename = Path.GetFileNameWithoutExtension(filePath);
                         var alias = GenerateAlias(filename);
-
                         if (_aliasToFilepathMap.TryAdd(alias, filePath))
                         {
-                             _logger.LogDebug("Mapped alias '{Alias}' to file '{FilePath}'", alias, filePath);
+                             _logger.LogDebug("Mapped alias {RulebookAlias} to file {FilePath}", alias, filePath);
                         }
                         else
                         {
-                            _logger.LogWarning("Duplicate alias generated: '{Alias}' for file '{FilePath}'. Check filenames.", alias, filePath);
-                            // Handle duplicate aliases if necessary (e.g., append a number)
+                            _logger.LogWarning("Duplicate alias generated: {RulebookAlias} for file {FilePath}. Check filenames.", alias, filePath);
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "Error scanning assets folder during initialization.");
-                    // Depending on requirements, you might want to throw or just log
-                }
+                catch (Exception ex) { _logger.LogError(ex, "Error scanning assets folder during initialization."); }
                 _isInitialized = true;
                 _logger.LogInformation("Rulebook Service Initialization Complete. Found {Count} rulebooks.", _aliasToFilepathMap.Count);
             }
         }
 
-        // Helper to generate a safe, URL-friendly alias from a filename
         private string GenerateAlias(string filename)
         {
             if (string.IsNullOrWhiteSpace(filename)) return string.Empty;
-
             var lower = filename.ToLowerInvariant();
-            // Replace sequences of non-alphanumeric characters with a single hyphen
             var replaced = _aliasRegex.Replace(lower, "-");
-            // Trim leading/trailing hyphens
             var alias = replaced.Trim('-');
-            // Handle potential empty string after trimming
             return string.IsNullOrWhiteSpace(alias) ? "invalid-alias" : alias;
         }
 
-        // Helper to load (and cache) a rulebook file
         private async Task<RulebookFileDto?> LoadRulebookAsync(string alias)
         {
             if (_loadedRulebooksCache.TryGetValue(alias, out var cachedRulebook))
             {
-                _logger.LogDebug("Cache hit for rulebook alias: {Alias}", alias);
+                _logger.LogDebug("Cache hit for rulebook alias {RulebookAlias}", alias);
                 return cachedRulebook;
             }
 
             if (!_aliasToFilepathMap.TryGetValue(alias, out var filePath))
             {
-                _logger.LogWarning("Alias '{Alias}' not found in map.", alias);
-                return null; // Alias doesn't exist
+                _logger.LogWarning("Alias {RulebookAlias} not found in map.", alias);
+                return null;
             }
 
             if (!File.Exists(filePath))
             {
-                _logger.LogError("File path for alias '{Alias}' does not exist: {FilePath}", alias, filePath);
-                 _aliasToFilepathMap.TryRemove(alias, out _); // Remove invalid entry
-                return null; // File missing
+                _logger.LogError("File path for alias {RulebookAlias} does not exist: {FilePath}", alias, filePath);
+                 _aliasToFilepathMap.TryRemove(alias, out _);
+                return null;
             }
 
             try
             {
-                _logger.LogInformation("Loading and parsing rulebook file for alias '{Alias}': {FilePath}", alias, filePath);
+                _logger.LogInformation("Loading and parsing rulebook file for alias {RulebookAlias}: {FilePath}", alias, filePath);
                 var jsonString = await File.ReadAllTextAsync(filePath);
                 var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
                 var rulebook = JsonSerializer.Deserialize<RulebookFileDto>(jsonString, options);
 
                 if (rulebook != null)
                 {
-                     _logger.LogDebug("Successfully parsed rulebook '{Filename}', {PageCount} pages. Caching result for alias {Alias}.", rulebook.Filename, rulebook.Pages?.Count ?? 0, alias);
-                    _loadedRulebooksCache.TryAdd(alias, rulebook); // Add to cache
+                    _logger.LogDebug("Successfully parsed rulebook {OriginalFilename}, {PageCount} pages. Caching result for alias {RulebookAlias}.", rulebook.Filename, rulebook.Pages?.Count ?? 0, alias);
+                    _loadedRulebooksCache.TryAdd(alias, rulebook);
                     return rulebook;
                 }
                 else
@@ -170,15 +172,12 @@ namespace VTT.Server.Services
 
         public Task<IEnumerable<RulebookInfo>> ListAvailableRulebooksAsync()
         {
-            EnsureInitialized(); // Make sure the map is populated
-
+            EnsureInitialized();
             var rulebookInfos = _aliasToFilepathMap.Select(kvp =>
             {
-                // Extract display name from the original filename before alias generation
                 var originalFilename = Path.GetFileNameWithoutExtension(kvp.Value);
                 return new RulebookInfo(kvp.Key, originalFilename);
             }).ToList();
-
             return Task.FromResult<IEnumerable<RulebookInfo>>(rulebookInfos);
         }
 
@@ -186,16 +185,13 @@ namespace VTT.Server.Services
         {
             EnsureInitialized();
             var rulebook = await LoadRulebookAsync(alias);
-
             if (rulebook == null || rulebook.Pages == null) return null;
-
             var originalFilename = Path.GetFileNameWithoutExtension(_aliasToFilepathMap.GetValueOrDefault(alias) ?? "");
-
             return new RulebookMetadataDto(
                 Alias: alias,
-                DisplayName: originalFilename, // Use original name for display
+                DisplayName: originalFilename,
                 PageCount: rulebook.Pages.Count,
-                FirstPageIndex: rulebook.Pages.FirstOrDefault()?.PageIndex ?? -1, // Use -1 or similar for 'not found'
+                FirstPageIndex: rulebook.Pages.FirstOrDefault()?.PageIndex ?? -1,
                 LastPageIndex: rulebook.Pages.LastOrDefault()?.PageIndex ?? -1
             );
         }
@@ -204,21 +200,15 @@ namespace VTT.Server.Services
         {
             EnsureInitialized();
             var rulebook = await LoadRulebookAsync(alias);
-
             if (rulebook == null || rulebook.Pages == null) return null;
-
-            // Ensure valid range
             startIndex = Math.Max(0, startIndex);
-            count = Math.Max(1, count); // Get at least 1 page if requested
-
+            count = Math.Max(1, count);
             var pagesInRange = rulebook.Pages
-                .OrderBy(p => p.PageIndex) // Ensure pages are ordered correctly
+                .OrderBy(p => p.PageIndex)
                 .Skip(startIndex)
                 .Take(count)
                 .ToList();
-
              var originalFilename = Path.GetFileNameWithoutExtension(_aliasToFilepathMap.GetValueOrDefault(alias) ?? "");
-
             return new RulebookPagesResponseDto(
                 Alias: alias,
                 DisplayName: originalFilename,
