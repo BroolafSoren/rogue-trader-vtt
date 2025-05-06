@@ -1,174 +1,110 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
+using System.Threading.Tasks; // Added
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using VTT.Server.Services; // Added
+using VTT.Server.Models; // Added
 
-namespace src.routes
+namespace VTT.Server.Routes // Use consistent namespace
 {
     [ApiController]
     [Route("api/[controller]")]
     public class RulebookController : ControllerBase
     {
         private readonly ILogger<RulebookController> _logger;
-        private readonly string _assetsFolder;
+        private readonly IRulebookService _rulebookService; // Use the service interface
 
-        public RulebookController(ILogger<RulebookController> logger)
+        // Inject the service
+        public RulebookController(ILogger<RulebookController> logger, IRulebookService rulebookService)
         {
             _logger = logger;
-            // Fix path issues with a more robust approach
-            string currentDir = Directory.GetCurrentDirectory();
-            _logger.LogInformation($"Current directory: {currentDir}");
-            
-            // Try different approaches to locate the assets folder
-            string assetsPath1 = Path.Combine(currentDir, "Assets");
-            string assetsPath2 = Path.Combine(currentDir, "..", "Assets");
-            string assetsPath3 = Path.Combine(currentDir, "assets");
-            string assetsPath4 = Path.Combine(currentDir, "..", "assets");
-            
-            _logger.LogInformation($"Potential paths:\n1: {assetsPath1} (exists: {Directory.Exists(assetsPath1)})\n" + 
-                                  $"2: {assetsPath2} (exists: {Directory.Exists(assetsPath2)})\n" + 
-                                  $"3: {assetsPath3} (exists: {Directory.Exists(assetsPath3)})\n" + 
-                                  $"4: {assetsPath4} (exists: {Directory.Exists(assetsPath4)})");
-            
-            // Use the first valid path
-            if (Directory.Exists(assetsPath1)) _assetsFolder = assetsPath1;
-            else if (Directory.Exists(assetsPath2)) _assetsFolder = assetsPath2;
-            else if (Directory.Exists(assetsPath3)) _assetsFolder = assetsPath3;
-            else if (Directory.Exists(assetsPath4)) _assetsFolder = assetsPath4;
-            else
-            {
-                _logger.LogError("Could not find assets folder!");
-                _assetsFolder = assetsPath1; // Default to something even if it doesn't exist
-            }
-            
-            _logger.LogInformation($"Using assets folder: {_assetsFolder}");
+            _rulebookService = rulebookService; // Store injected service
         }
 
-        // Model classes for the rulebook JSON structure
-        public class RulebookPage
-        {
-            public int PageIndex { get; set; }
-            public string Text { get; set; }
-        }
+        // Remove internal model classes (they are now in RulebookDtos.cs)
+        // public class RulebookPage { ... }
+        // public class Rulebook { ... }
 
-        public class Rulebook
-        {
-            public string Filename { get; set; }
-            public List<RulebookPage> Pages { get; set; }
-        }
-
-        // Debug endpoint to verify controller is working
+        // Optional: Update debug endpoint to show service status? Or remove it.
         [HttpGet("debug")]
         public IActionResult Debug()
         {
-            return Ok(new { 
-                message = "RulebookController is working",
-                assetsFolder = _assetsFolder,
-                assetsExists = Directory.Exists(_assetsFolder),
-                files = Directory.Exists(_assetsFolder) ? 
-                    Directory.GetFiles(_assetsFolder).Select(Path.GetFileName).ToArray() : 
-                    new string[0]
-            });
+             _logger.LogInformation("RulebookController Debug endpoint hit.");
+            // Could add more info here later if needed, e.g., check service health
+            return Ok(new { message = "RulebookController is working. Service is injected." });
         }
 
-        // Get metadata about the available rulebooks
+        // Get list of available rulebooks (using aliases now)
         [HttpGet]
-        public IActionResult GetRulebooks()
+        public async Task<IActionResult> GetRulebooks()
         {
             try
             {
-                _logger.LogInformation($"Getting rulebooks from {_assetsFolder}");
-                
-                if (!Directory.Exists(_assetsFolder))
-                {
-                    _logger.LogError($"Assets folder not found: {_assetsFolder}");
-                    return NotFound($"Assets folder not found: {_assetsFolder}");
-                }
-                
-                var files = Directory.GetFiles(_assetsFolder, "*.json");
-                _logger.LogInformation($"Found {files.Length} JSON files");
-                
-                var rulebookFiles = files.Select(path => new { 
-                    filename = Path.GetFileNameWithoutExtension(path)
-                }).ToList();
-
-                return Ok(rulebookFiles);
+                _logger.LogInformation("Requesting list of rulebooks from service.");
+                var rulebooks = await _rulebookService.ListAvailableRulebooksAsync();
+                _logger.LogInformation("Service returned {Count} rulebooks.", rulebooks.Count());
+                // Return the RulebookInfo DTO directly
+                return Ok(rulebooks);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error retrieving rulebook list");
+                _logger.LogError(ex, "Error retrieving rulebook list via service");
                 return StatusCode(500, $"Error retrieving rulebook list: {ex.Message}");
             }
         }
 
-        // Get page count for a specific rulebook
-        [HttpGet("{filename}/metadata")]
-        public IActionResult GetRulebookMetadata(string filename)
+        // Get metadata - Use alias in route
+        [HttpGet("{alias}/metadata")]
+        public async Task<IActionResult> GetRulebookMetadata(string alias) // Changed parameter name
         {
             try
             {
-                var filePath = Path.Combine(_assetsFolder, $"{filename}.json");
-                if (!System.IO.File.Exists(filePath))
+                 _logger.LogInformation("Requesting metadata for rulebook alias '{Alias}'.", alias);
+                var metadata = await _rulebookService.GetMetadataByAliasAsync(alias);
+
+                if (metadata == null)
                 {
-                    return NotFound($"Rulebook '{filename}' not found");
+                    _logger.LogWarning("Metadata not found for alias '{Alias}'.", alias);
+                    return NotFound($"Rulebook with alias '{alias}' not found.");
                 }
 
-                // Read the file to get the number of pages
-                var jsonString = System.IO.File.ReadAllText(filePath);
-                var rulebook = JsonSerializer.Deserialize<Rulebook>(jsonString, 
-                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-                return Ok(new { 
-                    filename = rulebook.Filename,
-                    pageCount = rulebook.Pages.Count,
-                    firstPageIndex = rulebook.Pages.FirstOrDefault()?.PageIndex ?? 0,
-                    lastPageIndex = rulebook.Pages.LastOrDefault()?.PageIndex ?? 0
-                });
+                _logger.LogDebug("Metadata found for alias '{Alias}'.", alias);
+                return Ok(metadata); // Return the DTO
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error retrieving metadata for rulebook: {filename}");
-                return StatusCode(500, $"Error retrieving metadata for rulebook: {filename}");
+                _logger.LogError(ex, "Error retrieving metadata for rulebook alias: {Alias}", alias);
+                return StatusCode(500, $"Error retrieving metadata for rulebook alias: {alias}");
             }
         }
 
-        // Get pages from a specific rulebook within a range
-        [HttpGet("{filename}/pages")]
-        public IActionResult GetRulebookPages(string filename, [FromQuery] int startIndex, [FromQuery] int count = 5)
+        // Get pages - Use alias in route
+        [HttpGet("{alias}/pages")]
+        public async Task<IActionResult> GetRulebookPages(string alias, [FromQuery] int startIndex = 0, [FromQuery] int count = 5) // Changed route param, added defaults
         {
+             // Ensure count is reasonable
+            count = Math.Clamp(count, 1, 100); // Prevent excessive page requests
+            startIndex = Math.Max(0, startIndex);
+
             try
             {
-                var filePath = Path.Combine(_assetsFolder, $"{filename}.json");
-                if (!System.IO.File.Exists(filePath))
+                 _logger.LogInformation("Requesting pages for rulebook alias '{Alias}', StartIndex: {StartIndex}, Count: {Count}.", alias, startIndex, count);
+                var pagesResponse = await _rulebookService.GetPagesByAliasAsync(alias, startIndex, count);
+
+                if (pagesResponse == null)
                 {
-                    return NotFound($"Rulebook '{filename}' not found");
+                    _logger.LogWarning("Pages not found for alias '{Alias}'.", alias);
+                    return NotFound($"Rulebook with alias '{alias}' not found.");
                 }
 
-                // Read the file
-                var jsonString = System.IO.File.ReadAllText(filePath);
-                var rulebook = JsonSerializer.Deserialize<Rulebook>(jsonString, 
-                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-                // Get pages in the requested range
-                var pagesInRange = rulebook.Pages
-                    .Skip(startIndex)
-                    .Take(count)
-                    .ToList();
-
-                return Ok(new {
-                    filename = rulebook.Filename,
-                    totalPages = rulebook.Pages.Count,
-                    pages = pagesInRange
-                });
+                _logger.LogDebug("Returning {PageCount} pages for alias '{Alias}'.", pagesResponse.Pages.Count, alias);
+                return Ok(pagesResponse); // Return the DTO
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error retrieving pages for rulebook: {filename}");
-                return StatusCode(500, $"Error retrieving pages for rulebook: {filename}");
+                _logger.LogError(ex, "Error retrieving pages for rulebook alias: {Alias}", alias);
+                return StatusCode(500, $"Error retrieving pages for rulebook alias: {alias}");
             }
         }
     }

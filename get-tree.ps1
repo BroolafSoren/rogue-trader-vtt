@@ -55,4 +55,4 @@ function Get-Tree {
 }
 
 # Run the script and save the output
-Get-Tree -Exclude 'node_modules', '.venv', 'obj', 'bin' > ./.out/directory_structure.txt
+Get-Tree -Exclude 'node_modules', '.venv', 'obj', 'bin', '.processed', '.out', '.in' > ./.out/directory_structure.txt

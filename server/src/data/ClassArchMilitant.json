@@ -1,0 +1,323 @@
+{
+    "Starting": {
+        "Skills": [
+            "Common Lore (War)",
+            "Dodge",
+            "Intimidate",
+            "Scholastic Lore (Tactica Imperialis)",
+            "Secret Tongue (Military)",
+            "Speak Language (Low Gothic)"
+        ],
+        "Talents": [
+            "Basic Weapon Training (Universal)",
+            "Pistol Weapon Training (Universal)",
+            "Melee Weapon Training (Universal)",
+            "Thrown Weapon Training (Universal)",
+            "Sound Constitution"
+        ],
+        "Gear": {
+            "Choices": [
+                [
+                    {
+                        "Name": "Hellgun",
+                        "Craftsmanship": "Good"
+                    },
+                    {
+                        "Name": "Hunting Rifle",
+                        "Craftsmanship": "Best"
+                    },
+                    {
+                        "Name": "Bolt Pistol",
+                        "Quantity": 2
+                    }
+                ],
+                [
+                    {
+                        "Name": "Weapon of Choice",
+                        "Class": "Melee",
+                        "Type": "Primitive",
+                        "Craftsmanship": "Good",
+                        "Upgrades": [
+                             "Mono"
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "Name": "Data-slate (Wanted Bounties)"
+                    },
+                    {
+                        "Name": "Arms Coffer"
+                    },
+                    {
+                        "Name": "Stimm",
+                        "Quantity": 3
+                    }
+                ]
+            ],
+            "Fixed": [
+                "Micro-bead",
+                "Void suit",
+                "Enforcer light carapace armour",
+                "Bolt shell keepsake",
+                "Medikit",
+                "Manacles"
+            ]
+        }
+    },
+    "Characteristic Advances": {
+        "Weapon Skill": [
+            250, 500, 750, 1000
+        ],
+        "Ballistic Skill": [
+            100, 250, 500, 750
+        ],
+        "Strength": [
+            100, 250, 500, 750
+        ],
+        "Toughness": [
+            250, 500, 750, 1000
+        ],
+        "Agility": [
+            100, 250, 500, 750
+        ],
+        "Intelligence": [
+            500, 750, 1000, 2500
+        ],
+        "Perception": [
+            500, 750, 1000, 2500
+        ],
+        "Willpower": [
+            500, 750, 1000, 2500
+        ],
+        "Fellowship": [
+            250, 500, 750, 1000
+        ]
+    },
+    "Rank Advances": [
+        {
+            "Rank": 1,
+            "Skill Cost": 100,
+            "Skills": [
+                "Awareness",
+                "Common Lore (Imperial Guard)",
+                "Common Lore (War)",
+                "Dodge",
+                "Intimidate",
+                "Forbidden Lore (Pirates)",
+                "Literacy",
+                "Scholastic Lore (Tactica Imperialis)",
+                "Secret Tongue (Military)",
+                "Secret Tongue (Rogue Trader)"
+            ],
+            "Talents": [
+                { "Name": "Ambidextrous", "Cost": 200 },
+                { "Name": "Quick Draw", "Cost": 200 },
+                { "Name": "Medicae", "Cost": 200 },
+                { "Name": "Melee Weapon Training (Primitive)", "Cost": 200 },
+                { "Name": "Basic Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Bloodtracker", "Cost": 500 },
+                { "Name": "Guardian", "Cost": 500 },
+                { "Name": "Pistol Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Melee Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Thrown Weapon Training (Universal)", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 2,
+            "Skill Cost": 200,
+            "Skills": [
+                "Acrobatics",
+                "Awareness +10",
+                "Common Lore (War) +10",
+                "Dodge +10",
+                "Intimidate +10",
+                "Scholastic Lore (Tactica Imperialis) +10",
+                "Tracking"
+            ],
+            "Talents": [
+                { "Name": "Basic Weapon Training (Primitive)", "Cost": 100 },
+                { "Name": "Pistol Weapon Training (Primitive)", "Cost": 100 },
+                { "Name": "Thrown Weapon Training (Primitive)", "Cost": 100 },
+                { "Name": "Catfall", "Cost": 200 },
+                { "Name": "Leap Up", "Cost": 200 },
+                { "Name": "Rapid Reload", "Cost": 200 },
+                { "Name": "Sound Constitution (x3)", "Cost": 200 },
+                { "Name": "Takedown", "Cost": 200 },
+                { "Name": "Two-Weapon Wielder (Ballistic)", "Cost": 200 },
+                { "Name": "True Grit", "Cost": 200 },
+                { "Name": "Combat Formation", "Cost": 500 },
+                { "Name": "Crushing Blow", "Cost": 500 },
+                { "Name": "Flame Weapon Training (Universal)", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 3,
+            "Skill Cost": 200,
+            "Skills": [
+                "Acrobatics +10",
+                "Awareness +20",
+                "Command",
+                "Common Lore (Imperial Navy)",
+                "Drive (Ground Vehicles)",
+                "Interrogation",
+                "Intimidate +20",
+                "Tracking +10"
+            ],
+            "Talents": [
+                 { "Name": "Common Lore (War) +20", "Cost": 300 },
+                 { "Name": "Dodge +20", "Cost": 300 },
+                 { "Name": "Scholastic Lore (Tactica Imperialis) +20", "Cost": 300 },
+                 { "Name": "Die Hard", "Cost": 200 },
+                 { "Name": "Double Team", "Cost": 200 },
+                 { "Name": "Hatred (Pirates)", "Cost": 200 },
+                 { "Name": "Rapid Reaction", "Cost": 200 },
+                 { "Name": "Sound Constitution (x3)", "Cost": 200 },
+                 { "Name": "Crack Shot", "Cost": 500 },
+                 { "Name": "Frenzy", "Cost": 500 },
+                 { "Name": "Furious Assault", "Cost": 500 },
+                 { "Name": "Sure Strike", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 4,
+            "Skill Cost": 200,
+            "Skills": [
+                "Acrobatics +20",
+                "Carouse",
+                "Ciphers (Mercenary Cant)",
+                "Command +10",
+                "Common Lore (Imperial Guard) +10",
+                "Concealment",
+                "Demolition",
+                "Interrogation +10",
+                "Security"
+            ],
+            "Talents": [
+                { "Name": "Drive (Ground Vehicles) +10", "Cost": 300 },
+                { "Name": "Blind Fighting", "Cost": 200 },
+                { "Name": "Deadeye Shot", "Cost": 200 },
+                { "Name": "Exotic Weapon Training (Choose One)", "Cost": 200 },
+                { "Name": "Heavy Weapon Training (Choose One) (x2)", "Cost": 200 },
+                { "Name": "Hip Shooting", "Cost": 200 },
+                { "Name": "Light Sleeper", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Battle Rage", "Cost": 500 },
+                { "Name": "Bulging Biceps", "Cost": 500 },
+                { "Name": "Dual Shot", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 5,
+            "Skill Cost": 200,
+            "Skills": [
+                "Carouse +10",
+                "Climb",
+                "Command +20",
+                "Concealment +10",
+                "Demolition +10",
+                "Drive (Ground Vehicles) +20",
+                "Interrogation +20",
+                "Shadowing"
+             ],
+             "Talents": [
+                { "Name": "Nerves of Steel", "Cost": 200 },
+                { "Name": "Paranoia", "Cost": 200 },
+                { "Name": "Resistance (Fear)", "Cost": 200 },
+                { "Name": "Berserk Charge", "Cost": 500 },
+                { "Name": "Combat Master", "Cost": 500 },
+                { "Name": "Gunslinger", "Cost": 500 },
+                { "Name": "Hardy", "Cost": 200 },
+                { "Name": "Independent Targeting", "Cost": 500 },
+                { "Name": "Jaded", "Cost": 500 },
+                { "Name": "Marksman", "Cost": 500 },
+                { "Name": "Mighty Shot", "Cost": 500 },
+                { "Name": "Unarmed Warrior", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 6,
+            "Skill Cost": 200,
+            "Skills": [
+                "Concealment +20",
+                "Contortionist",
+                "Climb +10",
+                "Demolition +20",
+                "Forbidden Lore (Pirates) +10",
+                "Search",
+                "Shadowing +10",
+                "Silent Move",
+                "Survival",
+                "Wrangling"
+            ],
+            "Talents": [
+                { "Name": "Air of Authority", "Cost": 200 },
+                { "Name": "Concealed Cavity", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Talented (Choose One)", "Cost": 200 },
+                { "Name": "Cleanse and Purify", "Cost": 500 },
+                { "Name": "Duty Unto Death", "Cost": 500 },
+                { "Name": "Heightened Senses (Sight)", "Cost": 500 },
+                { "Name": "Iron Jaw", "Cost": 500 },
+                { "Name": "Sharpshooter", "Cost": 500 },
+                { "Name": "Sprint", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 7,
+            "Skill Cost": 200,
+            "Skills": [
+                "Contortionist +10",
+                "Forbidden Lore (Pirates) +20",
+                "Search +10",
+                "Shadowing +20",
+                "Silent Move +10",
+                "Survival +10",
+                "Tech-Use",
+                "Trade (Armourer)"
+            ],
+            "Talents": [
+                { "Name": "Armour of Contempt", "Cost": 200 },
+                { "Name": "Hard Target", "Cost": 200 },
+                { "Name": "Peer (Imperial Guard)", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Assassin Strike", "Cost": 500 },
+                { "Name": "Combat Sense", "Cost": 500 },
+                { "Name": "Last Man Standing", "Cost": 500 },
+                { "Name": "Iron Discipline", "Cost": 500 },
+                { "Name": "Lightning Reflexes", "Cost": 500 },
+                { "Name": "Logis Implant", "Cost": 500 },
+                { "Name": "Precise Blow", "Cost": 500 },
+                { "Name": "Step Aside", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 8,
+            "Skill Cost": 200,
+            "Skills": [
+                "Contortionist +20",
+                "Search +20",
+                "Silent Move +20",
+                "Survival +20",
+                "Wrangling +10"
+            ],
+            "Talents": [
+                { "Name": "Crippling Strike", "Cost": 200 },
+                { "Name": "Exotic Weapon Training (Choose One)", "Cost": 200 },
+                { "Name": "Orthoproxy", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Blademaster", "Cost": 500 },
+                { "Name": "Counter Attack", "Cost": 500 },
+                { "Name": "Dark Soul", "Cost": 500 },
+                { "Name": "Dual Strike", "Cost": 500 },
+                { "Name": "Fearless", "Cost": 500 },
+                { "Name": "Good Reputation (Imperial Guard)", "Cost": 500 },
+                { "Name": "Into the Jaws of Hell", "Cost": 500 },
+                { "Name": "Swift Attack", "Cost": 500 },
+                { "Name": "Unarmed Master", "Cost": 500 },
+                { "Name": "Void Tactician", "Cost": 500 },
+                { "Name": "Wall of Steel", "Cost": 500 }
+            ]
+        }
+    ]
+}

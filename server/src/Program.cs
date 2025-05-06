@@ -5,6 +5,7 @@ using MongoDB.Driver;
 using Microsoft.AspNetCore.Cors;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
+using VTT.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,8 +50,7 @@ builder.Services.AddSignalR(options =>
 // Register the character repository with MongoDB
 string mongoConnectionString = builder.Configuration.GetConnectionString("MongoDB") ?? "mongodb://mongodb:27017/roguetrader";
 builder.Services.AddSingleton<ICharacterRepository>(new MongoCharacterRepository(mongoConnectionString));
-
-// Rest of your service configuration...
+builder.Services.AddSingleton<IRulebookService, FileSystemRulebookService>();
 
 // Fix the middleware ordering
 var app = builder.Build();

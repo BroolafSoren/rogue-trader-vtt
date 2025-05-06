@@ -1,24 +1,24 @@
 {
     "Starting": {
         "Skills": [
-            "Command", 
-            "Commerce", 
-            "Charm", 
-            "Common Lore (Imperium)", 
-            "Evaluate", 
-            "Literacy", 
-            "Scholastic Lore (Astromancy)", 
-            "Speak Language (High Gothic)", 
+            "Command",
+            "Commerce",
+            "Charm",
+            "Common Lore (Imperium)",
+            "Evaluate",
+            "Literacy",
+            "Scholastic Lore (Astromancy)",
+            "Speak Language (High Gothic)",
             "Speak Language (Low Gothic)"
         ],
-        "Talents" : [
+        "Talents": [
             "Air of Authority",
             "Pistol Weapon Training (Universal)",
             "Melee Weapon Training (Universal)"
         ],
-        "Gear": [
-            {
-                "Choice 1": [
+        "Gear": {
+            "Choices": [
+                [
                     {
                         "Name": "Laspistol",
                         "Craftsmanship": "Best"
@@ -32,7 +32,7 @@
                         "Craftsmanship": "Common"
                     }
                 ],
-                "Choice 2": [
+                [
                     {
                         "Name": "Mono-sword",
                         "Craftsmanship": "Best"
@@ -42,7 +42,7 @@
                         "Craftsmanship": "Common"
                     }
                 ],
-                "Choice 3": [
+                [
                     {
                         "Name": "Enforcer Light Carapace",
                         "Craftsmanship": "Best"
@@ -52,12 +52,14 @@
                         "Craftsmanship": "Common"
                     }
                 ]
-            },
-            "Micro-Bead",
-            "Void Suit",
-            "Set of Fine CLothing",
-            "Xeno-Pelt Cloak"
-        ]
+            ],
+            "Fixed": [
+                "Micro-bead",
+                "Void suit",
+                "Set of fine clothing",
+                "Xeno-pelt cloak"
+            ]
+        }
     },
     "Characteristic Advances": {
         "Weapon Skill": [
@@ -109,30 +111,12 @@
                 "Speak Language (Trader's Cant)"
             ],
             "Talents": [
-                {
-                    "Name": "Air of Authority",
-                    "Cost": 100
-                },
-                {
-                    "Name": "Ambiextrous",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Melee Weapon Training (Primitive)",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Renowned Warrant",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Pistol Weapon Training (Universal)",
-                    "Cost": 500
-                },
-                {
-                    "Name": "Melee Weapon Training (Universal)",
-                    "Cost": 500
-                }
+                { "Name": "Air of Authority", "Cost": 100 },
+                { "Name": "Ambidextrous", "Cost": 200 },
+                { "Name": "Melee Weapon Training (Primitive)", "Cost": 200 },
+                { "Name": "Renowned Warrant", "Cost": 200 },
+                { "Name": "Pistol Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Melee Weapon Training (Universal)", "Cost": 500 }
             ]
         },
         {
@@ -141,6 +125,7 @@
             "Skills": [
                 "Barter",
                 "Blather",
+                "Carouse",
                 "Charm +10",
                 "Command +10",
                 "Common Lore (Koronus Expanse)",
@@ -148,43 +133,19 @@
                 "Forbidden Lore (Xenos)",
                 "Gamble",
                 "Intimidate",
-                "Performaer (Any)",
+                "Performer (Choose One)",
                 "Pilot (Flyers)",
                 "Scholastic Lore (Imperial Warrants)"
             ],
             "Talents": [
-                {
-                    "Name": "Iron Discipline",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Jaded",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Leap up",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Quick Draw",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Sound Constitution (x2)",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Two Weapon Wielder (Melee)",
-                    "Cost": 300
-                },
-                {
-                    "Name": "Exotic Weapon Training (Any)",
-                    "Cost": 500
-                },
-                {
-                    "Name": "Two Weapon Wielder (Ballistic)",
-                    "Cost": 500
-                }
+                { "Name": "Iron Discipline", "Cost": 200 },
+                { "Name": "Jaded", "Cost": 200 },
+                { "Name": "Leap Up", "Cost": 200 },
+                { "Name": "Quick Draw", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Two-Weapon Wielder (Melee)", "Cost": 300 },
+                { "Name": "Exotic Weapon Training (Choose One)", "Cost": 500 },
+                { "Name": "Two-Weapon Wielder (Ballistic)", "Cost": 500 }
             ]
         },
         {
@@ -206,34 +167,13 @@
                 "Sleight of Hand"
             ],
             "Talents": [
-                {
-                    "Name": "Dark Soul",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Decadence",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Foresight",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Resistance (Fear)",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Sound Constitution",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Exotic Weapon Training (Any)",
-                    "Cost": 500
-                },
-                {
-                    "Name": "Gunslinger",
-                    "Cost": 500
-                }
+                { "Name": "Dark Soul", "Cost": 200 },
+                { "Name": "Decadence", "Cost": 200 },
+                { "Name": "Foresight", "Cost": 200 },
+                { "Name": "Resistance (Fear)", "Cost": 200 },
+                { "Name": "Sound Constitution", "Cost": 200 },
+                { "Name": "Exotic Weapon Training (Choose One)", "Cost": 500 },
+                { "Name": "Gunslinger", "Cost": 500 }
             ]
         },
         {
@@ -252,46 +192,16 @@
                 "Trade (Voidfarer)"
             ],
             "Talents": [
-                {
-                    "Name": "Catfall",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Double Team",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Rapid Reaction",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Sound Constitution (x2)",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Basic Weapon Training (Universal)",
-                    "Cost": 500
-                },
-                {
-                    "Name": "Counter Attack",
-                    "Cost": 500
-                },
-                {
-                    "Name": "Crushing Blow",
-                    "Cost": 500
-                },
-                {
-                    "Name": "Into the Jaws of Hell",
-                    "Cost": 500
-                },
-                {
-                    "Name": "Sprint",
-                    "Cost": 500
-                },
-                {
-                    "Name": "Swift Attack",
-                    "Cost": 500
-                }
+                { "Name": "Catfall", "Cost": 200 },
+                { "Name": "Double Team", "Cost": 200 },
+                { "Name": "Rapid Reaction", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Basic Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Counter Attack", "Cost": 500 },
+                { "Name": "Crushing Blow", "Cost": 500 },
+                { "Name": "Into the Jaws of Hell", "Cost": 500 },
+                { "Name": "Sprint", "Cost": 500 },
+                { "Name": "Swift Attack", "Cost": 500 }
             ]
         },
         {
@@ -312,38 +222,98 @@
                 "Navigation (Stellar)"
             ],
             "Talents": [
-                {
-                    "Name": "Disarm",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Light Sleeper",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Sound Constitution",
-                    "Cost": 200
-                },
-                {
-                    "Name": "Blademaster",
-                    "Cost": 500
-                },
-                {
-                    "Name": "Conbat Master",
-                    "Cost": 500
-                },
-                {
-                    "Name": "Lightning Attack",
-                    "Cost": 500
-                },
-                {
-                    "Name": "Master & Commander",
-                    "Cost": 500
-                },
-                {
-                    "Name": "Sure Strike",
-                    "Cost": 500
-                }
+                { "Name": "Disarm", "Cost": 200 },
+                { "Name": "Light Sleeper", "Cost": 200 },
+                { "Name": "Sound Constitution", "Cost": 200 },
+                { "Name": "Blademaster", "Cost": 500 },
+                { "Name": "Combat Master", "Cost": 500 },
+                { "Name": "Lightning Attack", "Cost": 500 },
+                { "Name": "Master & Commander", "Cost": 500 },
+                { "Name": "Sure Strike", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 6,
+            "Skill Cost": 200,
+            "Skills": [
+                "Barter +20",
+                "Blather +20",
+                "Carouse +20",
+                "Common Lore (Koronus Expanse) +20",
+                "Deceive +20",
+                "Forbidden Lore (Xenos) +10",
+                "Gamble +10",
+                "Evaluate +20",
+                "Intimidate +10",
+                "Navigation (Stellar) +10",
+                "Scholastic Lore (Imperial Warrants) +10",
+                "Security +10"
+            ],
+            "Talents": [
+                { "Name": "Blind Fighting", "Cost": 200 },
+                { "Name": "Paranoia", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Hip Shooting", "Cost": 500 },
+                { "Name": "Master Orator", "Cost": 500 },
+                { "Name": "Precise Blow", "Cost": 500 },
+                { "Name": "True Grit", "Cost": 500 },
+                { "Name": "Wall of Steel", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 7,
+            "Skill Cost": 200,
+            "Skills": [
+                "Acrobatics +10",
+                "Climb +10",
+                "Forbidden Lore (Xenos) +20",
+                "Gamble +20",
+                "Scholastic Lore (Imperial Warrants) +20",
+                "Scholastic Lore (Legend) +10",
+                "Scrutiny +10",
+                "Search +10",
+                "Security +20",
+                "Sleight of Hand +10",
+                "Swim",
+                "Trade (Voidfarer) +10"
+            ],
+            "Talents": [
+                { "Name": "Armour of Contempt", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Fearless", "Cost": 500 },
+                { "Name": "Hard Bargain", "Cost": 500 },
+                { "Name": "Dual Strike", "Cost": 500 },
+                { "Name": "Duty Unto Death", "Cost": 500 },
+                { "Name": "Flame Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Step Aside", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 8,
+            "Skill Cost": 200,
+            "Skills": [
+                "Acrobatics +20",
+                "Climb +20",
+                "Scholastic Lore (Legend) +20",
+                "Scrutiny +20",
+                "Search +20",
+                "Sleight of Hand +20",
+                "Swim +10",
+                "Trade (Voidfarer) +20"
+            ],
+            "Talents": [
+                { "Name": "Resistance (Psychic Powers)", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Talented (Choose One)", "Cost": 200 },
+                { "Name": "Assassin Strike", "Cost": 500 },
+                { "Name": "Deadeye Shot", "Cost": 500 },
+                { "Name": "Dual Shot", "Cost": 500 },
+                { "Name": "Exotic Weapon Training (Choose One)", "Cost": 500 },
+                { "Name": "Independent Targeting", "Cost": 500 },
+                { "Name": "Mighty Shot", "Cost": 500 },
+                { "Name": "Lightning Reflexes", "Cost": 500 },
+                { "Name": "Thrown Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Void Tactician", "Cost": 500 }
             ]
         }
     ]

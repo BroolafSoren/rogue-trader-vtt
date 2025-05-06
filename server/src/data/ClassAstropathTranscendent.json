@@ -1,0 +1,305 @@
+{
+    "Starting": {
+        "Skills": [
+            "Awareness",
+            "Common Lore (Adeptus Astra Telepathica)",
+            "Forbidden Lore (Psykers)",
+            "Invocation",
+            "Psyniscience",
+            "Scholastic Lore (Cryptology)",
+            "Speak Language (High Gothic)",
+            "Speak Language (Low Gothic)"
+        ],
+        "Talents": [
+            "Pistol Weapon Training (Universal)",
+            "Heightened Senses (Sound)",
+            "Psy Rating 2"
+        ],
+        "Gear": {
+            "Choices": [
+                [
+                    {
+                        "Name": "Laspistol",
+                        "Craftsmanship": "Best"
+                    },
+                    {
+                        "Name": "Stub automatic",
+                        "Craftsmanship": "Best"
+                    }
+                ],
+                [
+                    {
+                        "Name": "Mono-sword",
+                        "Craftsmanship": "Best"
+                    },
+                    {
+                        "Name": "Shock staff",
+                        "Craftsmanship": "Common"
+                    }
+                ]
+            ],
+            "Fixed": [
+                "Guard flak armour",
+                "Charm",
+                "Void suit",
+                "Micro-bead",
+                "Psy-focus"
+            ]
+        }
+    },
+    "Characteristic Advances": {
+        "Weapon Skill": [
+            500, 750, 1000, 2500
+        ],
+        "Ballistic Skill": [
+            500, 750, 1000, 2500
+        ],
+        "Strength": [
+            250, 500, 750, 1000
+        ],
+        "Toughness": [
+            250, 500, 750, 1000
+        ],
+        "Agility": [
+            250, 500, 750, 1000
+        ],
+        "Intelligence": [
+            100, 250, 500, 750
+        ],
+        "Perception": [
+            250, 500, 750, 1000
+        ],
+        "Willpower": [
+            100, 250, 500, 750
+        ],
+        "Fellowship": [
+            500, 750, 1000, 2500
+        ]
+    },
+    "Rank Advances": [
+        {
+            "Rank": 1,
+            "Skill Cost": 100,
+            "Skills": [
+                "Awareness",
+                "Ciphers (Astropath Sign)",
+                "Common Lore (Administratum)",
+                "Common Lore (Adeptus Astra Telepathica)",
+                "Forbidden Lore (Psykers)",
+                "Forbidden Lore (Warp)",
+                "Invocation",
+                "Literacy",
+                "Psyniscience",
+                "Scholastic Lore (Cryptology)",
+                "Scholastic Lore (Occult)",
+                "Secret Tongue (Rogue Trader)"
+            ],
+            "Talents": [
+                { "Name": "Psychic Technique (x2)", "Cost": 100 },
+                { "Name": "Dodge", "Cost": 100 },
+                { "Name": "Heightened Senses (Sound)", "Cost": 200 },
+                { "Name": "Psy Rating 2", "Cost": 200 },
+                { "Name": "Melee Weapon Training (Primitive)", "Cost": 200 },
+                { "Name": "Pistol Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Rite of Sanctioning", "Cost": 500 },
+                { "Name": "Warp Affinity", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 2,
+            "Skill Cost": 200,
+            "Skills": [
+                "Awareness +10",
+                "Ciphers (Astropath Sign) +10",
+                "Common Lore (Administratum) +10",
+                "Common Lore (Adeptus Astra Telepathica) +10",
+                "Forbidden Lore (Psykers) +10",
+                "Invocation +10",
+                "Psyniscience +10",
+                "Scholastic Lore (Cryptology) +10",
+                "Scholastic Lore (Occult) +10",
+                "Scrutiny"
+            ],
+            "Talents": [
+                { "Name": "Blind Fighting", "Cost": 200 },
+                { "Name": "Combat Sense", "Cost": 200 },
+                { "Name": "Psychic Technique (x2)", "Cost": 200 },
+                { "Name": "Dark Soul", "Cost": 200 },
+                { "Name": "Foresight", "Cost": 200 },
+                { "Name": "Melee Weapon Training (Primitive)", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Total Recall", "Cost": 200 },
+                { "Name": "Psy Rating 3", "Cost": 300 },
+                { "Name": "Resistance (Psychic Powers)", "Cost": 300 }
+            ]
+        },
+        {
+            "Rank": 3,
+            "Skill Cost": 200,
+            "Skills": [
+                "Awareness +20",
+                "Ciphers (Astropath Sign) +10",
+                "Common Lore (Administratum) +20",
+                "Common Lore (Adeptus Astra Telepathica) +20",
+                "Common Lore (Imperial Guard)",
+                "Common Lore (Imperial Navy)",
+                "Deceive",
+                "Forbidden Lore (Psykers) +20",
+                "Forbidden Lore (Warp) +10",
+                "Invocation +20",
+                "Psyniscience +20",
+                "Scholastic Lore (Cryptology) +20",
+                "Scholastic Lore (Occult) +20",
+                "Scrutiny +10"
+            ],
+            "Talents": [
+                { "Name": "Chem Geld", "Cost": 200 },
+                { "Name": "Peer (Astropaths)", "Cost": 200 },
+                { "Name": "Psy Rating 4", "Cost": 200 },
+                { "Name": "Psychic Technique (x2)", "Cost": 200 },
+                { "Name": "Melee Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Psychic Discipline", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 4,
+            "Skill Cost": 200,
+            "Skills": [
+                "Blather",
+                "Ciphers (Astropath Sign) +20",
+                "Common Lore (Imperial Guard) +10",
+                "Common Lore (Imperial Navy) +10",
+                "Common Lore (Imperium)",
+                "Deceive +10",
+                "Scholastic Lore (Heraldry)",
+                "Scrutiny +20",
+                "Secret Tongue (Administratum)"
+            ],
+            "Talents": [
+                { "Name": "Armour of Contempt", "Cost": 200 },
+                { "Name": "Orthoproxy", "Cost": 200 },
+                { "Name": "Paranoia", "Cost": 200 },
+                { "Name": "Hatred (Daemons)", "Cost": 200 },
+                { "Name": "Heightened Senses (Touch)", "Cost": 200 },
+                { "Name": "Light Sleeper", "Cost": 200 },
+                { "Name": "Meditation", "Cost": 200 },
+                { "Name": "Psy Rating 5", "Cost": 200 },
+                { "Name": "Psychic Technique (x2)", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Strong Minded", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 5,
+            "Skill Cost": 200,
+            "Skills": [
+                "Charm",
+                "Common Lore (Imperial Guard) +20",
+                "Common Lore (Imperial Navy) +20",
+                "Common Lore (Imperium) +10",
+                "Deceive +20",
+                "Forbidden Lore (Warp) +20",
+                "Logic",
+                "Scholastic Lore (Heraldry) +10"
+            ],
+            "Talents": [
+                { "Name": "Good Reputation (Astropaths)", "Cost": 200 },
+                { "Name": "Heightened Senses (Taste)", "Cost": 200 },
+                { "Name": "Peer (Imperial Guard)", "Cost": 200 },
+                { "Name": "Psy Rating 6", "Cost": 200 },
+                { "Name": "Rapid Reload", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Talented (Choose One)", "Cost": 200 },
+                { "Name": "Unshakeable Faith", "Cost": 200 },
+                { "Name": "Psychic Technique (x2)", "Cost": 300 },
+                { "Name": "Infused Knowledge", "Cost": 500 },
+                { "Name": "Warp Sense", "Cost": 500 },
+                { "Name": "Favoured by the Warp", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 6,
+            "Skill Cost": 200,
+            "Skills": [
+                "Charm +10",
+                "Command",
+                "Common Lore (Imperium) +20",
+                "Evaluate",
+                "Intimidate",
+                "Logic +10",
+                "Scholastic Lore (Heraldry) +20"
+            ],
+            "Talents": [
+                { "Name": "Ambidextrous", "Cost": 200 },
+                { "Name": "Heightened Senses (Smell)", "Cost": 200 },
+                { "Name": "Jaded", "Cost": 200 },
+                { "Name": "Peer (Imperial Navy)", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Sure Strike", "Cost": 200 },
+                { "Name": "Psychic Technique (x2)", "Cost": 300 },
+                { "Name": "Basic Weapon Training (Universal)", "Cost": 500 },
+                { "Name": "Bastion of Iron Will", "Cost": 500 },
+                { "Name": "Exotic Weapon Training (Choose One)", "Cost": 500 },
+                { "Name": "Improved Warp Sense", "Cost": 500 },
+                { "Name": "Psychic Discipline", "Cost": 500 },
+                { "Name": "Thrown Weapon Training (Universal)", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 7,
+            "Skill Cost": 200,
+            "Skills": [
+                "Blather +10",
+                "Charm +20",
+                "Chem-Use",
+                "Command +10",
+                "Evaluate +10",
+                "Intimidate +10",
+                "Logic +20",
+                "Scholastic Lore (Legend)"
+            ],
+            "Talents": [
+                { "Name": "Air of Authority", "Cost": 200 },
+                { "Name": "Quick Draw", "Cost": 200 },
+                { "Name": "Rapid Reaction", "Cost": 200 },
+                { "Name": "Sound Constitution (x2)", "Cost": 200 },
+                { "Name": "Talented (Choose One)", "Cost": 200 },
+                { "Name": "Psychic Technique (x2)", "Cost": 500 },
+                { "Name": "Infused Knowledge", "Cost": 500 },
+                { "Name": "Mighty Shot", "Cost": 500 },
+                { "Name": "Polyglot", "Cost": 500 },
+                { "Name": "Psy Rating 7", "Cost": 500 },
+                { "Name": "Deadeye Shot", "Cost": 500 },
+                { "Name": "Warp Conduit", "Cost": 500 }
+            ]
+        },
+        {
+            "Rank": 8,
+            "Skill Cost": 200,
+            "Skills": [
+                "Blather +20",
+                "Chem-Use +10",
+                "Command +20",
+                "Intimidate +20",
+                "Scholastic Lore (Legend) +10"
+            ],
+            "Talents": [
+                { "Name": "Good Reputation (Imperial Guard)", "Cost": 200 },
+                { "Name": "Good Reputation (Imperial Navy)", "Cost": 200 },
+                { "Name": "Crack Shot", "Cost": 500 },
+                { "Name": "Duty Unto Death", "Cost": 500 },
+                { "Name": "Fearless", "Cost": 500 },
+                { "Name": "Hard Target", "Cost": 500 },
+                { "Name": "Iron Discipline", "Cost": 500 },
+                { "Name": "Lightning Reflexes", "Cost": 500 },
+                { "Name": "Litany of Hate", "Cost": 500 },
+                { "Name": "Precise Blow", "Cost": 500 },
+                { "Name": "Psy Rating 8", "Cost": 500 },
+                { "Name": "Psychic Technique (x2)", "Cost": 500 },
+                { "Name": "Sprint", "Cost": 500 },
+                { "Name": "Swift Attack", "Cost": 500 },
+                { "Name": "Two-Weapon Wielder (Ballistic)", "Cost": 500 }
+            ]
+        }
+    ]
+}

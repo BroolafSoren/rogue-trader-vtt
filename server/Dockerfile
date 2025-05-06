@@ -18,6 +18,9 @@ FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
+# Copy the assets folder from the source context into the container's /app/assets directory
+COPY assets ./assets
+
 # Explicitly set environment variables
 ENV ASPNETCORE_URLS=http://0.0.0.0:80
 ENV ASPNETCORE_ENVIRONMENT=Development

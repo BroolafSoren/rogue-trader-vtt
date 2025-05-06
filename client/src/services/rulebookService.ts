@@ -1,30 +1,35 @@
 import axios from 'axios';
 
+// Keep DTO interfaces (they should mostly match the backend DTOs)
 interface RulebookPage {
   pageIndex: number;
   text: string;
 }
 
+// Updated to match backend RulebookInfo DTO
+interface RulebookInfo {
+  alias: string;       // e.g., "rogue-trader-core-rulebook"
+  displayName: string; // e.g., "Rogue Trader - Core-Rulebook"
+}
+
 interface RulebookMetadata {
-  filename: string;
+  alias: string;
+  displayName: string;
   pageCount: number;
   firstPageIndex: number;
   lastPageIndex: number;
 }
 
 interface RulebookPagesResponse {
-  filename: string;
+  alias: string;
+  displayName: string;
   totalPages: number;
   pages: RulebookPage[];
 }
 
-// API base URL - adjust if your API is hosted on a different port
-const API_URL = 'http://localhost:5000/api/rulebook'; // Adjust port as needed
+const API_URL = 'http://localhost:5000/api/rulebook';
 
 export const rulebookService = {
-  /**
-   * Test the API connection
-   */
   async testConnection(): Promise<any> {
     try {
       const response = await axios.get(`${API_URL}/debug`);
@@ -37,21 +42,20 @@ export const rulebookService = {
   },
 
   /**
-   * Get list of available rulebooks
+   * Get list of available rulebooks (returns RulebookInfo objects)
    */
-  async getRulebooks(): Promise<string[]> {
+  async getRulebooks(): Promise<RulebookInfo[]> { // Return type changed
     try {
-      // First test the connection
-      await this.testConnection();
-      
-      const response = await axios.get(API_URL);
-      console.log('Rulebook response:', response.data);
-      
-      // Handle the response properly
+      await this.testConnection(); // Optional: Keep test before first real call
+
+      const response = await axios.get<RulebookInfo[]>(API_URL); // Expect an array of RulebookInfo
+      console.log('Rulebook list response:', response.data);
+
       if (Array.isArray(response.data)) {
-        return response.data.map((item: {filename: string}) => item.filename);
+        // Data should already be in the correct format
+        return response.data;
       } else {
-        console.warn('Unexpected response format:', response.data);
+        console.warn('Unexpected rulebook list response format:', response.data);
         return [];
       }
     } catch (error) {
@@ -61,27 +65,46 @@ export const rulebookService = {
   },
 
   /**
-   * Get metadata about a specific rulebook
+   * Get metadata about a specific rulebook using its alias
    */
-  async getRulebookMetadata(filename: string): Promise<RulebookMetadata> {
-    const response = await axios.get(`${API_URL}/${filename}/metadata`);
-    console.log('Metadata response:', response.data);
-    return response.data;
+  async getRulebookMetadata(alias: string): Promise<RulebookMetadata | null> { // Parameter changed, added null possibility
+    try {
+        const response = await axios.get<RulebookMetadata>(`${API_URL}/${alias}/metadata`);
+        console.log('Metadata response:', response.data);
+        return response.data;
+    } catch (error: any) {
+        if (error.response && error.response.status === 404) {
+             console.warn(`Metadata not found for alias: ${alias}`);
+             return null; // Handle Not Found gracefully
+        }
+        console.error(`Error fetching metadata for alias ${alias}:`, error);
+        throw error; // Re-throw other errors
+    }
   },
 
   /**
-   * Get a specific range of pages from a rulebook
+   * Get a specific range of pages from a rulebook using its alias
    */
-  async getRulebookPages(filename: string, startIndex: number, pageCount: number = 5): Promise<RulebookPagesResponse> {
-    const response = await axios.get(`${API_URL}/${filename}/pages`, {
-      params: {
-        startIndex,
-        count: pageCount
-      }
-    });
-    console.log('Pages response:', response.data);
-    return response.data;
+  async getRulebookPages(alias: string, startIndex: number, pageCount: number = 5): Promise<RulebookPagesResponse | null> { // Parameter changed, added null possibility
+     try {
+        const response = await axios.get<RulebookPagesResponse>(`${API_URL}/${alias}/pages`, {
+          params: {
+            startIndex,
+            count: pageCount
+          }
+        });
+        console.log(`Pages response for alias ${alias}:`, response.data);
+        return response.data;
+     } catch (error: any) {
+         if (error.response && error.response.status === 404) {
+             console.warn(`Pages not found for alias: ${alias}`);
+             return null; // Handle Not Found gracefully
+         }
+         console.error(`Error fetching pages for alias ${alias}:`, error);
+         throw error; // Re-throw other errors
+     }
   }
 };
 
-export type { RulebookPage, RulebookMetadata, RulebookPagesResponse };
+// Export updated types
+export type { RulebookPage, RulebookInfo, RulebookMetadata, RulebookPagesResponse };
