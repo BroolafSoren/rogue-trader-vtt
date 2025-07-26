@@ -1,4 +1,4 @@
-namespace RogueTraderVTT.Models
+namespace VTT.Server.Models
 {
     public class Token
     {

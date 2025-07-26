@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace src.models
+namespace VTT.Server.Models
 {
     public class Characteristic
     {

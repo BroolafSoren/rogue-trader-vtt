@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using VTT.Server.Services;
-using src.models;
+using VTT.Server.Models;
 
-namespace src.Routes
+namespace VTT.Server.Routes
 {
     [ApiController]
     [Route("api/[controller]")]

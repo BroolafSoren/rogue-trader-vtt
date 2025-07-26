@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-namespace src.models
+namespace VTT.Server.Models
 {
     public interface ICharacterRepository
     {

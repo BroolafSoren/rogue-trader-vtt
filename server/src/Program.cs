@@ -1,11 +1,11 @@
-using RogueTraderVTT.Hubs;
+using VTT.Server.Hubs;
+using VTT.Server.Models;
+using VTT.Server.Services;
 using Microsoft.AspNetCore.SignalR;
-using src.models;
 using MongoDB.Driver;
 using Microsoft.AspNetCore.Cors;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
-using VTT.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

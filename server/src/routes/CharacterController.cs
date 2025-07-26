@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using src.models;
+using VTT.Server.Models;
 
 namespace VTT.Server.Routes
 {

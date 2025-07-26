@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using MongoDB.Driver;
 using MongoDB.Bson;
 
-namespace src.models
+namespace VTT.Server.Models
 {
     public class MongoCharacterRepository : ICharacterRepository
     {

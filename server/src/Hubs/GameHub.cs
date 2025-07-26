@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
-using RogueTraderVTT.Models;
+using VTT.Server.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 
-namespace RogueTraderVTT.Hubs
+namespace VTT.Server.Hubs
 {
     public class GameHub : Hub
     {
