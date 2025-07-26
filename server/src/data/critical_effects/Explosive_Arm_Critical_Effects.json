@@ -1,0 +1,210 @@
+[
+    {
+      "criticalDamageRoll": "1",
+      "effectDescription": "The attack throws the limb backwards, inflicting 1 level of Fatigue.",
+      "effects": [
+        { "id": "explosive_arm_1_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:ExplosiveArm:1"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "2",
+      "effectDescription": "The attack throws the limb backwards causing it to drop anything held in the hand and takes 2 levels of Fatigue.",
+      "effects": [
+        { "id": "explosive_arm_2_drop",
+          "modifierType": "ForceDropItem",
+          "target": { "scope": "Self", "type": "BodyPart", "identifier": "AffectedHand" },
+          "source": "Crit:ExplosiveArm:2"
+        },
+        { "id": "explosive_arm_2_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 2,
+          "source": "Crit:ExplosiveArm:2"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "3",
+      "effectDescription": "The explosion takes 1d5 fingers from the target’s hand. The target takes 3 levels of Fatigue and anything carried in the hand is destroyed as if this is an explosive, it goes off. Messy.",
+      "effects": [
+        { "id": "explosive_arm_3_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 3,
+          "source": "Crit:ExplosiveArm:3"
+        },
+        { "id": "explosive_arm_3_destroy_item",
+          "modifierType": "DestroyHeldItem",
+          "target": { "scope": "Self", "type": "BodyPart", "identifier": "AffectedHand" },
+          "specialProperties": ["TriggerExplosionIfItemExplosive"],
+          "source": "Crit:ExplosiveArm:3"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "4",
+      "effectDescription": "Fragments from the explosion tear into the target’s hand, ripping away flesh and muscle alike. He must immediately test Medicae or lose the arm. The target is Stunned for 1 Round, and takes 1d5 levels of Fatigue.",
+      "effects": [
+        { "id": "explosive_arm_4_stun",
+          "modifierType": "ApplyCondition",
+          "conditionId": "stunned",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:ExplosiveArm:4"
+        },
+        { "id": "explosive_arm_4_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "source": "Crit:ExplosiveArm:4"
+        }
+      ],
+      "resolutionTest": {
+          "id": "explosive_arm_4_save_arm_test",
+          "test": { "skill": "Medicae", "modifier": 0 },
+          "failureEffect": { "modifierType": "ApplyCondition", "conditionId": "amputated_limb", "details": "AffectedArm", "scope":"Immediate", "source": "Crit:ExplosiveArm:4" },
+          "description": "Medicae Test or lose the arm"
+      }
+    },
+    {
+      "criticalDamageRoll": "5",
+      "effectDescription": "The force of the explosion mangles the target’s hand, ripping away flesh and muscle. The arm is useless until medical attention is received. The target takes 1d5 levels of fatigue. Even on a success, the hand is useless with one joint mangled.",
+      "effects": [
+        { "id": "explosive_arm_5_useless_hand",
+          "modifierType": "ApplyCondition",
+          "conditionId": "useless_limb",
+          "details": "AffectedHand",
+          "permanentUntilRepaired": true,
+          "source": "Crit:ExplosiveArm:5"
+        },
+        { "id": "explosive_arm_5_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "source": "Crit:ExplosiveArm:5"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "6",
+      "effectDescription": "The explosion takes the target’s arm, bone and all. The arm is useless until regenerated. The target is Stunned for 1 Round, takes 1d10 levels of Fatigue and suffers from Blood Loss. In addition, the horrendous nature of the wound means that he now suffers from Blood Loss.",
+       "effects": [
+         { "id": "explosive_arm_6_useless_arm",
+          "modifierType": "ApplyCondition",
+          "conditionId": "useless_limb",
+          "details": "AffectedArm",
+          "permanentUntilRepaired": true,
+          "specialProperties": ["RequiresRegeneration"],
+          "source": "Crit:ExplosiveArm:6"
+         },
+         { "id": "explosive_arm_6_stun",
+          "modifierType": "ApplyCondition",
+          "conditionId": "stunned",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:ExplosiveArm:6"
+         },
+         { "id": "explosive_arm_6_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d10",
+          "source": "Crit:ExplosiveArm:6"
+         },
+         { "id": "explosive_arm_6_blood_loss",
+          "modifierType": "ApplyCondition",
+          "conditionId": "blood_loss",
+          "source": "Crit:ExplosiveArm:6"
+         }
+       ]
+    },
+    {
+      "criticalDamageRoll": "7",
+      "effectDescription": "Vile violation of flesh as the arm is blown apart. The target must immediately make a Challenging (+0) Toughness Test or lose his mind from the pain. The target is Stunned for 1d10 Rounds, and takes 1d5 levels of Fatigue. The arm is gone.",
+      "effects": [
+        { "id": "explosive_arm_7_amputated",
+          "modifierType": "ApplyCondition",
+          "conditionId": "amputated_limb",
+          "details": "AffectedArm",
+          "scope": "Immediate",
+          "source": "Crit:ExplosiveArm:7"
+        },
+        { "id": "explosive_arm_7_stun",
+          "modifierType": "ApplyCondition",
+          "conditionId": "stunned",
+          "duration": { "dice": "1d10", "unit": "Rounds" },
+          "source": "Crit:ExplosiveArm:7"
+        },
+        { "id": "explosive_arm_7_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "source": "Crit:ExplosiveArm:7"
+        }
+      ],
+       "resolutionTest": {
+          "id": "explosive_arm_7_insanity_test",
+          "test": { "skill": "Toughness", "modifier": 0 },
+          "failureEffect": { "modifierType":"GainPoints", "pointType":"Insanity", "valueDice":"Unknown", "details":"Lose his mind", "source": "Crit:ExplosiveArm:7"},
+          "description": "Toughness Test or lose mind (gain Insanity Points?)"
+      },
+      "specialProperties": ["InsanityEffectUnspecified"]
+    },
+    {
+      "criticalDamageRoll": "8",
+      "effectDescription": "The arm disintegrates under the force of the explosion taking a good portion of the shoulder and chest with it. The target must immediately make a Challenging (+0) Strength Test or die from shock. If he survives, the target is Prone, takes 1d10+5 Impact Damage to anyone within his hand reach (treat as a thrown sword or chainsword) then it explodes, dealing 1d10+5 Impact Damage to anyone within two metres.",
+      "effects": [
+         { "id": "explosive_arm_8_amputated",
+           "modifierType": "ApplyCondition",
+           "conditionId": "amputated_limb",
+           "details": "AffectedArm",
+           "scope": "Immediate",
+           "source": "Crit:ExplosiveArm:8"
+         },
+         { "id": "explosive_arm_8_prone",
+           "modifierType": "ApplyCondition",
+           "conditionId": "prone",
+           "scope": "Immediate",
+           "source": "Crit:ExplosiveArm:8"
+         }
+      ],
+      "resolutionTest": {
+          "id": "explosive_arm_8_death_test",
+          "test": { "skill": "Strength", "modifier": 0 },
+          "failureEffect": { "modifierType":"ApplyCondition", "conditionId":"dead", "source":"Crit:ExplosiveArm:8" },
+          "successEffects": [
+             { "id": "explosive_arm_8_close_explosion", "modifierType": "AreaDamage", "radiusMeters": 0, "targetScope":"Adjacent", "damage":"1d10+5", "damageType":"Impact", "source": "Crit:ExplosiveArm:8" },
+             { "id": "explosive_arm_8_far_explosion", "modifierType": "AreaDamage", "radiusMeters": 2, "targetScope":"AllWithinRadius", "damage":"1d10+5", "damageType":"Impact", "source": "Crit:ExplosiveArm:8" }
+          ],
+          "description": "Strength Test or die. If survive, arm explodes."
+      }
+    },
+    {
+      "criticalDamageRoll": "9",
+      "effectDescription": "With a mighty bang the arm is blasted from the target’s body, killing the target instantly in a rain of blood droplets. In addition, if the target was carrying any explosives or plasma based items in his hand (such as a power sword or chainsword) then it explodes, dealing 1d10+5 Impact Damage to anyone within two metres.",
+       "effects": [
+          { "id": "explosive_arm_9_amputated", "modifierType":"ApplyCondition", "conditionId":"amputated_limb", "details":"AffectedArm", "scope":"Immediate", "source":"Crit:ExplosiveArm:9" },
+          { "id": "explosive_arm_9_death", "modifierType":"ApplyCondition", "conditionId":"dead", "scope":"Immediate", "source":"Crit:ExplosiveArm:9" },
+          { "id": "explosive_arm_9_item_explosion",
+            "condition": { "type":"CheckHeldItem", "property":"IsExplosiveOrPlasma", "target":{"scope":"Self", "type":"BodyPart", "identifier":"AffectedHand"} },
+            "modifierType": "AreaDamage",
+            "radiusMeters": 2,
+            "targetScope":"AllWithinRadius",
+            "damage":"1d10+5",
+            "damageType":"Impact",
+            "source":"Crit:ExplosiveArm:9" }
+       ]
+    },
+    {
+      "criticalDamageRoll": "10+",
+      "effectDescription": "As above, except the target is carrying any ammunition it explodes dealing 1d10+5 Impact Damage to anyone within 1d10 metres (this is in addition to Damage caused by exploding power weapons noted above). If the target is carrying any grenades or missiles, these too detonate on his person.",
+      "effects": [
+         { "id": "explosive_arm_10_amputated", "modifierType":"ApplyCondition", "conditionId":"amputated_limb", "details":"AffectedArm", "scope":"Immediate", "source":"Crit:ExplosiveArm:10" },
+         { "id": "explosive_arm_10_death", "modifierType":"ApplyCondition", "conditionId":"dead", "scope":"Immediate", "source":"Crit:ExplosiveArm:10" },
+         { "id": "explosive_arm_10_item_explosion",
+            "condition": { "type":"CheckHeldItem", "property":"IsExplosiveOrPlasma", "target":{"scope":"Self", "type":"BodyPart", "identifier":"AffectedHand"} },
+            "modifierType": "AreaDamage", "radiusMeters": 2, "targetScope":"AllWithinRadius", "damage":"1d10+5", "damageType":"Impact", "source":"Crit:ExplosiveArm:10" },
+         { "id": "explosive_arm_10_ammo_explosion",
+            "condition": { "type":"CheckInventory", "property":"HasAmmunition" },
+            "modifierType": "AreaDamage", "radiusDice":"1d10", "radiusUnit":"Meters", "targetScope":"AllWithinRadius", "damage":"1d10+5", "damageType":"Impact", "source":"Crit:ExplosiveArm:10" },
+         { "id": "explosive_arm_10_grenade_detonation",
+            "condition": { "type":"CheckInventory", "property":"HasGrenadesOrMissiles" },
+            "modifierType": "TriggerItemDetonation", "itemType":["Grenade", "Missile"], "source":"Crit:ExplosiveArm:10" }
+      ]
+    }
+  ]

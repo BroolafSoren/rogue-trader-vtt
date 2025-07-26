@@ -1,0 +1,8 @@
+[
+    { "rollMin": 1, "rollMax": 10, "location": "Head" },
+    { "rollMin": 11, "rollMax": 20, "location": "Right Arm" },
+    { "rollMin": 21, "rollMax": 30, "location": "Left Arm" },
+    { "rollMin": 31, "rollMax": 70, "location": "Body" },
+    { "rollMin": 71, "rollMax": 85, "location": "Right Leg" },
+    { "rollMin": 86, "rollMax": 100, "location": "Left Leg" }
+  ]

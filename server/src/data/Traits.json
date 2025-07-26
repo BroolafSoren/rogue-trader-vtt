@@ -1,0 +1,147 @@
+[
+    {
+      "id": "resistance_fear_1",
+      "name": "Resistance (Fear)",
+      "traitType": "Resistance",
+      "targetValue": "Fear",
+      "level": 1,
+      "description": "Character is more resistant to Fear tests.",
+      "effects": [
+        { "id": "res_fear_1_mod",
+          "modifierType": "TestBonus",
+          "target": { "scope": "Self", "type": "Test", "identifier": "Fear" },
+          "value": 10,
+          "source": "Trait:resistance_fear_1" }
+      ]
+    },
+    {
+      "id": "resistance_pinning_1",
+      "name": "Resistance (Pinning)",
+      "traitType": "Resistance",
+      "targetValue": "Pinning",
+      "level": 1,
+      "description": "Character is more resistant to Pinning tests.",
+      "effects": [
+        { "id": "res_pinning_1_mod",
+          "modifierType": "TestBonus",
+          "target": { "scope": "Self", "type": "Test", "identifier": "Pinning" },
+          "value": 10,
+          "source": "Trait:resistance_pinning_1" }
+      ]
+    },
+    {
+      "id": "hatred_xenos",
+      "name": "Hatred (Xenos)",
+      "traitType": "Hatred",
+      "targetGroup": "Xenos",
+      "description": "Character gains +10 WS when attacking Xenos in melee, must charge if able, cannot use BS unless no melee option.",
+      "effects": [
+        { "id": "hatred_xenos_ws",
+          "condition": { "type": "Multi", "operator": "AND", "conditions": [
+            { "type": "HasTrait", "property": "Xenos", "target": "Defender" },
+            { "type": "Context", "property": "ActionType", "value": "MeleeAttack", "target": "Self" }
+          ]},
+          "modifierType": "TestBonus",
+          "target": { "scope": "Self", "type": "Test", "identifier": "WeaponSkill" },
+          "value": 10,
+          "source": "Trait:hatred_xenos" },
+        { "id": "hatred_xenos_charge",
+          "condition": { "type": "Multi", "operator": "AND", "conditions": [
+            { "type": "TargetInRange", "property": "Charge", "target": "PotentialTarget" },
+            { "type": "HasTrait", "property": "Xenos", "target": "PotentialTarget" },
+            { "type": "CanPerformAction", "property": "charge", "target": "Self"}
+          ]},
+          "modifierType": "ForceAction",
+          "actionId": "charge",
+          "target": { "scope": "Self"},
+          "source": "Trait:hatred_xenos" }
+      ],
+       "specialProperties": ["HatredBsRestriction"]
+    },
+    {
+        "id": "unnatural_strength_2",
+        "name": "Unnatural Strength (x2)",
+        "traitType": "UnnaturalCharacteristic",
+        "characteristic": "Strength",
+        "multiplier": 2,
+        "description": "Character adds double their Strength Bonus to melee damage.",
+        "effects": [
+           { "id": "unnatural_str_dmg",
+             "modifierType": "ModifyDamageCalculation",
+             "component": "StrengthBonusMultiplier",
+             "value": 2,
+             "scope": "MeleeDamage",
+             "source":"Trait:unnatural_strength_2" }
+        ]
+    },
+    {
+        "id": "unnatural_toughness_2",
+        "name": "Unnatural Toughness (x2)",
+        "traitType": "UnnaturalCharacteristic",
+        "characteristic": "Toughness",
+        "multiplier": 2,
+        "description": "Character counts as having double their Toughness Bonus for Soak.",
+        "effects": [
+           { "id": "unnatural_tb_soak",
+             "modifierType": "ModifyDamageCalculation",
+             "component": "ToughnessBonusMultiplier",
+             "value": 2,
+             "scope": "SoakCalculation",
+             "source":"Trait:unnatural_toughness_2" }
+        ]
+    },
+    {
+        "id": "flyer_12",
+        "name": "Flyer (12)",
+        "traitType": "Movement",
+        "movementType": "Fly",
+        "baseSpeedRating": 12,
+        "description": "Can fly with a movement rate based on the rating.",
+        "effects": [
+            { "id": "flyer_movement", "modifierType":"GrantMovementType", "movementType":"Fly", "speedRatingSource":"TraitProperty:baseSpeedRating", "source":"Trait:flyer_12" }
+        ]
+    },
+    {
+        "id": "hoverer_8",
+        "name": "Hoverer (8)",
+        "traitType": "Movement",
+        "movementType": "Hover",
+        "baseSpeedRating": 8,
+        "description": "Can hover above the ground. Must Move each turn to stay aloft.",
+        "effects": [
+             { "id": "hoverer_movement", "modifierType":"GrantMovementType", "movementType":"Hover", "speedRatingSource":"TraitProperty:baseSpeedRating", "source":"Trait:hoverer_8" }
+        ]
+    },
+    {
+        "id": "daemonic",
+        "name": "Daemonic",
+        "traitType": "CreatureType",
+        "description": "A creature of the Warp. May have specific resistances or vulnerabilities (requires checking Daemon entry). Often causes Fear.",
+        "effects": [
+        ],
+        "tags": ["WarpCreature"]
+    },
+    {
+        "id": "machine_trait",
+        "name": "Machine",
+        "traitType": "CreatureType",
+        "level": 3,
+        "description": "Construct. Immune to Fear, Pinning, psychic powers affecting minds, Fatigue, etc. Has Machine trait AP.",
+        "effects": [
+            { "id": "machine_immunity_fear", "modifierType":"GrantImmunity", "targetValue":"Fear", "source":"Trait:machine_trait" },
+            { "id": "machine_immunity_pinning", "modifierType":"GrantImmunity", "targetValue":"Pinning", "source":"Trait:machine_trait" },
+            { "id": "machine_immunity_fatigue", "modifierType":"GrantImmunity", "targetValue":"Fatigue", "source":"Trait:machine_trait" },
+            { "id": "machine_immunity_psychic_mind", "modifierType":"GrantImmunity", "targetValue":"PsychicPowers_MindAltering", "source":"Trait:machine_trait" },
+            { "id": "machine_ap", "modifierType":"GrantArmour", "location":"All", "valueSource":"TraitProperty:level", "source":"Trait:machine_trait" }
+        ],
+        "tags": ["Construct"]
+    },
+    {
+        "id": "xenos",
+        "name": "Xenos",
+        "traitType": "CreatureType",
+        "description": "An alien creature.",
+        "effects": [ ],
+        "tags": ["Alien"]
+    }
+  ]

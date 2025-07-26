@@ -1,0 +1,181 @@
+[
+    {
+      "criticalDamageRoll": "1",
+      "effectDescription": "A blow to the target’s body steals the breath from his lungs. The target can take only a Half Action on his next Turn.",
+      "effects": [
+        { "id": "impact_body_1_action_limit",
+          "modifierType": "SetMaxActionType",
+          "value": "Half Action",
+          "duration": { "value": 1, "unit": "Turns" },
+          "scope": "NextTurnOnly",
+          "source": "Crit:ImpactBody:1"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "2",
+      "effectDescription": "The impact punches the air from the target’s body, inflicting 1 level of Fatigue.",
+       "effects": [
+         { "id": "impact_body_2_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:ImpactBody:2"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "3",
+      "effectDescription": "The attack breaks a rib and inflicts 2 levels of Fatigue. The target is also Stunned for 1 Round.",
+       "effects": [
+         { "id": "impact_body_3_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 2,
+          "source": "Crit:ImpactBody:3"
+         },
+         { "id": "impact_body_3_stun",
+          "modifierType": "ApplyCondition",
+          "conditionId": "stunned",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:ImpactBody:3"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "4",
+      "effectDescription": "The blow batters the target, shattering ribs. The target takes 1d5 levels of Fatigue and is Stunned for 1 Round.",
+      "effects": [
+        { "id": "impact_body_4_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "source": "Crit:ImpactBody:4"
+         },
+         { "id": "impact_body_4_stun",
+          "modifierType": "ApplyCondition",
+          "conditionId": "stunned",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:ImpactBody:4"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "5",
+      "effectDescription": "The impact cracks the target’s spine, and his legs momentarily doubles over in pain, clutching himself and crying in agony. The target takes 1d5 levels of fatigue.",
+       "effects": [
+         { "id": "impact_body_5_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "source": "Crit:ImpactBody:5"
+         }
+       ]
+    },
+    {
+      "criticalDamageRoll": "6",
+      "effectDescription": "The force of the impact flings the target 1d5 metres away from the attacker and takes 1d5 levels of Fatigue. Further, if the target strikes a wall or other solid object, he stops). The target takes 1d5 levels of fatigue (prior text repeated?).",
+       "effects": [
+          { "id": "impact_body_6_knockback",
+            "modifierType": "ForcedMovement",
+            "distanceDice": "1d5",
+            "distanceUnit": "Meters",
+            "direction": "DirectlyAwayFromSource",
+            "target": { "scope": "Self" },
+            "stopsOnCollision": true,
+            "endCondition": "prone",
+            "source": "Crit:ImpactBody:6"
+          },
+          { "id": "impact_body_6_fatigue",
+            "modifierType": "ApplyFatigue",
+            "valueDice": "1d5",
+            "source": "Crit:ImpactBody:6"
+          }
+       ]
+    },
+    {
+      "criticalDamageRoll": "7",
+      "effectDescription": "With a audible crack, 1d5 of the target’s ribs break. The target can either lay down and stay still awaiting medical attention (a successful Medicae Test sets the ribs) or continue to take Actions, though each Round there is a 20% chance that a jagged rib pieces a vital organ and kills the character instantly. The target takes 1d5 levels of Fatigue.",
+      "effects": [
+          { "id": "impact_body_7_fatigue",
+            "modifierType": "ApplyFatigue",
+            "valueDice": "1d5",
+            "source": "Crit:ImpactBody:7"
+          },
+          { "id": "impact_body_7_ongoing_death_chance",
+            "modifierType": "ApplyRecurringEffect", 
+            "recurringEffectDetails": {
+                "trigger": "StartOfRound",
+                "effect": { "modifierType":"ChanceOfDeath", "chance":0.20, "details":"Jagged rib pieces vital organ" }
+            },
+            "removalCondition": { "type":"MedicaeTestSuccess", "target":"Self" }, 
+            "source": "Crit:ImpactBody:7"
+          }
+      ]
+    },
+    {
+      "criticalDamageRoll": "8",
+      "effectDescription": "The impact crushes several of the target’s organs and knocks him sprawling to the ground. The target is Stunned for 1d10 rounds and takes 1d5 levels of Fatigue.",
+       "effects": [
+          { "id": "impact_body_8_prone",
+            "modifierType": "ApplyCondition",
+            "conditionId": "prone",
+            "scope": "Immediate",
+            "source": "Crit:ImpactBody:8"
+          },
+          { "id": "impact_body_8_stun",
+           "modifierType": "ApplyCondition",
+           "conditionId": "stunned",
+           "duration": { "dice": "1d10", "unit": "Rounds" },
+           "source": "Crit:ImpactBody:8"
+          },
+          { "id": "impact_body_8_fatigue",
+           "modifierType": "ApplyFatigue",
+           "valueDice": "1d5",
+           "source": "Crit:ImpactBody:8"
+          }
+      ]
+    },
+    {
+      "criticalDamageRoll": "9",
+      "effectDescription": "The force of the blow knocks the target backwards 1d10 metres and sends him sprawling to the ground dead.",
+       "effects": [
+          { "id": "impact_body_9_knockback",
+            "modifierType": "ForcedMovement",
+            "distanceDice": "1d10",
+            "distanceUnit": "Meters",
+            "direction": "DirectlyAwayFromSource",
+            "target": { "scope": "Self" },
+            "endCondition": "prone",
+            "source": "Crit:ImpactBody:9"
+          },
+          { "id": "impact_body_9_death",
+            "modifierType": "ApplyCondition",
+            "conditionId": "dead",
+            "scope": "Immediate",
+            "source": "Crit:ImpactBody:9"
+          }
+      ]
+    },
+    {
+      "criticalDamageRoll": "10+",
+      "effectDescription": "As above, except the target is thrown 1d10 metres away from the attacker. Anyone in the target’s path must make a Challenging (+0) Agility Test or be knocked prone.",
+      "effects": [
+         { "id": "impact_body_10_death",
+           "modifierType": "ApplyCondition",
+           "conditionId": "dead",
+           "scope": "Immediate",
+           "source": "Crit:ImpactBody:10"
+         },
+         { "id": "impact_body_10_knockback_collision",
+           "modifierType": "ForcedMovement",
+           "distanceDice": "1d10",
+           "distanceUnit": "Meters",
+           "direction": "DirectlyAwayFromSource",
+           "target": { "scope": "Self" },
+           "endCondition": "prone",
+           "collisionEffectOnOthers": {
+               "savingTest": { "skill": "Agility", "modifier": 0 },
+               "failureEffect": { "modifierType":"ApplyTargetCondition", "conditionId":"prone" }
+           },
+           "source": "Crit:ImpactBody:10"
+         }
+      ]
+    }
+  ]

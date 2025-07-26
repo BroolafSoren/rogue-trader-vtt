@@ -1,0 +1,140 @@
+[
+    {
+      "criticalDamageRoll": "1",
+      "effectDescription": "A blow to the target’s body steals a breath from his lungs. The target can take only a Half Action on his next Turn.",
+      "effects": [
+        { "id": "energy_body_1_action_limit", "modifierType": "SetMaxActionType", "value": "Half Action", "duration": {"value": 1, "unit": "Turns"}, "scope":"NextTurnOnly", "source": "Crit:EnergyBody:1" }
+      ]
+    },
+    {
+      "criticalDamageRoll": "2",
+      "effectDescription": "The blast punches the air from the target’s body, inflicting 1 level of Fatigue upon him.",
+      "effects": [
+         { "id": "energy_body_2_fatigue", "modifierType": "ApplyFatigue", "value": 1, "source": "Crit:EnergyBody:2" }
+      ]
+    },
+    {
+      "criticalDamageRoll": "3",
+      "effectDescription": "The chest cooks the flesh on the chest and shoulder, inflicting 2 levels of Fatigue and leaving the target Stunned for 1 Round.",
+      "effects": [
+         { "id": "energy_body_3_fatigue", "modifierType": "ApplyFatigue", "value": 2, "source": "Crit:EnergyBody:3" },
+         { "id": "energy_body_3_stun", "modifierType": "ApplyCondition", "conditionId": "stunned", "duration": {"value": 1, "unit": "Rounds"}, "source": "Crit:EnergyBody:3" }
+      ]
+    },
+    {
+      "criticalDamageRoll": "4",
+      "effectDescription": "The energy ripples all over the character, scorching his body and inflicting 1d10 levels of Fatigue.",
+      "effects": [
+          { "id": "energy_body_4_fatigue", "modifierType":"ApplyFatigue", "valueDice": "1d10", "source":"Crit:EnergyBody:4"}
+      ]
+    },
+    {
+      "criticalDamageRoll": "5",
+      "effectDescription": "The fury of the attack forces the target to the ground, helplessly covering his face and keening in agony. The target is knocked to the ground and must make an Agility Test or catch fire (see Special Damage). The target takes 1d5 levels of Fatigue and must make a Toughness Test to regain his senses.",
+      "effects": [
+          { "id": "energy_body_5_prone", "modifierType":"ApplyCondition", "conditionId":"prone", "source":"Crit:EnergyBody:5"},
+          { "id": "energy_body_5_fatigue", "modifierType":"ApplyFatigue", "valueDice": "1d5", "source":"Crit:EnergyBody:5"}
+      ],
+      "resolutionTest": [
+          {
+             "id": "energy_body_5_catch_fire_test",
+             "test": { "skill": "Agility", "modifier": 0},
+             "failureEffect": { "modifierType": "ApplyCondition", "conditionId": "on_fire", "source": "Crit:EnergyBody:5" },
+             "description": "Agility Test or catch fire"
+          },
+          {
+             "id": "energy_body_5_regain_senses_test",
+             "test": { "skill": "Toughness", "modifier": 0}, 
+             "failureEffect": { "modifierType": "ApplyCondition", "conditionId": "stunned", "duration":{"value":1, "unit":"Rounds"}, "details":"Represents failing to regain senses", "source": "Crit:EnergyBody:5" },
+             "description": "Toughness Test to regain senses"
+          }
+      ]
+    },
+    {
+      "criticalDamageRoll": "6",
+      "effectDescription": "Struck by full power of the weapon, the target is sent reeling to the ground, smoke spiralling from the wound. The target is knocked to the ground, Stunned for 1d5 Rounds and takes 1d5 levels of Fatigue. Further, he must successfully Test Agility or catch fire (see Special Damage on page 210).",
+      "effects": [
+        { "id": "energy_body_6_prone", "modifierType":"ApplyCondition", "conditionId":"prone", "source":"Crit:EnergyBody:6"},
+        { "id": "energy_body_6_stun", "modifierType":"ApplyCondition", "conditionId":"stunned", "duration":{"dice":"1d5", "unit":"Rounds"}, "source":"Crit:EnergyBody:6"},
+        { "id": "energy_body_6_fatigue", "modifierType":"ApplyFatigue", "valueDice": "1d5", "source":"Crit:EnergyBody:6"}
+      ],
+      "resolutionTest": [
+           {
+             "id": "energy_body_6_catch_fire_test",
+             "test": { "skill": "Agility", "modifier": 0},
+             "failureEffect": { "modifierType": "ApplyCondition", "conditionId": "on_fire", "source": "Crit:EnergyBody:6" },
+             "description": "Agility Test or catch fire"
+          }
+      ]
+    },
+    {
+      "criticalDamageRoll": "7",
+      "effectDescription": "The intense power of the energy attack cooks the target’s organs, burning his lungs and heart with intense heat. The target is Stunned for 2d10 Rounds and halves his Strength, Toughness and Agility for the next 2d10 Rounds (round down).",
+      "effects": [
+         { "id": "energy_body_7_stun", "modifierType":"ApplyCondition", "conditionId":"stunned", "duration":{"dice":"2d10", "unit":"Rounds"}, "source":"Crit:EnergyBody:7" },
+         { "id": "energy_body_7_str_halved", "modifierType":"ModifyCharacteristic", "target":{"scope":"Self", "type":"Characteristic", "identifier":"Strength"}, "multiplier": 0.5, "rounding": "Down", "duration":{"dice":"2d10", "unit":"Rounds"}, "source":"Crit:EnergyBody:7"},
+         { "id": "energy_body_7_tb_halved", "modifierType":"ModifyCharacteristic", "target":{"scope":"Self", "type":"Characteristic", "identifier":"Toughness"}, "multiplier": 0.5, "rounding": "Down", "duration":{"dice":"2d10", "unit":"Rounds"}, "source":"Crit:EnergyBody:7"},
+         { "id": "energy_body_7_agi_halved", "modifierType":"ModifyCharacteristic", "target":{"scope":"Self", "type":"Characteristic", "identifier":"Agility"}, "multiplier": 0.5, "rounding": "Down", "duration":{"dice":"2d10", "unit":"Rounds"}, "source":"Crit:EnergyBody:7"}
+      ]
+    },
+    {
+      "criticalDamageRoll": "8",
+      "effectDescription": "The target screams in agony as the attack sears his flesh and popping his eyes like superheated eggs. He falls to the ground Stunned for 2d10 Rounds, and takes 1d10 levels of Fatigue. His Fellowship, Strength, Toughness and Agility characteristics are permanently halved (round down).",
+       "effects": [
+         { "id": "energy_body_8_prone", "modifierType":"ApplyCondition", "conditionId":"prone", "source":"Crit:EnergyBody:8"},
+         { "id": "energy_body_8_stun", "modifierType":"ApplyCondition", "conditionId":"stunned", "duration":{"dice":"2d10", "unit":"Rounds"}, "source":"Crit:EnergyBody:8"},
+         { "id": "energy_body_8_fatigue", "modifierType":"ApplyFatigue", "valueDice": "1d10", "source":"Crit:EnergyBody:8"},
+         { "id": "energy_body_8_fel_halved", "modifierType":"ModifyCharacteristic", "target":{"scope":"Self", "type":"Characteristic", "identifier":"Fellowship"}, "multiplier": 0.5, "rounding": "Down", "permanent": true, "source":"Crit:EnergyBody:8"},
+         { "id": "energy_body_8_str_halved", "modifierType":"ModifyCharacteristic", "target":{"scope":"Self", "type":"Characteristic", "identifier":"Strength"}, "multiplier": 0.5, "rounding": "Down", "permanent": true, "source":"Crit:EnergyBody:8"},
+         { "id": "energy_body_8_tb_halved", "modifierType":"ModifyCharacteristic", "target":{"scope":"Self", "type":"Characteristic", "identifier":"Toughness"}, "multiplier": 0.5, "rounding": "Down", "permanent": true, "source":"Crit:EnergyBody:8"},
+         { "id": "energy_body_8_agi_halved", "modifierType":"ModifyCharacteristic", "target":{"scope":"Self", "type":"Characteristic", "identifier":"Agility"}, "multiplier": 0.5, "rounding": "Down", "permanent": true, "source":"Crit:EnergyBody:8"}
+      ]
+    },
+    {
+      "criticalDamageRoll": "9",
+      "effectDescription": "As above, except that the target’s flesh is cooked on the bone. There is a 50% chance it explodes. If the target survives, he must make a successful Dodge Test or take 1d10+5 Explosive Damage. In addition, the target is Stunned for 1d5 Rounds.",
+      "effects": [
+         { "id": "energy_body_9_stun", "modifierType":"ApplyCondition", "conditionId":"stunned", "duration":{"dice":"1d5", "unit":"Rounds"}, "source":"Crit:EnergyBody:9"}
+      ],
+      "inheritsEffectsFromRoll": "8", 
+      "resolutionTest": [ 
+          {
+             "id": "energy_body_9_explode_chance",
+             "test": { "type": "Chance", "percentage": 50 },
+             "successEffect": { "modifierType":"Explosion", "details":"Self", "damage":"Unknown", "source":"Crit:EnergyBody:9" },
+             "failureEffect": { 
+                  "resolutionTest": {
+                       "id": "energy_body_9_dodge_test",
+                       "test": { "skill": "Dodge", "modifier": 0},
+                       "failureEffect": { "modifierType":"DealDamage", "damage":"1d10+5", "damageType":"Explosive", "source":"Crit:EnergyBody:9"},
+                       "description": "Dodge Test or take 1d10+5 Explosive Damage"
+                  }
+             },
+             "description": "50% chance to explode"
+          }
+      ]
+    },
+    {
+      "criticalDamageRoll": "10+",
+      "effectDescription": "As above, except the target’s body warps and melts like wax near a fire. If the creature is within 1d5 metres, take 1d10+5 Explosive Damage. Unless they can make a successful Dodge Test, the target is dead.",
+      "effects": [
+         { "id": "energy_body_10_death", "modifierType":"ApplyCondition", "conditionId":"dead", "source":"Crit:EnergyBody:10"}
+      ],
+      "inheritsEffectsFromRoll": "9",
+      "areaEffect": { 
+          "radiusDice": "1d5",
+          "radiusUnit": "Meters",
+          "damage": "1d10+5",
+          "damageType": "Explosive",
+          "targetScope": "AllCreaturesWithinRadius"
+      },
+      "resolutionTest": [
+          {
+             "id": "energy_body_10_dodge_vs_death",
+             "test": { "skill": "Dodge", "modifier": 0},
+             "successEffect": { "modifierType":"RemoveCondition", "conditionId":"dead", "source":"Crit:EnergyBody:10" },
+             "description": "Dodge Test or die"
+          }
+      ]
+    }
+  ]

@@ -1,0 +1,236 @@
+[
+    {
+      "criticalDamageRoll": "1",
+      "effectDescription": "A glancing blast sends the character backwards one metre.",
+      "effects": [
+        { "id": "explosive_leg_1_knockback",
+          "modifierType": "ForcedMovement",
+          "distanceMeters": 1,
+          "direction": "DirectlyAwayFromSource",
+          "target": { "scope": "Self" },
+          "endCondition": "prone",
+          "source": "Crit:ExplosiveLeg:1"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "2",
+      "effectDescription": "The concussion cracks the target’s leg, leaving him Stunned for 1 Round and halving all movement for 1d5 Rounds.",
+      "effects": [
+        { "id": "explosive_leg_2_stun",
+          "modifierType": "ApplyCondition",
+          "conditionId": "stunned",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:ExplosiveLeg:2"
+        },
+        { "id": "explosive_leg_2_move_halved",
+          "modifierType": "ModifyAttribute",
+          "target": { "scope": "Self", "type": "Attribute", "identifier": "MovementRateMultiplier" },
+          "value": 0.5,
+          "rounding": "Down",
+          "duration": { "dice": "1d5", "unit": "Rounds" },
+          "source": "Crit:ExplosiveLeg:2"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "3",
+      "effectDescription": "The powerful blast breaks the target’s leg leaving him Stunned for 1 Round and halving all movement for 1d5 Rounds.",
+      "effects": [
+        { "id": "explosive_leg_3_stun",
+          "modifierType": "ApplyCondition",
+          "conditionId": "stunned",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:ExplosiveLeg:3"
+        },
+        { "id": "explosive_leg_3_move_halved",
+          "modifierType": "ModifyAttribute",
+          "target": { "scope": "Self", "type": "Attribute", "identifier": "MovementRateMultiplier" },
+          "value": 0.5,
+          "rounding": "Down",
+          "duration": { "dice": "1d5", "unit": "Rounds" },
+          "source": "Crit:ExplosiveLeg:3"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "4",
+      "effectDescription": "The blast sends the target spinning through the air. The target travels 1d5 metres away from the explosion and takes 1 level of Fatigue per metre travelled. It takes the target 1 level of Fatigue.",
+      "effects": [
+         { "id": "explosive_leg_4_knockback",
+          "modifierType": "ForcedMovement",
+          "distanceDice": "1d5",
+          "distanceUnit": "Meters",
+          "direction": "DirectlyAwayFromSource",
+          "target": { "scope": "Self" },
+          "applyFatiguePerMeter": 1,
+          "endCondition": "prone",
+          "source": "Crit:ExplosiveLeg:4"
+         },
+         { "id": "explosive_leg_4_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:ExplosiveLeg:4"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "5",
+      "effectDescription": "Explosive force removes part of the target’s foot and scatters it over a wide area. The target must make an immediate Challenging (+0) Toughness Test or lose his movement plus inflicting 1d5 levels of fatigue. On a success, the target still takes 1d5 levels of additional fatigue.",
+      "effects": [
+          { "id": "explosive_leg_5_base_fatigue", "modifierType": "ApplyFatigue", "valueDice": "1d5", "source": "Crit:ExplosiveLeg:5"}
+      ],
+       "resolutionTest": {
+          "id": "explosive_leg_5_save_move_test",
+          "test": { "skill": "Toughness", "modifier": 0 },
+          "successEffects": [
+               { "modifierType":"ApplyFatigue", "valueDice":"1d5", "source":"Crit:ExplosiveLeg:5"}
+          ],
+          "failureEffect": {
+               "modifierType":"ModifyAttribute", "target":{"scope":"Self", "type":"Attribute", "identifier":"MovementRateMultiplier"}, "value":0, "permanent":true, "source":"Crit:ExplosiveLeg:5"
+          },
+          "description": "Toughness Test or lose movement permanently"
+      }
+    },
+    {
+      "criticalDamageRoll": "6",
+      "effectDescription": "The blast removes the target’s leg, shearing it off just below the knee. The target must immediately make a Challenging (+0) Toughness Test or die from shock. If he survives, the target is Prone, takes 1d10 levels of Fatigue and suffers from Blood Loss. He now has only one leg.",
+      "effects": [
+        { "id": "explosive_leg_6_amputated",
+          "modifierType": "ApplyCondition",
+          "conditionId": "amputated_limb",
+          "details": "AffectedLeg",
+          "scope": "Immediate",
+          "source": "Crit:ExplosiveLeg:6"
+        },
+        { "id": "explosive_leg_6_prone",
+          "modifierType": "ApplyCondition",
+          "conditionId": "prone",
+          "scope": "Immediate",
+          "source": "Crit:ExplosiveLeg:6"
+        },
+         { "id": "explosive_leg_6_fatigue",
+           "modifierType": "ApplyFatigue",
+           "valueDice": "1d10",
+           "source": "Crit:ExplosiveLeg:6"
+         },
+         { "id": "explosive_leg_6_blood_loss",
+           "modifierType": "ApplyCondition",
+           "conditionId": "blood_loss",
+           "source": "Crit:ExplosiveLeg:6"
+         }
+      ],
+      "resolutionTest": {
+          "id": "explosive_leg_6_death_test",
+          "test": { "skill": "Toughness", "modifier": 0 },
+          "failureEffect": { "modifierType":"ApplyCondition", "conditionId":"dead", "source":"Crit:ExplosiveLeg:6" },
+          "description": "Toughness Test or die from shock"
+      }
+    },
+    {
+      "criticalDamageRoll": "7",
+      "effectDescription": "The force of the explosion reduces the target’s leg to bloody rags and splinters of bone, showering meat and gristle over a wide area. The leg is broken and, until repaired, the target counts as having only one leg. The target is Stunned for 1d10 Rounds, takes 1d10 levels of Fatigue and suffers Blood Loss.",
+      "effects": [
+        { "id": "explosive_leg_7_broken",
+          "modifierType": "ApplyCondition",
+          "conditionId": "broken_limb",
+          "details": "AffectedLeg",
+          "permanentUntilRepaired": true,
+          "source": "Crit:ExplosiveLeg:7"
+        },
+         { "id": "explosive_leg_7_stun",
+           "modifierType": "ApplyCondition",
+           "conditionId": "stunned",
+           "duration": { "dice": "1d10", "unit": "Rounds" },
+           "source": "Crit:ExplosiveLeg:7"
+         },
+         { "id": "explosive_leg_7_fatigue",
+           "modifierType": "ApplyFatigue",
+           "valueDice": "1d10",
+           "source": "Crit:ExplosiveLeg:7"
+         },
+         { "id": "explosive_leg_7_blood_loss",
+           "modifierType": "ApplyCondition",
+           "conditionId": "blood_loss",
+           "source": "Crit:ExplosiveLeg:7"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "8",
+      "effectDescription": "The blood boils in the target’s leg in a geyser of gore, the target taking 1d5 levels of Fatigue and dying from shock. He now has only one leg.",
+      "effects": [
+        { "id": "explosive_leg_8_amputated",
+          "modifierType": "ApplyCondition",
+          "conditionId": "amputated_limb",
+          "details": "AffectedLeg",
+          "scope": "Immediate",
+          "source": "Crit:ExplosiveLeg:8"
+        },
+        { "id": "explosive_leg_8_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "scope": "Immediate",
+          "source": "Crit:ExplosiveLeg:8"
+        },
+        { "id": "explosive_leg_8_death",
+          "modifierType": "ApplyCondition",
+          "conditionId": "dead",
+          "scope": "Immediate",
+          "source": "Crit:ExplosiveLeg:8"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "9",
+      "effectDescription": "As above, except in addition to the leg exploding, the shock floods the vital fluids of his body, killing him instantly. The leg is utterly lost.",
+      "effects": [
+        { "id": "explosive_leg_9_amputated",
+          "modifierType": "ApplyCondition",
+          "conditionId": "amputated_limb",
+          "details": "AffectedLeg",
+          "scope": "Immediate",
+          "source": "Crit:ExplosiveLeg:9"
+        },
+        { "id": "explosive_leg_9_death",
+          "modifierType": "ApplyCondition",
+          "conditionId": "dead",
+          "scope": "Immediate",
+          "source": "Crit:ExplosiveLeg:9"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "10+",
+      "effectDescription": "As above, except the explosion rips through the target’s body, dealing an additional 1d10+2 Impact Damage to anyone within two metres of the target. If the target is carrying any grenades or missiles, these too detonate.",
+      "effects": [
+        { "id": "explosive_leg_10_amputated",
+          "modifierType": "ApplyCondition",
+          "conditionId": "amputated_limb",
+          "details": "AffectedLeg",
+          "scope": "Immediate",
+          "source": "Crit:ExplosiveLeg:10"
+        },
+        { "id": "explosive_leg_10_death",
+          "modifierType": "ApplyCondition",
+          "conditionId": "dead",
+          "scope": "Immediate",
+          "source": "Crit:ExplosiveLeg:10"
+        },
+        { "id": "explosive_leg_10_area_damage",
+          "modifierType": "AreaDamage",
+          "radiusMeters": 2,
+          "targetScope": "AllWithinRadiusExcludingSelf",
+          "damage": "1d10+2",
+          "damageType": "Impact",
+          "source": "Crit:ExplosiveLeg:10"
+        },
+        { "id": "explosive_leg_10_grenade_detonation",
+          "condition": { "type": "CheckInventory", "property": "HasGrenadesOrMissiles" },
+          "modifierType": "TriggerItemDetonation",
+          "itemType": ["Grenade", "Missile"],
+          "source": "Crit:ExplosiveLeg:10"
+        }
+      ]
+    }
+  ]

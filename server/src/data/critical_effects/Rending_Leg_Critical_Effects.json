@@ -1,0 +1,204 @@
+[
+    {
+      "criticalDamageRoll": "1",
+      "effectDescription": "The attack knocks the limb backwards, painfully jerking it away from the body. The target takes 1 level of Fatigue.",
+      "effects": [
+        { "id": "rending_leg_1_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:RendingLeg:1"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "2",
+      "effectDescription": "The target’s kneecap splits open. He must make a Challenging (+0) Agility Test or fall prone.",
+      "effects": [ ],
+      "resolutionTest": {
+          "id": "rending_leg_2_prone_test",
+          "test": { "skill": "Agility", "modifier": 0 },
+          "failureEffect": { "modifierType": "ApplyCondition", "conditionId": "prone", "source": "Crit:RendingLeg:2" },
+          "description": "Agility Test or fall Prone"
+      }
+    },
+    {
+      "criticalDamageRoll": "3",
+      "effectDescription": "The attack rips a length of flesh from the target’s leg, leaving him gasping in pain. The target takes 1 level of Fatigue and suffers Blood Loss.",
+      "effects": [
+        { "id": "rending_leg_3_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:RendingLeg:3"
+        },
+        { "id": "rending_leg_3_blood_loss",
+          "modifierType": "ApplyCondition",
+          "conditionId": "blood_loss",
+          "source": "Crit:RendingLeg:3"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "4",
+      "effectDescription": "The force rips away flesh and muscle leaving the target’s leg a bleeding mess. The target suffers Blood Loss until medical attention is received. In addition, he takes 2 levels of Fatigue.",
+      "effects": [
+         { "id": "rending_leg_4_blood_loss",
+           "modifierType": "ApplyCondition",
+           "conditionId": "blood_loss",
+           "permanentUntilHealed": true,
+           "source": "Crit:RendingLeg:4"
+         },
+         { "id": "rending_leg_4_fatigue",
+           "modifierType": "ApplyFatigue",
+           "value": 2,
+           "source": "Crit:RendingLeg:4"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "5",
+      "effectDescription": "In a spray of blood, the target’s leg is opened up, exposing bone, sinew and muscle. The target takes 1d5 levels of Fatigue and halves his movement for 1d10 Rounds.",
+      "effects": [
+        { "id": "rending_leg_5_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "source": "Crit:RendingLeg:5"
+        },
+        { "id": "rending_leg_5_move_halved",
+          "modifierType": "ModifyAttribute",
+          "target": { "scope": "Self", "type": "Attribute", "identifier": "MovementRateMultiplier" },
+          "value": 0.5,
+          "rounding": "Down",
+          "duration": { "dice": "1d10", "unit": "Rounds" },
+          "source": "Crit:RendingLeg:5"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "6",
+      "effectDescription": "The blow slices cleanly through the target’s leg, leaving it useless until medical attention is received. The target halves all movement for 1d5 hours.",
+      "effects": [
+         { "id": "rending_leg_6_useless",
+           "modifierType": "ApplyCondition",
+           "conditionId": "useless_limb",
+           "details": "AffectedLeg",
+           "permanentUntilRepaired": true,
+           "source": "Crit:RendingLeg:6"
+         },
+         { "id": "rending_leg_6_move_halved",
+           "modifierType": "ModifyAttribute",
+           "target": { "scope": "Self", "type": "Attribute", "identifier": "MovementRateMultiplier" },
+           "value": 0.5,
+           "rounding": "Down",
+           "duration": { "dice": "1d5", "unit": "Hours" },
+           "source": "Crit:RendingLeg:6"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "7",
+      "effectDescription": "The force of the blow cuts deep into the leg, grinding against bone and tearing ligaments apart. The leg is broken and, until repaired, the target counts as having only one leg. The level of maiming is such that the target is now suffering Blood Loss.",
+       "effects": [
+         { "id": "rending_leg_7_broken",
+           "modifierType": "ApplyCondition",
+           "conditionId": "broken_limb",
+           "details": "AffectedLeg",
+           "permanentUntilRepaired": true,
+           "source": "Crit:RendingLeg:7"
+         },
+         { "id": "rending_leg_7_blood_loss",
+           "modifierType": "ApplyCondition",
+           "conditionId": "blood_loss",
+           "source": "Crit:RendingLeg:7"
+         }
+       ],
+       "implicitConditions": ["lost_leg"]
+    },
+    {
+      "criticalDamageRoll": "8",
+      "effectDescription": "The leg is ripped off the target’s body, sending it flying. The target must make a Toughness Test or die from shock. If he succeeds, he takes 1d10 levels of Fatigue and suffers Blood Loss. He now only has one leg.",
+       "effects": [
+         { "id": "rending_leg_8_amputated",
+           "modifierType": "ApplyCondition",
+           "conditionId": "amputated_limb",
+           "details": "AffectedLeg",
+           "scope": "Immediate",
+           "source": "Crit:RendingLeg:8"
+         },
+         { "id": "rending_leg_8_blood_loss",
+           "modifierType": "ApplyCondition",
+           "conditionId": "blood_loss",
+           "source": "Crit:RendingLeg:8"
+         }
+       ],
+       "resolutionTest": {
+          "id": "rending_leg_8_death_test",
+          "test": { "skill": "Toughness", "modifier": 0 },
+          "failureEffect": { "modifierType":"ApplyCondition", "conditionId":"dead", "source":"Crit:RendingLeg:8" },
+          "successEffects": [
+              { "modifierType":"ApplyFatigue", "valueDice":"1d10", "source":"Crit:RendingLeg:8" }
+          ],
+          "description": "Toughness Test or die. Success -> 1d10 Fatigue & Blood Loss applies."
+       }
+    },
+    {
+      "criticalDamageRoll": "9",
+      "effectDescription": "As above, except the wound is so messy it causes Blood Loss.",
+      "effects": [
+         { "id": "rending_leg_9_amputated",
+           "modifierType": "ApplyCondition",
+           "conditionId": "amputated_limb",
+           "details": "AffectedLeg",
+           "scope": "Immediate",
+           "source": "Crit:RendingLeg:9"
+         },
+         { "id": "rending_leg_9_blood_loss",
+           "modifierType": "ApplyCondition",
+           "conditionId": "blood_loss",
+           "source": "Crit:RendingLeg:9"
+         }
+      ],
+      "resolutionTest": {
+          "id": "rending_leg_9_death_test",
+          "test": { "skill": "Toughness", "modifier": 0 },
+          "failureEffect": { "modifierType":"ApplyCondition", "conditionId":"dead", "source":"Crit:RendingLeg:9" },
+          "successEffects": [
+              { "modifierType":"ApplyFatigue", "valueDice":"1d10", "source":"Crit:RendingLeg:9" }
+          ],
+          "description": "Toughness Test or die. Success -> 1d10 Fatigue & Blood Loss applies."
+       }
+    },
+    {
+      "criticalDamageRoll": "10+",
+      "effectDescription": "As above, except that the tide of blood is so intense that, for the remainder of the battle, anyone making a Run or Charge Action within six metres of the target this Turn must make a Challenging (+0) Agility Test or fall prone.",
+      "effects": [
+         { "id": "rending_leg_10_amputated",
+           "modifierType": "ApplyCondition",
+           "conditionId": "amputated_limb",
+           "details": "AffectedLeg",
+           "scope": "Immediate",
+           "source": "Crit:RendingLeg:10"
+         },
+         { "id": "rending_leg_10_blood_loss",
+           "modifierType": "ApplyCondition",
+           "conditionId": "blood_loss",
+           "source": "Crit:RendingLeg:10"
+         },
+         { "id": "rending_leg_10_area_hazard",
+           "modifierType": "CreateAreaHazard",
+           "areaDetails": { "type": "BloodPool", "radiusMeters": 6, "duration": "EndOfEncounter" },
+           "hazardEffects": [ { "trigger": "ActionInArea", "actionIds":["run", "charge"], "effect": { "modifierType":"ForceTest", "test":{"skill":"Agility", "modifier":0}, "failureEffect":{"modifierType":"ApplyTargetCondition", "conditionId":"prone"} } } ],
+           "condition": { "type": "CheckCondition", "conditionId": "!dead", "target":"SourceOfCrit" },
+           "source": "Crit:RendingLeg:10"
+         }
+      ],
+       "resolutionTest": {
+          "id": "rending_leg_10_death_test",
+          "test": { "skill": "Toughness", "modifier": 0 },
+          "failureEffect": { "modifierType":"ApplyCondition", "conditionId":"dead", "source":"Crit:RendingLeg:10" },
+          "successEffects": [
+              { "modifierType":"ApplyFatigue", "valueDice":"1d10", "source":"Crit:RendingLeg:10" }
+          ],
+          "description": "Toughness Test or die. Success -> 1d10 Fatigue & Blood Loss & Area Hazard applies."
+       }
+    }
+  ]

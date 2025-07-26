@@ -1,0 +1,279 @@
+{
+    "version": "3.0.0",
+    "gameSystem": "Rogue Trader",
+    "rulebookSource": "Core Rulebook",
+    "schemaNotes": "V3.1: Added Scatter, Standard Tests, structured Movement, Area Effects. Crit descriptions are text.",
+    "settings": {
+      "structuredTime": {
+        "roundDurationSeconds": 5
+      },
+      "maxBonus": 60,
+      "maxPenalty": -60,
+      "unarmed": {
+        "baseDamage": "1d5-3",
+        "damageType": "Impact",
+        "fatigueOnDamageThreshold": true,
+        "testVsArmedMeleeModifier": -20
+      }
+    },
+    "combatPhases": [
+      { "id": "surprise_step", "name": "Surprise", "order": 1, "description": "Determine if any combatants are Surprised." },
+      { "id": "initiative_roll_step", "name": "Roll Initiative", "order": 2, "description": "Roll 1d10 + Agility Bonus." },
+      { "id": "initiative_order_step", "name": "Determine Initiative Order", "order": 3, "description": "Rank combatants from highest to lowest." },
+      { "id": "combatants_take_turns_step", "name": "Combatants Take Turns", "order": 4, "description": "Each combatant takes their turn." },
+      { "id": "round_ends_step", "name": "Round Ends", "order": 5, "description": "Lingering effects expire." }
+    ],
+    "initiative": {
+      "dice": "1d10",
+      "attributeBonus": "AgilityBonus",
+      "tieBreakerAttribute": "Agility",
+      "finalTieBreaker": "RollOff_1d10"
+    },
+    "surprise": {
+      "effects": [
+        {
+          "id": "surprise_lose_turn",
+          "condition": { "type": "HasCondition", "property": "surprised", "target": "Self" },
+          "modifierType": "LoseTurn",
+          "scope": "FirstRound",
+          "source": "Rule:Surprise"
+        },
+        {
+          "id": "surprise_attack_bonus",
+          "condition": { "type": "Multi", "operator": "AND", "conditions": [
+            { "type": "HasCondition", "property": "surprised", "value": false, "target": "Attacker" },
+            { "type": "HasCondition", "property": "surprised", "value": true, "target": "Defender" }
+          ]},
+          "modifierType": "TestBonus",
+          "target": { "scope": "Attacker", "type": "Test", "identifier": ["WeaponSkill", "BallisticSkill"] },
+          "value": 30,
+          "scope": "NextAttackThisTurn",
+          "source": "Rule:Surprise"
+        }
+      ]
+    },
+    "actionTypes": [
+      { "id": "full_action", "name": "Full Action" },
+      { "id": "half_action", "name": "Half Action" },
+      { "id": "reaction", "name": "Reaction" },
+      { "id": "free_action", "name": "Free Action" },
+      { "id": "extended_action", "name": "Extended Action" }
+    ],
+    "actionEconomy": {
+      "defaultPerTurn": [ "OneFullAction", "TwoHalfActions" ],
+      "maxReactionsPerRound": 1
+    },
+    "references": {
+      "actionsFile": "Actions.json",
+      "conditionsFile": "Conditions.json",
+      "traitsFile": "Traits.json",
+      "tablesPath": "tables/",
+      "criticalEffectsPath": "critical_effects/",
+      "difficultyTableId": "table_9_8_combat_difficulty",
+      "hitLocationTableId": "table_9_6_hit_locations",
+      "coverTableId": "table_9_7_cover_types",
+      "sizeModifierTableId": "table_9_9_target_size_modifiers",
+      "zeroCharacteristicEffectsTableId": "table_9_10_zero_char_effects",
+      "structuredMovementTableId": "table_9_30_structured_movement",
+      "narrativeMovementTableId": "table_9_31_narrative_movement",
+      "treacherousEnvModifiersTableId": "table_9_32_treacherous_env_agi_mods",
+      "carryingCapacityTableId": "table_9_33_carrying_weights"
+    },
+    "combatModifiers": [
+      {
+        "id": "darkness_combat",
+        "condition": { "type": "Context", "property": "Lighting", "operator": "eq", "value": "Darkness", "target": "Environment" },
+        "effects": [
+          { "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": "WeaponSkill" }, "value": 20, "source":"Modifier:Darkness" },
+          { "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": "BallisticSkill" }, "value": 30, "source":"Modifier:Darkness" },
+          { "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": "Perception" }, "value": 20, "subIdentifier":"Visual", "source":"Modifier:Darkness" }
+        ]
+      },
+      {
+        "id": "fog_mist_shadow",
+        "condition": { "type": "Context", "property": "Visibility", "operator": "eq", "value": "Obscured", "target": "Environment" },
+        "effects": [
+           { "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": "BallisticSkill" }, "value": 20, "source":"Modifier:FogMistShadow" },
+           { "modifierType": "TestBonus", "target": { "scope": "Self", "type": "Test", "identifier": "Concealment" }, "value": 10, "source":"Modifier:FogMistShadow" }
+        ]
+      },
+      {
+         "id": "cover_ap_benefit",
+         "condition": { "type": "Context", "property": "HitLocationCovered", "operator":"eq", "value": true, "target": "Defender" },
+         "effects": [ { "modifierType": "ApplyCoverAP", "source": "Modifier:Cover" } ]
+      },
+      {
+         "id": "ganging_up_minor",
+         "condition": { "type": "Context", "property": "NumberAdvantageRatio", "operator": "gte", "value": 2, "target": "Self", "context": "MeleeCombat" },
+         "effects": [ { "modifierType": "TestBonus", "target": { "scope": "Self", "type": "Test", "identifier": "WeaponSkill" }, "value": 10, "source":"Modifier:GangingUp" }]
+      },
+      {
+         "id": "ganging_up_major",
+         "condition": { "type": "Context", "property": "NumberAdvantageRatio", "operator": "gte", "value": 3, "target": "Self", "context": "MeleeCombat" },
+         "effects": [ { "modifierType": "TestBonus", "target": { "scope": "Self", "type": "Test", "identifier": "WeaponSkill" }, "value": 20, "source":"Modifier:GangingUp" }]
+      },
+      {
+         "id": "prone_target_melee",
+         "condition": { "type": "HasCondition", "property": "prone", "target": "Defender" },
+         "effects": [ { "modifierType": "TestBonus", "target": { "scope": "Attacker", "type": "Test", "identifier": "WeaponSkill" }, "value": 10, "source":"Modifier:TargetProne" }]
+      },
+      {
+         "id": "prone_target_ranged",
+         "condition": { "type": "Multi", "operator": "AND", "conditions": [
+             { "type": "HasCondition", "property": "prone", "target": "Defender" },
+             { "type": "Context", "property": "Range", "operator": "ne", "value": "PointBlank", "target":"Environment" }
+         ]},
+         "effects": [ { "modifierType": "TestPenalty", "target": { "scope": "Attacker", "type": "Test", "identifier": "BallisticSkill" }, "value": 10, "source":"Modifier:TargetProne" }]
+      },
+      {
+         "id": "helpless_target",
+         "condition": { "type": "HasCondition", "property": ["unconscious", "sleeping"], "target": "Defender" },
+         "effects": [
+             { "modifierType": "AutoSuccessTest", "target": { "scope": "Attacker", "type": "Test", "identifier": "WeaponSkill"}, "source":"Modifier:HelplessTarget" },
+             { "modifierType": "ModifyDamageCalculation", "component": "RollMultiplier", "value": 2, "scope":"AllDamageRolls", "source":"Modifier:HelplessTarget" },
+             { "modifierType": "ModifyRighteousFury", "component": "AutoConfirmOnDouble10", "value": true, "source":"Modifier:HelplessTarget" }
+         ]
+      },
+      { "id": "higher_ground", "condition": { "type": "Context", "property": "RelativeElevation", "operator": "gt", "value": 0, "target": "Self" }, "effects": [{ "modifierType": "TestBonus", "target": { "scope": "Self", "type": "Test", "identifier": "WeaponSkill" }, "value": 10, "source":"Modifier:HigherGround" }] },
+      { "id": "range_short", "condition": { "type": "Context", "property": "Range", "operator": "eq", "value": "Short", "target": "Environment" }, "effects": [{ "modifierType": "TestBonus", "target": { "scope": "Self", "type": "Test", "identifier": "BallisticSkill" }, "value": 10, "source":"Modifier:Range" }] },
+      { "id": "range_point_blank", "condition": { "type": "Context", "property": "Range", "operator": "eq", "value": "PointBlank", "target": "Environment" }, "effects": [{ "modifierType": "TestBonus", "target": { "scope": "Self", "type": "Test", "identifier": "BallisticSkill" }, "value": 30, "source":"Modifier:Range" }] },
+      { "id": "range_long", "condition": { "type": "Context", "property": "Range", "operator": "eq", "value": "Long", "target": "Environment" }, "effects": [{ "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": "BallisticSkill" }, "value": 10, "source":"Modifier:Range" }] },
+      { "id": "range_extreme", "condition": { "type": "Context", "property": "Range", "operator": "eq", "value": "Extreme", "target": "Environment" }, "effects": [{ "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": "BallisticSkill" }, "value": 30, "source":"Modifier:Range" }] },
+      { "id": "shooting_into_melee", "condition": { "type": "Context", "property": "TargetEngagedInMelee", "value": true, "target": "Defender", "excludedTargetConditions": ["stunned", "unaware", "prone"] }, "effects": [{ "modifierType": "TestPenalty", "target": { "scope": "Attacker", "type": "Test", "identifier": "BallisticSkill" }, "value": 20, "source":"Modifier:ShootingIntoMelee" }] },
+      { "id": "stunned_target", "condition": { "type": "HasCondition", "property": "stunned", "target": "Defender" }, "effects": [{ "modifierType": "TestBonus", "target": { "scope": "Attacker", "type": "Test", "identifier": ["WeaponSkill", "BallisticSkill"]}, "value": 20, "source":"Modifier:TargetStunned" }] },
+      { "id": "unaware_target", "condition": { "type": "HasCondition", "property": "unaware", "target": "Defender" }, "effects": [{ "modifierType": "TestBonus", "target": { "scope": "Attacker", "type": "Test", "identifier": ["WeaponSkill", "BallisticSkill"]}, "value": 30, "source":"Modifier:TargetUnaware" }] },
+      { "id": "difficult_terrain_combat", "condition": { "type": "Context", "property": "TerrainType", "value": "Difficult", "target": "Environment" }, "effects": [ { "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": ["WeaponSkill", "Dodge"] }, "value": 10, "source":"Modifier:Terrain" } ]},
+      { "id": "arduous_terrain_combat", "condition": { "type": "Context", "property": "TerrainType", "value": "Arduous", "target": "Environment" }, "effects": [ { "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": ["WeaponSkill", "Dodge"] }, "value": 30, "source":"Modifier:Terrain" } ]},
+      { "id": "weather_unnatural_conditions", "condition": { "type": "Context", "property": "Weather", "value": ["HarshRain", "AshStorm", "HeavySnow"], "target": "Environment" }, "effects": [ { "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": ["WeaponSkill", "BallisticSkill"] }, "value": 20, "source":"Modifier:Weather" } ]}
+    ],
+    "derivedStats": {
+       "MaxWounds": {
+          "baseSources": ["Homeworld", "Career"],
+          "components": [
+             { "type": "BaseValue", "source": "CombinedSources" },
+             { "type": "StatBonus", "identifier": "ToughnessBonus" }
+          ]
+       },
+       "InitiativeBase": { "baseComponents": ["AgilityBonus"], "roll": "1d10" },
+       "MovementRates": { "usesTable": "table_9_30_structured_movement", "dependsOn": "AgilityBonus" }
+    },
+    "damageAndHealing": {
+      "damageTypes": ["Energy", "Explosive", "Impact", "Rending"],
+      "defaultDamageType": "Impact",
+      "criticalEffectTablesBasePath": "critical_effects/",
+      "fatigue": {
+        "penaltyIfPresent": -10,
+        "maxLevelsBeforeUnconscious": { "type": "StatBonus", "identifier": "ToughnessBonus" },
+        "unconsciousDuration": {
+           "baseMinutes": 10,
+           "subtractStat": "ToughnessBonus",
+           "minimumMinutes": 1
+         },
+        "recoveryOnWake": { "type": "SetToStatBonus", "identifier": "ToughnessBonus" },
+        "naturalRecoveryRate": "1_level_per_hour_rest"
+      },
+      "healingStates": {
+        "lightlyDamaged": {
+          "threshold": "<=2xToughnessBonus",
+          "naturalRecoveryPerDay": 1,
+          "bedRestRecoveryPerDay": "ToughnessBonus"
+        },
+        "heavilyDamaged": {
+          "threshold": ">2xToughnessBonus",
+          "recoveryPerWeekWithRest": "ToughnessBonus",
+          "recoveryPerWeekWithoutRest": 1,
+          "becomesLightlyDamagedThreshold": "<=ToughnessBonus"
+        },
+        "criticallyDamaged": {
+          "healingRequiresMedicalAttention": true,
+          "medicalRecoveryRate": "1_crit_point_per_week"
+        }
+      },
+      "bloodLoss": {
+          "deathChancePerRound": 0.10,
+          "staunchTest": { "skill": "Medicae", "modifier": -10 },
+          "staunchTestStrenuous": { "skill": "Medicae", "modifier": -30 },
+          "canBeAttemptedByOther": true
+      },
+      "amputation": {
+          "healingDelay": "1d10+2",
+          "untreatedStumpHealChance": 0.20,
+          "untreatedStumpDeathDays": "1d10"
+      }
+    },
+    "righteousFury": {
+        "trigger": "Natural 10 on Damage Die",
+        "confirmation": {
+            "type": "AttackRoll",
+            "details": "Repeat original attack roll with all modifiers"
+        },
+        "effectOnConfirm": {
+            "type": "AdditionalDamage",
+            "details": "Roll additional damage, add to total, can chain"
+        },
+        "unarmedInteraction": "Applies on 1d5 roll of 10 (treat 10 as specific result)"
+    },
+    "scatterMechanics": {
+        "trigger": "Missed Thrown Weapon Attack",
+        "distance": { "dice": "1d5", "unit": "Meters" },
+        "direction": {
+            "dice": "1d10",
+            "mapping": [
+                { "roll": [1], "direction": "NW" },
+                { "roll": [2], "direction": "N" },
+                { "roll": [3], "direction": "NE" },
+                { "roll": [4], "direction": "W" },
+                { "roll": [5], "direction": "E" },
+                { "roll": [6, 7], "direction": "SW" },
+                { "roll": [8], "direction": "S" },
+                { "roll": [9, 10], "direction": "SE" }
+            ]
+        },
+        "zeroGModification": "Roll direction twice (X and Y axes)"
+    },
+    "standardTests": [
+        { "id": "Pinning", "name": "Pinning Test", "characteristic": "Willpower", "baseModifier": -20 },
+        { "id": "Fear", "name": "Fear Test", "characteristic": "Willpower", "baseModifier": 0, "modifierSource": "FearRating" }
+    ],
+    "movement": {
+        "structuredTimeTableId": "table_9_30_structured_movement",
+        "narrativeTimeTableId": "table_9_31_narrative_movement",
+        "treacherousEnvironmentModifiersTableId": "table_9_32_treacherous_env_agi_mods",
+        "carryingCapacityTableId": "table_9_33_carrying_weights",
+        "jumping": {
+            "standingVertical": { "baseHeightMeters": 0.5, "reachFactor": 1.0, "armReachMeters": 1.0, "pullUpTest": { "skill": "Strength", "modifier": 0 } },
+            "safeFallDistance": { "dependsOn": "AgilityBonus", "unit": "Meters", "requiredTest": { "skill": "Agility", "modifier": 0 }, "failureEffect": ["FallDamageFullDistance", "ApplyProne"] },
+            "runningVertical": { "baseHeightFormula": "StandingVertical + 0.5 * StrengthBonusRoundedUp", "runUpRequiredMeters": 4, "requiredTest": { "skill": "Agility", "modifier": 0 }, "bonusPerExtraRunDistance": { "distanceMeters": 4, "bonus": 10, "maxBonus": 30 }, "bonusHeightPerDoS": 0.5 },
+            "standingHorizontal": { "baseDistanceFormula": "StrengthBonus", "unit": "Meters", "requiredTest": { "skill": "Agility", "modifier": -10 }, "bonusDistancePerDoS": 0.5, "failureDistanceFormula": "0.5 * StrengthBonusRoundedUp - 0.5 * DegreesOfFailure", "minDistance": 0.5, "heightFactor": 0.25 },
+            "runningHorizontal": { "baseDistanceFormula": "StrengthBonus", "unit": "Meters", "runUpRequiredMeters": 4, "requiredTest": { "skill": "Agility", "modifier": 0 }, "bonusPerExtraRunDistance": { "distanceMeters": 4, "bonus": 10, "maxBonus": 30 }, "bonusDistancePerDoS": 0.5, "failureDistanceFormula": "0.5 * StrengthBonusRoundedUp - 0.5 * DegreesOfFailure", "minDistance": 0.5, "heightFactor": 0.25 }
+        },
+        "swimming": {
+            "hazardousTest": { "skill": "Swim", "modifier": 0 },
+            "baseSpeedFormula": "0.5 * StrengthBonus", "unit": "MetersPerFullAction",
+            "heavyArmourPenalty": -30,
+            "fatigueOnFail": true,
+            "narrativeTime": { "baseStat": "StrengthBonus", "fatigueTestHours": "ToughnessBonus", "fatigueTestPenaltyPerHour": -10 }
+        },
+        "climbing": {
+            "simple": { "testRequiredIfQuick": true, "test": { "skill": ["Strength", "Climb"], "modifier": 0 }, "speedFormula": "0.5 * HalfMove + 1 * DegreesOfSuccess" },
+            "sheer": { "testRequired": true, "test": { "skill": "Climb", "modifier": 0 }, "speedFormula": "0.5 * HalfMove + 1 * DegreesOfSuccess" }
+        },
+        "flying": {
+            "altitudes": ["Hovering", "Low", "High"],
+            "altitudeChangePerMove": 1,
+            "altitudeChangePerChargeRun": 2,
+            "lowAltitudeBSPentalty": -10, 
+            "fallingDamage": { "Hovering": 0, "Low": "15mEquivalent", "High": "25mPlusEquivalent" }
+        },
+        "gravityEffects": {
+            "low": { "agbModifier": 2, "carryLiftPushModifier": 4, "throwDistanceModifier": 2, "jumpLeapMultiplier": 2.0 },
+            "high": { "agbModifier": -2, "agbMin": 1, "carryLiftPushModifier": -4, "carryLiftPushMin": 0, "throwDistanceModifier": -2, "throwDistanceMin": 0, "jumpLeapMultiplier": 0.5 },
+            "zero": { "terrainType": "Difficult", "chargeRunTest": { "skill": "Agility", "modifier": -20 }, "requiresPushOff": true }
+        }
+    },
+    "areaEffects": {
+        "templateTypes": ["Radius", "Cone", "Line"],
+        "defaultDamageType": "Explosive",
+        "scatterMechanicId": "scatterMechanics"
+    }
+  }

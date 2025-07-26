@@ -1,0 +1,116 @@
+[
+    {
+      "characteristic": "Weapon Skill",
+      "effectDescription": "The character may not make tests based on this Characteristic.",
+      "effects": [
+        {
+          "id": "zero_ws_prevent_tests",
+          "modifierType": "PreventTestBasedOnCharacteristic",
+          "target": { "scope": "Self", "type": "Characteristic", "identifier": "WeaponSkill" },
+          "source": "Rule:ZeroCharacteristic"
+        }
+      ]
+    },
+    {
+      "characteristic": "Ballistic Skill",
+      "effectDescription": "The character may not make tests based on this Characteristic.",
+      "effects": [
+         {
+          "id": "zero_bs_prevent_tests",
+          "modifierType": "PreventTestBasedOnCharacteristic",
+          "target": { "scope": "Self", "type": "Characteristic", "identifier": "BallisticSkill" },
+          "source": "Rule:ZeroCharacteristic"
+        }
+      ]
+    },
+    {
+      "characteristic": "Strength",
+      "effectDescription": "The character collapses into unconsciousness.",
+      "effects": [
+         {
+          "id": "zero_str_unconscious",
+          "modifierType": "ApplyCondition",
+          "conditionId": "unconscious",
+          "source": "Rule:ZeroCharacteristic"
+        }
+      ]
+    },
+    {
+      "characteristic": "Toughness",
+      "effectDescription": "The character dies.",
+      "effects": [
+         {
+          "id": "zero_tb_death",
+          "modifierType": "ApplyCondition",
+          "conditionId": "dead",
+          "source": "Rule:ZeroCharacteristic"
+        }
+      ]
+    },
+    {
+      "characteristic": "Agility",
+      "effectDescription": "The character is paralysed, helpless, and can take no Actions.",
+      "effects": [
+        {
+          "id": "zero_agi_paralysed",
+          "modifierType": "ApplyCondition",
+          "conditionId": "paralysed",
+          "source": "Rule:ZeroCharacteristic"
+        }
+      ]
+    },
+    {
+      "characteristic": "Intelligence",
+      "effectDescription": "The character may not make tests based on this Characteristic.",
+       "effects": [
+         {
+          "id": "zero_int_prevent_tests",
+          "modifierType": "PreventTestBasedOnCharacteristic",
+          "target": { "scope": "Self", "type": "Characteristic", "identifier": "Intelligence" },
+          "source": "Rule:ZeroCharacteristic"
+        }
+      ]
+    },
+    {
+      "characteristic": "Perception",
+      "effectDescription": "The character loses all senses and suffers a –30 penalty to all Tests (except Toughness) until they recover.",
+       "effects": [
+         {
+          "id": "zero_per_sensory_dep",
+          "modifierType": "ApplyCondition",
+          "conditionId": "sensory_deprivation",
+          "source": "Rule:ZeroCharacteristic"
+        }
+    ]
+    },
+    {
+      "characteristic": "Willpower",
+      "effectDescription": "The character collapses into a nightmare filled sleep. When he awakens, he gains 1 Insanity Point.",
+       "effects": [
+         {
+          "id": "zero_wp_unconscious_nightmare",
+          "modifierType": "ApplyCondition",
+          "conditionId": "unconscious_nightmare",
+          "source": "Rule:ZeroCharacteristic"
+        }
+      ]
+    },
+    {
+      "characteristic": "Fellowship",
+      "effectDescription": "The character withdraws into a catatonic state. He may not speak or make Tests based on this Characteristic.",
+       "effects": [
+         {
+          "id": "zero_fel_prevent_tests",
+          "modifierType": "PreventTestBasedOnCharacteristic",
+          "target": { "scope": "Self", "type": "Characteristic", "identifier": "Fellowship" },
+          "source": "Rule:ZeroCharacteristic"
+        },
+        {
+          "id": "zero_fel_catatonic",
+          "modifierType": "ApplyCondition",
+          "conditionId": "catatonic", 
+          "source": "Rule:ZeroCharacteristic"
+        }
+      ]
+    }
+  ]

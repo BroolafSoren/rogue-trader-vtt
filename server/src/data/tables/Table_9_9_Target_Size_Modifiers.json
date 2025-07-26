@@ -1,0 +1,12 @@
+[
+    { "size": "Miniscule", "modifier": -30, "examples": ["sure-quill", "knife"] },
+    { "size": "Puny", "modifier": -20, "examples": ["bolt pistol", "servo-skull"] },
+    { "size": "Scrawny", "modifier": -10, "examples": ["Gretchin", "Human child"] },
+    { "size": "Average", "modifier": 0, "examples": ["Human", "Eldar"] },
+    { "size": "Hulking", "modifier": 10, "examples": ["Ork Nob", "combat servitor"] },
+    { "size": "Enormous", "modifier": 20, "examples": ["Sentinel Walker", "Krootox"] },
+    { "size": "Massive", "modifier": 30, "examples": ["Battle Tank", "greater daemon"] },
+    { "size": "Immense", "modifier": 40, "examples": ["Land Raider", "Great Krootox"] },
+    { "size": "Monumental", "modifier": 50, "examples": ["Squiggoth", "baneblade"] },
+    { "size": "Titanic", "modifier": 60, "examples": ["Reaver Battle Titan"] }
+  ]

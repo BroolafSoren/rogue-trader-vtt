@@ -1,0 +1,220 @@
+[
+    {
+      "criticalDamageRoll": "1",
+      "effectDescription": "The attack tears skin from the target’s face dealing 1 level of Fatigue.",
+      "effects": [
+        { "id": "rending_head_1_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:RendingHead:1"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "2",
+      "effectDescription": "A large patch of skin is removed from the target’s face revealing bleed muscle. Due to blood pouring into the target’s eyes, he suffers a –10 penalty to both Weapon Skill and Ballistic Skill for the next 1d10 Turns. The target takes 1 level of Fatigue.",
+      "effects": [
+        { "id": "rending_head_2_ws_penalty",
+          "modifierType": "TestPenalty",
+          "target": { "scope": "Self", "type": "Test", "identifier": "WeaponSkill" },
+          "value": 10,
+          "duration": { "dice": "1d10", "unit": "Turns" },
+          "source": "Crit:RendingHead:2"
+        },
+        { "id": "rending_head_2_bs_penalty",
+          "modifierType": "TestPenalty",
+          "target": { "scope": "Self", "type": "Test", "identifier": "BallisticSkill" },
+          "value": 10,
+          "duration": { "dice": "1d10", "unit": "Turns" },
+          "source": "Crit:RendingHead:2"
+        },
+         { "id": "rending_head_2_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:RendingHead:2"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "3",
+      "effectDescription": "The attack tears the target’s helmet from his head. If wearing no helmet, the target loss an ear instead and inflicts 2 levels of fatigue.",
+      "effects": [
+         { "id": "rending_head_3_remove_helmet",
+           "condition": { "type":"CheckArmour", "location":"Head", "operator":"gt", "value":0 },
+           "modifierType": "DestroyArmour",
+           "target": { "scope": "Self", "type": "BodyPart", "identifier": "Head" },
+           "source": "Crit:RendingHead:3"
+         },
+         { "id": "rending_head_3_lose_ear",
+           "condition": { "type":"CheckArmour", "location":"Head", "operator":"eq", "value":0 },
+           "modifierType": "CosmeticEffect",
+           "details": "Loses an ear",
+           "source": "Crit:RendingHead:3"
+         },
+         { "id": "rending_head_3_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 2,
+          "source": "Crit:RendingHead:3"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "4",
+      "effectDescription": "The attack scoops out one of the target’s eyes, inflicting 1d5 levels of Fatigue and leaving the target Stunned for 1 Round.",
+      "effects": [
+        { "id": "rending_head_4_lost_eye",
+          "modifierType": "ApplyCondition",
+          "conditionId": "lost_eye",
+          "permanent": true,
+          "source": "Crit:RendingHead:4"
+        },
+        { "id": "rending_head_4_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "source": "Crit:RendingHead:4"
+        },
+        { "id": "rending_head_4_stun",
+          "modifierType": "ApplyCondition",
+          "conditionId": "stunned",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:RendingHead:4"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "5",
+      "effectDescription": "The blow opens up the target’s face, leaving him Stunned for 1d5 Rounds and inflicting 1d5 levels of Fatigue. If the target is wearing a helmet, the helmet comes off.",
+       "effects": [
+        { "id": "rending_head_5_stun",
+          "modifierType": "ApplyCondition",
+          "conditionId": "stunned",
+          "duration": { "dice": "1d5", "unit": "Rounds" },
+          "source": "Crit:RendingHead:5"
+        },
+        { "id": "rending_head_5_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "source": "Crit:RendingHead:5"
+        },
+        { "id": "rending_head_5_remove_helmet",
+          "condition": { "type":"CheckArmour", "location":"Head", "operator":"gt", "value":0 },
+          "modifierType": "RemoveArmour",
+          "target": { "scope": "Self", "type": "BodyPart", "identifier": "Head" },
+          "source": "Crit:RendingHead:5"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "6",
+      "effectDescription": "The blow rips violently across the target’s face, leaving it with an important feature. Roll 1d10 to see what the target lost: 1–3: Eye (see Permanent Effects on page 201), 4–7: Nose (Permanently halve Fellowship), 8–10: Ear (Permanently reduce Fellowship by 1d10, the wound can always be hidden with hair.) In addition, the target is now suffering Blood Loss and takes 1d5 levels of fatigue.",
+      "effects": [
+        { "id": "rending_head_6_blood_loss",
+          "modifierType": "ApplyCondition",
+          "conditionId": "blood_loss",
+          "source": "Crit:RendingHead:6"
+        },
+        { "id": "rending_head_6_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "source": "Crit:RendingHead:6"
+        }
+      ],
+      "resolutionRoll": { 
+          "dice": "1d10",
+          "outcomes": [
+              { "rangeMin": 1, "rangeMax": 3, "effects": [{ "modifierType":"ApplyCondition", "conditionId":"lost_eye", "permanent":true, "source":"Crit:RendingHead:6" }]},
+              { "rangeMin": 4, "rangeMax": 7, "effects": [{ "modifierType":"ModifyCharacteristic", "target":{"scope":"Self", "type":"Characteristic", "identifier":"Fellowship"}, "multiplier":0.5, "rounding":"Down", "permanent":true, "source":"Crit:RendingHead:6" }]},
+              { "rangeMin": 8, "rangeMax": 10, "effects": [{ "modifierType":"ModifyCharacteristic", "target":{"scope":"Self", "type":"Characteristic", "identifier":"Fellowship"}, "valueDice":"-1d10", "permanent":true, "source":"Crit:RendingHead:6" }]}
+          ]
+      }
+    },
+    {
+      "criticalDamageRoll": "7",
+      "effectDescription": "The attack slices into the target’s face and removes most of the face including his nose. The target is Blinded and has his Fellowship permanently reduced by 1d10. He now has trouble speaking without slurring his words.",
+      "effects": [
+         { "id": "rending_head_7_blinded",
+           "modifierType": "ApplyCondition",
+           "conditionId": "blinded",
+           "permanent": true,
+           "source": "Crit:RendingHead:7"
+         },
+         { "id": "rending_head_7_fel_reduce",
+           "modifierType": "ModifyCharacteristic",
+           "target": { "scope": "Self", "type": "Characteristic", "identifier": "Fellowship" },
+           "valueDice": "-1d10",
+           "permanent": true,
+           "source": "Crit:RendingHead:7"
+         },
+         { "id": "rending_head_7_speech_impediment",
+           "modifierType": "ApplyFlag",
+           "flag": "SpeechImpediment",
+           "source": "Crit:RendingHead:7"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "8",
+      "effectDescription": "With a sound not unlike a wet sack ripping open in a void suit, the target’s head flies free of its body and sails through the air, landing harmlessly 2d10 metres away with a soggy thud. The target is instantly slain.",
+       "effects": [
+          { "id": "rending_head_8_death",
+            "modifierType": "ApplyCondition",
+            "conditionId": "dead",
+            "scope": "Immediate",
+            "details": "Decapitated",
+            "source": "Crit:RendingHead:8"
+          }
+       ]
+    },
+    {
+      "criticalDamageRoll": "9",
+      "effectDescription": "As above, next neck spews blood in a torrent, drenching all those nearby and forcing them to make a Challenging (+0) Willpower Test or suffer a –10 penalty to his WS and BS for the next Turn.",
+       "effects": [
+          { "id": "rending_head_9_death",
+            "modifierType": "ApplyCondition",
+            "conditionId": "dead",
+            "scope": "Immediate",
+            "details": "Decapitated",
+            "source": "Crit:RendingHead:9"
+          },
+          { "id": "rending_head_9_blood_shower",
+            "modifierType": "AreaDebuff",
+            "radiusMeters": 2,
+            "targetScope": "AllWithinRadiusExcludingSelf",
+            "savingTest": { "skill":"Willpower", "modifier":0 },
+            "failureEffect": {
+               "modifierType":"ApplyTargetDebuff",
+               "debuffDetails": {
+                   "id": "blood_drenched",
+                   "effects": [
+                      { "modifierType":"TestPenalty", "target":{"scope":"Self", "type":"Test", "identifier":["WeaponSkill", "BallisticSkill"]}, "value":10 }
+                    ],
+                   "duration": {"value":1, "unit":"Turns"},
+                   "scope":"NextTurnOnly"
+               }
+            },
+            "source": "Crit:RendingHead:9"
+          }
+      ]
+    },
+    {
+      "criticalDamageRoll": "10+",
+      "effectDescription": "As above, except the attack slices the head clean away at the neck, showering all those nearby in a spray of blood and gore forcing them to make a Challenging (+0) Agility Test or fall prone.",
+      "effects": [
+        { "id": "rending_head_10_death",
+          "modifierType": "ApplyCondition",
+          "conditionId": "dead",
+          "scope": "Immediate",
+          "details": "Decapitated",
+          "source": "Crit:RendingHead:10"
+        },
+        { "id": "rending_head_10_prone_test",
+          "modifierType": "AreaDebuff",
+          "radiusMeters": 2,
+          "targetScope": "AllWithinRadiusExcludingSelf",
+          "savingTest": { "skill": "Agility", "modifier": 0 },
+          "failureEffect": { "modifierType":"ApplyTargetCondition", "conditionId":"prone" },
+          "source": "Crit:RendingHead:10"
+        }
+      ]
+    }
+  ]

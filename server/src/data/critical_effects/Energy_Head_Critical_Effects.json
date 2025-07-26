@@ -1,0 +1,151 @@
+[
+    {
+      "criticalDamageRoll": "1",
+      "effectDescription": "A glancing blow to the head frazzles the target’s senses, imposing a –10 penalty to all Tests (except Toughness) for 1 Round.",
+      "effects": [
+        { "id": "energy_head_1_penalty",
+          "modifierType": "TestPenalty",
+          "target": { "scope": "Self", "type": "Test", "identifier": "*" },
+          "excludedTests": ["Toughness"],
+          "value": 10,
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:EnergyHead:1"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "2",
+      "effectDescription": "The blast of energy dazzles the target, leaving him Blinded for 1 Round.",
+      "effects": [
+        { "id": "energy_head_2_blinded",
+          "modifierType": "ApplyCondition",
+          "conditionId": "blinded",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:EnergyHead:2"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "3",
+      "effectDescription": "The attack cooks off the target’s ear, leaving him Stunned for 1 Round and inflicting 1 level of Fatigue.",
+      "effects": [
+        { "id": "energy_head_3_stun",
+          "modifierType": "ApplyCondition",
+          "conditionId": "stunned",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:EnergyHead:3"
+        },
+        { "id": "energy_head_3_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:EnergyHead:3"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "4",
+      "effectDescription": "A blast of energy envelopes the target’s head, burning away his hair as well as leaving him reeling from the injury. The target is Blinded for 1d5 Rounds.",
+      "effects": [
+        { "id": "energy_head_4_blinded",
+          "modifierType": "ApplyCondition",
+          "conditionId": "blinded",
+          "duration": { "dice": "1d5", "unit": "Rounds" },
+          "source": "Crit:EnergyHead:4"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "5",
+      "effectDescription": "A blast of energy strikes him like a stuck Grox. In addition, he is Blinded for 1d10 Rounds and takes 3 levels of Fatigue.",
+      "effects": [
+         { "id": "energy_head_5_blinded",
+          "modifierType": "ApplyCondition",
+          "conditionId": "blinded",
+          "duration": { "dice": "1d10", "unit": "Rounds" },
+          "source": "Crit:EnergyHead:5"
+        },
+        { "id": "energy_head_5_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 3,
+          "source": "Crit:EnergyHead:5"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "6",
+      "effectDescription": "The attack cooks the target’s face, melting his features and damaging his eyes. The target is Blinded for the next 1d10 hours and permanently reduces his Fellowship characteristic by 1d10 points. The target also takes 1d5 levels of fatigue.",
+      "effects": [
+         { "id": "energy_head_6_blinded",
+          "modifierType": "ApplyCondition",
+          "conditionId": "blinded",
+          "duration": { "dice": "1d10", "unit": "Hours" },
+          "source": "Crit:EnergyHead:6"
+        },
+        { "id": "energy_head_6_fel_reduce",
+          "modifierType": "ModifyCharacteristic",
+          "target": { "scope": "Self", "type": "Characteristic", "identifier": "Fellowship" },
+          "valueDice": "-1d10",
+          "permanent": true,
+          "source": "Crit:EnergyHead:6"
+         },
+         { "id": "energy_head_6_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "source": "Crit:EnergyHead:6"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "7",
+      "effectDescription": "An instant display, the flesh is burned from the target’s head, revealing charred bone and muscle underneath. The target is Blinded permanently and must also take 1d5 levels of Fatigue. Finally, his Fellowship characteristic is reduced by 2d10 points permanently. If the target’s Fellowship is already 10 or less, in which case nobody really notices the difference.",
+       "effects": [
+         { "id": "energy_head_7_blinded",
+          "modifierType": "ApplyCondition",
+          "conditionId": "blinded",
+          "permanent": true,
+          "source": "Crit:EnergyHead:7"
+        },
+         { "id": "energy_head_7_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "source": "Crit:EnergyHead:7"
+        },
+         { "id": "energy_head_7_fel_reduce",
+           "condition": { "type": "CharacteristicValue", "characteristic": "Fellowship", "operator": "gt", "value": 10, "target": "Self" },
+           "modifierType": "ModifyCharacteristic",
+           "target": { "scope": "Self", "type": "Characteristic", "identifier": "Fellowship" },
+           "valueDice": "-2d10",
+           "permanent": true,
+           "source": "Crit:EnergyHead:7"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "8",
+      "effectDescription": "Blood pours from the target’s blinded eye sockets. Fatigue racks his body. After 1d10 Fatigue, roll 1d10. He does not survive.",
+      "effects": [
+          { "id": "energy_head_8_blinded", "modifierType":"ApplyCondition", "conditionId":"blinded", "permanent":true, "source":"Crit:EnergyHead:8" },
+          { "id": "energy_head_8_fatigue", "modifierType":"ApplyFatigue", "valueDice":"1d10", "source":"Crit:EnergyHead:8" },
+          { "id": "energy_head_8_death_delayed", "modifierType":"DelayedEffect", "delayDice":"1d10", "delayUnit":"Unknown", "delayedEffect": { 
+               "modifierType":"ApplyCondition", "conditionId":"dead", "source":"Crit:EnergyHead:8"
+              }, "source":"Crit:EnergyHead:8"
+          }
+      ],
+      "specialProperties": ["UnclearDeathDelayUnit"]
+    },
+    {
+      "criticalDamageRoll": "9",
+      "effectDescription": "Superheated by the attack, the target’s brain explodes, tearing chunks of meat flying about nearby. The target is no more.",
+       "effects": [
+          { "id": "energy_head_9_death", "modifierType":"ApplyCondition", "conditionId":"dead", "scope":"Immediate", "source":"Crit:EnergyHead:9" }
+       ]
+    },
+    {
+      "criticalDamageRoll": "10+",
+      "effectDescription": "As above, except the target’s entire body catches fire and runs off headless 2d10 metres in a random direction (use the Scatter Diagram on page 248). Anything flammable it passes, including characters, must make an Agility Test or catch fire (see Special Damage, page 260).",
+      "effects": [
+        { "id": "energy_head_10_death", "modifierType":"ApplyCondition", "conditionId":"dead", "scope":"Immediate", "source":"Crit:EnergyHead:10" },
+        { "id": "energy_head_10_headless_run", "modifierType":"ForcedMovementPostMortem", "distanceDice":"2d10", "direction":"RandomScatter", "duration":"Immediate", "specialProperties":["IgnitesFlammables"], "source":"Crit:EnergyHead:10"}
+      ]
+    }
+  ]

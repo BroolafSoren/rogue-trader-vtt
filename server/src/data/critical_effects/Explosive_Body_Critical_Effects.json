@@ -1,0 +1,218 @@
+[
+    {
+      "criticalDamageRoll": "1",
+      "effectDescription": "The target is blown backwards 1d5 metres and takes 1 level of Fatigue per metre travelled. He is Prone when he lands.",
+      "effects": [
+        { "id": "explosive_body_1_knockback",
+          "modifierType": "ForcedMovement",
+          "distanceDice": "1d5",
+          "distanceUnit": "Meters",
+          "direction": "DirectlyAwayFromSource",
+          "target": { "scope": "Self" },
+          "applyFatiguePerMeter": 1,
+          "endCondition": "prone",
+          "source": "Crit:ExplosiveBody:1"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "2",
+      "effectDescription": "The target is blown backwards 1d10 metres and takes 1 level of Fatigue per metre travelled. If he strikes a solid object, he takes 1d5 additional levels of Fatigue.",
+       "effects": [
+         { "id": "explosive_body_2_knockback",
+          "modifierType": "ForcedMovement",
+          "distanceDice": "1d10",
+          "distanceUnit": "Meters",
+          "direction": "DirectlyAwayFromSource",
+          "target": { "scope": "Self" },
+          "applyFatiguePerMeter": 1,
+          "endCondition": "prone",
+          "collisionEffect": { "modifierType":"ApplyFatigue", "valueDice":"1d5" },
+          "source": "Crit:ExplosiveBody:2"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "3",
+      "effectDescription": "The explosion destroys whatever armour protected the body If the target wore none, the target is blown backwards 1d10 metres as above but the target takes 2 levels of Fatigue for every metre travelled.",
+      "effects": [
+          { "id": "explosive_body_3_destroy_armour",
+            "condition": { "type":"CheckArmour", "location":"Body", "operator":"gt", "value":0 },
+            "modifierType": "DestroyArmour",
+            "target": { "scope": "Self", "type": "BodyPart", "identifier": "Body" },
+            "source": "Crit:ExplosiveBody:3"
+          },
+          { "id": "explosive_body_3_knockback",
+            "condition": { "type":"CheckArmour", "location":"Body", "operator":"eq", "value":0 },
+            "modifierType": "ForcedMovement",
+            "distanceDice": "1d10",
+            "distanceUnit": "Meters",
+            "direction": "DirectlyAwayFromSource",
+            "target": { "scope": "Self" },
+            "applyFatiguePerMeter": 2,
+            "endCondition": "prone",
+            "collisionEffect": { "modifierType":"ApplyFatigue", "valueDice":"1d5" },
+            "source": "Crit:ExplosiveBody:3"
+           }
+      ]
+    },
+    {
+      "criticalDamageRoll": "4",
+      "effectDescription": "The concussion wraps the target in pressure like a giant hand. The target takes 1d5 levels of Fatigue, is Stunned for 1 Round, and must spend a Full Action to regain his feet.",
+      "effects": [
+         { "id": "explosive_body_4_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "source": "Crit:ExplosiveBody:4"
+         },
+         { "id": "explosive_body_4_stun",
+          "modifierType": "ApplyCondition",
+          "conditionId": "stunned",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:ExplosiveBody:4"
+         },
+         { "id": "explosive_body_4_prone",
+          "modifierType": "ApplyCondition",
+          "conditionId": "prone",
+          "source": "Crit:ExplosiveBody:4"
+         },
+          { "id": "explosive_body_4_stand_cost",
+           "modifierType": "ModifyActionCost",
+           "targetActionId": "stand_mount",
+           "newActionType": "Full Action",
+           "duration": "UntilStoodUp",
+           "source": "Crit:ExplosiveBody:4"
+         }
+      ],
+      "specialProperties": ["ModifyStandActionCost"]
+    },
+    {
+      "criticalDamageRoll": "5",
+      "effectDescription": "Chunks of the target’s flesh are ripped free by the force of the attack sending them backwards 1d10 metres. The target is Stunned for 1 Round, takes 1d10 levels of Fatigue and suffers Blood Loss.",
+       "effects": [
+         { "id": "explosive_body_5_knockback",
+          "modifierType": "ForcedMovement",
+          "distanceDice": "1d10",
+          "distanceUnit": "Meters",
+          "direction": "DirectlyAwayFromSource",
+          "target": { "scope": "Self" },
+          "endCondition": "prone",
+          "source": "Crit:ExplosiveBody:5"
+         },
+         { "id": "explosive_body_5_stun",
+          "modifierType": "ApplyCondition",
+          "conditionId": "stunned",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:ExplosiveBody:5"
+         },
+         { "id": "explosive_body_5_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d10",
+          "source": "Crit:ExplosiveBody:5"
+         },
+         { "id": "explosive_body_5_blood_loss",
+          "modifierType": "ApplyCondition",
+          "conditionId": "blood_loss",
+          "source": "Crit:ExplosiveBody:5"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "6",
+      "effectDescription": "The explosive force of the attack ruptures the target’s flesh and scrambles his nervous system, knocking him to the ground. The target takes 1d10 levels of Fatigue and 1d10 levels of Stun.",
+      "effects": [
+          { "id": "explosive_body_6_prone",
+            "modifierType": "ApplyCondition",
+            "conditionId": "prone",
+            "source": "Crit:ExplosiveBody:6"
+          },
+          { "id": "explosive_body_6_fatigue",
+           "modifierType": "ApplyFatigue",
+           "valueDice": "1d10",
+           "source": "Crit:ExplosiveBody:6"
+          },
+          { "id": "explosive_body_6_stun",
+           "modifierType": "ApplyCondition",
+           "conditionId": "stunned",
+           "duration": { "dice": "1d10", "unit": "Rounds" },
+           "source": "Crit:ExplosiveBody:6"
+          }
+      ]
+    },
+    {
+      "criticalDamageRoll": "7",
+      "effectDescription": "The chest explodes outward, disgorging a geyser of partially cooked organs onto the ground, killing him instantly.",
+      "effects": [
+          { "id": "explosive_body_7_death",
+            "modifierType": "ApplyCondition",
+            "conditionId": "dead",
+            "scope": "Immediate",
+            "source": "Crit:ExplosiveBody:7"
+          }
+      ]
+    },
+    {
+      "criticalDamageRoll": "8",
+      "effectDescription": "Pieces of the target’s body fly in all directions like bloody gobbets by the attack. In addition, the target is sprayed with corrosive fluid, takes 1d10 levels of Fatigue, is Stunned for 1d5 Rounds, unless he is wearing environmentally sealed armour, these two measure on the target’s person.",
+      "effects": [
+          { "id": "explosive_body_8_fatigue",
+            "condition": {"type":"CheckArmourProperty", "property":"IsEnvironmentallySealed", "value": false},
+            "modifierType": "ApplyFatigue",
+            "valueDice": "1d10",
+            "source": "Crit:ExplosiveBody:8"
+          },
+          { "id": "explosive_body_8_stun",
+            "condition": {"type":"CheckArmourProperty", "property":"IsEnvironmentallySealed", "value": false},
+            "modifierType": "ApplyCondition",
+            "conditionId": "stunned",
+            "duration": { "dice": "1d5", "unit": "Rounds" },
+            "source": "Crit:ExplosiveBody:8"
+          }
+      ]
+    },
+    {
+      "criticalDamageRoll": "9",
+      "effectDescription": "As above, except that anyone within 1d10 metres of the target is drenched in gore and must make a Challenging (+0) Agility Test or suffer a –10 penalty to Weapon Skill and Ballistic Skill Tests for 1 Round as blood fouls their sight.",
+      "effects": [
+         { "id": "explosive_body_9_gore_splatter",
+           "modifierType": "AreaDebuff",
+           "radiusDice": "1d10",
+           "radiusUnit": "Meters",
+           "targetScope": "AllWithinRadiusExcludingSelf",
+           "savingTest": { "skill":"Agility", "modifier":0 },
+           "failureEffect": {
+               "modifierType":"ApplyTargetDebuff",
+               "debuffDetails": {
+                   "id": "blood_fouled_sight",
+                   "effects": [
+                      { "modifierType":"TestPenalty", "target":{"scope":"Self", "type":"Test", "identifier":["WeaponSkill", "BallisticSkill"]}, "value":10 }
+                    ],
+                   "duration": {"value":1, "unit":"Rounds"}
+               }
+            },
+            "source": "Crit:ExplosiveBody:9"
+         }
+      ],
+      "inheritsEffectsFromRoll": "8"
+    },
+    {
+      "criticalDamageRoll": "10+",
+      "effectDescription": "As above, except that anyone within 1d10 metres must make a Challenging (+0) Willpower Test or spend their next Turn fleeing from the abattoir.",
+      "effects": [
+          { "id": "explosive_body_10_flee_test",
+           "modifierType": "AreaDebuff",
+           "radiusDice": "1d10",
+           "radiusUnit": "Meters",
+           "targetScope": "AllWithinRadiusExcludingSelf",
+           "savingTest": { "skill":"Willpower", "modifier":0 },
+           "failureEffect": {
+               "modifierType":"ForceAction",
+               "actionId": "flee",
+               "duration": { "value": 1, "unit": "Turns" }
+            },
+            "source": "Crit:ExplosiveBody:10"
+         }
+      ],
+      "inheritsEffectsFromRoll": "9"
+    }
+  ]

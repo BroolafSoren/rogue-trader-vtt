@@ -1,0 +1,9 @@
+[
+    { "difficultyName": "Easy", "modifier": 30 },
+    { "difficultyName": "Routine", "modifier": 20 },
+    { "difficultyName": "Ordinary", "modifier": 10 },
+    { "difficultyName": "Challenging", "modifier": 0 },
+    { "difficultyName": "Difficult", "modifier": -10 },
+    { "difficultyName": "Hard", "modifier": -20 },
+    { "difficultyName": "Very Hard", "modifier": -30 }
+  ]

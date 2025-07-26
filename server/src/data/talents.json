@@ -1,0 +1,1602 @@
+[
+    {
+      "Name": "Air of Authority",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Fellowship",
+          "Value": 30
+        }
+      ],
+      "Description": "The Explorer was born to command, either motivating or terrifying those under his charge. On a successful Command Test, the Explorer may affect a number of targets equal to 1d10 plus his Fellowship Bonus. This talent has no effect on hostile targets, and only affects NPCs."
+    },
+    {
+      "Name": "Ambidextrous",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Agility",
+          "Value": 30
+        }
+      ],
+      "Description": "This Talent does not represent true ambidexterity so much as sufficient training with both hands to make the distinction moot. The Explorer can use either hand equally well for any task, and does not suffer the –20 penalty for actions using his off hand.\nSpecial: When combined with a Two-Weapon Wielder Talent, the penalty for making attacks with both weapons in the same Turn drops to –10."
+    },
+    {
+      "Name": "Armour of Contempt",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Willpower",
+          "Value": 40
+        }
+      ],
+      "Description": "The Explorer’s hatred of all the impure armours his soul against malign influence. Whenever the Explorer gains Corruption Points, reduce the total by 1, to a minimum of 0. With a successful Willpower Test, taken as a Free Action, he may ignore the effects of accumulated Corruption Points for 1 Round."
+    },
+    {
+      "Name": "Assassin Strike",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Agility",
+          "Value": 40
+        },
+        {
+          "Type": "Skill",
+          "Name": "Acrobatics"
+        }
+      ],
+      "Description": "The Explorer’s natural agility and graceful martial forms turn him into a dervish of death on the battlefield. After making a melee attack, a successful Acrobatics Test allows him to move at half rate as a Free Action. The Explorer’s opponent does not receive a free attack resulting from this move. He may only take this additional move once per Round."
+    },
+    {
+      "Name": "Autosanguine",
+      "Prerequisites": [],
+      "Description": "The ancient and blessed technology of the Mechanicus or some corrupt xeno tech flows through the Explorer’s blood. These miniscule machines resist minor injuries and speed healing. When applying healing, he is always considered Lightly Wounded, and heals at an increased rate, removing 2 points of Damage per day."
+    },
+    {
+      "Name": "Basic Weapon Training",
+      "Prerequisites": [],
+      "TalentGroups": [
+        "Bolt",
+        "Las",
+        "Launcher",
+        "Primitive",
+        "SP",
+        "Universal"
+      ],
+      "Description": "The Explorer has received Basic Weapon Training in a group of weapons, and can use them without penalty. The Universal group includes the Bolt, Las, Launcher, Melta, Plasma, and SP groups. When a character attempts to use a weapon he does not have the correct Weapon Training Talent for, he suffers a –20 penalty to any relevant Weapon Skill or Ballistic Skill Test."
+    },
+    {
+      "Name": "Bastion of Iron Will",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Psy Rating"
+        },
+        {
+          "Type": "Talent",
+          "Name": "Strong Minded"
+        },
+        {
+          "Type": "Attribute",
+          "Name": "Willpower",
+          "Value": 40
+        }
+      ],
+      "Description": "The Explorer’s sheer willpower and psychic focus have become one and the same over years of practice and training, such that their combined use is second nature. He doubles his defensive Psy Rating on any Opposed Test involving the Psyniscience Skill or Psychic Techniques."
+    },
+    {
+      "Name": "Battle Rage",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Frenzy"
+        }
+      ],
+      "Description": "Long experience and indomitable will have allowed the Explorer to master the beast within, directing its rage while keeping a level head. He can Parry while Frenzied."
+    },
+    {
+      "Name": "Berserk Charge",
+      "Prerequisites": [],
+      "Description": "The Explorer has learned to put the whole force of his momentum behind his weapon blows. When he charges into combat, few can stand before him. If he uses the Charge Action, he gains a +20 bonus to Weapon Skill instead of +10."
+    },
+    {
+      "Name": "Binary Chatter",
+      "Prerequisites": [],
+      "Description": "The Explorer has optimised his use of Techna-Lingua for controlling servitors. He receives a +10 bonus to any attempt to communicate with servitors, and any vessel upon which he serves receives a +1 bonus to Crew Morale due to increased servitor efficiency."
+    },
+    {
+      "Name": "Blademaster",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Weapon Skill",
+          "Value": 30
+        },
+        {
+          "Type": "Talent",
+          "Name": "Melee Weapon Training (Any)"
+        }
+      ],
+      "Description": "The Explorer’s mastery of bladed weapons and their martial disciplines has no peer. When attacking with any bladed weapon, including chain weapons, power axes, and power swords, he may re-roll one missed attack per Round."
+    },
+    {
+      "Name": "Blessed Radiance",
+      "Prerequisites": [
+        {
+          "Type": "PrerequisiteChoice",
+          "Choices": [
+            { "Type": "Talent", "Name": "Purge the Unclean" },
+            { "Type": "Talent", "Name": "Divine Ministration" },
+            { "Type": "Talent", "Name": "The Emperor Protects" },
+            { "Type": "Talent", "Name": "Wrath of the Righteous" }
+          ]
+        }
+      ],
+      "Description": "The Explorer’s holiness shines out, allowing all to see the truth of their own souls. Where he treads, those who follow need have no fear of the darkness, nor suffer the predations of the blasphemous.\nWhen spending a Fate Point to activate the Pure Faith Talent, the Explorer extends the immunity to daemonic presence to a number of targets equal to twice his Willpower Bonus.\nAs a Free Action, he may bestow a single Fate Point to an ally. If the Fate Point is unspent, it returns at the end of the encounter.\nUpon burning a Fate Point, the Explorer and a number of allies equal to twice his Willpower Bonus become immune to the effects of daemonic presence, Fear Tests, and Corruption Points. In addition, all affected targets gain a +10 bonus on Tests made to resist psychic attack or any other form of psychic manipulation. In addition, affected targets take only half Damage from psychic and warp sources. These benefits last for the duration of the encounter."
+    },
+    {
+      "Name": "Blind Fighting",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Perception",
+          "Value": 30
+        }
+      ],
+      "Description": "Years of practice and development of the Explorer’s other senses allows him to fight in close combat without the benefit of sight. This Talent reduces all penalties for obscured vision by half, permitting the character to fight in fog, smoke, or darkness."
+    },
+    {
+      "Name": "Bloodtracker",
+      "Prerequisites": [],
+      "Description": "The Explorer is an experienced and cunning bounty hunter who commands the highest price for bringing in a quarry in dead or alive. When turning in a captive for bounty, the character’s group gains a bonus of +100 Objective Points towards Military or Criminal Objectives."
+    },
+    {
+      "Name": "Bulging Biceps",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Strength",
+          "Value": 45
+        }
+      ],
+      "Description": "Whereas a weaker man would be sent flying when using powerful weapons, the Explorer’s strong physique allows him to remain standing. He can fire heavy weapons using Semi-Auto Bursts or Full Auto Bursts without bracing, and he does not suffer the -30 penalty for failing to brace."
+    },
+    {
+      "Name": "Catfall",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Agility",
+          "Value": 30
+        }
+      ],
+      "Description": "Gymnastic ability and natural balance enables the Explorer to fall far greater distances without harm than the common man. Whenever he falls, he may take an Agility Test as a Free Action. Success, and each additional Degree of Success, reduces the distance fallen by a number of metres equal to the character’s Agility Bonus for the purposes of determining the Damage from the fall."
+    },
+    {
+      "Name": "Chem Geld",
+      "Prerequisites": [],
+      "Description": "Either chemical and surgical treatments or sheer will has rendered the Explorer immune to most mundane temptations. Seduction attempts against him automatically fail, and Charm Tests increase their Difficulty by one level. Taking this Talent causes one Insanity Point."
+    },
+    {
+      "Name": "Cleanse and Purify",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Flame Weapon Training (Universal)"
+        }
+      ],
+      "Description": "The Explorer can control the flow of molten promethium like no other, manipulating flame like an old accomplice. The targets of his flamer attacks take a –20 penalty their Agility Tests to escape its effects."
+    },
+    {
+      "Name": "Combat Formation",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Intelligence",
+          "Value": 40
+        }
+      ],
+      "Description": "The Explorer has directed his comrades to be prepared for danger, planning out their actions for many contingencies if attacked. Before rolling initiative, all other members of the group may choose to use the character’s Intelligence Bonus for all initiative rolls rather than individual Agility Bonuses."
+    },
+    {
+      "Name": "Combat Master",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Weapon Skill",
+          "Value": 30
+        }
+      ],
+      "Description": "The Explorer’s weapon seems to be everywhere at once, keeping many more opponents at bay in close combat than even skilled fighters. Opponents gain no bonuses for outnumbering the character in hand-to-hand combat."
+    },
+    {
+      "Name": "Combat Sense",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Perception",
+          "Value": 40
+        }
+      ],
+      "Description": "The Explorer has the ability to consciously recognise the proddings of his subconscious as it reacts to his preternaturally sharp senses, giving the character an edge that mere speed cannot match. He can use his Perception Bonus in place of his Agility Bonus when rolling Initiative."
+    },
+    {
+      "Name": "Concealed Cavity",
+      "Prerequisites": [],
+      "Description": "The character’s flesh or augmetics conceals a small compartment. This might be a pouch hidden under a flap of flesh, or a chamber fitted into a cybernetic enhancement. The Explorer may conceal one small item, no larger than a closed fist, within this cavity. Discovering this compartment requires success on a Difficult (–10) Search Test. If using a medicae scanner or auspex, the Difficulty is reduced to Ordinary (+10)."
+    },
+    {
+      "Name": "Counter Attack",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Weapon Skill",
+          "Value": 40
+        }
+      ],
+      "Description": "The Explorer’s lightning ripostes are things of beauty—if they were slow enough to be seen. After successfully Parrying an opponent’s attack, he may immediately make an attack against that opponent using the Parry weapon as a Free Action. This attack suffers a –20 penalty."
+    },
+    {
+      "Name": "Crack Shot",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Ballistic Skill",
+          "Value": 40
+        }
+      ],
+      "Description": "The Explorer can place his shots where they will inflict more harm: at creases, gaps, or joints in armour. When his ranged attack causes Critical Damage, add +2 to the Damage."
+    },
+    {
+      "Name": "Crippling Strike",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Weapon Skill",
+          "Value": 50
+        }
+      ],
+      "Description": "The Explorer can land blows precisely where they will inflict the most harm, cutting into seams or hammering at weak points. When the character’s melee attack causes Critical Damage, add +4 Damage."
+    },
+    {
+      "Name": "Crushing Blow",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Strength",
+          "Value": 40
+        }
+      ],
+      "Description": "The Explorer has the ability to focus his entire body into close combat attacks, adding +2 to damage inflicted in melee."
+    },
+    {
+      "Name": "Dark Soul",
+      "Prerequisites": [],
+      "Description": "Prolonged exposure to darkness has acted as an inoculation against all that is foul, granting the Explorer resilience against corruption. Whenever he makes a Malignancy Test, he takes half the normal penalty. See Chapter X: The Game Master for details on corruption."
+    },
+    {
+      "Name": "Deadeye Shot",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Ballistic Skill",
+          "Value": 30
+        }
+      ],
+      "Description": "The Explorer’s rock-steady hand and hawk-like eyesight make him a dreaded marksman. No target, however precise, can escape his crosshairs. When making a called shot, the character takes a –10 penalty instead of –20."
+    },
+    {
+      "Name": "Decadence",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Toughness",
+          "Value": 30
+        }
+      ],
+      "Description": "Through conditioning or long years of abuse, the Explorer has built up a tolerance to many inebriants, drugs, and chemicals. When drinking alcohol or similar beverages, he does not pass out until he has failed a number of Toughness Tests equal to twice his Toughness Bonus. The character also gains a +10 bonus to resist the effects of addiction."
+    },
+    {
+      "Name": "Die Hard",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Willpower",
+          "Value": 40
+        }
+      ],
+      "Description": "Through either willpower or sheer stubbornness, the Explorer refuses to cross into shadow. When he suffers from blood loss, the character may roll twice to avoid death."
+    },
+    {
+      "Name": "Disarm",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Agility",
+          "Value": 30
+        }
+      ],
+      "Description": "The Explorer can wrest weapons from an opponent’s hands through practiced technique or brute force. If in close combat, he may use a Full Action to disarm his foe by making an Opposed Weapon Skill Test. If he wins the Test, the opponent drops his weapon at his feet. If the character scores three or more Degrees of Success, he takes his opponent’s weapon."
+    },
+    {
+      "Name": "Disturbing Voice",
+      "Prerequisites": [],
+      "Description": "The Explorer’s voice has particularly baleful or menacing qualities, causing others to quail before it. He gains +10 bonus to all Intimidate or Interrogation Tests when he employs this Talent, but suffers a –10 penalty to Fellowship Tests when dealing with others in a non-threatening manner, such as animals, children, or the easily startled."
+    },
+    {
+      "Name": "Divine Ministration",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Pure Faith"
+        }
+      ],
+      "Description": "The Explorer is a vessel for the Emperor’s mercy and beneficence, his faith in his divinity can heal where no mere skill can.\nWhen testing Medicae, the Explorer may spend a Fate Point to restore an amount of Damage equal to his Willpower Bonus instead of the normal amount. This amount is then added to and multiplied in the normal way depending on the type of care (see the Medicae description on page 93). In the case of first aid to a Lightly Wounded character, the Explorer restores an amount of Damage equal to his Willpower Bonus plus his Intelligence Bonus.\nThe Explorer may spend a Fate Point to remove all Fatigue from a number of people equal to twice his Willpower Bonus.\nThe Explorer may burn a Fate Point to allow a character who has just died to have become Critically Wounded instead. This power has its limits though, (bullet in the chest—yes, decapitation—no) and it’s subject to the GM’s approval. If a use of the Divine Ministration fails to work in this way, the Fate Point is not lost."
+    },
+    {
+      "Name": "Double Team",
+      "Prerequisites": [],
+      "Description": "The Explorer has the experience from many mass combats and swirling melees under his belt. When ganging up on an opponent, he gains an additional +10 bonus to Weapon Skill Tests, for a total of +20. This bonus is in addition to the normal bonus gained from outnumbering opponents."
+    },
+    {
+      "Name": "Dual Shot",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Agility",
+          "Value": 40
+        },
+        {
+          "Type": "Talent",
+          "Name": "Two-Weapon Wielder (Ballistic)"
+        }
+      ],
+      "Description": "The Explorer’s skill with guns is such that he can target two shots on exactly the same point. When armed with two pistols, he can fire both simultaneously as a Full Action. Make a single Ballistic Skill Test, and if successful he hits his target with both shots. As the character is firing both guns as a single attack, he may take an Aim Action before firing to get a +10 or +20 bonus to the BS Test, and a red-dot laser sight mounted on any one of the weapons will provide its +10 bonus. The Explorer does not suffer from the normal –20 BS penalty for wielding two weapons. If he hits, the target’s Armour gets applied as normal to both hits individually, but Toughness only counts once against the combined Damage rolls of both hits. A single successful Dodge Test from the target will avoid both shots."
+    },
+    {
+      "Name": "Dual Strike",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Agility",
+          "Value": 40
+        },
+        {
+          "Type": "Talent",
+          "Name": "Two-Weapon Wielder (Melee)"
+        }
+      ],
+      "Description": "The Explorer’s skill with melee weapons can place two blows together to maximise damage. When armed with two melee weapons, he can attack with both simultaneously as a Full Action. Make a single Weapon Skill Test, and if successful, he hits the target with both weapons. As he is swinging both weapons as a single attack, the character may take an Aim Action before attacking to get a +10 or +20 bonus to the WS Test. He does not suffer from the normal –20 WS penalty for wielding two weapons. If he hits, the target’s Armour gets applied as normal to both hits individually, but Toughness only counts once against the combined Damage rolls of both hits. A single successful Dodge or Parry Test from the target will avoid both blows."
+    },
+    {
+      "Name": "Duty Unto Death",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Willpower",
+          "Value": 45
+        }
+      ],
+      "Description": "The Explorer’s will or faith can sustain him when his flesh is weak. He ignores the effects of injury, Fatigue, and Stunning during combat. This Talent does not prevent the Damage, but allows the character to temporarily ignore its effects for the duration of the combat. Death still affects him normally."
+    },
+    {
+      "Name": "Electrical Succour",
+      "Prerequisites": [
+        {
+          "Type": "Trait",
+          "Name": "Mechanicus Implants"
+        }
+      ],
+      "Description": "The Explorer can channel the sacred flow of energy from his Potentia Coil or other energy source to replenish his flesh. Whilst in contact with a functioning, powered machine, or fully charged battery or power cell, the character may make an Ordinary (+10) Toughness Test to remove one level of Fatigue plus one additional level of Fatigue for each additional Degree of Success. This takes one minute of meditation and ritual incantation."
+    },
+    {
+      "Name": "Electro Graft Use",
+      "Prerequisites": [
+        {
+          "Type": "Trait",
+          "Name": "Mechanicus Implants"
+        }
+      ],
+      "Description": "The Explorer may use his Electro Graft to access data ports and commune with machine spirits. This grants a +10 bonus to Common Lore, Inquiry, or Tech-Use Tests whilst connected to a data port."
+    },
+    {
+      "Name": "Enemy",
+      "Prerequisites": [],
+      "TalentGroups": [
+        "Academics",
+        "Adepta Sororitas",
+        "Adeptus Arbites",
+        "Adeptus Mechanicus",
+        "Administratum",
+        "Astropaths",
+        "Ecclesiarchy",
+        "Feral Worlders",
+        "Government",
+        "Hive World",
+        "Imperial Guard",
+        "Imperial Navy",
+        "Inquisition",
+        "Middle Class",
+        "Military",
+        "Navigators",
+        "Nobility",
+        "Rogue Trader",
+        "Underworld",
+        "Workers"
+      ],
+      "Description": "The opposite of Good Reputation on page 99, the Explorer is particularly despised by a specific social group or organisation. He takes an additional –10 penalty to Fellowship Tests when dealing with this group. The Talent is cumulative with the Rival Talent, for a total –20 penalty.\nThe GM and player may agree to award this Talent when appropriate to the adventure or campaign. This Talent can be removed with an Elite Advance and the approval of the GM if the Acolyte has redeemed himself with the group in question."
+    },
+    {
+      "Name": "Energy Cache",
+      "Prerequisites": [
+        {
+          "Type": "Trait",
+          "Name": "Mechanicus Implants"
+        }
+      ],
+      "Description": "The Explorer has learned to focus the power stored within his Potentia Coil with greater efficiency. He no longer gains Fatigue from using Luminen Charge, Luminen Shock, and Luminen Blast."
+    },
+    {
+      "Name": "Feedback Screech",
+      "Prerequisites": [
+        {
+          "Type": "Trait",
+          "Name": "Mechanicus Implants"
+        }
+      ],
+      "Description": "The Explorer can buyout his vox synthesisers, causing a hideous blast of noise that appals and distracts others. All unprotected creatures within a 30-metre radius who have the ability to hear must make a Willpower Test or lose a Half Action on their next Turn as they involuntarily react to the cacophonous shriek."
+    },
+    {
+      "Name": "Ferric Lure",
+      "Prerequisites": [
+        {
+          "Type": "Trait",
+          "Name": "Mechanicus Implants"
+        }
+      ],
+      "Description": "The Explorer can cause an unsecured metal object within his field of vision to fly into his hand. The object may mass up to 1 kilogram per point of the character’s Willpower Bonus, and must lie within a 20 metres. Using this Talent requires a Full Action and a successful a Willpower Test."
+    },
+    {
+      "Name": "Ferric Summons",
+      "Prerequisites": [
+        {
+          "Type": "Trait",
+          "Name": "Mechanicus Implants"
+        },
+        {
+          "Type": "Talent",
+          "Name": "Ferric Lure"
+        }
+      ],
+      "Description": "The Explorer can call an unsecured metal object to his hand as with Ferric Lure. But he may summon objects of up to 2 kilograms per point of his Willpower Bonus. The object may be up to 40 metres distant. The character must spend a Full Action and succeed on a Willpower Test to enact this rite."
+    },
+    {
+      "Name": "Enhanced Bionic Frame",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Machinator Array"
+        }
+      ],
+      "Description": "The Explorer’s already impressive bionic body structure is steadied by a gyro-array guided by a targeting system linked to the machine-spirit. The Explorer gains the Auto-stabilised Trait (see page 364)."
+    },
+    {
+      "Name": "Exotic Weapon Training",
+      "Prerequisites": [],
+      "TalentGroups": [
+        "All Exotic Weapons"
+      ],
+      "Description": "The Explorer has received Exotic Weapon Training in a single Exotic Weapon, and can use it without penalty."
+    },
+    {
+      "Name": "Favoured by the Warp",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Willpower",
+          "Value": 35
+        }
+      ],
+      "Description": "Whenever a focus Power Test results in Psychic Phenomena, the Explorer may roll twice on that table and take the more favourable result."
+    },
+    {
+      "Name": "Fearless",
+      "Prerequisites": [],
+      "Description": "Through hard experience with horrifying situations, fear no longer commands the Explorer’s actions. He is immune to the effects of Fear and Pinning, but disengaging from combat or backing down from a fight requires a successful Willpower Test."
+    },
+    {
+      "Name": "Flame Weapon Training",
+      "Prerequisites": [],
+      "TalentGroups": [
+        "Universal"
+      ],
+      "Description": "The sight of flaming streams of promethium brings joy to the Explorer’s heart and dread to his foes. He has mastered the art of a wide variety of flamer weapons. The Universal Talent group encompasses all non-Exotic weapons with the Flame special quality."
+    },
+    {
+      "Name": "Foresight",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Intelligence",
+          "Value": 30
+        }
+      ],
+      "Description": "Logic and analysis do for the Explorer what Tarot and the bones claim to do for the superstitious masses. By careful consideration of all the possible consequences, and examination of all evidence and information, he can identify the best path for success. By spending ten minutes studying or analysing a problem, he gains a +10 bonus to his next Intelligence Test."
+    },
+    {
+      "Name": "Frenzy",
+      "Prerequisites": [],
+      "Description": "The Explorer’s temper and passion boil just below the surface of his psyche, mostly held in check by his rational mind, but easily released when needed. If the character spends one full Round feeding his anger—by flagellation, drugs, or other means—on the next round he goes into an uncontrolled rage, gaining a +10 bonus to Weapon Skill, Strength, Toughness, and Willpower, but suffering a –20 penalty to Ballistic Skill and Intelligence. The Explorer must attack the nearest enemy in melee combat if possible. If he is not engaged with the nearest enemy, he must move towards that enemy and engage it if possible. The character will not take obviously suicidal actions, such as leaping off a building in order to engage someone on the ground, but he will take any actions that have a reasonable opportunity to engage in melee with the nearest enemy. While Frenzied, he is immune to Fear, Pinning, stunning effects, the effects of Fatigue, and he may not Parry, retreat, or flee. The Explorer must use the All Out Attack manoeuvre in melee combat if possible. He remains Frenzied for the duration of the combat. Unless the character has a Talent that allows him to do so, he may not use Psychic Techniques whilst in Frenzy. Some beings are either permanently Frenzied or can Frenzy at will."
+    },
+    {
+      "Name": "Furious Assault",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Weapon Skill",
+          "Value": 35
+        }
+      ],
+      "Description": "The Explorer’s speed and martial prowess allow him to land several blows where lesser combatants land one. If he successfully hits his target using the All Out Attack action, he may spend his Reaction to make an additional attack using the same bonuses or penalties as the original attack."
+    },
+    {
+      "Name": "Good Reputation",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Fellowship",
+          "Value": 50
+        },
+        {
+          "Type": "Talent",
+          "Name": "Peer"
+        }
+      ],
+      "TalentGroups": [
+        "Academics",
+        "Adeptus Arbites",
+        "Adeptus Mechanicus",
+        "Administratum",
+        "Astropaths",
+        "Ecclesiarchy",
+        "Feral Worlders",
+        "Government",
+        "Hive World",
+        "Imperial Guard",
+        "Imperial Navy",
+        "Inquisition",
+        "Middle Class",
+        "Nobility",
+        "the Insane",
+        "Underworld",
+        "Void Born",
+        "Workers"
+      ],
+      "Description": "The Explorer’s reputation precedes him in interactions with a specific group or organisation, opening doors that might otherwise remain closed. The Explorer gains an additional +10 bonus to Fellowship Tests when dealing with this group. This Talent is cumulative with Peer, for a total bonus of +20."
+    },
+    {
+      "Name": "Guardian",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Agility",
+          "Value": 40
+        }
+      ],
+      "Description": "Years of serving as a bodyguard allow the Explorer to put himself in the line of fire, or to take a murderous attack that was intended for another. He may sacrifice one of his actions for the next Round to switch places with an ally within 2 metres (as long as there is no obstruction in the way). This may be done at any time, even interrupting another action. The character become the target of any attacks previously targeting the ally. This Talent may not be used more than once per combat."
+    },
+    {
+      "Name": "Gun Blessing",
+      "Prerequisites": [
+        {
+          "Type": "Trait",
+          "Name": "Mechanicus Implants"
+        }
+      ],
+      "Description": "Using the Explorer’s sacred ability to subtly affect ferrous materials, he can un-jam a number of weapons equal to his Intelligence Bonus, so long as they are within a 10-metre radius. A successful Intelligence Test indicates the character has appeased the spirits of the weapons. This blessing requires a Full Action."
+    },
+    {
+      "Name": "Gunslinger",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Ballistic Skill",
+          "Value": 40
+        },
+        {
+          "Type": "Talent",
+          "Name": "Two-Weapon Wielder (Ballistic)"
+        }
+      ],
+      "Description": "The Explorer has trained with pistols for so long that they are like extensions of his own body, barely requiring conscious thought to aim and fire. When armed with two pistols, he reduces the penalty for Two-Weapon Fighting by –10. He also possesses the Ambidextrous Talent; the penalty is reduced to 0."
+    },
+    {
+      "Name": "Hard Bargain",
+      "Prerequisites": [],
+      "Description": "The Explorer’s shrewd negotiations and bartering skills are without peer, and he has a knack for seeing opportunities for profit where others see nothing. Whenever Profit Factor is awarded for completing an Endeavour, you gain a bonus of +1 Profit Factor to the group’s total."
+    },
+    {
+      "Name": "Hard Target",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Agility",
+          "Value": 40
+        }
+      ],
+      "Description": "Light on his feet, the Explorer dodges and weaves as he moves on his turn from long years in the line-of-fire. When he selects the Charge or Run Actions, opponents suffer a –20 penalty to Ballistic Skill Tests made to hit the character with a ranged weapon. This penalty continues until the start of the Explorer’s next Turn."
+    },
+    {
+      "Name": "Hardy",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Toughness",
+          "Value": 40
+        }
+      ],
+      "Description": "The Explorer’s constitution rebounds quickly from shock or injury. After undergoing medical treatment or healing from injuries, he recovers Damage as if Lightly Wounded."
+    },
+    {
+      "Name": "Hatred",
+      "Prerequisites": [],
+      "TalentGroups": [
+        "Criminals",
+        "Rogue Traders",
+        "Xeno (specific)",
+        "Psykers",
+        "Mutants",
+        "Pirates",
+        "Daemons",
+        "Xenos Race - Any"
+      ],
+      "Description": "A group, organisation or race has wronged the Explorer in the past, fuelling this animosity. When fighting opponents of that group in close combat, he gains a +10 bonus to all Weapon Skill Tests made against them."
+    },
+    {
+      "Name": "Heavy Weapon Training",
+      "Prerequisites": [],
+      "TalentGroups": [
+        "Bolt",
+        "Flame",
+        "Las",
+        "Launcher",
+        "Melta",
+        "Plasma",
+        "Primitive",
+        "SP"
+      ],
+      "Description": "The Explorer can employ some of the most devastating weapons of the battlefield, able to vaporise single foes and strike fear into the spirits of vehicles everywhere. He can use weapons of the groups for which this Talent has been selected, choosing one new group each time. When a character attempts to use a weapon he does not have the correct Weapon Training Talent for, he suffers a –20 penalty to any relevant Weapon Skill or Ballistic Skill Test."
+    },
+    {
+      "Name": "Heightened Senses",
+      "Prerequisites": [],
+      "TalentGroups": [
+        "Sight",
+        "Sound",
+        "Smell",
+        "Taste",
+        "Touch"
+      ],
+      "Description": "Either genetics or augmetics have made one of the Explorer’s senses superior to others. When he gains this Talent, select one of the five senses. The character gains a +10 bonus to any Tests specifically involving this sense. Thus, Heightened Senses (Sight) would apply to an Awareness Test to see a distant flock of shale crows, but not to something as general as a Ballistic Skill Test with any ranged weapon or a Weapon Skill Test simply because the character is using his eyes."
+    },
+    {
+      "Name": "Hip Shooting",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Ballistic Skill",
+          "Value": 40
+        },
+        {
+          "Type": "Attribute",
+          "Name": "Agility",
+          "Value": 40
+        }
+      ],
+      "Description": "The Explorer’s prowess with ranged weapons is such that he can still fire accurately without using the sights. As a Full Action, the character may both move up to his Full Move rate and make a single attack with a ranged weapon. This attack can only be a single shot—no automatic fire."
+    },
+    {
+      "Name": "Hotshot Pilot",
+      "Prerequisites": [
+        {
+          "Type": "Skill",
+          "Name": "Pilot (Any)"
+        },
+        {
+          "Type": "Attribute",
+          "Name": "Agility",
+          "Value": 40
+        }
+      ],
+      "Description": "The Explorer can pilot vehicles as if they were extensions of his own body. He may only select this Talent if he has obtained one Pilot Skill as an Advanced Skill. The character treats all other Pilot skills as Basic Skills, and receives a +10 bonus to the Pilot Skills he already possesses."
+    },
+    {
+      "Name": "Infused Knowledge",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Intelligence",
+          "Value": 40
+        }
+      ],
+      "Description": "The Explorer has been infused with a great wealth of lore and knowledge, either through punishing noetic techniques or by arcane methods learned by the guardians of technology and knowledge. The Explorer treats all Common and Scholastic Lore Skills as Untrained Basic skills. This Talent also provides a +10 bonus to any Tests involving Common or Scholastic Lore for which he already possesses the Skill."
+    },
+    {
+      "Name": "Improved Warp Sense",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Warp Sense"
+        }
+      ],
+      "Description": "The Explorer has learned to focus the warp and physical universe side by side, no longer taking any concentration on his part. After gaining this Talent, the character may use the Psyniscience Skill as a Free Action."
+    },
+    {
+      "Name": "Independent Targeting",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Ballistic Skill",
+          "Value": 40
+        }
+      ],
+      "Description": "The Explorer has developed his peripheral vision and situational awareness to a point where he can fire in two directions within a split second. When firing two weapons as part of a single action, the targets need not be less than 10 metres apart."
+    },
+    {
+      "Name": "Inspire Wrath",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Fellowship",
+          "Value": 30
+        }
+      ],
+      "Description": "The Explorer knows just the turn of phrase that incites individuals or groups to rage against others. His rhetoric grants +20 to interaction Tests when inspiring hatred or anger, and double the number of individuals affected. This Talent can be combined with Master Orator to further increase the number of listeners affected."
+    },
+    {
+      "Name": "Iron Discipline",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Willpower",
+          "Value": 30
+        },
+        {
+          "Type": "Skill",
+          "Name": "Command"
+        }
+      ],
+      "Description": "Iron sharpens iron. The Explorer does not coddle his crew, nor motivate them through kindness. His stalwart example and stern leadership exhorts them with steel instead of spoils. If the character is visible to his followers, either in person or via view-plate or pict-caster, they may re-roll failed Willpower Tests made to resist Fear and Pinning. Iron Discipline can affect a number of targets equal to the character’s Willpower Bonus, who must be under his command. PCs can benefit from Iron Discipline if the character with this Talent is the official group leader. If the Explorer is leading a Boarding action (see page 215), he gains a +10 bonus to his Command Tests."
+    },
+    {
+      "Name": "Iron Jaw",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Toughness",
+          "Value": 40
+        }
+      ],
+      "Description": "The Explorer has taken blows from Orks and given back as good as he got. He can bounce back from attacks most would-be heroes take effects from. When Stunning, the character may make a Toughness Test to ignore the effects."
+    },
+    {
+      "Name": "Jaded",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Willpower",
+          "Value": 30
+        }
+      ],
+      "Description": "The Explorer’s wide travels have shown both wonders and horrors beyond the ken of most. The galaxy has thrown its worst at him and has yet to flinch. Outrageous events, from death’s horrific visage to xenos abominations, will not cause Insanity Points or Fear Tests. Terrors of the Warp still affect the character normally."
+    },
+    {
+      "Name": "Leap Up",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Agility",
+          "Value": 30
+        }
+      ],
+      "Description": "A combination of athletic ability and speed allow the Explorer to spring to his feet in virtually any circumstance. He may stand up as a Free Action."
+    },
+    {
+      "Name": "Last Man Standing",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Nerves of Steel"
+        }
+      ],
+      "Description": "The Explorer has developed a sixth sense about hails of gunfire, allowing him to sense gaps and pauses in the lethal rain. He is never affected by Pinning by pistols and Basic Weapons, and adds +4 AP to the value of any cover protecting him from ranged attacks."
+    },
+    {
+      "Name": "Light Sleeper",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Perception",
+          "Value": 30
+        }
+      ],
+      "Description": "The slightest change in conditions or disturbance brings the Explorer from sleep to full awareness, remaining alert even in slumber. He is always assumed to be awake, even when attacks for the purpose of Awareness Tests are surprise. Unfortunately, the character’s sleep is not deep and can be frequently interrupted, resulting in a less-than-cheery disposition when awake."
+    },
+    {
+      "Name": "Lightning Attack",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Swift Attack"
+        }
+      ],
+      "Description": "The Explorer’s speed with weapons is legendary, allowing him to launch Barriers of attacks. As a Full Action, the character may make three melee attacks on his Turn. The effects of this Talent replace those of Swift Attack rather than adding to them. The use of Lightning Attack may not be combined with Dual Strike. If the Explorer has the Two-Weapon Wielder Talent and is wielding two melee weapons, he gets the advantage of Lightning Attack with only one of the weapons, and a single attack with the other. If he has the Two-Weapon Wielder talent and is wielding a melee weapon in one hand and a gun in the other, he gets the advantage of Lightning Attack with the melee weapon and a single attack with the gun."
+    },
+    {
+      "Name": "Lightning Reflexes",
+      "Prerequisites": [],
+      "Description": "The Explorer always expects trouble, even in the most innocuous situations, allowing him to act quickly when needed. The character adds twice his Agility Bonus when rolling for initiative. If he has Unnatural Agility, add +1 to the multiplier before factoring the bonus into the initiative roll."
+    },
+    {
+      "Name": "Litany of Hate",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Hatred (Any)"
+        }
+      ],
+      "Description": "The Explorer’s belief in the righteousness of his hatred is so ingrained that he can rouse others to join his crusade. As a Full Action, the character may make a Charm Test to extend the effects of his Hatred Talent to any allies. Success on the Test confers a +10 bonus to Weapon Skill when fighting hated foes, to one target per point of the Explorer’s Fellowship Bonus. The effects last for the duration of the encounter."
+    },
+    {
+      "Name": "Logis Implant",
+      "Prerequisites": [],
+      "Description": "The Explorer may use analytical circuits to calculate trajectory and reactions to a preternatural extent. His ability to read possible outcomes lets him anticipate the movement of his opponents. By using his Reaction for the Round, the character may make a Tech-Use Test to make use of this Talent. He gains a +10 bonus to all Weapon Skill and Ballistic Skill Tests until the end of his next Turn. The Explorer must pass a Toughness Test when he uses this ability or gain a level of Fatigue."
+    },
+    {
+      "Name": "Luminen Blast",
+      "Prerequisites": [
+        {
+          "Type": "Trait",
+          "Name": "Mechanicus Implants"
+        }
+      ],
+      "Description": "The Omnissiah has blessed the Explorer with augmetic conduits that parallel the bones of his arms. By reciting the proper litany, he can channel the energy stored in his Potentia Coil down these channels and direct it at his enemies. Success on a Ballistic Skill Test allows him direct this energy against a single target within 10 metres. The target takes 1d10 plus the Explorer’s Willpower Bonus in Energy Damage. Using this ability may cause him a level of Fatigue.\nTalent Use: Half Action"
+    },
+    {
+      "Name": "Luminen Charge",
+      "Prerequisites": [
+        {
+          "Type": "Trait",
+          "Name": "Mechanicus Implants"
+        }
+      ],
+      "Description": "The Explorer has mastered the union between his holy mechanical elements and his mortal flesh, allowing the former to power the latter. With a successful Toughness Test the character may recharge or power machinery with his internal coils. This requires one minute of meditation and ritual incantation. The difficulty of the Toughness Test varies depending on the nature of the powered system:\nDifficulty Example\nOrdinary (+10) Simple Power Cell, Illuminator\nChallenging (+0) Weapon Charge Pack, Data Slate, Servo-Terminal\nDifficult (-10) Hotshot Charge Pack, Shuttle Electronics, Servo-Skull\nHard (-20) Lascannon Charge Pack, Servitor, Bridge Hololith\nVery Hard (-30) Ship's Cogitator Core, Reactor Machine Spirit, Xenos Tech\nQuality (see page 116). The Explorer must pass a Toughness Test when using this ability or gain a level of Fatigue.\nTalent Use: Half Action"
+    },
+    {
+      "Name": "Luminen Shock",
+      "Prerequisites": [
+        {
+          "Type": "Trait",
+          "Name": "Mechanicus Implants"
+        }
+      ],
+      "Description": "The power of the Explorer’s Potentia Coil flows through a network of inductors within his flesh, allowing him to funnel this energy into his blows. In close combat, a successful Weapon Skill Test or Grapple delivers the shock. The Luminen Shock inflicts 1d10+3 points of Energy Damage with the Shocking Quality."
+    },
+    {
+      "Name": "Master & Commander",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Intelligence",
+          "Value": 35
+        },
+        {
+          "Type": "Attribute",
+          "Name": "Fellowship",
+          "Value": 35
+        }
+      ],
+      "Description": "There can be only one commander of a vessel, and the Explorer’s guiding hand, stern judgment, and sage leadership have placed him in command over the vessel, and the Explorer’s guiding hand, etc... (see page 215)."
+    },
+    {
+      "Name": "Machinator Array",
+      "Prerequisites": [
+        {
+          "Type": "Trait",
+          "Name": "Mechanicus Implants"
+        }
+      ],
+      "Description": "The Explorer has returned to the crèches of the Mechanicus so they may bring him closer to the ideal body form, adding the extensive machina array to his existing augmetics. The Explorer’s Strength and Toughness characteristics increased by +10, and his Agility and Fellowship are reduced by –5. His mass increases to three times that of a normal person, and he may no longer rely solely on air and water in similar liquids. The character may mount a single pistol type or close combat weapon on any Ballistic Mechadendrites he possesses. He must still have the proper Talent to use the mounted weapon."
+    },
+    {
+      "Name": "Maglev Grace",
+      "Prerequisites": [
+        {
+          "Type": "Trait",
+          "Name": "Mechanicus Implants"
+        }
+      ],
+      "Description": "The Explorer stitches augmetic coils throughout the systems of flesh of his legs, granting him the ability to float a short distance above the ground. Using a Half Action, the character may hover 20 to 30 centimetres off the ground for a number of minutes equal to 1d10 plus his Toughness Bonus. The Explorer must employ a Full Action each round to maintain the rite, and may use the other actions to move normally. He may activate this rite to slow his rate of descent when falling, reducing all falling Damage to 1d10+1 Impact. Each use of Maglev Grace exhausts the power stored in the Potentia Coil, and cannot be reused until the Coil has been recharged."
+    },
+    {
+      "Name": "Maglev Transcendence",
+      "Prerequisites": [
+        {
+          "Type": "Trait",
+          "Name": "Mechanicus Implants"
+        },
+        {
+          "Type": "Talent",
+          "Name": "Maglev Grace"
+        }
+      ],
+      "Description": "The Explorer has proven his devotion to the Machine God by augmenting cosmetic coils through every portion of the ground Using a Half Action, he may hover 20 centimetres off the ground for a number of minutes equal to 1d10 plus his Toughness Bonus. The Explorer must employ a Full Action each round to concentrate on maintaining this rite, but any Move Action allows him to move up to his running speed He can slow his rate of descent when falling so long as this rite is active when he reaches the ground, taking no falling Damage. Each time he enacts this rite, it drains 50% of his Potentia Coil."
+    },
+    {
+      "Name": "Marksman",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Ballistic Skill",
+          "Value": 35
+        }
+      ],
+      "Description": "The Explorer’s steady hand and eagle eye allows him to keep crosshairs steady on any target, regardless of range. Distance is no protection against his fire. The Explorer suffers no penalties for Ballistic Skill Tests at Long or Extended range."
+    },
+    {
+      "Name": "Master Chirurgeon",
+      "Prerequisites": [
+        {
+          "Type": "Skill",
+          "Name": "Medicae +10"
+        }
+      ],
+      "Description": "The Explorer’s advanced medical skills enable him knit flesh with deft mastery. His exceptional education in use of the Narthecium, Med-Slate, and supplemental drugs gives his patients an continuous advantage. The Explorer gains a +10 bonus on all Medicae Tests. If treating a Heavily or Critically Wounded patient, a successful Test heals 2 points of Damage instead of 1. If the patient is in danger of losing a limb from a Critical Hit (see Chapter IX: Playing the Game), the Explorer provides limb loss with a +20 bonus to the Toughness Test to prevent limb loss."
+    },
+    {
+      "Name": "Master Enginseer",
+      "Prerequisites": [
+        {
+          "Type": "Skill",
+          "Name": "Tech-Use +20"
+        },
+        {
+          "Type": "Trait",
+          "Name": "Mechanicus Implants"
+        },
+        {
+          "Type": "Career",
+          "Name": "Explorator"
+        }
+      ],
+      "Description": "The Explorer’s knowledge of starships and their machine spirits surpasses all his planet-bound brethren. The character can almost feel the plasma pulsing through the ship’s conduits as if it were his own veins. He may spend a Fate Point for automatic success on a Tech-Use Test for enhancement, repair, or upgrade of starship systems, taking the minimum amount of time possible on the task."
+    },
+    {
+      "Name": "Master Orator",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Fellowship",
+          "Value": 30
+        }
+      ],
+      "Description": "The Explorer has learned the techniques required to influence large audiences. His Fellowship Tests and Fellowship-based Skill Tests affect 10 times the normal number of targets."
+    },
+    {
+      "Name": "Mechadendrite Use",
+      "Prerequisites": [
+        {
+          "Type": "Career",
+          "Name": "Explorator"
+        }
+      ],
+      "TalentGroups": [
+        "Weapon",
+        "Utility"
+      ],
+      "Description": "There are think different types of Mechadendrite, this Talent divides them into two broad categories.\nWeapon: Mechadendrites of this type end in either ranged or close combat weapons, and have the supplemental support and strength necessary for combat.\nUtility: Including such varied types as Machine Spirit Interface, Manipulator, Medicae, Utility, Optical, and countless others, these Mechadendrites generally require less hardy mountings, but all interface with the Cyber Mantle in a similar manner."
+    },
+    {
+      "Name": "Meditation",
+      "Prerequisites": [],
+      "Description": "The Explorer has mastered his body and its reactions by prayer to the Emperor, shutting down unnecessary functions to refresh his body and mind. Success on a Willpower Test and 10 minutes without interruptions removes one level of Fatigue."
+    },
+    {
+      "Name": "Melee Weapon Training",
+      "Prerequisites": [],
+      "TalentGroups": [
+        "Primitive",
+        "Universal"
+      ],
+      "Description": "The Explorer has trained extensively with hand-to-hand weapons, becoming proficient in the use of virtually all hand-held close combat arms. The universal group includes the Chain, Shock, and Power groups, and allows proficient use of those weapon types. When a character attempts to use a weapon he does not have the correct Weapon Training Talent for, he suffers a –20 penalty to any relevant Weapon Skill or Ballistic Skill Test."
+    },
+    {
+      "Name": "Mighty Shot",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Ballistic Skill",
+          "Value": 40
+        }
+      ],
+      "Description": "The Explorer knows the weak points in every armour and material, and has the skill to place shots exactly where they will do the most damage. He adds +2 to Damage with a ranged weapon."
+    },
+    {
+      "Name": "Mimic",
+      "Prerequisites": [],
+      "Description": "Vox synthesisers, training or innate abilities allow the Explorer to accurately mimic the voice of another. He must study the voice patterns of his target for at least one hour for proper imitation, and speak the same language. He cannot accurately copy the voice of a xeno due to the differences in physiology and the subtle complexities of most alien languages. Listeners must succeed on a Difficult (–10) Scrutiny Test to penetrate the deception of the mimicry. Studies said vox recordings, or single-mind conversations rather than in-person observation the Difficulty of the Scrutiny Test is reduced to Challenging (+0). His deception automatically fails if the listener can clearly see he is not the imitated individual."
+    },
+    {
+      "Name": "Nerves of Steel",
+      "Prerequisites": [],
+      "Description": "Long years on the battlefield enable the Explorer to remain calm as fire impacts all around. He may re-roll failed Willpower Tests to avoid or recover from Pinning."
+    },
+    {
+      "Name": "Navigator",
+      "Prerequisites": [],
+      "Description": "The Explorer was born with the Navigator gene, either of the Navis Nobilite or in the shattered raft of the unlicensed. The Warp Eye stares balefully from his forehead, allowing him to perceive the ebbs and flows of the empyrean. For more details, see Chapter 7: Navigator Powers."
+    },
+    {
+      "Name": "Navigator Power",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Navigator"
+        }
+      ],
+      "Description": "The Explorer’s training or natural ability allows use of an additional Navigator Power. This Talent may be chosen multiple times, each selection granting a new Power."
+    },
+    {
+      "Name": "Orthoproxy",
+      "Prerequisites": [],
+      "Description": "A liturgical circuit has been implanted within the Explorer’s skull, allowing him to focus on the prayers recited by the proxy unit when his mental fortitude is in peril. He receives a +20 bonus to Willpower Tests made to resist mind control or interrogation."
+    },
+    {
+      "Name": "Paranoia",
+      "Prerequisites": [],
+      "Description": "The Explorer knows that danger lurks behind every corner and knows the galaxy will hit him as soon as he lets his guard down. The character gains a +2 bonus on Initiative rolls, and the GM may secretly test his Perception to notice hidden threats. The price of his eternal vigilance is a twitchy disposition and the inability to relax."
+    },
+    {
+      "Name": "Peer",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Fellowship",
+          "Value": 30
+        }
+      ],
+      "TalentGroups": [
+        "Academics",
+        "Adeptus Arbites",
+        "Adeptus Mechanicus",
+        "Administratum",
+        "Astropaths",
+        "Ecclesiarchy",
+        "Feral Worlders",
+        "Government",
+        "Hivers",
+        "Inquisition",
+        "Middle Class",
+        "Military",
+        "Navigators",
+        "Nobility",
+        "the Insane",
+        "Underworld",
+        "Void Born",
+        "Workers"
+      ],
+      "Description": "The Explorer is adept at dealing with a particular social group or organisation. He gains a +10 bonus to all Fellowship Tests when interacting with the chosen group."
+    },
+    {
+      "Name": "Pistol Weapon Training",
+      "Prerequisites": [],
+      "TalentGroups": [
+        "Primitive",
+        "Universal"
+      ],
+      "Description": "The Explorer has practiced with nearly every single-handed ranged weapon within the confines of the Imperium, and no small number without. The Universal group contains proficiency with most pistol weapons, including the Bolt, Las, Launcher, Melta, Plasma, and SP groups. When a character attempts to use a weapon he does not have the correct Weapon Training Talent for, he suffers a –20 penalty to any relevant Weapon Skill or Ballistic Skill Test."
+    },
+    {
+      "Name": "Polyglot",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Intelligence",
+          "Value": 40
+        },
+        {
+          "Type": "Attribute",
+          "Name": "Fellowship",
+          "Value": 30
+        }
+      ],
+      "Description": "The Explorer has an innate ability to derive meaning from unknown languages and make himself understood using this intuitive grasp. He treats all languages as Basic Skills. This is not the same as true knowledge of the language, and tests using this Talent suffer a –10 penalty due to the simplistic nature of translation."
+    },
+    {
+      "Name": "Precise Blow",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Weapon Skill",
+          "Value": 40
+        },
+        {
+          "Type": "Talent",
+          "Name": "Sure Strike"
+        }
+      ],
+      "Description": "The Explorer’s eye, hand, and weapon are intimately together, playing blows exactly where the attacker intends. When making a called shot with a melee weapon, the Explorer does not incur the –20 penalty."
+    },
+    {
+      "Name": "Prosanguine",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Autosanguine"
+        }
+      ],
+      "Description": "Through the Explorer’s iron will or via appeals to the Omnissiah, he is able to speed the function of his Autosanguinators. By spending 10 minutes in meditation and ritual incantation, the character may make a Tech-Use Test, and if successful, remove 1d5 points of Damage. If he rolls a 96-100, he overtaxes his implants, losing the ability to use them for one week. During that week, the Explorer may use neither the Autosanguine nor Prosanguine Talents."
+    },
+    {
+      "Name": "Psy Rating",
+      "Prerequisites": [],
+      "Description": "The Explorer is a psyker, and his power in game terms is rated on a scale of 1 to 10, where Psy Rating 1 is the lowest to warrant the attentions of the Scholastia Psykana and the Black Ships, and a rating of 10 represents one of the most powerful of the entire human sphere.\nAn Astropath Transcendent begins play with Psy Rating 2. See Chapter VI: Psychic Powers for detailed rules on the game mechanics of this ability. Increasing a character’s Psy Rating represents that character unlocking more of his psyche potential and becoming more and more powerful. Note that additional Psy Rating Talents do not automatically grant additional Psychic Powers. A higher Psy Rating indicates a more powerful psyker. An Explorer can take this Talent multiple times; each time it is taken, his current Psy Rating increases by 1."
+    },
+    {
+      "Name": "Psychic Discipline",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Psy Rating"
+        }
+      ],
+      "Description": "The Explorer gains access to a new Psychic Discipline, and may select techniques from this new field of study as his abilities increase. Psykers may access a maximum of three separate Disciplines. For further details, see Chapter VI: Psychic Powers."
+    },
+    {
+      "Name": "Psychic Technique",
+      "Prerequisites": [
+         {
+          "Type": "Talent",
+          "Name": "Psy Rating"
+        }
+      ],
+      "TalentGroups": [
+          "Any Psychic Technique"
+      ],
+      "Description": "Either through training or natural development, the Explorer has learned an additional Psychic Technique. Once this Talent has been selected, the Explorer may select one new Psychic Technique in any Discipline he possesses with an xp cost equal to or lower than the Talent’s xp cost. Note that when a Psychic Technique is selected the Explorer does not need to spend more xp—he spent the required xp when he purchased the Talent. This Talent may be chosen multiple times, each selection granting an additional Technique."
+    },
+    {
+      "Name": "Pure Faith",
+      "Prerequisites": [],
+      "Description": "The Explorer’s faith in the God Emperor of Mankind, his divine power and grace is total and complete. This faith wraps around him and suffuses his soul, arming him against the foul influences and weapons of the heretic. Pure Faith provides all of the following benefits:\nThe Explorer is always immune to the effects of Daemonic Presence including the negative modifiers to his Willpower.\nThe Explorer may spend a Fate Point to not take Fear Tests, not acquire Insanity Points, and not gain any Corruption Points. These safeguards remain for the duration of the encounter.\nThe Explorer may burn a Fate Point to resist the effects of any single daemonic or psychic attack, effectively allowing him to emerge unscathed as if by a miracle."
+    },
+    {
+      "Name": "Purge the Unclean",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Pure Faith"
+        }
+      ],
+      "Description": "The Explorer’s faith has become a literal force, its power can touch daemons that may otherwise be cowed or cast out by the powers of the empyrean.\nAs a Half Action, the Explorer may spend an opposed Willpower Test to repel a warp entity, making an opposed Willpower Test against the warp entity from its host. Make an opposed Willpower Test against the warp entity. If the Test succeeds, the warp entity is driven out of the thing it was possessing and manifests in an adjacent space to its former host. The warp entity may not possess the host again for a number of hours equal to twice character’s Willpower Bonus.\nAs a Full Action, the Explorer may burn a Fate Point to chant the litany of denunciation to push a warp entity from reality. He must be actually confronting the thing and not just thinking about it. Test the character’s Willpower. If successful, he deals Damage equal to his Willpower Bonus, plus his Willpower Bonus for each Degree of Success. On a failed Test the Explorer suffers 1d5 Corruption Points. This method is not reduced by the creature’s Toughness or Armour."
+    },
+    {
+      "Name": "Quick Draw",
+      "Prerequisites": [],
+      "Description": "The Explorer has practised so frequently with his weapons that they practically leap into his hands, ready for action. He can Ready as a Free Action when armed with a Pistol or Basic class ranged weapon, or a melee weapon that can be wielded in one hand."
+    },
+    {
+      "Name": "Rapid Reaction",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Agility",
+          "Value": 40
+        }
+      ],
+      "Description": "The Explorer has honed his reactions to a razor’s edge, allowing him to act while most stand dumbfounded. When surprised or ambushed, a successful Agility Test allows him to act normally."
+    },
+    {
+      "Name": "Rapid Reload",
+      "Prerequisites": [],
+      "Description": "The practice bays aboard the Explorer’s vessel are like a second home, and he has reloaded countless magazines or power cells for his weapons until he can replace them with his eyes closed. The Explorer reloads his weapons twice as fast as normal. Thus, Half Action reload becomes a Free Action, a Full Action reload becomes a Half Action, and so on."
+    },
+    {
+      "Name": "Renowned Warrant",
+      "Prerequisites": [],
+      "Description": "The Explorer’s Warrant of Trade is ancient and hallowed, signed before the Imperium knew of the Expanse, and garners the respect of merchants and officials alike. The character gains a +10 bonus to Interaction Skill Tests with those who understand the importance of the warrant, such as other traders and Imperial officials."
+    },
+    {
+      "Name": "Resistance",
+      "Prerequisites": [],
+      "TalentGroups": [
+        "Cold",
+        "Fear",
+        "Heat",
+        "Poisons",
+        "Psychic Techniques"
+      ],
+      "Description": "The Explorer’s background, experience, training, exposure, or plain stubbornness has inured him to a particular type of hardship. Each time the Explorer selects this Talent, choose one group. He gains a +10 bonus when making Tests to resist the effects of this group. The GM may wish to approve certain choices or have them justified by the character’s past."
+    },
+    {
+      "Name": "Rite of Awe",
+      "Prerequisites": [
+        {
+          "Type": "Career",
+          "Name": "Explorator"
+        }
+      ],
+      "Description": "The Omnissiah has augmentically blessed the Explorer’s voice box, allowing him to recite infrasonic liturgies that trigger awe and fear. All humans regardless of their ability to hear, within a 50-metre radius feel a sense of dread and take a –10 penalty to their next Skill Test. Characters may ignore these effects with a successful Willpower Test. Whilst incanting the rite, the character may not talk or commune with others. The rite requires two minutes of litanies, and it is completely very hard to break off the session before completion. Humans without auditory implants cannot hear infrasonic sound, and though still affected, will not know the Explorer is speaking."
+    },
+    {
+      "Name": "Rite of Fear",
+      "Prerequisites": [
+        {
+          "Type": "Career",
+          "Name": "Explorator"
+        }
+      ],
+      "Description": "The Explorer’s infrasonic dirges cause terror in the weak. All humans, regardless of their ability to hear, within a 30-metre radius treat the character as if he has a Fear Rating of 1. While incanting the dirge, he may not communicate in any other way. The rite requires two minutes of chanting, and must would not consider halting the incantation prior to their completion. Humans without auditory augmentation cannot hear infrasonic sound, and though still affected, will not know the Explorer is speaking."
+    },
+    {
+      "Name": "Rite of Pure Thought",
+      "Prerequisites": [
+        {
+          "Type": "Career",
+          "Name": "Explorator"
+        }
+      ],
+      "Description": "The Explorer has replaced the creative half of his brain with sacred cranial circuitry. He can no longer feel emotion, and instead embraces the crystal purity of logic, making him immune to Fear, Pinning and any effects that stem from emotional disturbance. The GM will remove any Mental Disorders that no longer apply, and grant appropriate new ones of equal severity. The character’s fellow Explorers may find him somewhat cold, though other followers of the Omnissiah will rejoice in his newfound freedom."
+    },
+    {
+      "Name": "Rite of Sanctioning",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Psy Rating"
+        }
+      ],
+      "Description": "The Explorer has been brought before the Emperor and has received a miniscule fraction of His awesome strength stabilizing the character for far more resistant to the predations of the warp. Choose one result on the Psychic Phenomena chart on page 160 (other than Perils of the Warp). When rolling for Psychic Phenomena, the Explorer may substitute his trademark result for the effect rolled on the table, so long as he does not roll Perils of the Warp."
+    },
+    {
+      "Name": "Sound Constitution",
+      "Prerequisites": [],
+      "Description": "The Explorer gains an additional Wound. He may purchase this Talent multiple times in his Career Advances. In this case note the number of times it’s been taken after the Talent, such as Sound Constitution 3."
+    },
+    {
+      "Name": "Sprint",
+      "Prerequisites": [],
+      "Description": "The Explorer’s fleet-feet can propel him faster than his comrades. When taking the Full Move Action, the character can move an extra number of metres equal to his Agility Bonus. When taking the Run Action, he may double his movement for one Round. The Explorer gains one level of Fatigue if he uses this Talent two Turns in a row."
+    },
+    {
+      "Name": "Step Aside",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Agility",
+          "Value": 40
+        },
+        {
+          "Type": "Skill",
+          "Name": "Dodge"
+        }
+      ],
+      "Description": "The Explorer can sway his body out of the path of an attack, causing it to pass through thin air. He may make an additional Dodge once per Round. In effect this gives him a second Reaction that may only be used to Dodge, allowing two Dodges in a Turn. However, he may still only attempt a single Dodge against one attack."
+    },
+    {
+      "Name": "Strong Minded",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Willpower",
+          "Value": 30
+        },
+        {
+          "Type": "Talent",
+          "Name": "Resistance (Psychic Techniques)"
+        }
+      ],
+      "Description": "The Explorer’s mind acts as a fortress against psychic attacks. He may re-roll failed Willpower Tests to resist any psychic techniques that affect his mind. Psychic Techniques that have a physical effect, such as Telekinesis, are unaffected by this Talent."
+    },
+    {
+      "Name": "Sure Strike",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Weapon Skill",
+          "Value": 30
+        }
+      ],
+      "Description": "The Explorer can direct his blows far better than most, giving him some control over where they land. When determining hit location for a melee attack, he may use the dice as he rolled them or reverse them, choosing the location he prefers. For example, if Vidor rolls a 37 to hit an Eldar corsair, this would ordinarily strike the Right Leg (73). However, since he has the Sure Strike Talent, he could choose to hit the corsair in the Body (37)."
+    },
+    {
+      "Name": "Swift Attack",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Weapon Skill",
+          "Value": 35
+        }
+      ],
+      "Description": "The Explorer’s speed and martial ability allow him to land flurries of blows. As a Full Action, he may make two melee attacks on his Turn. If he has the Two-Weapon Wielder Talent and is wielding two melee weapons, he gets the advantage of Swift Attack with only one of the weapons, and a single attack with the other. If he has the Two-Weapon Wielder talent and is wielding a melee weapon in one hand and a gun in the other, he gets the advantage of Swift Attack with the melee weapon and a single attack with the gun."
+    },
+    {
+      "Name": "Rival",
+      "Prerequisites": [],
+      "TalentGroups": [
+        "Academics",
+        "Adepta Sororitas",
+        "Adeptus Arbites",
+        "Adeptus Mechanicus",
+        "Administratum",
+        "Astropaths",
+        "Ecclesiarchy",
+        "Feral Worlders",
+        "Government",
+        "Hive World",
+        "Imperial Guard",
+        "Imperial Navy",
+        "Inquisition",
+        "Middle Class",
+        "Military",
+        "Navigators",
+        "Nobility",
+        "Rogue Traders",
+        "Underworld",
+        "Workers"
+      ],
+      "Description": "Essentially the opposite of Peer on page 103, this Talent represents aggressive competition and some animosity with a particular social group or organisation. The Explorer suffers a –10 penalty to all Fellowship Tests when interacting with the group in question.\nThe GM and player may agree to award this Talent when appropriate to the storyline. This Talent may be removed with an Elite Advance and the approval of the GM if the player has taken suitable actions to earn the trust of the group."
+    },
+    {
+      "Name": "Sharpshooter",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Ballistic Skill",
+          "Value": 40
+        },
+        {
+          "Type": "Talent",
+          "Name": "Deadeye Shot"
+        }
+      ],
+      "Description": "The Explorer’s steady hand and eagle eye allow him to place shots exactly where he wants. When making a called shot, he does not incur the normal –20 penalty.\nThis Talent replaces the effects of Deadeye Shot."
+    },
+    {
+      "Name": "Takedown",
+      "Prerequisites": [],
+      "Description": "As a Half Action the Explorer may declare that he is attempting a takedown before testing Weapon Skill. If he hits and would have done at least 1 point of Damage, then ignore the damage and the opponent must make a Toughness Test or be Stunned for 1 Round. When performing a Stun Action, the character does not suffer a –20 penalty to his Weapon Skill."
+    },
+    {
+      "Name": "Talented",
+      "Prerequisites": [],
+      "TalentGroups": [
+        "Any skill"
+      ],
+      "Description": "The Explorer has a natural affinity for a particular Skill. He chooses any one Skill and gains +10 bonus to Tests made using that Skill."
+    },
+    {
+      "Name": "Technical Knock",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Intelligence",
+          "Value": 30
+        }
+      ],
+      "Description": "Either through the ease of long practice, or the proper ritual to appease a weapon’s machine spirit, the Explorer can clear stoppages in weapons. He may un-jam any gun as a Half Action, but may only perform this rite on one weapon per Round. He must touch the weapon to enact this rite."
+    },
+    {
+      "Name": "The Emperor Protects",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Pure Faith"
+        }
+      ],
+      "Description": "The power of the Emperor flows through the Explorer, protecting the faithful and emboldening them to heroism in the face of terrible things.\nBy spending a Fate Point, the character grants himself and a number of allies equal to his Willpower Bonus immunity to the effects of Fear and Pinning. Additionally all ranged or close combat acts made against the character and the specified allies are at a –10 modifier. These benefits last for the duration of the encounter.\nBy burning a Fate Point, the character may allow an ally (never himself) to resist the effects of any single attack, effectively allowing the ally to emerge unscathed as if by a miracle. The Fate Point must be burnt once the attack has hit but before Damage has been rolled."
+    },
+    {
+      "Name": "The Flesh is Weak",
+      "Prerequisites": [
+        {
+          "Type": "Trait",
+          "Name": "Mechanicus Implants"
+        }
+      ],
+      "Description": "The Explorer has undergone significant bionic replacement to the point where he is far more machine than man.\nThis Talent grants the Explorer the Machine Trait (see page 365) with Armour Points equal to the number of times this Talent has been taken. The Explorer may purchase this Talent multiple times in accordance with his Career Advances. In this case, note the number of times this Talent has been taken, such as The Flesh is Weak 3."
+    },
+    {
+      "Name": "Thrown Weapon Training",
+      "Prerequisites": [],
+      "TalentGroups": [
+        "Universal"
+      ],
+      "Description": "The Explorer’s mastery of the balance, spin, and weight of thrown weapons makes him formidable for at any distance, even if only armed with a knife. The Universal group includes all thrown weapons from the Primitive, Chain, Shock, and Power groups. When a character attempts to use a weapon he does not have the correct Weapon Training Talent for, he suffers a –20 penalty to any relevant Weapon Skill or Ballistic Skill Test."
+    },
+    {
+      "Name": "Total Recall",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Intelligence",
+          "Value": 30
+        }
+      ],
+      "Description": "Mental conditioning or augmetics enable the Explorer to record and recall great amounts of information, effectively granting him a perfect memory. He can automatically remember trivial pieces of information he might feasibly have picked up in the past. When dealing with more detailed, complex, or obscure facts, such as the deck plans of a space hulk or a complex xeno pictograph, the GM may require an Intelligence Test."
+    },
+    {
+      "Name": "True Grit",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Toughness",
+          "Value": 40
+        }
+      ],
+      "Description": "The Explorer is able to shrug off wounds that would fell lesser men. Whenever he suffers Critical Damage, halve the result (rounding up)."
+    },
+    {
+      "Name": "Two-Weapon Wielder",
+      "Prerequisites": [
+        {
+          "Type": "PrerequisiteChoice",
+          "Choices": [
+             { "Type": "Attribute", "Name": "Ballistic Skill", "Value": 35 },
+             { "Type": "Attribute", "Name": "Weapon Skill", "Value": 35 }
+          ]
+        },
+         { "Type": "Attribute", "Name": "Agility", "Value": 35 }
+      ],
+      "TalentGroups": [
+        "Ballistic",
+        "Melee"
+      ],
+      "Description": "Years of training allow the Explorer to use a weapon in each hand when needed. When armed with two weapons of the same type, he may spend a Full Action to attack with both. Both tests made to attack with the weapons suffer a –20 penalty (see Chapter IX: Playing the Game for more details on fighting with two weapons). He must possess Two-Weapon Wielder (Melee) and Two-Weapon Wielder (Ballistic) if he wishes to use a gun and hand weapon with this Talent."
+    },
+    {
+      "Name": "Unarmed Master",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Weapon Skill",
+          "Value": 45
+        },
+        {
+          "Type": "Attribute",
+          "Name": "Agility",
+          "Value": 40
+        },
+        {
+          "Type": "Talent",
+          "Name": "Unarmed Warrior"
+        }
+      ],
+      "Description": "The Explorer has developed unequalled mastery of unarmed combat techniques. His unarmed attacks do 1d10+SB (I) Damage and his attacks no longer have the Primitive quality."
+    },
+    {
+      "Name": "Unarmed Warrior",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Weapon Skill",
+          "Value": 35
+        },
+        {
+          "Type": "Attribute",
+          "Name": "Agility",
+          "Value": 35
+        }
+      ],
+      "Description": "Due to extensive training in unarmed combat, the Explorer’s unarmed combat attacks do 1d10-3 (+SB) Damage instead of 1d5-3 Damage.\nWhen making attacks against armed opponents, the character does not count as Unarmed, as defined on page 245, when making attacks against armed opponents. The character’s attacks still count as having the Primitive quality."
+    },
+    {
+      "Name": "Unremarkable",
+      "Prerequisites": [],
+      "Description": "The Explorer has mastered the art of blending into any crowd by adopting its mannerisms. Attempts to notice the character when amongst other people, or attempts to describe him or recall details incur a –20 penalty."
+    },
+    {
+      "Name": "Unshakeable Faith",
+      "Prerequisites": [],
+      "Description": "The confidence the Explorer feels in the Emperor and his abilities is so strong that he can face any danger. He may re-roll any failed Willpower Tests to avoid the effects of Fear."
+    },
+    {
+      "Name": "Void Tactician",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Intelligence",
+          "Value": 35
+        }
+      ],
+      "Description": "The Explorer’s ability to conceptualise three-dimensional space gives him an advantage in starship combat, granting a +10 bonus to Ballistic Skill Tests made to fire a starship’s guns in combat."
+    },
+    {
+      "Name": "Wall of Steel",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Agility",
+          "Value": 35
+        }
+      ],
+      "Description": "The Explorer’s skill with blades is so profound that the merest hint of attack allows him to assume a defensive position. He may make one additional Parry per Round, in effect gaining a second Reaction that may only be used to Parry. He may only attempt a single Parry against any one attack."
+    },
+    {
+      "Name": "Warp Affinity",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Psy Rating"
+        }
+      ],
+      "Description": "The Explorer has a special connection to the warp, allowing him to occasionally notice and avoid its less desirable effects as he channels its power. The character may use this Talent if he has undergone the Rite of Sanctioning. When rolling for Psychic Phenomenon, slumber may discard the die roll, suffer 1d5 Corruption Points, and then re-roll with no modifiers."
+    },
+    {
+      "Name": "Warp Conduit",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Psy Rating"
+        },
+        {
+          "Type": "Talent",
+          "Name": "Strong Minded"
+        },
+        {
+          "Type": "Attribute",
+          "Name": "Willpower",
+          "Value": 50
+        }
+      ],
+      "Description": "The sheer power of the Explorer’s mind allows him to channel much more warp energy than his peers. When pushing, he may add a +1 bonus to his Psy Rating and subtract –10 on any resultant Psychic Phenomenon rolls."
+    },
+    {
+      "Name": "Warp Sense",
+      "Prerequisites": [
+        {
+          "Type": "PrerequisiteChoice",
+          "Choices": [
+            { "Type": "Talent", "Name": "Navigator" },
+            { "Type": "Talent", "Name": "Psy Rating" }
+          ]
+        },
+        {
+          "Type": "Skill",
+          "Name": "Psyniscience"
+        },
+        {
+          "Type": "Attribute",
+          "Name": "Perception",
+          "Value": 30
+        }
+      ],
+      "Description": "The Explorer’s senses have evolved to perceive the warp in parallel with the physical world, though it requires some concentration to do so. After gaining this Talent, using the Psyniscience Skill requires a Half Action instead of a Full Action."
+    },
+    {
+      "Name": "Whispers",
+      "Prerequisites": [
+        {
+          "Type": "Attribute",
+          "Name": "Intelligence",
+          "Value": 45
+        },
+        {
+          "Type": "Attribute",
+          "Name": "Fellowship",
+          "Value": 35
+        }
+      ],
+      "Description": "Such is the Explorer’s reputation for having ears everywhere aboard the ship and a finely tuned network of invisible informants that the crew no longer even bothers to keep secrets from him. The Explorer receives a +10 bonus to any Skill Test for Investigation or the Interview special use of the Inquiry Skill."
+    },
+    {
+      "Name": "Wrath of the Righteous",
+      "Prerequisites": [
+        {
+          "Type": "Talent",
+          "Name": "Pure Faith"
+        }
+      ],
+      "Description": "The Explorer is a killing angel, and he visits the Emperor’s righteous fury on those who deny His dominion over the stars, or who profane that which is sacred.\nWhen making an attack, the Explorer may spend a Fate Point to deal an additional 1d5 points of Damage.\nAt any time while the Emperor is attacking, he may burn a Fate Point to trigger Righteous Fury on a single successful attack. The attack automatically deals the maximum Damage for the weapon plus 1d10 points of Damage. If the second roll results in 10, further Damage is possible (see Righteous Fury on page 245)."
+    }
+  ]

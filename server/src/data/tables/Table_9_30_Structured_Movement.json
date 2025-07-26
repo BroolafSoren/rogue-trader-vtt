@@ -1,0 +1,13 @@
+[
+    { "ab": 0, "halfMove": 1, "fullMove": 2, "charge": 2, "run": 6 },
+    { "ab": 1, "halfMove": 1, "fullMove": 2, "charge": 3, "run": 6 },
+    { "ab": 2, "halfMove": 2, "fullMove": 4, "charge": 6, "run": 12 },
+    { "ab": 3, "halfMove": 3, "fullMove": 6, "charge": 9, "run": 18 },
+    { "ab": 4, "halfMove": 4, "fullMove": 8, "charge": 12, "run": 24 },
+    { "ab": 5, "halfMove": 5, "fullMove": 10, "charge": 15, "run": 30 },
+    { "ab": 6, "halfMove": 6, "fullMove": 12, "charge": 18, "run": 36 },
+    { "ab": 7, "halfMove": 7, "fullMove": 14, "charge": 21, "run": 42 },
+    { "ab": 8, "halfMove": 8, "fullMove": 16, "charge": 24, "run": 48 },
+    { "ab": 9, "halfMove": 9, "fullMove": 18, "charge": 27, "run": 54 },
+    { "ab": 10, "halfMove": 10, "fullMove": 20, "charge": 30, "run": 60 }
+  ]

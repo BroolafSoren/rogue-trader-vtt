@@ -1,0 +1,15 @@
+{
+    "notes": "Per Day values assume 10 hours of travel.",
+    "movementRates": [
+      { "ab": 1, "perMinuteMeters": 12, "perHourKm": 0.75, "perDayKm": 7.5 },
+      { "ab": 2, "perMinuteMeters": 24, "perHourKm": 1.5, "perDayKm": 15 },
+      { "ab": 3, "perMinuteMeters": 48, "perHourKm": 3, "perDayKm": 30 },
+      { "ab": 4, "perMinuteMeters": 72, "perHourKm": 4.5, "perDayKm": 45 },
+      { "ab": 5, "perMinuteMeters": 120, "perHourKm": 7, "perDayKm": 70 },
+      { "ab": 6, "perMinuteMeters": 144, "perHourKm": 9, "perDayKm": 90 },
+      { "ab": 7, "perMinuteMeters": 192, "perHourKm": 12, "perDayKm": 120 },
+      { "ab": 8, "perMinuteMeters": 240, "perHourKm": 15, "perDayKm": 150 },
+      { "ab": 9, "perMinuteMeters": 300, "perHourKm": 18, "perDayKm": 180 },
+      { "ab": 10, "perMinuteMeters": 450, "perHourKm": 27, "perDayKm": 270 }
+    ]
+  }

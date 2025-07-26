@@ -1,0 +1,193 @@
+[
+    {
+      "criticalDamageRoll": "1",
+      "effectDescription": "The impact fills the target’s head with a terrible ringing noise. The target takes 1 level of Fatigue.",
+      "effects": [
+        { "id": "impact_head_1_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:ImpactHead:1"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "2",
+      "effectDescription": "The attack causes the target to see stars. The target takes 1 level of Fatigue and suffers a –10 penalty to Weapon Skill and Ballistic Skill Tests for 1 Round.",
+      "effects": [
+        { "id": "impact_head_2_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:ImpactHead:2"
+        },
+        { "id": "impact_head_2_ws_penalty",
+          "modifierType": "TestPenalty",
+          "target": { "scope": "Self", "type": "Test", "identifier": "WeaponSkill" },
+          "value": 10,
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:ImpactHead:2"
+        },
+        { "id": "impact_head_2_bs_penalty",
+          "modifierType": "TestPenalty",
+          "target": { "scope": "Self", "type": "Test", "identifier": "BallisticSkill" },
+          "value": 10,
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:ImpactHead:2"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "3",
+      "effectDescription": "The target’s nose explodes in a torrent of blood, blinding him for 1 Round and dealing 2 levels of Fatigue.",
+       "effects": [
+         { "id": "impact_head_3_blinded",
+           "modifierType": "ApplyCondition",
+           "conditionId": "blinded",
+           "duration": { "value": 1, "unit": "Rounds" },
+           "source": "Crit:ImpactHead:3"
+         },
+         { "id": "impact_head_3_fatigue",
+           "modifierType": "ApplyFatigue",
+           "value": 2,
+           "source": "Crit:ImpactHead:3"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "4",
+      "effectDescription": "The concussive strike staggers the target, dealing 1d5 levels of Fatigue.",
+      "effects": [
+         { "id": "impact_head_4_fatigue",
+           "modifierType": "ApplyFatigue",
+           "valueDice": "1d5",
+           "source": "Crit:ImpactHead:4"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "5",
+      "effectDescription": "The force of the blow sends the target reeling in pain. The target is Stunned for 1 Round.",
+      "effects": [
+          { "id": "impact_head_5_stun",
+            "modifierType": "ApplyCondition",
+            "conditionId": "stunned",
+            "duration": { "value": 1, "unit": "Rounds" },
+            "source": "Crit:ImpactHead:5"
+          }
+      ]
+    },
+    {
+      "criticalDamageRoll": "6",
+      "effectDescription": "The target’s head is snapped back from the attack leaving him staggering around trying to control mind-numbing pain. The target is Stunned for 1d5 Rounds and takes 2 levels of Fatigue.",
+      "effects": [
+          { "id": "impact_head_6_stun",
+            "modifierType": "ApplyCondition",
+            "conditionId": "stunned",
+            "duration": { "dice": "1d5", "unit": "Rounds" },
+            "source": "Crit:ImpactHead:6"
+          },
+          { "id": "impact_head_6_fatigue",
+            "modifierType": "ApplyFatigue",
+            "value": 2,
+            "source": "Crit:ImpactHead:6"
+          }
+      ]
+    },
+    {
+      "criticalDamageRoll": "7",
+      "effectDescription": "The attack slams into the target’s head, fracturing his skull and opening a large gash in his scalp. The target is Stunned for 1d10 Rounds and halves all movement for 1d10 hours.",
+       "effects": [
+         { "id": "impact_head_7_stun",
+           "modifierType": "ApplyCondition",
+           "conditionId": "stunned",
+           "duration": { "dice": "1d10", "unit": "Rounds" },
+           "source": "Crit:ImpactHead:7"
+         },
+         { "id": "impact_head_7_move_halved",
+           "modifierType": "ModifyAttribute",
+           "target": { "scope": "Self", "type": "Attribute", "identifier": "MovementRateMultiplier" },
+           "value": 0.5,
+           "rounding": "Down",
+           "duration": { "dice": "1d10", "unit": "Hours" },
+           "source": "Crit:ImpactHead:7"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "8",
+      "effectDescription": "Blood pours from the target’s ears, eyes, and nose as the attack pulverises his brain. He does not survive.",
+      "effects": [
+          { "id": "impact_head_8_death",
+            "modifierType": "ApplyCondition",
+            "conditionId": "dead",
+            "scope": "Immediate",
+            "source": "Crit:ImpactHead:8"
+          }
+      ]
+    },
+    {
+      "criticalDamageRoll": "9",
+      "effectDescription": "The target’s head bursts like an overripe fruit and sprays blood, bone and brains in all directions. Anyone within 4 metres of the target must immediately make a Challenging (+0) Perception Test or suffer a –10 penalty to their WS and BS on their next Turn as gore interferes with their actions. The target, of course, is dead.",
+       "effects": [
+         { "id": "impact_head_9_death",
+           "modifierType": "ApplyCondition",
+           "conditionId": "dead",
+           "scope": "Immediate",
+           "source": "Crit:ImpactHead:9"
+         },
+         { "id": "impact_head_9_gore_splatter",
+           "modifierType": "AreaDebuff",
+           "radiusMeters": 4,
+           "targetScope": "AllWithinRadiusExcludingSelf",
+           "savingTest": { "skill":"Perception", "modifier":0 },
+           "failureEffect": {
+               "modifierType":"ApplyTargetDebuff",
+               "debuffDetails": {
+                   "id": "gore_covered",
+                   "effects": [
+                      { "modifierType":"TestPenalty", "target":{"scope":"Self", "type":"Test", "identifier":["WeaponSkill", "BallisticSkill"]}, "value":10 }
+                    ],
+                   "duration": {"value":1, "unit":"Turns"},
+                   "scope":"NextTurnOnly"
+               }
+            },
+            "source": "Crit:ImpactHead:9"
+         }
+       ]
+    },
+    {
+      "criticalDamageRoll": "10+",
+      "effectDescription": "As above, except the attack was so powerful that it passes through the target and may hit another target nearby. If the hit was from a melee weapon, the attacker may immediately make another attack (with the same weapon) against any other target they can reach without moving. If the hit was from a ranged weapon any misses from the attack (with the same weapon) may go through and hit anyone within 1d5 metres of where the target stood (use random facing directly behind the original target and will within range of their weapon).",
+      "effects": [
+          { "id": "impact_head_10_death",
+            "modifierType": "ApplyCondition",
+            "conditionId": "dead",
+            "scope": "Immediate",
+            "source": "Crit:ImpactHead:10"
+          },
+          { "id": "impact_head_10_gore_splatter",
+            "modifierType": "AreaDebuff",
+            "radiusMeters": 4,
+            "targetScope": "AllWithinRadiusExcludingSelf",
+            "savingTest": { "skill":"Perception", "modifier":0 },
+            "failureEffect": { "modifierType":"ApplyTargetDebuff", "debuffDetails": { "id":"gore_covered", "effects":[{ "modifierType":"TestPenalty", "target":{"scope":"Self", "type":"Test", "identifier":["WeaponSkill", "BallisticSkill"]}, "value":10 }], "duration": {"value":1, "unit":"Turns"}, "scope":"NextTurnOnly" } },
+            "source": "Crit:ImpactHead:10"
+          },
+          { "id": "impact_head_10_overpenetration",
+            "modifierType":"TriggerOverpenetration",
+            "condition":{"type":"Context", "property":"AttackType", "value":"Melee"},
+            "overpenetrationEffect": { "modifierType":"GrantAction", "actionId":"standard_attack", "actionType":"Free Action", "details":"Against adjacent target" },
+            "source": "Crit:ImpactHead:10"
+          },
+          { "id": "impact_head_10_ranged_pass_through",
+            "condition":{"type":"Context", "property":"AttackType", "value":"Ranged"},
+            "modifierType":"TriggerPassThrough",
+            "rangeDice":"1d5",
+            "rangeUnit":"Meters",
+            "direction":"DirectlyBehindOriginalTarget",
+            "details":"Misses from original attack may hit new targets",
+            "source": "Crit:ImpactHead:10"
+          }
+       ],
+       "inheritsEffectsFromRoll": "9"
+    }
+  ]

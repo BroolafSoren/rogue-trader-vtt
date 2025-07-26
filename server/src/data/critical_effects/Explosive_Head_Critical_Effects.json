@@ -1,0 +1,203 @@
+[
+    {
+      "criticalDamageRoll": "1",
+      "effectDescription": "The concussion leaves the target confused. He can take only a Half Action on his next Turn and takes 1 level of Fatigue.",
+      "effects": [
+        { "id": "explosive_head_1_action_limit",
+          "modifierType": "SetMaxActionType",
+          "value": "Half Action",
+          "duration": { "value": 1, "unit": "Turns" },
+          "scope": "NextTurnOnly",
+          "source": "Crit:ExplosiveHead:1"
+        },
+        { "id": "explosive_head_1_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:ExplosiveHead:1"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "2",
+      "effectDescription": "The flash and noise leaves the target blind and deaf for 1 Round. The target takes 2 levels of Fatigue.",
+      "effects": [
+         { "id": "explosive_head_2_blinded",
+          "modifierType": "ApplyCondition",
+          "conditionId": "blinded",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:ExplosiveHead:2"
+        },
+        { "id": "explosive_head_2_deafened",
+          "modifierType": "ApplyCondition",
+          "conditionId": "deafened",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:ExplosiveHead:2"
+        },
+        { "id": "explosive_head_2_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 2,
+          "source": "Crit:ExplosiveHead:2"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "3",
+      "effectDescription": "The detonation leaves the target’s face a bloody ruin from scores of small cuts. The target takes 2 levels of Fatigue.",
+      "effects": [
+         { "id": "explosive_head_3_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 2,
+          "source": "Crit:ExplosiveHead:3"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "4",
+      "effectDescription": "The force of the burst knocks the target to the ground and Stuns him for 1 Round. The target is Stunned for 1 Round, and takes 1 level of Fatigue.",
+      "effects": [
+         { "id": "explosive_head_4_prone",
+           "modifierType": "ApplyCondition",
+           "conditionId": "prone",
+           "source": "Crit:ExplosiveHead:4"
+         },
+         { "id": "explosive_head_4_stun",
+          "modifierType": "ApplyCondition",
+          "conditionId": "stunned",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:ExplosiveHead:4"
+         },
+         { "id": "explosive_head_4_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:ExplosiveHead:4"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "5",
+      "effectDescription": "The explosion flays the flesh from the target’s face and bursts his eardrums with its force. The target is Stunned for 1d5 Rounds and is permanently deafened. The target takes 1d5 levels of Fatigue and can only take Half Actions for 1d5 hours. Finally, the target’s Fellowship drops by 1d10 due to hideous scarring.",
+      "effects": [
+         { "id": "explosive_head_5_stun",
+           "modifierType": "ApplyCondition",
+           "conditionId": "stunned",
+           "duration": { "dice": "1d5", "unit": "Rounds" },
+           "source": "Crit:ExplosiveHead:5"
+         },
+         { "id": "explosive_head_5_deafened",
+           "modifierType": "ApplyCondition",
+           "conditionId": "deafened",
+           "permanent": true,
+           "source": "Crit:ExplosiveHead:5"
+         },
+         { "id": "explosive_head_5_fatigue",
+           "modifierType": "ApplyFatigue",
+           "valueDice": "1d5",
+           "source": "Crit:ExplosiveHead:5"
+         },
+         { "id": "explosive_head_5_action_limit",
+           "modifierType": "SetMaxActionType",
+           "value": "Half Action",
+           "duration": { "dice": "1d5", "unit": "Hours" },
+           "source": "Crit:ExplosiveHead:5"
+         },
+         { "id": "explosive_head_5_fel_reduce",
+           "modifierType": "ModifyCharacteristic",
+           "target": { "scope": "Self", "type": "Characteristic", "identifier": "Fellowship" },
+           "valueDice": "-1d10",
+           "permanent": true,
+           "source": "Crit:ExplosiveHead:5"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "6",
+      "effectDescription": "Both ears and tiny flesh shreds are thrown into the air as the blast removes most of the target’s face, leaving his headless corpse to spurt blood from the neck for the next few rounds. Needless to say this is instantly fatal.",
+      "effects": [
+          { "id": "explosive_head_6_death",
+            "modifierType": "ApplyCondition",
+            "conditionId": "dead",
+            "scope": "Immediate",
+            "source": "Crit:ExplosiveHead:6"
+          }
+      ]
+    },
+    {
+      "criticalDamageRoll": "7",
+      "effectDescription": "With a sound only thunder can compare to, the target’s head explodes sending 1d10+5 Impact Damage to any creatures within 1d5 metres.",
+       "effects": [
+          { "id": "explosive_head_7_death",
+            "modifierType": "ApplyCondition",
+            "conditionId": "dead",
+            "scope": "Immediate",
+            "source": "Crit:ExplosiveHead:7"
+          },
+          { "id": "explosive_head_7_area_damage",
+            "modifierType": "AreaDamage",
+            "radiusDice": "1d5",
+            "radiusUnit": "Meters",
+            "damage": "1d10+5",
+            "damageType": "Impact",
+            "targetScope": "AllCreaturesWithinRadiusExcludingSelf",
+            "source": "Crit:ExplosiveHead:7"
+          }
+      ]
+    },
+    {
+      "criticalDamageRoll": "8",
+      "effectDescription": "Both head and torso explode, showering blood, bone and gore over a 1d10 metre radius. Make a Challenging (+0) Willpower Test or gain 1d5 Insanity Points. Target is utterly gone.",
+      "effects": [
+          { "id": "explosive_head_8_death",
+            "modifierType": "ApplyCondition",
+            "conditionId": "dead",
+            "details": "Utterly Obliterated",
+            "scope": "Immediate",
+            "source": "Crit:ExplosiveHead:8"
+          },
+          { "id": "explosive_head_8_insanity_test",
+            "modifierType": "AreaDebuff",
+            "radiusDice": "1d10",
+            "radiusUnit": "Meters",
+            "targetScope": "AllWithinRadiusExcludingSelf",
+            "savingTest": { "skill":"Willpower", "modifier":0 },
+            "failureEffect": { "modifierType":"GainPoints", "pointType":"Insanity", "valueDice":"1d5" },
+            "description": "Willpower Test or gain 1d5 Insanity Points",
+            "source": "Crit:ExplosiveHead:8"
+          }
+      ]
+    },
+    {
+      "criticalDamageRoll": "9",
+      "effectDescription": "The target ceases to exist in any tangible way entirely turning into a kind of crimson mist. You don’t get much deader than this, except . . .",
+       "effects": [
+          { "id": "explosive_head_9_death",
+            "modifierType": "ApplyCondition",
+            "conditionId": "dead",
+            "details": "Crimson Mist",
+            "scope": "Immediate",
+            "source": "Crit:ExplosiveHead:9"
+          }
+       ]
+    },
+    {
+      "criticalDamageRoll": "10+",
+      "effectDescription": "As above, except in the unspeakably appalling manner in which the target was killed, that any of the target’s allies who are within two metres of where the target stood, must make an immediate Challenging (+0) Willpower Test or spend their next Turn fleeing from the abattoir.",
+      "effects": [
+          { "id": "explosive_head_10_death",
+            "modifierType": "ApplyCondition",
+            "conditionId": "dead",
+            "details": "Unspeakably Appalling",
+            "scope": "Immediate",
+            "source": "Crit:ExplosiveHead:10"
+          },
+          { "id": "explosive_head_10_flee_test",
+            "modifierType": "AreaDebuff",
+            "radiusMeters": 2,
+            "targetScope": "AlliesWithinRadiusExcludingSelf",
+            "savingTest": { "skill":"Willpower", "modifier":0 },
+            "failureEffect": { "modifierType":"ForceAction", "actionId":"flee", "duration":{"value":1, "unit":"Turns"} },
+            "description": "Ally Willpower Test or flee",
+            "source": "Crit:ExplosiveHead:10"
+          }
+      ]
+    }
+  ]

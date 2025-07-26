@@ -1,0 +1,204 @@
+[
+    {
+      "criticalDamageRoll": "1",
+      "effectDescription": "A light blow to the leg leaves the target gasping for air. The target gains 1 level of Fatigue.",
+      "effects": [
+        { "id": "impact_leg_1_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:ImpactLeg:1"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "2",
+      "effectDescription": "A grazing strike against the leg slows the target for a bit. The target halves all movement for 1 Round.",
+      "effects": [
+        { "id": "impact_leg_2_move_halved",
+          "modifierType": "ModifyAttribute",
+          "target": { "scope": "Self", "type": "Attribute", "identifier": "MovementRateMultiplier" },
+          "value": 0.5,
+          "rounding": "Down",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:ImpactLeg:2"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "3",
+      "effectDescription": "The blow breaks the target’s leg leaving him Stunned for 1 Round and halving all movement for 1d5 Rounds.",
+      "effects": [
+        { "id": "impact_leg_3_stun",
+          "modifierType": "ApplyCondition",
+          "conditionId": "stunned",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:ImpactLeg:3"
+        },
+        { "id": "impact_leg_3_move_halved",
+          "modifierType": "ModifyAttribute",
+          "target": { "scope": "Self", "type": "Attribute", "identifier": "MovementRateMultiplier" },
+          "value": 0.5,
+          "rounding": "Down",
+          "duration": { "dice": "1d5", "unit": "Rounds" },
+          "source": "Crit:ImpactLeg:3"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "4",
+      "effectDescription": "A solid blow to the leg sends lightning agony coursing through the target’s bodies, inflicting considerable agony. The target takes 1d5 levels of fatigue.",
+      "effects": [
+        { "id": "impact_leg_4_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "source": "Crit:ImpactLeg:4"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "5",
+      "effectDescription": "The impact tears into the target’s bones, inflicting considerable agony. The target’s Agility is reduced by –20 for 1d10 Rounds and he takes 1d5 levels of fatigue.",
+      "effects": [
+         { "id": "impact_leg_5_agi_penalty",
+           "modifierType": "ModifyCharacteristic",
+           "target": { "scope": "Self", "type": "Characteristic", "identifier": "Agility" },
+           "value": -20,
+           "duration": { "dice": "1d10", "unit": "Rounds" },
+           "source": "Crit:ImpactLeg:5"
+         },
+         { "id": "impact_leg_5_fatigue",
+           "modifierType": "ApplyFatigue",
+           "valueDice": "1d5",
+           "source": "Crit:ImpactLeg:5"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "6",
+      "effectDescription": "With the snap of tiny bones in the target’s foot shatter like twigs with cracking noises. The target must make an immediate Toughness Test or permanently lose the use of his foot. On a success, have all movement until medical attention is received. The target takes 2 levels of fatigue.",
+      "effects": [
+        { "id": "impact_leg_6_base_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 2,
+          "source": "Crit:ImpactLeg:6"
+        }
+      ],
+      "resolutionTest": {
+          "id": "impact_leg_6_save_foot_test",
+          "test": { "skill": "Toughness", "modifier": 0 },
+          "successEffects": [
+               { "modifierType":"ModifyAttribute", "target":{"scope":"Self", "type":"Attribute", "identifier":"MovementRateMultiplier"}, "value":0.5, "rounding":"Down", "permanentUntilRepaired": true, "source":"Crit:ImpactLeg:6" }
+          ],
+          "failureEffect": {
+               "modifierType":"ApplyCondition", "conditionId":"lost_foot", "permanent": true, "source":"Crit:ImpactLeg:6"
+          },
+          "description": "Toughness Test or lose foot. Success halves movement until healed."
+      }
+    },
+    {
+      "criticalDamageRoll": "7",
+      "effectDescription": "The force of the impact tears into the target’s leg, breaking it until repaired. The target is knocked down immediately. The target takes 2 levels of Fatigue.",
+      "effects": [
+        { "id": "impact_leg_7_broken",
+          "modifierType": "ApplyCondition",
+          "conditionId": "broken_limb",
+          "details": "AffectedLeg",
+          "permanentUntilRepaired": true,
+          "source": "Crit:ImpactLeg:7"
+        },
+        { "id": "impact_leg_7_prone",
+          "modifierType": "ApplyCondition",
+          "conditionId": "prone",
+          "scope": "Immediate",
+          "source": "Crit:ImpactLeg:7"
+        },
+        { "id": "impact_leg_7_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 2,
+          "source": "Crit:ImpactLeg:7"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "8",
+      "effectDescription": "The target’s leg is shattered, showering bone splinters everywhere. The target must immediately make a Challenging (+0) Toughness Test or die from shock. If he survives, the target is Prone, takes 1d10 levels of Fatigue and suffers from Blood Loss. He now only has one leg.",
+      "effects": [
+        { "id": "impact_leg_8_amputated",
+          "modifierType": "ApplyCondition",
+          "conditionId": "amputated_limb",
+          "details": "AffectedLeg",
+          "scope": "Immediate",
+          "source": "Crit:ImpactLeg:8"
+        },
+        { "id": "impact_leg_8_prone",
+          "modifierType": "ApplyCondition",
+          "conditionId": "prone",
+          "scope": "Immediate",
+          "source": "Crit:ImpactLeg:8"
+        },
+        { "id": "impact_leg_8_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d10",
+          "source": "Crit:ImpactLeg:8"
+        },
+        { "id": "impact_leg_8_blood_loss",
+          "modifierType": "ApplyCondition",
+          "conditionId": "blood_loss",
+          "source": "Crit:ImpactLeg:8"
+        }
+      ],
+      "resolutionTest": {
+          "id": "impact_leg_8_death_test",
+          "test": { "skill": "Toughness", "modifier": 0 },
+          "failureEffect": { "modifierType":"ApplyCondition", "conditionId":"dead", "source":"Crit:ImpactLeg:8" },
+          "description": "Toughness Test or die from shock"
+      }
+    },
+    {
+      "criticalDamageRoll": "9",
+      "effectDescription": "As above, except the sudden flood of vital fluid, the leg bone explodes outwards in a shower of gore. The target dies instantly.",
+      "effects": [
+        { "id": "impact_leg_9_amputated",
+          "modifierType": "ApplyCondition",
+          "conditionId": "amputated_limb",
+          "details": "AffectedLeg",
+          "scope": "Immediate",
+          "source": "Crit:ImpactLeg:9"
+        },
+        { "id": "impact_leg_9_death",
+          "modifierType": "ApplyCondition",
+          "conditionId": "dead",
+          "scope": "Immediate",
+          "source": "Crit:ImpactLeg:9"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "10+",
+      "effectDescription": "As above, except the explosion rips through the target’s body, showering gore and bone splinters outwards in all directions. Anyone within 2d10 metres of the target must make a Challenging (+0) Agility Test or fall prone.",
+      "effects": [
+        { "id": "impact_leg_10_amputated",
+          "modifierType": "ApplyCondition",
+          "conditionId": "amputated_limb",
+          "details": "AffectedLeg",
+          "scope": "Immediate",
+          "source": "Crit:ImpactLeg:10"
+        },
+        { "id": "impact_leg_10_death",
+          "modifierType": "ApplyCondition",
+          "conditionId": "dead",
+          "scope": "Immediate",
+          "source": "Crit:ImpactLeg:10"
+        },
+        { "id": "impact_leg_10_prone_test",
+          "modifierType": "AreaDebuff",
+          "radiusDice": "2d10",
+          "radiusUnit": "Meters",
+          "targetScope": "AllWithinRadiusExcludingSelf",
+          "savingTest": { "skill":"Agility", "modifier":0 },
+          "failureEffect": { "modifierType":"ApplyTargetCondition", "conditionId":"prone" },
+          "source": "Crit:ImpactLeg:10"
+        }
+      ]
+    }
+  ]

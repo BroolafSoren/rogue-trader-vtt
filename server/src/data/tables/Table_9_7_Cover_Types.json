@@ -1,0 +1,32 @@
+[
+    {
+      "id": "cover_light",
+      "category": "Light",
+      "ap": 4,
+      "exampleMaterials": ["Armour-glas", "Generatoria pipes", "thin metal"]
+    },
+    {
+      "id": "cover_medium",
+      "category": "Medium",
+      "ap": 8,
+      "exampleMaterials": ["Flakboard", "Ferrocrete", "sandbags", "ice"]
+    },
+    {
+      "id": "cover_heavy",
+      "category": "Heavy",
+      "ap": 12,
+      "exampleMaterials": ["Cogitator Banks", "stasis pod"]
+    },
+    {
+      "id": "cover_very_heavy",
+      "category": "Very Heavy",
+      "ap": 16,
+      "exampleMaterials": ["Rockcrete", "hatchway", "thick iron", "stone"]
+    },
+    {
+      "id": "cover_fortified",
+      "category": "Fortified",
+      "ap": 32,
+      "exampleMaterials": ["Armaplas", "bulkhead", "Plasteel"]
+    }
+  ]

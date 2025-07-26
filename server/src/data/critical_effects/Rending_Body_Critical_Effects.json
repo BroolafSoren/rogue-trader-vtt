@@ -1,0 +1,201 @@
+[
+    {
+      "criticalDamageRoll": "1",
+      "effectDescription": "If the target is not wearing armour on this location, he takes 1 level of Fatigue from a painful laceration. If he is wearing armour, there is no effect.",
+      "effects": [
+        { "id": "rending_body_1_fatigue",
+          "condition": { "type": "CheckArmour", "location": "Body", "operator": "eq", "value": 0 },
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:RendingBody:1"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "2",
+      "effectDescription": "Flesh is torn. Armour reduces its Armour Points by 1. In addition, the target takes 1 level of Fatigue.",
+      "effects": [
+        { "id": "rending_body_2_armour_damage",
+          "modifierType": "DamageArmour",
+          "target": { "scope": "Self", "type": "BodyPart", "identifier": "Body" },
+          "value": 1,
+          "source": "Crit:RendingBody:2"
+        },
+        { "id": "rending_body_2_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:RendingBody:2"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "3",
+      "effectDescription": "A large patch of skin is removed, reducing his Armour Points by 1. In addition, the target takes 1 level of Fatigue and is Stunned for 1 Round.",
+      "effects": [
+         { "id": "rending_body_3_armour_damage",
+          "modifierType": "DamageArmour",
+          "target": { "scope": "Self", "type": "BodyPart", "identifier": "Body" },
+          "value": 1,
+          "source": "Crit:RendingBody:3"
+        },
+        { "id": "rending_body_3_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:RendingBody:3"
+        },
+         { "id": "rending_body_3_stun",
+          "modifierType": "ApplyCondition",
+          "conditionId": "stunned",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:RendingBody:3"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "4",
+      "effectDescription": "A torrent of deep cuts, making the ground slick with gore. All characters attempting to move through this patch of blood must succeed on an Agility Test or fall Prone. The target takes 1d5 levels of Fatigue.",
+      "effects": [
+         { "id": "rending_body_4_fatigue",
+           "modifierType": "ApplyFatigue",
+           "valueDice": "1d5",
+           "source": "Crit:RendingBody:4"
+         },
+         { "id": "rending_body_4_area_hazard",
+           "modifierType": "CreateAreaHazard",
+           "areaDetails": { "type": "SlickBlood", "radiusMeters": 1, "duration": "Encounter" },
+           "hazardEffects": [ { "trigger": "EnterOrMoveInArea", "effect": { "modifierType":"ForceTest", "test":{"skill":"Agility", "modifier":0}, "failureEffect":{"modifierType":"ApplyTargetCondition", "conditionId":"prone"} } } ],
+           "source": "Crit:RendingBody:4"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "5",
+      "effectDescription": "The blow opens up a long wound in the target’s torso, causing him to double over in terrible pain. The target takes 1d5 levels of Fatigue and must make a Toughness Test or die.",
+      "effects": [
+        { "id": "rending_body_5_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "source": "Crit:RendingBody:5"
+         }
+         ,{ "id": "rending_body_5_stun_temp", "modifierType":"ApplyCondition", "conditionId":"stunned", "duration":{"value":1,"unit":"Rounds"}, "source":"Crit:RendingBody:5"}
+      ],
+       "resolutionTest": {
+          "id": "rending_body_5_death_test",
+          "test": { "skill": "Toughness", "modifier": 0 },
+          "failureEffect": { "modifierType":"ApplyCondition", "conditionId":"dead", "source":"Crit:RendingBody:5" },
+          "description": "Toughness Test or die"
+      }
+    },
+    {
+      "criticalDamageRoll": "6",
+      "effectDescription": "The attack makes a sizeable chunk out of the target and knocks him to the ground as he clutches the oozing wound, shrieking in pain. The target takes 1d5 levels of Fatigue and now suffers Blood Loss.",
+       "effects": [
+         { "id": "rending_body_6_prone",
+           "modifierType": "ApplyCondition",
+           "conditionId": "prone",
+           "source": "Crit:RendingBody:6"
+         },
+         { "id": "rending_body_6_fatigue",
+           "modifierType": "ApplyFatigue",
+           "valueDice": "1d5",
+           "source": "Crit:RendingBody:6"
+         },
+         { "id": "rending_body_6_blood_loss",
+           "modifierType": "ApplyCondition",
+           "conditionId": "blood_loss",
+           "source": "Crit:RendingBody:6"
+         }
+       ]
+    },
+    {
+      "criticalDamageRoll": "7",
+      "effectDescription": "The target is hurled to the ground in a bloody mess, landing awkwardly in a pathetic heap. The target can choose to lose one arm to hold his guts in until a medic can bind them in place with a successful Medicae Test, or die. Regardless, add a 20% chance that he turns and that his middle splits open, spilling his intestines all over the ground, causing an additional 2d10 Damage. In either case, the target takes 1d5 levels of Fatigue and is now suffering Blood Loss.",
+      "effects": [
+         { "id": "rending_body_7_prone",
+           "modifierType": "ApplyCondition",
+           "conditionId": "prone",
+           "source": "Crit:RendingBody:7"
+         },
+         { "id": "rending_body_7_fatigue",
+           "modifierType": "ApplyFatigue",
+           "valueDice": "1d5",
+           "source": "Crit:RendingBody:7"
+         },
+         { "id": "rending_body_7_blood_loss",
+           "modifierType": "ApplyCondition",
+           "conditionId": "blood_loss",
+           "source": "Crit:RendingBody:7"
+         }
+      ],
+      "resolutionChoice": {
+          "id": "rending_body_7_lose_arm_or_die",
+          "options": [
+              { "choice": "LoseArm", "effect": { "modifierType":"ApplyCondition", "conditionId":"amputated_limb", "details":"ChosenArm" } },
+              { "choice": "Die", "effect": { "modifierType":"ApplyCondition", "conditionId":"dead" } }
+          ],
+          "requiresMedicaeToSurviveOption1": true
+      },
+      "resolutionTest": [
+         { "id": "rending_body_7_eviscerate_chance",
+           "test": { "type": "Chance", "percentage": 20 },
+           "successEffect": { "modifierType":"MultiEffect", "effects": [
+               { "modifierType":"DealDamage", "damage":"2d10", "damageType":"Rending", "target":{"scope":"Self"}, "ignoresSoak":true, "ignoresArmour":true },
+               { "modifierType":"ApplyCondition", "conditionId":"dead" }
+             ]},
+           "description": "20% chance to die instantly taking 2d10 damage"
+          }
+      ]
+    },
+    {
+      "criticalDamageRoll": "8",
+      "effectDescription": "A powerful blow tears the target’s chest cavity revealing a red ruin of muscle. The target must make Challenging (+0) Toughness Test or die. If he passes, he takes 1d10 levels of Fatigue and is now suffering Blood Loss.",
+      "effects": [
+         { "id": "rending_body_8_blood_loss",
+           "modifierType": "ApplyCondition",
+           "conditionId": "blood_loss",
+           "source": "Crit:RendingBody:8"
+         }
+      ],
+       "resolutionTest": {
+          "id": "rending_body_8_death_test",
+          "test": { "skill": "Toughness", "modifier": 0 },
+          "failureEffect": { "modifierType":"ApplyCondition", "conditionId":"dead", "source":"Crit:RendingBody:8" },
+          "successEffects": [
+             { "modifierType":"ApplyFatigue", "valueDice":"1d10", "source":"Crit:RendingBody:8" }
+          ],
+          "description": "Toughness Test or die. Success -> 1d10 Fatigue."
+      }
+    },
+    {
+      "criticalDamageRoll": "9",
+      "effectDescription": "The above blow cleaves the target from groin to collar, revealing his internal organs and spilling them on to the ground below him. The target is now quite dead.",
+      "effects": [
+         { "id": "rending_body_9_death",
+           "modifierType": "ApplyCondition",
+           "conditionId": "dead",
+           "scope": "Immediate",
+           "source": "Crit:RendingBody:9"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "10+",
+      "effectDescription": "As above, except that the force of the blow explodes the target’s corpse and make an immediate Challenging (+0) Agility Test or fall prone.",
+      "effects": [
+        { "id": "rending_body_10_death",
+          "modifierType": "ApplyCondition",
+          "conditionId": "dead",
+          "scope": "Immediate",
+          "source": "Crit:RendingBody:10"
+        },
+        { "id": "rending_body_10_prone_test",
+          "modifierType": "AreaDebuff",
+          "radiusMeters": 2,
+          "targetScope": "AllWithinRadiusExcludingSelf",
+          "savingTest": { "skill": "Agility", "modifier": 0 },
+          "failureEffect": { "modifierType":"ApplyTargetCondition", "conditionId":"prone" },
+          "source": "Crit:RendingBody:10"
+        }
+      ]
+    }
+  ]

@@ -1,0 +1,96 @@
+[
+    {
+      "criticalDamageRoll": "1",
+      "effectDescription": "A blast to the arm leaves it all numb and tingly. Tests made involving the arm are at –10 for 1 Round.",
+      "effects": [
+        { "id": "energy_arm_1_penalty", "modifierType": "TestPenalty", "target": {"scope": "Self", "type": "Test", "identifier":"*", "subIdentifier":"RequiresAffectedArm"}, "value": 10, "duration": {"value": 1, "unit": "Rounds"}, "source": "Crit:EnergyArm:1" }
+      ]
+    },
+    {
+      "criticalDamageRoll": "2",
+      "effectDescription": "The attack singes the arm, sending currents of energy crackling down to the fingers and up to the shoulder. The arm is useless for 1d5 Rounds and the character takes 1 level of Fatigue.",
+      "effects": [
+        { "id": "energy_arm_2_useless", "modifierType": "ApplyCondition", "conditionId": "useless_limb", "details": "AffectedArm", "duration": {"dice": "1d5", "unit": "Rounds"}, "source": "Crit:EnergyArm:2" },
+        { "id": "energy_arm_2_fatigue", "modifierType": "ApplyFatigue", "value": 1, "source": "Crit:EnergyArm:2" }
+      ]
+    },
+    {
+      "criticalDamageRoll": "3",
+      "effectDescription": "The attack burns the target’s arm, making him Stunned for 1 Round and inflicts 2 levels of Fatigue.",
+      "effects": [
+        { "id": "energy_arm_3_stun", "modifierType": "ApplyCondition", "conditionId": "stunned", "duration": {"value": 1, "unit": "Rounds"}, "source": "Crit:EnergyArm:3" },
+        { "id": "energy_arm_3_fatigue", "modifierType": "ApplyFatigue", "value": 2, "source": "Crit:EnergyArm:3" }
+      ]
+    },
+    {
+      "criticalDamageRoll": "4",
+      "effectDescription": "The target ignores the intense pain, is Stunned for 1 Round and takes 1 level of Fatigue.",
+      "effects": [
+         { "id": "energy_arm_4_stun", "modifierType": "ApplyCondition", "conditionId": "stunned", "duration": {"value": 1, "unit": "Rounds"}, "source": "Crit:EnergyArm:4" },
+         { "id": "energy_arm_4_fatigue", "modifierType": "ApplyFatigue", "value": 1, "source": "Crit:EnergyArm:4" }
+      ]
+    },
+    {
+      "criticalDamageRoll": "5",
+      "effectDescription": "The arm suffers superficial burns inflicting no small amount of pain on the target. The target’s WS and BS are halved (round down) for 1 Round and the target takes 1d5 levels of Fatigue.",
+      "effects": [
+          { "id": "energy_arm_5_ws_halved", "modifierType":"ModifyCharacteristic", "target":{"scope":"Self", "type":"Characteristic", "identifier":"WeaponSkill"}, "multiplier": 0.5, "rounding": "Down", "duration":{"value":1, "unit":"Rounds"}, "source":"Crit:EnergyArm:5"},
+          { "id": "energy_arm_5_bs_halved", "modifierType":"ModifyCharacteristic", "target":{"scope":"Self", "type":"Characteristic", "identifier":"BallisticSkill"}, "multiplier": 0.5, "rounding": "Down", "duration":{"value":1, "unit":"Rounds"}, "source":"Crit:EnergyArm:5"},
+          { "id": "energy_arm_5_fatigue", "modifierType":"ApplyFatigue", "valueDice": "1d5", "source":"Crit:EnergyArm:5"}
+      ]
+    },
+    {
+      "criticalDamageRoll": "6",
+      "effectDescription": "The attack wreathes the arm in flame, scorching clothing and armour, and temporarily fusing together the target’s fingers. The target takes WS and BS for 1d5 rounds, takes 1d5 levels of fatigue, and must successfully Test toughness or lose use of the arm permanently.",
+      "effects": [
+        { "id": "energy_arm_6_fatigue", "modifierType":"ApplyFatigue", "valueDice": "1d5", "source":"Crit:EnergyArm:6"}
+      ],
+       "resolutionTest": { 
+           "skill": "Toughness",
+           "modifier": 0, 
+           "failureEffect": { "modifierType":"ApplyCondition", "conditionId":"lost_arm", "permanent":true, "source":"Crit:EnergyArm:6"}
+       },
+       "specialProperties": ["AmbiguousWSBSEffect"]
+    },
+    {
+      "criticalDamageRoll": "7",
+      "effectDescription": "With a terrible scorching sound, the heat of the attack boils the marrow in the target’s arm, breaking it until it is useless and fused together until repaired. The target is Stunned for 1 Round and takes 1d5 levels of Fatigue.",
+       "effects": [
+         { "id": "energy_arm_7_useless", "modifierType":"ApplyCondition", "conditionId":"useless_limb", "details":"AffectedArm", "permanentUntilRepaired": true, "source":"Crit:EnergyArm:7" },
+         { "id": "energy_arm_7_stun", "modifierType":"ApplyCondition", "conditionId":"stunned", "duration":{"value":1, "unit":"Rounds"}, "source":"Crit:EnergyArm:7" },
+         { "id": "energy_arm_7_fatigue", "modifierType":"ApplyFatigue", "valueDice": "1d5", "source":"Crit:EnergyArm:7" }
+      ]
+    },
+    {
+      "criticalDamageRoll": "8",
+      "effectDescription": "The intense power of the energy attack causes the shoulder joint to boil, causing the limb to be severed from the body. The target must immediately take 1d5 levels of Fatigue. The target now only has one arm.",
+      "effects": [
+        { "id": "energy_arm_8_amputated", "modifierType":"ApplyCondition", "conditionId":"amputated_limb", "details":"AffectedArm", "scope": "Immediate", "source": "Crit:EnergyArm:8" },
+        { "id": "energy_arm_8_fatigue", "modifierType":"ApplyFatigue", "valueDice": "1d5", "scope":"Immediate", "source":"Crit:EnergyArm:8" }
+      ]
+    },
+    {
+      "criticalDamageRoll": "9",
+      "effectDescription": "Fire consumes the target’s arm, burning the flesh to a crisp right down to the bone. The target must make an immediate Toughness Test or die from shock. If he survives, however, the target takes 1d10 levels of Fatigue and is Stunned for 1 Round. The target now only has one arm.",
+       "effects": [
+         { "id": "energy_arm_9_amputated", "modifierType":"ApplyCondition", "conditionId":"amputated_limb", "details":"AffectedArm", "scope": "Immediate", "source": "Crit:EnergyArm:9" }
+       ],
+       "resolutionTest": {
+          "skill": "Toughness",
+          "modifier": 0, 
+          "failureEffect": { "modifierType":"ApplyCondition", "conditionId":"dead", "source":"Crit:EnergyArm:9"},
+          "successEffects": [ 
+              { "modifierType":"ApplyFatigue", "valueDice":"1d10", "source":"Crit:EnergyArm:9"},
+              { "modifierType":"ApplyCondition", "conditionId":"stunned", "duration":{"value":1, "unit":"Rounds"}, "source":"Crit:EnergyArm:9"}
+          ]
+       }
+    },
+    {
+      "criticalDamageRoll": "10+",
+      "effectDescription": "As above, except the arm is removed completely as if shorn through by the energy, leaving behind nothing but a charred shoulder. The target immediately dies from shock.",
+      "effects": [
+         { "id": "energy_arm_10_amputated", "modifierType":"ApplyCondition", "conditionId":"amputated_limb", "details":"AffectedArm", "scope": "Immediate", "source": "Crit:EnergyArm:10" },
+         { "id": "energy_arm_10_death", "modifierType":"ApplyCondition", "conditionId":"dead", "scope":"Immediate", "source":"Crit:EnergyArm:10" }
+      ]
+    }
+  ]

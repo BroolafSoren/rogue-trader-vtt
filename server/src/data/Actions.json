@@ -1,0 +1,461 @@
+[
+    {
+      "id": "aim",
+      "name": "Aim",
+      "actionTypes": ["Half Action", "Full Action"],
+      "subtypes": ["Concentration"],
+      "description": "Take extra time to make a more precise attack. Grants +10 (Half) or +20 (Full) bonus to the character's next WS or BS Test for an attack. Benefit persists until an attack is made or any other action is performed.",
+      "effects": [
+        { "id": "aim_half_bonus",
+          "condition": { "type": "Context", "property": "ActionUsedAs", "value": "Half Action", "target": "Self" },
+          "modifierType": "TestBonus",
+          "target": { "scope": "Self", "type": "Test", "identifier": ["WeaponSkill", "BallisticSkill"] },
+          "value": 10,
+          "scope": "NextAttack",
+          "source": "Action:aim" },
+        { "id": "aim_full_bonus",
+          "condition": { "type": "Context", "property": "ActionUsedAs", "value": "Full Action", "target": "Self" },
+          "modifierType": "TestBonus",
+          "target": { "scope": "Self", "type": "Test", "identifier": ["WeaponSkill", "BallisticSkill"] },
+          "value": 20,
+          "scope": "NextAttack",
+          "source": "Action:aim" }
+      ],
+      "cancelsEffectScopes": ["NextAttack"]
+    },
+    {
+      "id": "all_out_attack",
+      "name": "All Out Attack",
+      "actionTypes": ["Full Action"],
+      "subtypes": ["Attack", "Melee"],
+      "description": "The character makes a furious melee attack at the expense of personal safety. Grants +20 to WS Test, but character cannot Dodge or Parry until the start of their next Turn.",
+      "requiredTest": { "type": "Skill", "skill": "WeaponSkill", "baseModifier": 20 },
+      "effects": [
+        { "id": "aoa_cannot_parry", "modifierType": "ApplyCondition", "conditionId": "cannot_parry", "duration": "UntilNextTurn", "source": "Action:all_out_attack" },
+        { "id": "aoa_cannot_dodge", "modifierType": "ApplyCondition", "conditionId": "cannot_dodge", "duration": "UntilNextTurn", "source": "Action:all_out_attack" }
+      ]
+    },
+    {
+      "id": "brace_heavy_weapon",
+      "name": "Brace Heavy Weapon",
+      "actionTypes": ["Full Action"],
+      "subtypes": ["Miscellaneous"],
+      "description": "Heavy weapons must be braced before they can be fired effectively. Provides stability using a bipod, tripod, prop, or sturdy surface. Necessary to fire a Heavy Weapon without a –30 BS penalty.",
+      "weaponRequirements": { "category": "Heavy" },
+      "effects": [
+          { "id": "brace_apply_state", "modifierType": "ApplyCharacterState", "stateId": "weapon_braced", "details": "Applies to held Heavy weapon", "duration": "WhileStationary", "source": "Action:brace_heavy_weapon" }
+      ]
+    },
+    {
+      "id": "called_shot",
+      "name": "Called Shot",
+      "actionTypes": ["Full Action"],
+      "subtypes": ["Attack", "Concentration", "Melee", "Ranged"],
+      "description": "Target a specific vulnerable spot on an opponent's body or gear. Make a Hard (–20) WS or BS Test. Success hits the declared location instead of random.",
+      "requiredTest": { "type": "Skill", "skill": ["WeaponSkill", "BallisticSkill"], "baseModifier": -20 },
+      "effectsOnSuccess": [
+          { "id": "called_shot_hit_location", "modifierType": "SetHitLocation", "valueSource": "DeclaredTargetLocation", "source": "Action:called_shot" }
+      ]
+    },
+    {
+      "id": "charge",
+      "name": "Charge",
+      "actionTypes": ["Full Action"],
+      "subtypes": ["Attack", "Melee", "Movement"],
+      "description": "Character rushes at target to deliver a melee attack. Move at least 4m straight towards target (last 4m must be straight). Grants +10 bonus to WS Test. If unarmed, can attempt Grapple instead of damage.",
+      "movement": { "distance": "Charge", "minDistanceMeters": 4, "straightLineRequired": true, "lastSegmentStraightMeters": 4 },
+      "requiredTest": { "type": "Skill", "skill": "WeaponSkill", "baseModifier": 10 },
+      "specialProperties": ["CanInitiateGrappleIfUnarmed"]
+    },
+    {
+      "id": "climb",
+      "name": "Climb",
+      "actionTypes": ["Half Action", "Full Action", "Extended Action"],
+      "subtypes": ["Movement", "Skill"],
+      "description": "Ascend or descend vertical surfaces. Simple climbs may not require a test. Sheer surfaces require a Climb Skill Test.",
+      "requiredTest": { "type": "Skill", "skill": "Climb", "baseModifier": 0, "isOptional": true, "optionalCondition": "SimpleClimb" },
+      "movement": { "distanceSource": "TestDoS", "distancePerDoS": 1, "baseDistance": "HalfMove_Halved", "direction":"Vertical"},
+      "specialProperties": ["MayRequireHandsFree", "FailureMayCauseFall"]
+    },
+    {
+      "id": "defensive_stance",
+      "name": "Defensive Stance",
+      "actionTypes": ["Full Action"],
+      "subtypes": ["Concentration", "Melee"],
+      "description": "Character makes no attacks and concentrates entirely on self-defence. Gain an additional Reaction. Opponents suffer a –20 penalty to WS Tests to attack them.",
+      "effects": [
+        { "id": "def_stance_reaction", "modifierType": "ModifyAttribute", "target": {"scope":"Self", "type":"Attribute", "identifier":"MaxReactionsPerRound"}, "value": 1, "durationType":"Duration", "durationValue":"UntilNextTurn", "source": "Action:defensive_stance" },
+        { "id": "def_stance_incoming_penalty", "modifierType": "ApplyTargetDebuffToAttackers", "target": {"scope":"Self"}, "debuffDetails": {
+            "id": "defensive_stance_penalty",
+            "effects": [{ "modifierType": "TestPenalty", "target": {"scope":"Self", "type":"Test", "identifier":"WeaponSkill"}, "value": 20 }]
+          }, "durationType":"Duration", "durationValue":"UntilNextTurn", "source": "Action:defensive_stance" }
+      ],
+      "restrictions": ["CannotMakeAttacks"]
+    },
+    {
+      "id": "delay",
+      "name": "Delay",
+      "actionTypes": ["Half Action"],
+      "subtypes": ["Miscellaneous"],
+      "description": "Character waits for an opportune moment. May perform any Half Action any time before their next Turn, interrupting another if necessary. Resolved in Initiative order if multiple Delayed characters act.",
+      "effects": [
+          { "id": "delay_apply_state", "modifierType": "ApplyCharacterState", "stateId": "can_interrupt_with_half_action", "duration": "UntilStartOfNextTurn", "source": "Action:delay" }
+      ]
+    },
+    {
+      "id": "disengage",
+      "name": "Disengage",
+      "actionTypes": ["Full Action"],
+      "subtypes": ["Movement"],
+      "description": "Safely break off from melee combat and make a Half Move away. Opponents do not get free attacks.",
+      "movement": { "distance": "Half Move", "direction": "AwayFromEngaged" },
+      "specialProperties": ["PreventsFreeAttacksFromEngagement"]
+    },
+    {
+      "id": "dodge",
+      "name": "Dodge",
+      "actionTypes": ["Reaction"],
+      "subtypes": ["Movement"],
+      "description": "Attempt to avoid an attack after being hit but before damage. Requires Dodge Skill Test. Success negates hit. Can dodge melee/ranged. Special rules for area/bursts.",
+      "trigger": "OnHitByAttack",
+      "requiredTest": { "type": "Skill", "skill": "Dodge" },
+      "effectsOnSuccess": [
+          { "id": "dodge_negate_hit", "modifierType": "NegateHit", "source": "Action:dodge" }
+      ],
+      "restrictions": ["MustBeAware", "CannotBeSurprised"]
+    },
+    {
+      "id": "feint",
+      "name": "Feint",
+      "actionTypes": ["Half Action"],
+      "subtypes": ["Attack", "Melee"],
+      "description": "Make Opposed WS Test vs target. If successful, the next melee attack against that target cannot be Dodged or Parried.",
+      "requiredTest": { "type": "OpposedSkill", "skill": "WeaponSkill", "target": "Defender" },
+      "effectsOnSuccess": [
+        { "id": "feint_success_debuff",
+          "modifierType": "ApplyTargetDebuff",
+          "target": { "scope": "Target" },
+          "debuffDetails": {
+              "id": "feinted",
+              "name": "Feinted",
+              "description": "Target cannot Parry or Dodge the next melee attack against them.",
+              "effects": [
+                  { "modifierType": "PreventAction", "actionId": "parry", "scope": "NextMeleeAttackAgainstSelf" },
+                  { "modifierType": "PreventAction", "actionId": "dodge", "scope": "NextMeleeAttackAgainstSelf" }
+              ],
+              "duration": "OneAttack"
+          },
+          "source": "Action:feint"
+        }
+      ]
+    },
+    {
+      "id": "flee",
+      "name": "Flee",
+      "actionTypes": ["Full Action", "Forced"],
+      "subtypes": ["Movement"],
+      "description": "Move directly away from a perceived threat using the Run action movement distance. Provokes free attacks if disengaging from melee.",
+      "movement": { "distance": "Run", "direction": "AwayFromThreatSource" },
+      "specialProperties": ["ProvokesFreeAttackOnDisengage", "CanBeForcedByEffects"]
+    },
+    {
+      "id": "focus_power",
+      "name": "Focus Power",
+      "actionTypes": ["Half Action", "Full Action", "Free Action", "Extended Action"],
+      "subtypes": ["Varies"],
+      "description": "Used to manifest Psychic Powers. Action type and subtype depend on the specific power.",
+      "specialProperties": ["RequiresPsychicPower"]
+    },
+    {
+      "id": "full_auto_burst",
+      "name": "Full Auto Burst",
+      "actionTypes": ["Full Action"],
+      "subtypes": ["Attack", "Ranged"],
+      "description": "Unleash a stream of fire. Requires Full Auto weapon. +20 BS bonus. 1 hit + 1 extra per DoS (max = RoF). Extra hits can target others within 2m. Can move AgB with Pistol/Basic for -10 BS and no bonus.",
+      "requiredTest": { "type": "Skill", "skill": "BallisticSkill", "baseModifier": 20 },
+      "weaponRequirements": { "firingMode": "FullAuto" },
+      "jamRange": [94, 100],
+      "hitCalculation": {
+          "baseHits": 1,
+          "extraHitsPerDoS": 1,
+          "maxExtraHits": "WeaponRateOfFire_FullAuto",
+          "extraHitTargetingRangeMeters": 2,
+          "multipleHitLocationTableId": "table_9_5_multiple_hits"
+      },
+      "specialProperties": ["CanMoveAgB_WithPenalty"]
+    },
+    {
+      "id": "grapple",
+      "name": "Grapple",
+      "actionTypes": ["Half Action", "Full Action"],
+      "subtypes": ["Attack", "Melee"],
+      "description": "Maintain grapple or use Grapple Options. Target can attempt escape options.",
+      "condition": { "type": "HasCondition", "property": "grappling", "target": "Self" },
+      "grappleOptions": [
+          { "id": "grapple_damage_option", "name": "Damage Opponent", "controllerOnly": true, "actionTypes":["Half Action"], "requiredTest": { "type": "OpposedSkill", "skill": "Strength", "target": "Defender" }, "effectsOnSuccess":[{"modifierType":"DealDamage", "damage":"1d5-3+SB", "damageType":"Impact"}] },
+          { "id": "grapple_throw_down_option", "name": "Throw Down", "controllerOnly": true, "actionTypes":["Half Action"], "requiredTest": { "type": "OpposedSkill", "skill": "Strength", "target": "Defender" }, "effectsOnSuccess":[{"modifierType":"ApplyTargetCondition", "conditionId":"prone", "target":{"scope":"Target"}}] },
+          { "id": "grapple_push_option", "name": "Push Opponent", "controllerOnly": true, "actionTypes":["Half Action"], "requiredTest": { "type": "OpposedSkill", "skill": "Strength", "target": "Defender" }, "effectsOnSuccess":[{"modifierType":"ForcedMovement", "distanceSource":"HalfMove", "direction":"AwayFromController", "target":{"scope":"Target"}}] },
+          { "id": "grapple_break_free", "name": "Break Free", "targetOnly": true, "actionTypes":["Half Action"], "requiredTest": { "type": "OpposedSkill", "skill": "WeaponSkill", "target": "Controller" }, "effectsOnSuccess":[{"modifierType":"RemoveCondition", "conditionId":"grappling", "target":{"scope":"Self"}}]},
+          { "id": "grapple_trip_free", "name": "Trip Free", "targetOnly": true, "actionTypes":["Half Action"], "requiredTest": { "type": "OpposedSkill", "skill": "Agility", "target": "Controller" }, "effectsOnSuccess":[{"modifierType":"RemoveCondition", "conditionId":"grappling", "target":{"scope":"Self"}}]},
+          { "id": "grapple_take_control", "name": "Take Control", "targetOnly": true, "actionTypes":["Half Action"], "requiredTest": { "type": "OpposedSkill", "skill": "Strength", "target": "Controller" }, "effectsOnSuccess":[{"modifierType":"SetGrappleController", "target":{"scope":"Self"}}]}
+      ]
+    },
+    {
+      "id": "guarded_attack",
+      "name": "Guarded Attack",
+      "actionTypes": ["Full Action"],
+      "subtypes": ["Attack", "Concentration", "Melee"],
+      "description": "Make a careful melee attack. WS Test is at –10 penalty. Gain +10 bonus to Dodge and Parry Tests until start of next Turn.",
+      "requiredTest": { "type": "Skill", "skill": "WeaponSkill", "baseModifier": -10 },
+      "effects": [
+          { "id": "guard_atk_dodge_bonus", "modifierType": "TestBonus", "target": { "scope": "Self", "type": "Test", "identifier": "Dodge" }, "value": 10, "durationType":"Duration", "durationValue":"UntilNextTurn", "source": "Action:guarded_attack"},
+          { "id": "guard_atk_parry_bonus", "modifierType": "TestBonus", "target": { "scope": "Self", "type": "Test", "identifier": "WeaponSkill", "subIdentifier":"Parry"}, "value": 10, "durationType":"Duration", "durationValue":"UntilNextTurn", "source": "Action:guarded_attack"}
+      ]
+    },
+    {
+      "id": "jump_leap",
+      "name": "Jump or Leap",
+      "actionTypes": ["Full Action"],
+      "subtypes": ["Movement"],
+      "description": "Perform various jumps. See Movement rules (p266-267) for details.",
+      "specialProperties": ["ProvokesFreeAttackIfEngaged", "RequiresMovementRuleLookup"]
+    },
+    {
+      "id": "knock_down",
+      "name": "Knock-Down",
+      "actionTypes": ["Half Action"],
+      "subtypes": ["Attack", "Melee"],
+      "description": "Attempt to knock opponent prone. Opposed Strength Test. Various outcomes based on success/failure degrees.",
+      "requiredTest": { "type": "OpposedSkill", "skill": "Strength", "target": "Defender" },
+      "effectsOnSuccess": [
+          { "condition": { "type":"Comparison", "property":"DegreesOfSuccess", "operator": "lt", "value": 2 }, "modifierType": "ApplyTargetCondition", "conditionId": "prone", "target": { "scope": "Target" }, "source":"Action:knock_down" },
+          { "condition": { "type":"Comparison", "property":"DegreesOfSuccess", "operator": "gte", "value": 2 }, "modifierType": "MultiEffect", "effects": [
+              { "modifierType": "ApplyTargetCondition", "conditionId": "prone", "target": { "scope": "Target" } },
+              { "modifierType": "DealDamage", "damage": "1d5+SB", "damageType": "Impact", "specialProperties": ["DoubleTargetAP"], "target": { "scope": "Target" } },
+              { "modifierType": "ApplyFatigue", "value": 1, "target": { "scope": "Target" } }
+            ], "source":"Action:knock_down"
+          }
+      ],
+      "effectsOnFailure": [
+           { "condition": { "type":"Comparison", "property":"DegreesOfFailure", "operator": "gte", "value": 2 }, "modifierType": "ApplyTargetCondition", "conditionId": "prone", "target": { "scope": "Attacker" }, "source":"Action:knock_down" },
+           { "condition": { "type":"Comparison", "property":"DegreesOfFailure", "operator": "lt", "value": 2 }, "modifierType": "TestBonus", "target": {"scope":"Attacker", "type":"Test", "identifier":"WeaponSkill"}, "value":10, "scope":"ThisTurn", "conditionTargeting":"OriginalOpponent", "source":"Action:knock_down"}
+      ]
+    },
+    {
+      "id": "lift_push",
+      "name": "Lift/Push Object",
+      "actionTypes": ["Full Action", "Extended Action"],
+      "subtypes": ["Miscellaneous", "Skill"],
+      "description": "Lift or push heavy objects. May require Challenging (+0) Strength Test if object exceeds carrying capacity.",
+      "requiredTest": { "type":"Skill", "skill":"Strength", "baseModifier":0, "isOptional":true, "optionalCondition":"ObjectWeightExceedsCarryCapacity" },
+      "specialProperties": ["ReferencesCarryingCapacityTable"]
+    },
+    {
+      "id": "manoeuvre",
+      "name": "Manoeuvre",
+      "actionTypes": ["Half Action"],
+      "subtypes": ["Attack", "Melee", "Movement"],
+      "description": "Make an Opposed WS Test. Success allows forcing opponent 1m and attacker may advance 1m.",
+      "requiredTest": { "type": "OpposedSkill", "skill": "WeaponSkill", "target": "Defender" },
+      "effectsOnSuccess": [
+          { "id": "manoeuvre_push", "modifierType": "ForcedMovement", "distanceMeters": 1, "direction": "Any", "target": { "scope": "Target" }, "restrictions":["CannotForceIntoObstacle"], "source": "Action:manoeuvre" },
+          { "id": "manoeuvre_advance", "modifierType": "GrantMovement", "distanceMeters": 1, "direction": "Any", "target": { "scope": "Attacker" }, "source": "Action:manoeuvre" }
+      ]
+    },
+    {
+      "id": "move",
+      "name": "Move",
+      "actionTypes": ["Half Action", "Full Action"],
+      "subtypes": ["Movement"],
+      "description": "Move up to Half Move (Half Action) or Full Move (Full Action) distance. Can engage adjacent opponents. Moving away provokes free attack.",
+      "movement": { "distanceSource": "ActionType", "halfActionDistance": "Half Move", "fullActionDistance": "Full Move" },
+      "specialProperties": ["CanEngage", "ProvokesFreeAttackOnDisengage"]
+    },
+    {
+      "id": "multiple_attacks",
+      "name": "Multiple Attacks",
+      "actionTypes": ["Full Action"],
+      "subtypes": ["Attack", "Melee", "Ranged"],
+      "description": "Make more than one attack. Requires specific Talents (Swift Attack, Lightning Attack) or Two-Weapon Fighting.",
+      "specialProperties": ["RequiresTalentOrTwoWeaponFighting"]
+    },
+     {
+      "id": "overwatch",
+      "name": "Overwatch",
+      "actionTypes": ["Full Action"],
+      "subtypes": ["Attack", "Concentration", "Ranged"],
+      "description": "Declare a ranged attack action (Full/Semi-Auto Burst, Suppressing Fire) and establish a 45-degree kill zone with trigger conditions. If triggered before next turn, perform the declared attack as a Free Action. Does not use Reaction. Cancelled if Reaction used before trigger.",
+      "validDeclaredActionIds": ["full_auto_burst", "semi_auto_burst", "suppressing_fire"],
+      "killZone": { "angleDegrees": 45, "direction": "Facing" },
+      "triggerCondition": { "type": "Context", "property": "OverwatchTriggerMet", "value": true },
+      "effects": [
+          { "id": "overwatch_grant",
+            "modifierType": "GrantTemporaryAbility",
+            "abilityDetails": {
+                "id": "overwatch_triggered_shot",
+                "type": "TriggeredFreeAction",
+                "triggerCondition": { "type": "Context", "property": "OverwatchTriggerMet", "value": true },
+                "actionToPerform": { "type": "ReferenceToAction", "actionId": "CONTEXT_DECLARED_ACTION" },
+                "expiry": "StartOfNextTurn",
+                "cancellationTriggers": ["PerformedReaction"],
+                "specialRules": ["OpposedAgilityTestOnSimultaneous", "MayCausePinning"]
+              },
+            "source": "Action:overwatch"
+           }
+      ]
+     },
+     {
+      "id": "parry",
+      "name": "Parry",
+      "actionTypes": ["Reaction"],
+      "subtypes": ["Defence", "Melee"],
+      "description": "Attempt to block a melee attack after being hit but before damage. Requires WS Test. Success negates hit. Requires suitable weapon.",
+      "trigger": "OnHitByMeleeAttack",
+      "requiredTest": { "type": "Skill", "skill": "WeaponSkill" },
+      "weaponRequirements": { "canParry": true },
+      "effectsOnSuccess": [ { "id": "parry_negate_hit", "modifierType": "NegateHit", "source": "Action:parry" } ],
+      "restrictions": ["MustBeAware", "CannotBeSurprised"]
+    },
+    {
+      "id": "ready",
+      "name": "Ready",
+      "actionTypes": ["Half Action"],
+      "subtypes": ["Miscellaneous"],
+      "description": "Draw weapon, retrieve item, prime grenade, apply poison, etc. Can declare twice per Turn for different items.",
+      "effects": [ { "id": "ready_item_state", "modifierType":"SetItemState", "target": "ItemInteractedWith", "state": "Ready", "source":"Action:ready"} ]
+    },
+    {
+      "id": "reload",
+      "name": "Reload",
+      "actionTypes": ["Half Action", "Full Action", "Extended Action"],
+      "subtypes": ["Miscellaneous"],
+      "description": "Reload a ranged weapon. Time depends on weapon's Reload property.",
+      "specialProperties": ["ReloadTimeDependsOnWeapon"]
+    },
+    {
+      "id": "run",
+      "name": "Run",
+      "actionTypes": ["Full Action"],
+      "subtypes": ["Movement"],
+      "description": "Move distance equal to Run Movement. Ranged attacks against runner suffer –20 BS, melee attacks gain +20 WS until start of runner's next Turn.",
+      "movement": { "distance": "Run" },
+      "effects": [
+        { "id": "run_incoming_ranged_penalty", "modifierType": "ApplyTargetDebuffToAttackers", "target": { "scope": "Self" }, "debuffDetails": {
+            "id": "running_target_ranged_penalty",
+            "effects": [{ "modifierType": "TestPenalty", "target": {"scope":"Self", "type":"Test", "identifier":"BallisticSkill"}, "value": 20 }]
+          }, "durationType":"Duration", "durationValue":"UntilNextTurn", "source": "Action:run" },
+        { "id": "run_incoming_melee_bonus", "modifierType": "ApplyTargetDebuffToAttackers", "target": { "scope": "Self" }, "debuffDetails": {
+            "id": "running_target_melee_bonus",
+            "effects": [{ "modifierType": "TestBonus", "target": {"scope":"Self", "type":"Test", "identifier":"WeaponSkill"}, "value": 20 }]
+          }, "durationType":"Duration", "durationValue":"UntilNextTurn", "source": "Action:run" }
+      ]
+    },
+    {
+      "id": "semi_auto_burst",
+      "name": "Semi-Auto Burst",
+      "actionTypes": ["Full Action"],
+      "subtypes": ["Attack", "Ranged"],
+      "description": "Fire a short burst. +10 BS bonus. 1 hit + 1 extra per 2 DoS (max = RoF). Extra hits target original or others within 2m. Can move AgB with Pistol/Basic for no bonus. Scatter interaction at PB.",
+      "requiredTest": { "type": "Skill", "skill": "BallisticSkill", "baseModifier": 10 },
+      "weaponRequirements": { "firingMode": "SemiAuto" },
+      "jamRange": [94, 100],
+      "hitCalculation": {
+          "baseHits": 1,
+          "extraHitsPerDoS": 0.5,
+          "maxExtraHits": "WeaponRateOfFire_SemiAuto",
+          "extraHitTargetingRangeMeters": 2,
+          "multipleHitLocationTableId": "table_9_5_multiple_hits"
+      },
+      "specialProperties": ["CanMoveAgB_NoBonus", "ScatterPointBlankInteraction"]
+    },
+    {
+      "id": "stand_mount",
+      "name": "Stand/Mount",
+      "actionTypes": ["Half Action"],
+      "subtypes": ["Movement"],
+      "description": "Stand up if Prone. Mount a riding beast or vehicle if standing.",
+      "effects": [
+          { "id": "stand_remove_prone", "condition": { "type": "HasCondition", "property": "prone", "target": "Self" }, "modifierType": "RemoveCondition", "conditionId": "prone", "source": "Action:stand_mount" },
+          { "id": "mount_apply_state", "condition": { "type": "HasCondition", "property": "prone", "value": false, "target": "Self" }, "modifierType": "ApplyCharacterState", "stateId": "mounted", "source": "Action:stand_mount" }
+      ]
+    },
+    {
+      "id": "standard_attack",
+      "name": "Standard Attack",
+      "actionTypes": ["Half Action"],
+      "subtypes": ["Attack", "Melee", "Ranged"],
+      "description": "Make a single melee (WS Test) or ranged (BS Test) attack. If unarmed, can attempt Grapple.",
+      "requiredTest": { "type": "Skill", "skill": ["WeaponSkill", "BallisticSkill"] },
+      "specialProperties": ["CanInitiateGrappleIfUnarmed"]
+    },
+    {
+      "id": "stun_action",
+      "name": "Stun",
+      "actionTypes": ["Full Action"],
+      "subtypes": ["Attack", "Melee"],
+      "description": "Attempt to stun opponent (unarmed or stun weapon). Standard Attack hits, then Opposed Roll: Attacker 1d10+SB vs Defender 1d10+TB (+1 per Head AP, doubled if Primitive/Unarmed). Attacker wins -> Target Stunned for difference Rounds. Defender fails -> 1 Fatigue.",
+      "requiredTest": { "type": "Skill", "skill": "WeaponSkill" },
+      "weaponRequirements": { "quality": ["Stun", "Unarmed"] },
+      "effectsOnHit": [
+          { "id": "stun_opposed_roll", "modifierType": "PerformOpposedRoll",
+            "attackerRoll": { "dice": "1d10", "attributeBonus": "StrengthBonus" },
+            "defenderRoll": { "dice": "1d10", "attributeBonus": "ToughnessBonus", "bonusPerHeadAP": 1, "doubleAPBonusIfPrimitive": true },
+            "successCondition": "AttackerRoll > DefenderRoll",
+            "effectsOnSuccess": [
+                { "modifierType": "ApplyTargetCondition", "conditionId": "stunned", "target": { "scope": "Target"}, "duration": { "type": "Rounds", "valueSource": "RollDifference"}, "source": "Action:stun_action" }
+            ],
+            "effectsOnFailure": [
+                 { "modifierType": "ApplyFatigue", "value": 1, "target": { "scope": "Defender" }, "source": "Action:stun_action" }
+            ]
+          }
+      ]
+    },
+    {
+      "id": "suppressing_fire",
+      "name": "Suppressing Fire",
+      "actionTypes": ["Full Action"],
+      "subtypes": ["Attack", "Ranged"],
+      "description": "Lay down fire to force targets into cover. Requires Full Auto weapon. Establish 45-degree kill zone. Targets test Hard (–20) WP or are Pinned. Attacker makes Hard (–20) BS Test for random hits (1 base, +1 per 2 DoS, max RoF). Jam on 94-100. Attacker cannot willingly fail BS Test.",
+      "weaponRequirements": { "firingMode": "FullAuto" },
+      "killZone": { "angleDegrees": 45, "direction": "Facing" },
+      "requiredTest": { "type": "Skill", "skill": "BallisticSkill", "baseModifier": -20, "cannotWillfullyFail": true },
+      "jamRange": [94, 100],
+      "effects": [
+          { "id": "suppress_pin_test", "modifierType": "ForceTargetTest", "target": { "scope": "AllInKillZone" }, "test": { "skill": "Willpower", "modifier": -20 }, "failureEffect": { "modifierType": "ApplyTargetCondition", "conditionId": "pinned" }, "source": "Action:suppressing_fire"}
+      ],
+      "hitCalculationOnSuccess": {
+          "baseHits": 1,
+          "extraHitsPerDoS": 0.5,
+          "maxTotalHits": "WeaponRateOfFire_FullAuto",
+          "targetSelection": "RandomInKillZone",
+          "multipleHitLocationTableId": "table_9_5_multiple_hits"
+      }
+    },
+    {
+      "id": "swim",
+      "name": "Swim",
+      "actionTypes": ["Full Action", "Extended Action"],
+      "subtypes": ["Movement", "Skill"],
+      "description": "Move through water. Hazardous conditions require Challenging (+0) Swim Test to move 0.5xSB metres or tread water. Failure means no progress.",
+      "requiredTest": { "type":"Skill", "skill":"Swim", "baseModifier":0, "isOptional":true, "optionalCondition":"HazardousWater" },
+      "movement": { "distanceSource":"Success", "baseDistance":"HalfSB", "condition":"HazardousWater"},
+      "specialProperties": ["SuffocationRulesApplyUnderwater", "ArmourPenaltiesMayApply"]
+    },
+    {
+      "id": "tactical_advance",
+      "name": "Tactical Advance",
+      "actionTypes": ["Full Action"],
+      "subtypes": ["Concentration", "Movement"],
+      "description": "Move carefully from cover to cover, up to Full Move distance. Considered in open while moving, but benefits from starting cover until reaching destination.",
+      "movement": { "distance": "Full Move", "context": "CoverToCover" },
+      "specialProperties": ["BenefitsFromStartCoverUntilEnd"]
+    },
+    {
+      "id": "use_a_skill",
+      "name": "Use a Skill",
+      "actionTypes": ["Half Action", "Full Action", "Extended Action"],
+      "subtypes": ["Concentration", "Miscellaneous"],
+      "description": "Perform a standard Skill Test not covered by other actions. Action type/time depends on Skill and situation.",
+      "specialProperties": ["RequiresSkillCheck"]
+    }
+  ]

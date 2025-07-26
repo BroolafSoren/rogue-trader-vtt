@@ -1,0 +1,12 @@
+[
+    { "condition": "Mud", "difficultyModifier": -10 },
+    { "condition": "Fog or Smoke", "difficultyModifier": -10 },
+    { "condition": "Shallow Water", "difficultyModifier": 0 },
+    { "condition": "Darkness", "difficultyModifier": -10 },
+    { "condition": "Snow", "difficultyModifier": -10 },
+    { "condition": "Underbrush", "difficultyModifier": -20 },
+    { "condition": "Dense Crowds", "difficultyModifier": -20 },
+    { "condition": "Zero Gravity", "difficultyModifier": -20 },
+    { "condition": "Floods", "difficultyModifier": -20 },
+    { "condition": "Tremors", "difficultyModifier": -20 }
+  ]

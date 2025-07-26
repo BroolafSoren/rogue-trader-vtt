@@ -1,0 +1,192 @@
+[
+    {
+      "criticalDamageRoll": "1",
+      "effectDescription": "The impact numbs the target’s limb causing him to drop anything held in that hand.",
+      "effects": [
+         { "id": "impact_arm_1_drop",
+          "modifierType": "ForceDropItem",
+          "target": { "scope": "Self", "type": "BodyPart", "identifier": "AffectedHand" },
+          "source": "Crit:ImpactArm:1"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "2",
+      "effectDescription": "The strike leaves a deep bruise. The target takes 1 level of Fatigue.",
+      "effects": [
+         { "id": "impact_arm_2_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:ImpactArm:2"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "3",
+      "effectDescription": "The impact inflicts crushing pain and the target takes 1 level of Fatigue and drops whatever was held in that hand.",
+      "effects": [
+         { "id": "impact_arm_3_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:ImpactArm:3"
+         },
+         { "id": "impact_arm_3_drop",
+          "modifierType": "ForceDropItem",
+          "target": { "scope": "Self", "type": "BodyPart", "identifier": "AffectedHand" },
+          "source": "Crit:ImpactArm:3"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "4",
+      "effectDescription": "The impact leaves the target reeling from pain. The target is Stunned for 1 Round. The limb is useless for 1d5 Rounds and the target takes 1 level of Fatigue.",
+      "effects": [
+         { "id": "impact_arm_4_stun",
+           "modifierType": "ApplyCondition",
+           "conditionId": "stunned",
+           "duration": { "value": 1, "unit": "Rounds" },
+           "source": "Crit:ImpactArm:4"
+         },
+         { "id": "impact_arm_4_useless",
+           "modifierType": "ApplyCondition",
+           "conditionId": "useless_limb",
+           "details": "AffectedArm",
+           "duration": { "dice": "1d5", "unit": "Rounds" },
+           "source": "Crit:ImpactArm:4"
+         },
+         { "id": "impact_arm_4_fatigue",
+           "modifierType": "ApplyFatigue",
+           "value": 1,
+           "source": "Crit:ImpactArm:4"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "5",
+      "effectDescription": "Muscle and bone take a pounding as the attack rips into the arm. The target’s Weapon Skill and Ballistic Skill are both halved (round down) for 1d10 Rounds and must make an Agility Test or drop anything held in that hand.",
+      "effects": [
+        { "id": "impact_arm_5_ws_halved",
+          "modifierType": "ModifyCharacteristic",
+          "target": { "scope": "Self", "type": "Characteristic", "identifier": "WeaponSkill" },
+          "multiplier": 0.5,
+          "rounding": "Down",
+          "duration": { "dice": "1d10", "unit": "Rounds" },
+          "source": "Crit:ImpactArm:5"
+        },
+        { "id": "impact_arm_5_bs_halved",
+          "modifierType": "ModifyCharacteristic",
+          "target": { "scope": "Self", "type": "Characteristic", "identifier": "BallisticSkill" },
+          "multiplier": 0.5,
+          "rounding": "Down",
+          "duration": { "dice": "1d10", "unit": "Rounds" },
+          "source": "Crit:ImpactArm:5"
+        }
+      ],
+      "resolutionTest": {
+          "id": "impact_arm_5_drop_test",
+          "test": { "skill": "Agility", "modifier": 0 },
+          "failureEffect": { "modifierType": "ForceDropItem", "target": { "scope": "Self", "type": "BodyPart", "identifier": "AffectedHand" }, "source": "Crit:ImpactArm:5" },
+          "description": "Agility Test or drop item"
+      }
+    },
+    {
+      "criticalDamageRoll": "6",
+      "effectDescription": "The attack pulversises the target’s hand, crushing and cracking 1d5 fingers (for the purposes of this Critical, a thumb counts a finger). The target takes 1 level of Fatigue and must immediately make a Challenging (+0) Toughness Test or lose the use of his hand.",
+      "effects": [
+         { "id": "impact_arm_6_fatigue",
+           "modifierType": "ApplyFatigue",
+           "value": 1,
+           "source": "Crit:ImpactArm:6"
+         }
+      ],
+      "resolutionTest": {
+          "id": "impact_arm_6_save_hand_test",
+          "test": { "skill": "Toughness", "modifier": 0 },
+          "failureEffect": { "modifierType": "ApplyCondition", "conditionId": "useless_limb", "details":"AffectedHand", "permanentUntilRepaired":true, "source": "Crit:ImpactArm:6" },
+          "description": "Toughness Test or lose use of hand"
+      }
+    },
+    {
+      "criticalDamageRoll": "7",
+      "effectDescription": "With a wet crack, the arm bone is broken and, until repaired, the target counts as having only one arm. In addition, the arm is useless and unusable and the target is Stunned for 1 Round.",
+      "effects": [
+          { "id": "impact_arm_7_broken",
+            "modifierType": "ApplyCondition",
+            "conditionId": "broken_limb",
+            "details": "AffectedArm",
+            "permanentUntilRepaired": true,
+            "source": "Crit:ImpactArm:7"
+           },
+           { "id": "impact_arm_7_stun",
+             "modifierType": "ApplyCondition",
+             "conditionId": "stunned",
+             "duration": { "value": 1, "unit": "Rounds" },
+             "source": "Crit:ImpactArm:7"
+           }
+      ],
+      "implicitConditions": ["lost_arm"]
+    },
+    {
+      "criticalDamageRoll": "8",
+      "effectDescription": "The arm is shattered and, hanging limply, the arm bone is visible through the ruined flesh. The target takes 1d5 levels of Fatigue, is Stunned for 1d5 Rounds and suffers from Blood Loss. He now only has one arm.",
+      "effects": [
+         { "id": "impact_arm_8_amputated",
+           "modifierType": "ApplyCondition",
+           "conditionId": "amputated_limb",
+           "details": "AffectedArm",
+           "scope": "Immediate",
+           "source": "Crit:ImpactArm:8"
+         },
+         { "id": "impact_arm_8_fatigue",
+           "modifierType": "ApplyFatigue",
+           "valueDice": "1d5",
+           "source": "Crit:ImpactArm:8"
+         },
+         { "id": "impact_arm_8_stun",
+           "modifierType": "ApplyCondition",
+           "conditionId": "stunned",
+           "duration": { "dice": "1d5", "unit": "Rounds" },
+           "source": "Crit:ImpactArm:8"
+         },
+         { "id": "impact_arm_8_blood_loss",
+           "modifierType": "ApplyCondition",
+           "conditionId": "blood_loss",
+           "source": "Crit:ImpactArm:8"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "9",
+      "effectDescription": "The arm is ripped from his body. Screaming incoherently, he twists about in agony for a few seconds before collapsing to the ground, dead. The arm, clothing and armour fly like shrapnel. Anyone within 2 metres of the target suffers 1d5–3 Impact Damage to a random location (see Table 9-8: Hit Locations).",
+      "effects": [
+          { "id": "impact_arm_9_amputated", "modifierType":"ApplyCondition", "conditionId":"amputated_limb", "details":"AffectedArm", "scope":"Immediate", "source":"Crit:ImpactArm:9" },
+          { "id": "impact_arm_9_death", "modifierType":"ApplyCondition", "conditionId":"dead", "scope":"Immediate", "source":"Crit:ImpactArm:9" },
+          { "id": "impact_arm_9_shrapnel",
+            "modifierType":"AreaDamage",
+            "radiusMeters":2,
+            "targetScope":"AllWithinRadiusExcludingSelf",
+            "damage":"1d5-3",
+            "damageType":"Impact",
+            "hitLocationTableId":"table_9_8_hit_locations",
+            "hitLocationSelection":"Random",
+            "source":"Crit:ImpactArm:9" }
+       ]
+    },
+    {
+      "criticalDamageRoll": "10+",
+      "effectDescription": "As above, except the arm is removed it is smashed apart by the force of the attack, and bone, clothing and armour fragments fly about like shrapnel. Anyone within 2 metres of the target suffers 1d5 Impact Damage to a random location (see Table 9-8: Hit Locations).",
+      "effects": [
+         { "id": "impact_arm_10_amputated", "modifierType":"ApplyCondition", "conditionId":"amputated_limb", "details":"AffectedArm", "scope":"Immediate", "source":"Crit:ImpactArm:10" },
+         { "id": "impact_arm_10_death", "modifierType":"ApplyCondition", "conditionId":"dead", "scope":"Immediate", "source":"Crit:ImpactArm:10" },
+         { "id": "impact_arm_10_shrapnel",
+           "modifierType":"AreaDamage",
+           "radiusMeters":2,
+           "targetScope":"AllWithinRadiusExcludingSelf",
+           "damage":"1d5",
+           "damageType":"Impact",
+           "hitLocationTableId":"table_9_8_hit_locations",
+           "hitLocationSelection":"Random",
+           "source":"Crit:ImpactArm:10" }
+      ]
+    }
+  ]

@@ -1,0 +1,205 @@
+[
+    {
+      "criticalDamageRoll": "1",
+      "effectDescription": "A blow to the leg leaves the target gasping for air. The target gains 1 level of Fatigue.",
+      "effects": [
+        { "id": "energy_leg_1_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:EnergyLeg:1"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "2",
+      "effectDescription": "A grazing strike against the leg slows the target for a bit. The target halves all movement for 1 Round.",
+      "effects": [
+        { "id": "energy_leg_2_move_halved",
+          "modifierType": "ModifyAttribute",
+          "target": { "scope": "Self", "type": "Attribute", "identifier": "MovementRateMultiplier" },
+          "value": 0.5,
+          "rounding": "Down",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:EnergyLeg:2"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "3",
+      "effectDescription": "The blast breaks the target’s leg leaving him Stunned for 1 Round and halving all movement for 1d5 Rounds.",
+      "effects": [
+        { "id": "energy_leg_3_stun",
+          "modifierType": "ApplyCondition",
+          "conditionId": "stunned",
+          "duration": { "value": 1, "unit": "Rounds" },
+          "source": "Crit:EnergyLeg:3"
+        },
+        { "id": "energy_leg_3_move_halved",
+          "modifierType": "ModifyAttribute",
+          "target": { "scope": "Self", "type": "Attribute", "identifier": "MovementRateMultiplier" },
+          "value": 0.5,
+          "rounding": "Down",
+          "duration": { "dice": "1d5", "unit": "Rounds" },
+          "source": "Crit:EnergyLeg:3"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "4",
+      "effectDescription": "A solid blow to the leg sends lightning agony coursing through the target’s body. The target takes 1d5 levels of Fatigue and has movement halved for 1d5 Rounds.",
+      "effects": [
+        { "id": "energy_leg_4_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "source": "Crit:EnergyLeg:4"
+        },
+        { "id": "energy_leg_4_move_halved",
+          "modifierType": "ModifyAttribute",
+          "target": { "scope": "Self", "type": "Attribute", "identifier": "MovementRateMultiplier" },
+          "value": 0.5,
+          "rounding": "Down",
+          "duration": { "dice": "1d5", "unit": "Rounds" },
+          "source": "Crit:EnergyLeg:4"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "5",
+      "effectDescription": "The target’s leg endures horrific burn damage, fusing clothing and armour and melting flesh. The target takes 1 level of Fatigue and moves at half speed for 2d10 Rounds.",
+      "effects": [
+         { "id": "energy_leg_5_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:EnergyLeg:5"
+         },
+         { "id": "energy_leg_5_move_halved",
+          "modifierType": "ModifyAttribute",
+          "target": { "scope": "Self", "type": "Attribute", "identifier": "MovementRateMultiplier" },
+          "value": 0.5,
+          "rounding": "Down",
+          "duration": { "dice": "2d10", "unit": "Rounds" },
+          "source": "Crit:EnergyLeg:5"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "6",
+      "effectDescription": "The energy attack scorches the foot, charring the flesh and emitting a foul aroma. The target must make a Toughness Test or become Stunned for 1d5 rounds. The target takes 1d5 levels of fatigue, and the leg is useless leaving it a mess of blackened flesh. The target now only has one leg.",
+      "effects": [
+         { "id": "energy_leg_6_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "source": "Crit:EnergyLeg:6"
+         },
+         { "id": "energy_leg_6_amputated",
+           "modifierType": "ApplyCondition",
+           "conditionId": "amputated_limb",
+           "details": "AffectedLeg",
+           "scope": "Immediate",
+           "source": "Crit:EnergyLeg:6"
+          }
+      ],
+      "resolutionTest": {
+          "id": "energy_leg_6_stun_test",
+          "test": { "skill": "Toughness", "modifier": 0 },
+          "failureEffect": { "modifierType": "ApplyCondition", "conditionId": "stunned", "duration":{"dice":"1d5", "unit":"Rounds"}, "source": "Crit:EnergyLeg:6" },
+          "description": "Toughness Test or Stunned 1d5 Rounds"
+      }
+    },
+    {
+      "criticalDamageRoll": "7",
+      "effectDescription": "The force of the energy attack sends the leg spinning through the air. The leg is broken and until repaired, the count counts as having lost the leg. The target must immediately take a Toughness Test or become Stunned for 1 Round. In addition the target gains 1d5 levels of Fatigue and suffers from Blood Loss.",
+       "effects": [
+         { "id": "energy_leg_7_broken",
+           "modifierType": "ApplyCondition",
+           "conditionId": "broken_limb",
+           "details": "AffectedLeg",
+           "permanentUntilRepaired": true,
+           "source": "Crit:EnergyLeg:7"
+         },
+         { "id": "energy_leg_7_fatigue",
+          "modifierType": "ApplyFatigue",
+          "valueDice": "1d5",
+          "source": "Crit:EnergyLeg:7"
+         },
+         { "id": "energy_leg_7_blood_loss",
+          "modifierType": "ApplyCondition",
+          "conditionId": "blood_loss",
+          "source": "Crit:EnergyLeg:7"
+         }
+       ],
+      "resolutionTest": {
+          "id": "energy_leg_7_stun_test",
+          "test": { "skill": "Toughness", "modifier": 0 },
+          "failureEffect": { "modifierType": "ApplyCondition", "conditionId": "stunned", "duration":{"value":1, "unit":"Rounds"}, "source": "Crit:EnergyLeg:7" },
+          "description": "Toughness Test or Stunned 1 Round"
+      }
+    },
+    {
+      "criticalDamageRoll": "8",
+      "effectDescription": "Energy sears through bone, causing the leg to be severed. The target must take a Toughness Test or become Stunned for 1d10 Rounds. In addition, the target gains 1d10 levels of Fatigue and suffers from Blood Loss. The target now only has one leg.",
+      "effects": [
+          { "id": "energy_leg_8_amputated",
+            "modifierType": "ApplyCondition",
+            "conditionId": "amputated_limb",
+            "details": "AffectedLeg",
+            "scope": "Immediate",
+            "source": "Crit:EnergyLeg:8"
+          },
+          { "id": "energy_leg_8_fatigue",
+           "modifierType": "ApplyFatigue",
+           "valueDice": "1d10",
+           "source": "Crit:EnergyLeg:8"
+          },
+          { "id": "energy_leg_8_blood_loss",
+           "modifierType": "ApplyCondition",
+           "conditionId": "blood_loss",
+           "source": "Crit:EnergyLeg:8"
+          }
+      ],
+      "resolutionTest": {
+          "id": "energy_leg_8_stun_test",
+          "test": { "skill": "Toughness", "modifier": 0 },
+          "failureEffect": { "modifierType": "ApplyCondition", "conditionId": "stunned", "duration":{"dice":"1d10", "unit":"Rounds"}, "source": "Crit:EnergyLeg:8" },
+          "description": "Toughness Test or Stunned 1d10 Rounds"
+      }
+    },
+    {
+      "criticalDamageRoll": "9",
+      "effectDescription": "The target’s leg explodes in flame, sending bone fragments flying. The target must make a Challenging (+0) Toughness Test or die from shock. The leg is utterly lost.",
+       "effects": [
+          { "id": "energy_leg_9_amputated",
+            "modifierType": "ApplyCondition",
+            "conditionId": "amputated_limb",
+            "details": "AffectedLeg",
+            "scope": "Immediate",
+            "source": "Crit:EnergyLeg:9"
+          }
+       ],
+      "resolutionTest": {
+          "id": "energy_leg_9_death_test",
+          "test": { "skill": "Toughness", "modifier": 0 },
+          "failureEffect": { "modifierType": "ApplyCondition", "conditionId": "dead", "source": "Crit:EnergyLeg:9" },
+          "description": "Toughness Test or die from shock"
+      }
+    },
+    {
+      "criticalDamageRoll": "10+",
+      "effectDescription": "In a terrifying display of power, the leg immolates and fire consumes the target completely. The target dies in a matter of seconds.",
+      "effects": [
+         { "id": "energy_leg_10_amputated",
+           "modifierType": "ApplyCondition",
+           "conditionId": "amputated_limb",
+           "details": "AffectedLeg",
+           "scope": "Immediate",
+           "source": "Crit:EnergyLeg:10"
+          },
+         { "id": "energy_leg_10_death",
+           "modifierType": "ApplyCondition",
+           "conditionId": "dead",
+           "scope": "Immediate",
+           "source": "Crit:EnergyLeg:10"
+         }
+      ]
+    }
+  ]

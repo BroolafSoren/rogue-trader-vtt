@@ -1,0 +1,304 @@
+[
+    {
+      "id": "amputated_limb",
+      "name": "Amputated Limb",
+      "conditionType": "Injury",
+      "description": "Loss of a limb (arm, leg, hand, foot, eye). Causes Blood Loss initially. Specific penalties depend on limb lost. Cannot heal Wounds naturally for 1d10+2 days.",
+      "effects": [
+        { "id": "amp_blood_loss", "modifierType": "ApplyCondition", "conditionId": "blood_loss", "scope": "Immediate", "source": "Condition:amputated_limb" },
+        { "id": "amp_healing_delay", "modifierType": "DelayNaturalHealing", "duration": { "dice": "1d10+2", "unit": "Days"}, "source": "Condition:amputated_limb" }
+      ],
+      "specialProperties": ["RequiresMedicaeToAvoidDeathChance"]
+    },
+    {
+      "id": "blinded",
+      "name": "Blinded",
+      "conditionType": "Sensory",
+      "description": "Vision tests auto-fail. BS Tests auto-fail. WS and other vision-reliant tests are Very Hard (-30).",
+       "effects": [
+        { "id": "blinded_vision_autofail", "modifierType": "AutoFailTest", "target": { "scope": "Self", "type": "Test", "identifier": "*", "subIdentifier":"RequiresVision"}, "source": "Condition:blinded" },
+        { "id": "blinded_bs_autofail", "modifierType": "AutoFailTest", "target": { "scope": "Self", "type": "Test", "identifier": "BallisticSkill"}, "source": "Condition:blinded" },
+        { "id": "blinded_other_penalty", "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": "WeaponSkill", "subIdentifier":"VisionReliant"}, "value": 30, "source": "Condition:blinded" }
+      ]
+    },
+    {
+      "id": "blood_loss",
+      "name": "Blood Loss",
+      "conditionType": "Critical",
+      "description": "10% chance of death per Round unless staunched via Medicae Test (Difficult -10, or Very Hard -30 if strenuous activity).",
+      "recurringEffects": [
+        { "trigger": "StartOfRound", "effect": { "modifierType": "ChanceOfDeath", "chance": 0.10, "source": "Condition:blood_loss" } }
+      ],
+      "removalTest": [
+          { "id":"blood_loss_staunch_normal", "skill": "Medicae", "modifier": -10, "condition": {"type":"Context", "property":"StrenuousActivity", "value":false} },
+          { "id":"blood_loss_staunch_strenuous", "skill": "Medicae", "modifier": -30, "condition": {"type":"Context", "property":"StrenuousActivity", "value":true} }
+       ]
+    },
+    {
+      "id": "broken_limb",
+      "name": "Broken Limb",
+      "conditionType": "Injury",
+      "description": "A limb (arm or leg) is broken. Counts as having only one of that limb type until repaired. Associated penalties apply.",
+      "effects": [
+          { "id": "broken_limb_useless", "modifierType":"ApplyFlag", "flag":"LimbBroken", "details":"AffectedLimbId", "source":"Condition:broken_limb"}
+      ],
+      "implicitConditions": ["lost_arm", "lost_leg"],
+      "permanentUntilRepaired": true
+    },
+    {
+      "id": "cannot_dodge",
+      "name": "Cannot Dodge",
+      "conditionType": "TemporaryRestriction",
+      "description": "Character is temporarily unable to perform the Dodge reaction.",
+      "effects": [
+        { "id": "prevent_dodge_action", "modifierType": "PreventAction", "actionId": "dodge", "source": "Condition:cannot_dodge" }
+      ]
+    },
+    {
+      "id": "cannot_parry",
+      "name": "Cannot Parry",
+      "conditionType": "TemporaryRestriction",
+      "description": "Character is temporarily unable to perform the Parry reaction.",
+      "effects": [
+        { "id": "prevent_parry_action", "modifierType": "PreventAction", "actionId": "parry", "source": "Condition:cannot_parry" }
+      ]
+    },
+    {
+      "id": "catatonic",
+      "name": "Catatonic",
+      "conditionType": "Mental",
+      "description": "Character withdraws into a catatonic state. Cannot speak or make Fellowship-based tests.",
+      "effects": [
+        { "id": "catatonic_no_speak", "modifierType": "PreventAction", "details": "Cannot Speak", "source": "Condition:catatonic" },
+        { "id": "catatonic_no_fel_tests", "modifierType": "PreventTestBasedOnCharacteristic", "target": { "scope": "Self", "type": "Characteristic", "identifier": "Fellowship" }, "source": "Condition:catatonic" }
+      ]
+    },
+    {
+      "id": "dead",
+      "name": "Dead",
+      "conditionType": "Terminal",
+      "description": "Character has ceased living.",
+      "effects": [
+        { "id": "dead_cannot_act", "modifierType": "PreventAction", "actionType": ["Full Action", "Half Action", "Reaction", "Free Action"], "source": "Condition:dead" },
+        { "id": "dead_helpless", "modifierType": "ApplyFlag", "flag": "HelplessTarget", "source": "Condition:dead" },
+        { "id": "dead_hp_state", "modifierType": "SetAttribute", "target": { "scope": "Self", "type": "Attribute", "identifier": "CurrentWounds"}, "value": "LessThanZero", "source": "Condition:dead" }
+      ]
+    },
+    {
+      "id": "deafened",
+      "name": "Deafened",
+      "conditionType": "Sensory",
+      "description": "Hearing-based tests automatically fail.",
+      "effects": [
+        { "id": "deafened_hearing_autofail", "modifierType": "AutoFailTest", "target": { "scope": "Self", "type": "Test", "identifier": "*", "subIdentifier":"RequiresHearing"}, "source": "Condition:deafened" }
+      ]
+    },
+    {
+      "id": "encumbered",
+      "name": "Encumbered",
+      "conditionType": "Physical",
+      "description": "Carrying more than allowed weight. -10 to movement tests, AgB reduced by 1 for movement/Initiative. Fatigue test after TB hours.",
+      "effects": [
+         { "id": "encumbered_move_penalty", "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": "*", "subIdentifier":"MovementRelated" }, "value": 10, "source": "Condition:encumbered" },
+         { "id": "encumbered_agb_penalty", "modifierType": "ModifyAttribute", "target": { "scope": "Self", "type": "Attribute", "identifier": "AgilityBonusEffective"}, "value": -1, "details": "For movement & initiative only", "source": "Condition:encumbered" }
+       ],
+       "fatigueTest": { "triggerHours": "ToughnessBonus", "skill": "Toughness", "modifier": 0 }
+    },
+     {
+      "id": "fatigued",
+      "name": "Fatigued",
+      "conditionType": "Physical",
+      "stacking": true,
+      "description": "Character suffers a flat -10 penalty to all Tests if any Fatigue levels are present.",
+      "effects": [
+        { "id": "fatigue_penalty", "condition": { "type": "ConditionLevel", "conditionId": "fatigued", "operator": "gt", "value": 0 }, "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": "*" }, "value": 10, "source": "Condition:fatigued" }
+      ]
+    },
+    {
+      "id": "feinted",
+      "name": "Feinted",
+      "conditionType": "TemporaryDebuff",
+      "description": "Target cannot Parry or Dodge the next melee attack against them.",
+      "effects": [
+          { "modifierType": "PreventAction", "actionId": "parry", "scope": "NextMeleeAttackAgainstSelf" },
+          { "modifierType": "PreventAction", "actionId": "dodge", "scope": "NextMeleeAttackAgainstSelf" }
+      ],
+      "duration": "OneAttack"
+    },
+    {
+      "id": "grappling",
+      "name": "Grappling",
+      "conditionType": "CombatState",
+      "description": "Character is engaged in a grapple, either as controller or target. Cannot use Reactions. Attackers gain +20 to hit.",
+      "effects": [
+        { "id": "grappling_no_reactions", "modifierType": "PreventAction", "actionType": ["Reaction"], "source": "Condition:grappling" },
+        { "id": "grappling_incoming_bonus", "modifierType": "ApplyTargetDebuffToAttackers", "target": { "scope": "Self" }, "debuffDetails": {
+            "id": "grappling_target_bonus",
+            "effects": [{ "modifierType": "TestBonus", "target": {"scope":"Self", "type":"Test", "identifier":["WeaponSkill", "BallisticSkill"]}, "value": 20 }]
+          }, "source": "Condition:grappling" }
+      ]
+    },
+    {
+      "id": "lost_hand",
+      "name": "Lost Hand",
+      "conditionType": "Injury",
+      "description": "If main hand lost, off-hand suffers -20 penalty (can be bought off). Tasks requiring two hands suffer -20 penalty.",
+      "effects": [
+        { "id": "lost_main_hand_penalty", "condition": { "type":"Context", "property":"LimbLost", "value":"MainHand"}, "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": "*", "subIdentifier":"UsingOffHandPrimary"}, "value": 20, "canBeBoughtOff": true, "xpCost": 200, "source": "Condition:lost_hand" },
+        { "id": "lost_hand_two_handed_penalty", "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": "*", "subIdentifier":"RequiresTwoHands"}, "value": 20, "canBeBoughtOff": false, "source": "Condition:lost_hand" },
+        { "id": "lost_hand_cannot_wield_two_handed", "modifierType": "PreventAction", "details": "Cannot wield two-handed weapons", "source": "Condition:lost_hand" }
+      ]
+    },
+    {
+      "id": "lost_arm",
+      "name": "Lost Arm",
+      "conditionType": "Injury",
+      "description": "As Lost Hand, but cannot strap a shield.",
+      "effects": [
+        { "id": "lost_arm_no_shield", "modifierType": "PreventAction", "details": "Cannot strap shield to missing arm", "source": "Condition:lost_arm" }
+      ],
+      "inheritsFrom": ["lost_hand"]
+    },
+    {
+      "id": "lost_eye",
+      "name": "Lost Eye",
+      "conditionType": "Injury",
+      "description": "Permanent -10 BS. -20 to vision-based tests.",
+      "effects": [
+        { "id": "lost_eye_bs_penalty", "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": "BallisticSkill" }, "value": 10, "source": "Condition:lost_eye" },
+        { "id": "lost_eye_vision_penalty", "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": "*", "subIdentifier":"RequiresVision"}, "value": 20, "source": "Condition:lost_eye" }
+      ]
+    },
+    {
+      "id": "lost_foot",
+      "name": "Lost Foot",
+      "conditionType": "Injury",
+      "description": "Movement halved (round up). -20 to Movement Actions and related skill tests.",
+       "effects": [
+        { "id": "lost_foot_move_penalty", "modifierType": "ModifyAttribute", "target": { "scope": "Self", "type":"Attribute", "identifier":"MovementRateMultiplier"}, "value": 0.5, "rounding":"Up", "source": "Condition:lost_foot" },
+        { "id": "lost_foot_skill_penalty", "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": ["MoveAction", "Climb", "Jump", "Swim"] }, "value": 20, "source": "Condition:lost_foot" }
+      ]
+    },
+    {
+      "id": "lost_leg",
+      "name": "Lost Leg",
+      "conditionType": "Injury",
+      "description": "As Lost Foot, plus cannot Dodge.",
+      "effects": [
+        { "id": "lost_leg_cannot_dodge", "modifierType": "PreventAction", "actionId": "dodge", "source": "Condition:lost_leg" }
+      ],
+      "inheritsFrom": ["lost_foot"]
+    },
+    {
+      "id": "on_fire",
+      "name": "On Fire",
+      "conditionType": "Environmental",
+      "description": "Takes 1d10 Energy damage (Body location, no AP/TB) and 1 Fatigue per Round. Must make WP Test (+0) to act normally, else runs screaming. Can attempt Ag Test (-20) when Prone to extinguish.",
+      "recurringEffects": [
+        { "trigger": "StartOfRound", "effect": { "modifierType": "DealDamage", "damage": "1d10", "damageType": "Energy", "ignoresSoak": true, "ignoresArmour": true, "hitLocation": "Body", "source": "Condition:on_fire" } },
+        { "trigger": "StartOfRound", "effect": { "modifierType": "ApplyFatigue", "value": 1, "source": "Condition:on_fire" } }
+      ],
+      "behaviorTest": { "skill": "Willpower", "modifier": 0, "failureEffect": "RunAroundScreaming" },
+      "extinguishAttempts": [
+        { "action": "DropProne", "test": { "skill": "Agility", "modifier": -20 } }
+      ]
+    },
+    {
+      "id": "paralysed",
+      "name": "Paralysed",
+      "conditionType": "Incapacitated",
+      "description": "Character is helpless and cannot take any Actions.",
+      "effects": [
+        { "id": "paralysed_cannot_act", "modifierType": "PreventAction", "actionType": ["Full Action", "Half Action", "Reaction", "Free Action"], "source": "Condition:paralysed" },
+        { "id": "paralysed_helpless", "modifierType": "ApplyFlag", "flag": "HelplessTarget", "source": "Condition:paralysed"}
+      ]
+    },
+    {
+      "id": "pinned",
+      "name": "Pinned",
+      "conditionType": "CombatState",
+      "description": "Character may only take Half Actions, suffers –20 to BS Tests, movement restrictions apply.",
+      "effects": [
+        { "id": "pinned_action_limit", "modifierType": "SetMaxActionType", "value": "Half Action", "source": "Condition:pinned" },
+        { "id": "pinned_bs_penalty", "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": "BallisticSkill" }, "value": 20, "source": "Condition:pinned" },
+        { "id": "pinned_movement_restrict", "modifierType": "MovementRestriction", "details": "Standard Pinned movement rules apply", "source": "Condition:pinned" }
+      ],
+      "removalTest": { "skill": "Willpower", "modifier": 30, "condition": { "type":"Context", "property":"CurrentlyUnderFire", "value":false}, "timing": "EndOfTurn" }
+    },
+    {
+      "id": "prone",
+      "name": "Prone",
+      "conditionType": "Postural",
+      "description": "Character is lying down. Standing requires Stand/Mount (Half Action). Modifiers apply to attacks made by/against character.",
+      "effects": [
+        { "id": "prone_attacker_ws_penalty", "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": "WeaponSkill" }, "value": 10, "source": "Condition:prone" },
+        { "id": "prone_attacker_dodge_penalty", "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": "Dodge" }, "value": 20, "source": "Condition:prone" }
+      ],
+      "removalAction": "stand_mount"
+    },
+    {
+      "id": "sensory_deprivation",
+      "name": "Sensory Deprivation",
+      "conditionType": "Sensory",
+      "description": "Loses all senses. -30 penalty to all tests except Toughness.",
+       "effects": [
+        { "id": "sensory_dep_penalty", "modifierType": "TestPenalty", "target": { "scope": "Self", "type": "Test", "identifier": "*" }, "excludedTests": ["Toughness"], "value": 30, "source": "Condition:sensory_deprivation" },
+        { "id": "sensory_dep_autofail", "modifierType": "AutoFailTest", "target": { "scope": "Self", "type": "Test", "identifier": "*", "subIdentifier":"RequiresSenses"}, "source": "Condition:sensory_deprivation" }
+      ]
+    },
+    {
+      "id": "stunned",
+      "name": "Stunned",
+      "conditionType": "Debuff",
+      "description": "Character cannot take Actions or Reactions. Attacks against Stunned targets are Routine (+20). Duration typically 1d5 Rounds or as specified.",
+      "effects": [
+        { "id": "stunned_cannot_act", "modifierType": "PreventAction", "actionType": ["Full Action", "Half Action", "Reaction", "Free Action"], "source": "Condition:stunned" }
+      ],
+      "duration": { "dice": "1d5", "unit": "Rounds" }
+    },
+    {
+      "id": "unconscious",
+      "name": "Unconscious",
+      "conditionType": "Incapacitated",
+      "description": "Character is unaware and helpless. Duration typically 10-TB minutes. Recovers Fatigue upon awakening.",
+      "effects": [
+          { "id": "unconscious_cannot_act", "modifierType": "PreventAction", "actionType": ["Full Action", "Half Action", "Reaction", "Free Action"], "source": "Condition:unconscious" },
+          { "id": "unconscious_helpless", "modifierType": "ApplyFlag", "flag": "HelplessTarget", "source": "Condition:unconscious"}
+      ],
+       "duration": {
+           "baseMinutes": 10,
+           "subtractStat": "ToughnessBonus",
+           "minimumMinutes": 1
+         },
+       "recoveryEffects": [{ "modifierType":"ResetFatigue", "valueSource":"StatBonus:ToughnessBonus"}]
+    },
+    {
+      "id": "unconscious_nightmare",
+      "name": "Unconscious (Nightmare)",
+      "conditionType": "Incapacitated",
+      "description": "Character collapses into nightmare-filled sleep. Gains 1 Insanity Point on awakening.",
+      "inheritsFrom": ["unconscious"],
+      "recoveryEffects": [
+          { "modifierType":"ResetFatigue", "valueSource":"StatBonus:ToughnessBonus"},
+          { "modifierType":"GainPoints", "pointType":"Insanity", "value":1, "source":"Condition:unconscious_nightmare"}
+      ]
+    },
+    {
+      "id": "useless_limb",
+      "name": "Useless Limb",
+      "conditionType": "Injury",
+      "description": "Limb is unusable. Requires successful Toughness Test (+0, +20 if Medicae assists) to determine if it can heal (requires 1d5+1 weeks sling). Failure means limb must be removed.",
+      "effects": [
+          { "id": "useless_limb_flag", "modifierType": "ApplyFlag", "flag": "LimbUseless", "details": "AffectedLimbId", "source": "Condition:useless_limb" }
+      ],
+      "implicitConditions": ["lost_arm", "lost_leg"],
+      "resolutionTest": {
+          "skill": "Toughness",
+          "modifier": 0,
+          "assistBonus": { "skill": "Medicae", "value": 20 },
+          "successOutcome": { "duration": {"dice":"1d5+1", "unit":"Weeks"}, "endState": "LimbHealed" },
+          "failureOutcome": { "nextStep": "RequiresAmputation" }
+      },
+      "permanentUntilRepaired": true 
+    }
+  ]

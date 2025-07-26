@@ -1,0 +1,165 @@
+[
+    {
+      "criticalDamageRoll": "1",
+      "effectDescription": "The slashing attack tears anything free that was held in this hand.",
+      "effects": [
+        { "id": "rending_arm_1_drop",
+          "modifierType": "ForceDropItem",
+          "target": { "scope": "Self", "type": "BodyPart", "identifier": "AffectedHand" },
+          "source": "Crit:RendingArm:1"
+        }
+      ]
+    },
+    {
+      "criticalDamageRoll": "2",
+      "effectDescription": "Deep cuts cause the target to drop whatever was held and inflicts 1 level of Fatigue.",
+      "effects": [
+         { "id": "rending_arm_2_drop",
+          "modifierType": "ForceDropItem",
+          "target": { "scope": "Self", "type": "BodyPart", "identifier": "AffectedHand" },
+          "source": "Crit:RendingArm:2"
+         },
+         { "id": "rending_arm_2_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 1,
+          "source": "Crit:RendingArm:2"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "3",
+      "effectDescription": "The free-swinging attack sends the target screaming in pain. He takes 2 levels of Fatigue.",
+      "effects": [
+         { "id": "rending_arm_3_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 2,
+          "source": "Crit:RendingArm:3"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "4",
+      "effectDescription": "The attack flays the skin from the limb, filling the air with blood and the sounds of his screaming. The target falls prone from the agony and takes 2 levels of Fatigue. The limb is useless for 1d10 Rounds.",
+      "effects": [
+         { "id": "rending_arm_4_prone",
+           "modifierType": "ApplyCondition",
+           "conditionId": "prone",
+           "source": "Crit:RendingArm:4"
+         },
+         { "id": "rending_arm_4_fatigue",
+           "modifierType": "ApplyFatigue",
+           "value": 2,
+           "source": "Crit:RendingArm:4"
+         },
+         { "id": "rending_arm_4_useless",
+           "modifierType": "ApplyCondition",
+           "conditionId": "useless_limb",
+           "details": "AffectedArm",
+           "duration": { "dice": "1d10", "unit": "Rounds" },
+           "source": "Crit:RendingArm:4"
+         }
+      ]
+    },
+    {
+      "criticalDamageRoll": "5",
+      "effectDescription": "A bloody and very painful blow rips tendons and nerves open up what was his arm. The target takes 1d5 levels of fatigue and must make a Challenging (+0) Willpower Test or is Stunned for 1 Round.",
+      "effects": [
+          { "id": "rending_arm_5_fatigue",
+            "modifierType": "ApplyFatigue",
+            "valueDice": "1d5",
+            "source": "Crit:RendingArm:5"
+          }
+      ],
+       "resolutionTest": {
+          "id": "rending_arm_5_stun_test",
+          "test": { "skill": "Willpower", "modifier": 0 },
+          "failureEffect": { "modifierType":"ApplyCondition", "conditionId":"stunned", "duration":{"value":1, "unit":"Rounds"}, "source":"Crit:RendingArm:5" },
+          "description": "Willpower Test or Stunned 1 Round"
+      }
+    },
+    {
+      "criticalDamageRoll": "6",
+      "effectDescription": "The blow mangles 1d5 fingers (for the purpose of this Critical, a thumb counts a finger). The target takes 3 levels of Fatigue and must immediately make a Challenging (+0) Toughness Test or lose the use of his hand.",
+      "effects": [
+        { "id": "rending_arm_6_fatigue",
+          "modifierType": "ApplyFatigue",
+          "value": 3,
+          "source": "Crit:RendingArm:6"
+        }
+      ],
+      "resolutionTest": {
+          "id": "rending_arm_6_save_hand_test",
+          "test": { "skill": "Toughness", "modifier": 0 },
+          "failureEffect": { "modifierType": "ApplyCondition", "conditionId": "useless_limb", "details":"AffectedHand", "permanentUntilRepaired":true, "source": "Crit:RendingArm:6" },
+          "description": "Toughness Test or lose use of hand"
+      }
+    },
+    {
+      "criticalDamageRoll": "7",
+      "effectDescription": "The attack rips the arm apart, skin, muscle and all. The arm is broken and, until repaired, the target counts as having only one arm. In addition, the arm is useless and unusable. The target takes 1d5 levels of Fatigue.",
+      "effects": [
+         { "id": "rending_arm_7_broken",
+           "modifierType": "ApplyCondition",
+           "conditionId": "broken_limb",
+           "details": "AffectedArm",
+           "permanentUntilRepaired": true,
+           "source": "Crit:RendingArm:7"
+          },
+          { "id": "rending_arm_7_fatigue",
+            "modifierType": "ApplyFatigue",
+            "valueDice": "1d5",
+            "source": "Crit:RendingArm:7"
+          }
+      ],
+      "implicitConditions": ["lost_arm"]
+    },
+    {
+      "criticalDamageRoll": "8",
+      "effectDescription": "With an assortment of unnatural wet ripping sounds, the arm is torn free of the body trailing blood behind it in a crimson arc. The target must immediately make a Challenging (+0) Toughness Test or pass out from shock. If he passes the test, he is Stunned for 1d10 Turns and suffers Blood Loss. He now only has one arm.",
+      "effects": [
+        { "id": "rending_arm_8_amputated",
+          "modifierType": "ApplyCondition",
+          "conditionId": "amputated_limb",
+          "details": "AffectedArm",
+          "scope": "Immediate",
+          "source": "Crit:RendingArm:8"
+         }
+      ],
+      "resolutionTest": {
+          "id": "rending_arm_8_pass_out_test",
+          "test": { "skill": "Toughness", "modifier": 0 },
+          "failureEffect": { "modifierType":"ApplyCondition", "conditionId":"unconscious", "details":"Passed out from shock", "source":"Crit:RendingArm:8" },
+          "successEffects": [
+              { "modifierType":"ApplyCondition", "conditionId":"stunned", "duration":{"dice":"1d10", "unit":"Turns"}, "source":"Crit:RendingArm:8" },
+              { "modifierType":"ApplyCondition", "conditionId":"blood_loss", "source":"Crit:RendingArm:8" }
+          ],
+          "description": "Toughness Test or pass out. Success -> Stunned 1d10 Turns & Blood Loss."
+      }
+    },
+    {
+      "criticalDamageRoll": "9",
+      "effectDescription": "As above, however, the arm slices clean through the arm and into the torso, drenching the ground in blood and gore and killing the target instantly.",
+       "effects": [
+         { "id": "rending_arm_9_amputated", "modifierType":"ApplyCondition", "conditionId":"amputated_limb", "details":"AffectedArm", "scope":"Immediate", "source":"Crit:RendingArm:9" },
+         { "id": "rending_arm_9_death", "modifierType":"ApplyCondition", "conditionId":"dead", "scope":"Immediate", "source":"Crit:RendingArm:9" }
+       ]
+    },
+    {
+      "criticalDamageRoll": "10+",
+      "effectDescription": "As above, however, the attack slices the arm from the torso, showering its insides across the ground uncontrollably, pumping the trigger of any held weapon. If the target was carrying a ranged weapon there is a 5% chance that a single randomly determined target within 2d10 metres will be hit by these shots, in which case resolve a single hit from the target’s weapon as normal.",
+      "effects": [
+        { "id": "rending_arm_10_amputated", "modifierType":"ApplyCondition", "conditionId":"amputated_limb", "details":"AffectedArm", "scope":"Immediate", "source":"Crit:RendingArm:10" },
+        { "id": "rending_arm_10_death", "modifierType":"ApplyCondition", "conditionId":"dead", "scope":"Immediate", "source":"Crit:RendingArm:10" },
+        { "id": "rending_arm_10_death_spasm_shot",
+          "condition": { "type":"CheckHeldItem", "property":"IsRangedWeapon", "target":{"scope":"Self", "type":"BodyPart", "identifier":"AffectedHand"} },
+          "modifierType": "TriggerRandomAttack",
+          "chance": 0.05,
+          "rangeDice": "2d10",
+          "rangeUnit": "Meters",
+          "targetSelection": "RandomWithinRange",
+          "attackDetails": { "type": "SingleHit", "weaponSource": "HeldWeapon" },
+          "source": "Crit:RendingArm:10"
+        }
+      ]
+    }
+  ]
